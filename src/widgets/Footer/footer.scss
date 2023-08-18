@@ -4,5 +4,5 @@
   align-items: center;
   background-color: var(--turquoise-blue);
   height: 50px;
-  padding: 0 25px;
+  padding: 0 25px env(safe-area-inset-bottom, 0);
 }
