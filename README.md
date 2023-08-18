@@ -1,34 +1,4 @@
-# Insight Categorisation
-
-Insight is a voice analytics tool whose key benefits lie in its ability to highlight calls that are important to the
-company using it and provide an imbedded training and feedback tool. To maximise the utility of Insight and ensure it is
-a productive tool for our customers in the long term, it is important that our customers are able to accurately
-programme Insight to identify the areas of a call that are of interest to them.
-
-## General Information
-
-Thanks to this project it will be possible for customers to create categories/dictionaries and then apply them to
-users/groups.
-Insight currently uses Voicebase’s categorisation engine. While the engine is comprehensive, it only works as long as we
-use Voicebase as our transcription partner. Natterbox intends to use other transcription partners - the first being
-Deepgram - and therefore needs to build an agnostic categorisation engine that will work with any transcription partners
-we work with in the future.
-
-The Natterbox implementation of the Voicebase engine means that customers are not able to create, update or delete
-categories and dictionaries themselves. Instead, they need to ask Natterbox support to do this for them. In reality,
-customers rarely update the tool after its initial configuration. This results in the Insight product getting out of
-sync with the customer’s business needs, sit tops being useful and customers discontinue the product.
-
-## Features
-
-- Create/Edit Category
-- Create Category from Template
-- Category History ( in progress )
-- Table with Categories
-- Category View ( in progress )
-- Create/Edit Dictionary ( in progress )
-- Table with Dictionaries ( in progress )
-- Dictionary History ( in progress )
+# MyCar
 
 ## Tech Stack
 
@@ -65,7 +35,7 @@ sync with the customer’s business needs, sit tops being useful and customers d
 2. Go to the project directory
 
     ```bash
-    cd insight-category-ui
+    cd mycar-fe
     ```
 
 3. In case you don't have **yarn** installed, run the next command ( If you have yarn installed you can go to the next
@@ -85,19 +55,6 @@ sync with the customer’s business needs, sit tops being useful and customers d
     ```bash
     yarn start
     ```
-
-6. Since this project only runs inside a Visualforce page (there is no stanalone version) we'll need to configure
-   additional settings.
-    1. In the Salesforce organisation you are using, click **Setup** then select **Setup**
-    2. In **Quick find** you have to search: **Visualforce Pages**
-    3. Click on **Edit** to project **insightsConfiguration**
-    4. You need to replace the line
-       ```<script src="{!insightsReactHost}/main.js"></script>```
-       with
-       ```<script src="https://localhost:3000/main.js"></script>```
-       and comment/remove the next line to use styles from the local project but not from the hosted project:
-       ```<link href="{!insightsReactHost}/css/main.css" rel="stylesheet"></link>```
-    5. These changes will affect the whole organisation
 
 ## Running Tests
 
@@ -224,13 +181,4 @@ Inside this layer the following layers can be used: **shared**,
 
 ## Documentation
 
-[Wireframe](https://app.diagrams.net/?src=about#G193hsM88CXD0PlXvJaNHw2BmlLBLEdN76)
-
-[Permissions](https://app.diagrams.net/#G1J4MkuNsuX55S_p6BkeTJtuvt6hWugIRO)
-
-[Design](https://scene.zeplin.io/project/616e7b463ebd191287ca0aef)
-
-[Category Logic](https://natterbox.atlassian.net/wiki/spaces/I1P/pages/1080918017/Category+Logic)
-
-[Insight 1.5 category and dictionary engine requirements](https://natterbox.atlassian.net/wiki/spaces/I1P/pages/1039925349/Insight+1.5+category+and+dictionary+engine+requirements)
-
+todo

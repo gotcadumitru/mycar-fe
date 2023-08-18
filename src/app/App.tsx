@@ -5,7 +5,8 @@ import { ToastContainer } from 'react-toastify'
 import { toastDefaultValues } from 'shared/config/toastify'
 import { useAppDispatch } from 'shared/lib/hooks/reduxHooks'
 import { ActiveModal } from 'widgets/ActiveModal/ActiveModal'
-import Header from 'widgets/Header'
+import Footer from 'widgets/Footer';
+import Header from 'widgets/Header';
 import './styles/app.scss'
 
 const App = () => {
@@ -18,7 +19,11 @@ const App = () => {
     <div className='app' data-testid='app'>
       <ActiveModal />
       <Header />
+        <main className="main">
+
       <AppRouter />
+        </main>
+      <Footer />
       <ToastContainer position='bottom-center' {...toastDefaultValues} />
     </div>
   )

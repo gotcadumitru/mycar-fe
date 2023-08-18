@@ -4,11 +4,8 @@ import { SidebarBurger } from 'shared/ui/Sidebar'
 import Toolbar, { ToolbarCategoryOptionsRight } from 'widgets/Toolbar'
 
 const CategoriesPage = () => (
-  <>
-    <Toolbar left={<SidebarBurger />} right={<ToolbarCategoryOptionsRight />} />
     <MainLayout>
       <CategoryTable />
     </MainLayout>
-  </>
 )
 export default CategoriesPage

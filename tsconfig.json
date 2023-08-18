@@ -15,6 +15,7 @@
     "isolatedModules": true,
     "sourceMap": true,
     "jsx": "react-jsx",
+    "noEmitOnError": false,
     "baseUrl": ".",
     "paths": {
       "*": [
