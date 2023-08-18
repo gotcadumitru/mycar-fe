@@ -45,7 +45,14 @@ const buildPlugins = (config: BuildOptions): webpack.WebpackPluginInstance[] => 
   if (config.isWebpackBuild) {
     plugins.push(
       new CopyPlugin({
-        patterns: [{ from: 'public/assets', to: 'assets' }],
+        patterns: [
+            { from: 'public/icon-192x192.png' },
+            { from: 'public/icon-256x256.png' },
+            { from: 'public/icon-384x384.png' },
+            { from: 'public/icon-512x512.png' },
+            { from: 'public/manifest.json' },
+            { from: 'public/robots.txt' },
+        ],
       }),
     )
   }
