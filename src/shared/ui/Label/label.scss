@@ -1,0 +1,27 @@
+.label {
+  display: inline-block;
+  margin-top: 15px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--turquoise-blue);
+  margin-bottom: 5px;
+  white-space: break-spaces;
+
+  &__info-icon {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin-bottom: -5px;
+  }
+
+  &__info-text {
+    color: var(--natterbox-grey);
+    font-size: 14px;
+    font-weight: 400;
+    max-width: 500px;
+  }
+
+  &--no-margin {
+    margin: 0;
+  }
+}

@@ -1,0 +1,109 @@
+.checkbox {
+  display: block;
+  position: relative;
+  padding-left: 20px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 14px;
+  color: var(--natterbox-grey);
+  height: 15px;
+
+  &--m-left {
+    margin-left: 15px;
+  }
+
+  &--margin-top-bottom {
+    margin: 1px 0;
+  }
+
+  &--margin-bottom {
+    margin-bottom: 10px;
+  }
+
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  &__checkmark {
+    position: absolute;
+    top: 9px;
+    left: 0;
+    transform: translateY(-50%);
+    height: 13px;
+    width: 13px;
+    background-color: var(--natterbox-grey);
+    border-radius: 2px;
+  }
+
+  &__checkmark::after {
+    left: 4px;
+    top: 0;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+
+  &:hover input ~ .checkbox__checkmark {
+    background-color: var(--natterbox-grey);
+  }
+
+  input:checked ~ .checkbox__checkmark {
+    background-color: var(--natterbox-grey);
+  }
+
+  input:checked ~ .checkbox__checkmark::after {
+    display: block;
+  }
+
+  &--grey {
+    padding-left: 30px;
+    margin: 10px 0;
+    line-height: 20px;
+    height: 20px;
+
+    /* stylelint-disable */
+    &__checkmark {
+      height: 20px;
+      width: 20px;
+      background-color: var(--pinkish-grey);
+    }
+    /* stylelint-enable */
+
+    &:hover input ~ .checkbox__checkmark {
+      background-color: var(--pinkish-grey);
+    }
+
+    input:checked ~ .checkbox__checkmark {
+      background-color: var(--pinkish-grey);
+    }
+
+    /* stylelint-disable */
+    &__checkmark::after {
+      content: '';
+      position: absolute;
+      display: none;
+      left: 6px;
+      top: 1px;
+      width: 7px;
+      height: 13px;
+      border: solid var(--natterbox-grey);
+      border-width: 0 0.21em 0.21em 0;
+    }
+    /* stylelint-enable */
+  }
+
+  &--disabled {
+    input:disabled ~ .checkbox__checkmark {
+      background-color: var(--pinkish-grey);
+    }
+
+    color: var(--pinkish-grey);
+    cursor: not-allowed;
+  }
+}

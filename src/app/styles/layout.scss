@@ -1,0 +1,53 @@
+.margin {
+  @for $i from 5 through 100 {
+    @if $i % 5 == 0 {
+      &--left-#{$i} {
+        margin-left: #{$i}px;
+      }
+    }
+  }
+
+  @for $i from 5 through 100 {
+    @if $i % 5 == 0 {
+      &--right-#{$i} {
+        margin-right: #{$i}px;
+      }
+    }
+  }
+
+  @for $i from 5 through 100 {
+    @if $i % 5 == 0 {
+      &--top-#{$i} {
+        margin-top: #{$i}px;
+      }
+    }
+  }
+
+  @for $i from 5 through 100 {
+    @if $i % 5 == 0 {
+      &--bottom-#{$i} {
+        margin-bottom: #{$i}px;
+      }
+    }
+  }
+}
+
+.flex {
+  display: flex;
+  width: 100%;
+
+  &--space-between {
+    justify-content: space-between;
+  }
+}
+
+.ellipsis-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.content-container {
+  margin: 0 auto;
+  padding: 0 15px;
+}

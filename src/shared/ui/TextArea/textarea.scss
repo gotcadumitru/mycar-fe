@@ -1,0 +1,32 @@
+.textarea {
+  white-space: pre-wrap;
+  background-color: var(--grey-3);
+  resize: none;
+  overflow: auto;
+  min-height: 30px;
+  max-height: 200px;
+  border-radius: 5px;
+  border: solid 1px var(--pinkish-grey);
+  font-size: 14px;
+  color: var(--natterbox-grey);
+  width: 100%;
+  padding-top: 6px;
+
+  &:focus,
+  &:focus-visible {
+    outline: 1px solid var(--natterbox-dark-blue-grey);
+  }
+
+  &::placeholder {
+    color: var(--input-text-colour);
+  }
+
+  &--error {
+    border: solid 1px var(--natterbox-red);
+
+    &:focus {
+      border: solid 1px var(--pinkish-grey);
+      outline: 1px solid var(--natterbox-dark-blue-grey);
+    }
+  }
+}
