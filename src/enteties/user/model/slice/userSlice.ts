@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import type { ThunkConfig } from 'app/providers/StoreProvider'
-import { salesforceRemoteActions } from 'shared/api'
 import { mapUserMinFromSalesforce } from '../../utils/mappers/userMappers'
 import { UserActions } from '../consts/userConsts'
 import type { UserFromSalesforce, UserSliceState } from '../types/user.types'
@@ -10,8 +9,7 @@ export const fetchAllUsersFromSalesforceThunk = createAsyncThunk<
   void,
   ThunkConfig<string>
 >(UserActions.FETCH_ALL_USERS, async () => {
-  const userFromSalesforceRequests = await salesforceRemoteActions.getAllUsers()
-  return userFromSalesforceRequests.map(mapUserMinFromSalesforce)
+  return [].map(mapUserMinFromSalesforce)
 })
 
 // Please don't delete this

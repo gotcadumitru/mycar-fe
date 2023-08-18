@@ -1,4 +1,8 @@
 .app {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+
   &__container {
     display: grid;
     width: 100%;

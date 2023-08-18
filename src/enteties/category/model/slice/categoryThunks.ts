@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import type { ThunkConfig, ThunkValue } from 'app/providers/StoreProvider'
-import { categoryAPI, salesforceRemoteActions } from 'shared/api'
+import { categoryAPI } from 'shared/api'
 import { getInfoFromAPIJwt } from 'shared/lib/utils/jwt'
 import type { ResponseWithBody } from 'shared/types/api.types'
 import { mapCategoriesMinFromApi, mapCategoryFromApi } from '../../utils/category.utils'
@@ -49,7 +49,7 @@ export const createNewCategoryThunk = createAsyncThunk<
   ThunkConfig<string>
 >(CategoryActions.CREATE_CATEGORY, async ({ categoryData }) => {
   try {
-    const newCategoryResponse = await salesforceRemoteActions.createCategory(categoryData)
+    const newCategoryResponse = {}
 
     const newCategory = mapCategoryFromApi(newCategoryResponse)
 
@@ -68,7 +68,7 @@ export const createNewCategoryThunk = createAsyncThunk<
 })
 
 const editCategoryById = async (categoryData: EditCategoryBody) => {
-  const newCategoryResponse = await salesforceRemoteActions.editCategory(categoryData)
+  const newCategoryResponse = {}
   const newCategory = mapCategoryFromApi(newCategoryResponse)
   const newCategoryMinType: CategoryMinType = {
     id: newCategory.id,
@@ -127,7 +127,7 @@ export const deleteCategoryByIdThunk = createAsyncThunk<
   ThunkConfig<string>
 >(CategoryActions.DELETE_CATEGORY_BY_ID, async ({ categoryId }) => {
   try {
-    await salesforceRemoteActions.deleteCategoryById(categoryId)
+    //TODO delete
     return categoryId
   } catch (err: any) {
     throw new Error(err?.error?.message)

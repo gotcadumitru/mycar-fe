@@ -4,7 +4,6 @@ import {
   categoriesFromCategoryApiMaxType,
   categoriesFromCategoryApiMinType,
 } from 'shared/defaults/tests/categories'
-import { templatesFromCategoryApiMaxType } from 'shared/defaults/tests/templates'
 
 const mock = new MockAdapter(categoryAPI)
 
@@ -18,7 +17,4 @@ mock
   )
   .reply(200, { body: categoriesFromCategoryApiMaxType.originalFromRequest[0] })
 
-mock
-  .onGet('/categories/templates')
-  .reply(200, { body: templatesFromCategoryApiMaxType.originalFromRequest })
 export default mock

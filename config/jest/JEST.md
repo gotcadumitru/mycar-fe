@@ -22,10 +22,6 @@ SVG and WebP files are replaced with the contents of the **jestSvgEmptyComponent
 
 To be considered a test file, the file name must match the patterns in the **testMatch** property in the **jest.config.ts** file.
 
-## Mocking Salesforce Remote Actions
-
-To mock Salesforce remote actions, use the **getMockSalesforceRemoteActions** function in the **setupTests.ts** file. This function mocks the **window.insightsConfiguration** property.
-
 ## Rendering Components in Tests
 
 To render a component in a test, use the [renderWithProviders](../../src/shared/lib/tests/testUtils.tsx) function.

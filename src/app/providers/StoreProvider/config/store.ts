@@ -1,6 +1,5 @@
 import { configureStore, ReducersMapObject } from '@reduxjs/toolkit'
 import { categoryReducer } from 'enteties/category'
-import { templateReducer } from 'enteties/template'
 import { userReducer } from 'enteties/user'
 import { createEditCategoryReducer } from 'features/category/category-create-edit'
 import { categoryAPI, sapienAPI } from 'shared/api'
@@ -14,7 +13,6 @@ export const rootReducers: ReducersMapObject<StateSchema> = {
   createDictionary: {} as any,
   category: categoryReducer,
   user: userReducer,
-  template: templateReducer,
 }
 
 export function createReduxStore(initialState?: StateSchema) {

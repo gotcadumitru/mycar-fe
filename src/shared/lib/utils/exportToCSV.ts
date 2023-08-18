@@ -5,7 +5,7 @@ export const exportToCSV = (data: string, filaName: string) => {
   link.setAttribute('href', encodedUri)
   link.target = '_blank'
   link.setAttribute('download', filaName)
-  const root = document.getElementById('categorisation-root')
+  const root = document.getElementById('mycar-root')
   if (!root) return
   root.appendChild(link)
   link.click()

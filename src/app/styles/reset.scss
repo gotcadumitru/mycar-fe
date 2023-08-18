@@ -41,7 +41,7 @@ aside {
 
 html,
 body {
-  min-height: 100vh;
+  min-height: 100dvh;
   width: 100%;
   margin: 0;
   line-height: 1;
@@ -88,8 +88,8 @@ h6 {
   font-weight: 400;
 }
 
-#categorisation-root {
-  min-height: 100vh;
+#mycar-root {
+  min-height: 100dvh;
 }
 
 select option {

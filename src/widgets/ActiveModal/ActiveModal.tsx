@@ -1,5 +1,4 @@
 import CreateEditCategoryModal from 'features/category/category-create-edit'
-import CreateCategoryFromTemplate from 'features/category/category-from-template'
 import ViewCategoryModal from 'features/category/category-view'
 import { FC } from 'react'
 import { useLocation, useSearchParams } from 'react-router-dom'
@@ -51,9 +50,6 @@ export const ActiveModal: FC = () => {
       case OpenMode.CLONE:
       case OpenMode.EDIT: {
         return <CreateEditCategoryModal mode={modalType} id={idDecoded} />
-      }
-      case OpenMode.TEMPLATES_LIST: {
-        return <CreateCategoryFromTemplate />
       }
       // Please don't delete this
       // case OpenMode.HISTORY: {

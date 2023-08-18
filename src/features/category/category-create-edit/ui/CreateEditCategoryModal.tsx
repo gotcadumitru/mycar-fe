@@ -7,11 +7,7 @@ import {
   fetchCategoryByIdThunk,
   parseStringToWordsAndPhrases,
 } from 'enteties/category'
-import {
-  fetchAllTemplatesFromApiThunk,
-  TemplateActions,
-  templateToEditCategoryForm,
-} from 'enteties/template'
+
 import { FC, useEffect, useId } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
@@ -19,7 +15,7 @@ import { FetchStatus } from 'shared/api'
 import { BUTTON_TEXT, MODAL_TITLE, REQUEST_MESSAGES, TOAST_MESSAGE } from 'shared/defaults/text'
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
 import permissionHelpers from 'shared/lib/utils/permissionHelpers'
-import { OpenMode, QueryParams } from 'shared/types/types'
+import { OpenMode } from 'shared/types/types'
 import Button, { ButtonCategoryType, ButtonTheme } from 'shared/ui/Button'
 import Modal from 'shared/ui/Modal'
 import { createEditCategoryActions } from '../lib/slice/createEditCategorySlice'
@@ -40,19 +36,13 @@ const CreateEditCategoryModal: FC<CreateCategoryModalProps> = ({ id, mode }) => 
   const dispatch = useAppDispatch()
   const createCategoryFormData = useAppSelector((state) => state.createCategory.newCategoryFormData)
   const category = useAppSelector((state) => state.category.selectedCategory)
-  const allTemplates = useAppSelector((state) => state.template.allTemplates)
-  const allTemplatesFetchStatus = useAppSelector(
-    selectRequestStatus(TemplateActions.FETCH_ALL_TEMPLATES),
-  )
+
   const categoryFetchStatus = useAppSelector(
     selectRequestStatus(CategoryActions.FETCH_CATEGORY_BY_ID),
   )
 
-  const isLoadingSkeletonDisplayed = (() => {
-    if (mode === OpenMode.CREATE_FROM_TEMPLATE && allTemplatesFetchStatus !== FetchStatus.SUCCESS)
-      return true
-    return [OpenMode.EDIT, OpenMode.CLONE].includes(mode) && category?.id !== id
-  })()
+  const isLoadingSkeletonDisplayed = (() =>
+    [OpenMode.EDIT, OpenMode.CLONE].includes(mode) && category?.id !== id)()
 
   const resetDataInsideReduxStore = () => {
     dispatch(createEditCategoryActions.resetCategoryDataAC())
@@ -69,19 +59,6 @@ const CreateEditCategoryModal: FC<CreateCategoryModalProps> = ({ id, mode }) => 
     setSearchParams({})
     resetDataInsideReduxStore()
   }
-
-  // fetch all templates when we are creating a category from a template
-  useEffect(() => {
-    if (mode === OpenMode.CREATE_FROM_TEMPLATE && allTemplatesFetchStatus !== FetchStatus.SUCCESS) {
-      dispatch(fetchAllTemplatesFromApiThunk())
-    }
-
-    // We don't use "onModalClose" because if we get to the CreateEditCategoryModal component
-    // by navigating from the CreateCategoryFromTemplate component,
-    // and click the back button, we want to go back to the page where we choose a template
-    // setSearchParams({}) would cause all the modals to close
-    return resetDataInsideReduxStore
-  }, [])
 
   // Clone / edit category
   useEffect(() => {
@@ -115,28 +92,6 @@ const CreateEditCategoryModal: FC<CreateCategoryModalProps> = ({ id, mode }) => 
       }
     }
   }, [category, id])
-
-  useEffect(() => {
-    if (
-      id &&
-      mode === OpenMode.CREATE_FROM_TEMPLATE &&
-      allTemplatesFetchStatus === FetchStatus.SUCCESS
-    ) {
-      const selectedTemplate = allTemplates.find((template) => template.id === id)
-      if (selectedTemplate) {
-        dispatch(
-          createEditCategoryActions.changeCategoryDataAC(
-            templateToEditCategoryForm(selectedTemplate),
-          ),
-        )
-      } else {
-        toast.error(TOAST_MESSAGE.TEMPLATE_NOT_EXIST)
-        setSearchParams({
-          [QueryParams.MODAL]: OpenMode.TEMPLATES_LIST,
-        })
-      }
-    }
-  }, [mode, id, allTemplates])
 
   useEffect(() => {
     if (categoryFetchStatus === FetchStatus.FAIL) {

@@ -35,9 +35,9 @@ const buildPlugins = (config: BuildOptions): webpack.WebpackPluginInstance[] => 
         mode: 'write-references',
       },
       // disable ts errors
-      // issue: {
-      //   include: [],
-      // },
+      issue: {
+        include: [],
+      },
     }),
     // new CompressionPlugin(), // gzip
   ]

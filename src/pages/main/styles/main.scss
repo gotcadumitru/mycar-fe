@@ -2,13 +2,8 @@
   background-color: var(--grey-2);
 
   // 145 =  header + toolbar + 15px padding from bottom
-  height: calc(100vh - 145px);
+  flex: 1;
   border-top-right-radius: 16px;
   overflow: auto;
 
-  @media (max-width: 1100px) {
-    &:not(&--dictionary) {
-      height: calc(100vh - 195px);
-    }
-  }
 }
