@@ -1,0 +1,10 @@
+.dictionary-create {
+  &__two-dropdowns {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 15px;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+}

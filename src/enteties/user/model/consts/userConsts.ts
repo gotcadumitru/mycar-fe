@@ -1,0 +1,4 @@
+export enum UserActions {
+  FETCH_ALL_USERS = 'FETCH_ALL_USERS',
+  FETCH_AUTH_USER = 'FETCH_AUTH_USER',
+}

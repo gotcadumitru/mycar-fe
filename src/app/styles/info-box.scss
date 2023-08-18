@@ -1,0 +1,40 @@
+.info-box {
+  font-family: var(--inter);
+  font-size: 14px;
+
+  li {
+    list-style: disc;
+    margin-left: 20px;
+    margin-top: 5px;
+  }
+
+  &--phrases {
+    text-align: center;
+
+    p {
+      margin: 10px 0;
+      font-family: var(--inter);
+      font-size: 14px;
+    }
+  }
+
+  &--xs {
+    max-width: 150px;
+  }
+
+  &--s {
+    max-width: 250px;
+  }
+
+  &--m {
+    max-width: 350px;
+  }
+
+  &--l {
+    max-width: 450px;
+  }
+
+  &--xl {
+    max-width: 550px;
+  }
+}

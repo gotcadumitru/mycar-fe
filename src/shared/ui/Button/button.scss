@@ -1,0 +1,94 @@
+.button {
+  padding: 0 19px;
+  border-radius: 5px;
+  border: solid 1px var(--pinkish-grey);
+  font-family: var(--poppins);
+  font-size: 14px;
+  color: var(--sf-brand-blue);
+  cursor: pointer;
+  text-decoration: none;
+  min-width: fit-content;
+  background: transparent;
+  font-weight: normal;
+  user-select: none;
+
+  &:disabled {
+    cursor: default;
+  }
+
+  &:hover {
+    background-position: 0;
+  }
+
+  &:focus-visible {
+    outline: 1px solid var(--natterbox-dark-blue-grey);
+  }
+
+  &--blue {
+    background-color: var(--sf-brand-blue);
+    color: var(--white) !important;
+  }
+
+  &--green {
+    background-color: var(--natterbox-green);
+    color: var(--white) !important;
+  }
+
+  &--grey {
+    background-color: var(--pinkish-grey);
+    color: var(--white) !important;
+  }
+
+  &--red {
+    background-color: var(--natterbox-red);
+    color: var(--white) !important;
+  }
+
+  &--disabled {
+    background-color: var(--pinkish-grey);
+    color: var(--white);
+    cursor: default;
+    pointer-events: none;
+  }
+
+  &--m-auto {
+    margin: 0 auto;
+  }
+
+  &--m-left {
+    margin-left: 16px;
+
+    &-large {
+      margin-left: 40px;
+    }
+  }
+
+  &--normal-size {
+    height: 37px;
+  }
+
+  &--input-size {
+    height: 30px;
+  }
+
+  &--empty {
+    color: inherit;
+    padding: 0;
+    margin: 0;
+    border: none;
+    outline: none;
+    font-size: inherit;
+    text-align: start;
+    height: initial;
+  }
+
+  &--link {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &--contents {
+    display: contents;
+  }
+}
