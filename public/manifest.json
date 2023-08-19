@@ -4,9 +4,9 @@
   "display": "standalone",
   "scope": ".",
   "start_url": ".",
-  "name": "iMedic",
-  "short_name": "iMedic",
-  "description": "Fii stăpânul propriei tale sănătăți",
+  "name": "myCar",
+  "short_name": "myCar",
+  "description": "Controleaza-ti masina waa",
   "icons": [
     {
       "src": "manifest-icon-192.maskable.png",
