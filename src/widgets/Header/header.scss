@@ -3,6 +3,6 @@
   justify-content: space-between;
   align-items: center;
   background-color: var(--turquoise-blue);
-  height: 50px;
+  min-height: 50px;
   padding: env(safe-area-inset-top, 0) 25px 0;
 }

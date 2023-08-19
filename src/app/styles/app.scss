@@ -1,9 +1,10 @@
 .app {
-  height: 100dvh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
 
   &__container {
+    flex: 1;
     display: grid;
     width: 100%;
     grid-template-columns: 200px 1fr;

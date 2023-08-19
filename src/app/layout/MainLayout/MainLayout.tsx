@@ -4,8 +4,9 @@ import Sidebar from 'shared/ui/Sidebar'
 
 const MainLayout: FC<PropsWithChildren> = ({ children }) => (
   <div className='app__container'>
-    <Sidebar />
-    <Main>{children}</Main>
+      main
+    {/*<Sidebar />*/}
+    {/*<Main>{children}</Main>*/}
   </div>
 )
 export default MainLayout
