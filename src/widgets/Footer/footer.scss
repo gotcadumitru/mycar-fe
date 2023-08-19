@@ -2,7 +2,52 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--turquoise-blue);
-  min-height: 50px;
-  padding: 0 25px env(safe-area-inset-bottom, 0);
+  background-color: var(--white);
+  min-height: 75px;
+  padding: 10px 25px env(safe-area-inset-bottom, 0) 25px;
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--grey-1);
+    font-size: 15px;
+
+    &--notification {
+      position: relative;
+
+      &::before {
+        content: '';
+        display: block;
+        width: 7px;
+        height: 7px;
+        background-color: var(--natterbox-red);
+        border-radius: 50%;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    }
+  }
+
+  &__icon {
+    font-size: 32px;
+
+    &--stroke {
+      stroke: var(--grey-1);
+    }
+
+    &--fill {
+      fill: var(--grey-1);
+    }
+
+    &--active.footer__icon--stroke {
+      stroke: var(--natterbox-aqua);
+    }
+
+    &--active.footer__icon--fill {
+      fill: var(--natterbox-aqua);
+    }
+  }
 }

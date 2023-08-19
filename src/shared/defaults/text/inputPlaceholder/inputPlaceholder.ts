@@ -7,7 +7,6 @@ export const INPUT_PLACEHOLDER = {
   SEARCH: 'Search...',
   SEARCH_USER: 'Type for user search...',
   SEARCH_GROUP: 'Type for group search...',
-  SEARCH_TOOLBAR: 'Search by names, created by...',
   SEARCH_TEMPLATES: 'Type for template search...',
   DICTIONARY_TERM: 'Enter term here...',
   DICTIONARY_DESCRIPTION: 'Enter Description Here...',

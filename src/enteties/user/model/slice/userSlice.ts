@@ -8,9 +8,7 @@ export const fetchAllUsersFromSalesforceThunk = createAsyncThunk<
   UserFromSalesforce[],
   void,
   ThunkConfig<string>
->(UserActions.FETCH_ALL_USERS, async () => {
-  return [].map(mapUserMinFromSalesforce)
-})
+>(UserActions.FETCH_ALL_USERS, async () => [].map(mapUserMinFromSalesforce))
 
 // Please don't delete this
 // export const fetchAuthUsersThunk = createAsyncThunk<UserFromSalesforce, void, ThunkConfig<string>>(

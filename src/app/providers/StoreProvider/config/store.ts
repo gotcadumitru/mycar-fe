@@ -10,7 +10,6 @@ import type { ThunkExtraArg } from '../types/thunk'
 export const rootReducers: ReducersMapObject<StateSchema> = {
   ui: uiReducer,
   createCategory: createEditCategoryReducer,
-  createDictionary: {} as any,
   category: categoryReducer,
   user: userReducer,
 }

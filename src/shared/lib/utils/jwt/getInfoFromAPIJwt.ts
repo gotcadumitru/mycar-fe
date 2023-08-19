@@ -11,7 +11,7 @@ interface JWTDecoded {
   nbf: number
 }
 
-export const getInfoFromAPIJwt = () => {
+export const getInfoFromAPIJwt = () =>
   // const { jwt } = apiConfig.getConfig()!
   // const base64Url = jwt.split('.')[1]
   // const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/')
@@ -35,7 +35,7 @@ export const getInfoFromAPIJwt = () => {
   //   expirationTimeUnix: tokenDecoded.exp,
   //   issuedAtTimeUnix: tokenDecoded.iat,
   // }
-  return {
+   ({
     userId: 1,
     username: 'hello username',
     orgId: 2,
@@ -43,7 +43,7 @@ export const getInfoFromAPIJwt = () => {
     isAdmin: true,
     isTeamLeader: true,
     isBasic: true,
-    expirationTimeUnix: 999999999999999999,
-    issuedAtTimeUnix: 999999999999999998,
-  }
-}
+    expirationTimeUnix: 999999999999999,
+    issuedAtTimeUnix: 9999999999999998,
+  })
+
