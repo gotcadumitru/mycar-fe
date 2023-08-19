@@ -8,7 +8,8 @@ import type { FooterPropsType } from './footer.types'
 const Footer: FC<FooterPropsType> = () => (
   <footer className='footer'>
     <Link to={RoutePaths.category}>
-      <NatterboxLogo />
+      {/*<NatterboxLogo />*/}
+        Footer
     </Link>
   </footer>
 )

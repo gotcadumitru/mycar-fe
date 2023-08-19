@@ -8,7 +8,8 @@ import type { HeaderPropsType } from './header.types'
 const Header: FC<HeaderPropsType> = () => (
   <div className='header'>
     <Link to={RoutePaths.category}>
-      <NatterboxLogo />
+      {/*<NatterboxLogo />*/}
+        Header
     </Link>
   </div>
 )
