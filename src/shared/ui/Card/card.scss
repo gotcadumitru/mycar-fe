@@ -1,0 +1,65 @@
+.card {
+  background-color: var(--natterbox-char-fourth-col);
+  border-radius: 16px;
+  margin-top: 12px;
+  padding: 16px;
+
+  &--with-icon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__icon {
+    border-radius: 4px;
+    font-size: 24px;
+    stroke-width: 1px;
+    stroke: white;
+    box-sizing: content-box;
+    padding: 5px;
+
+    &--red {
+      background-color: var(--natterbox-lighter-red);
+    }
+
+    &--blue {
+      background-color: var(--turquoise-blue);
+    }
+  }
+
+  &__count {
+    display: flex;
+    font-size: 48px;
+    margin-right: 3px;
+
+    &--red {
+      color: var(--natterbox-lighter-red);
+    }
+
+    &--blue {
+      color: var(--turquoise-blue);
+    }
+  }
+
+  &__left-side {
+    display: flex;
+    align-items: center;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 500;
+    color: black;
+  }
+
+  &__description {
+    font-weight: 500;
+  }
+}

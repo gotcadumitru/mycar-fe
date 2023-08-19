@@ -6,7 +6,6 @@ import type { CreateEditCategorySliceState } from 'features/category/category-cr
 export interface StateSchema {
   ui: UiSliceState
   createCategory: CreateEditCategorySliceState
-  createDictionary: any
   category: CategorySliceState
   user: UserSliceState
 }

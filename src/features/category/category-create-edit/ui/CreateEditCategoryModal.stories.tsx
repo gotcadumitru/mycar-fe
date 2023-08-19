@@ -3,7 +3,6 @@ import { fireEvent, userEvent, waitFor, within } from '@storybook/testing-librar
 import { WhenShouldHappen } from 'enteties/category'
 import { decoratePlayFunctionForLoki } from 'shared/config/storybook/PlayFunctionDecorator/decorateTargetForLoki'
 import { categoriesFromCategoryApiMinType } from 'shared/defaults/tests/categories'
-import { templatesFromCategoryApiMaxType } from 'shared/defaults/tests/templates'
 import { BUTTON_TEXT, INPUT_LABEL } from 'shared/defaults/text'
 import { OpenMode } from 'shared/types/types'
 import CreateEditCategoryModal from './CreateEditCategoryModal'
@@ -100,12 +99,6 @@ export const CloneCategory: Story = {
   },
 }
 
-export const CategoryFromTemplate: Story = {
-  args: {
-    id: templatesFromCategoryApiMaxType.converted[0].id,
-    mode: OpenMode.CREATE_FROM_TEMPLATE,
-  },
-}
 
 export const CreateCategoryWithErrors: Story = {
   args: {

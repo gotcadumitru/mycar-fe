@@ -9,8 +9,8 @@
     width: 100%;
     grid-template-columns: 200px 1fr;
     column-gap: 15px;
-    padding: 0 15px;
-
+    background-color: var(--grey-2);
+    padding: 0 12px;
     @media (max-width: 1350px) {
       grid-template-columns: 1fr;
       position: relative;

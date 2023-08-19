@@ -11,20 +11,13 @@ const reduxMockStateForTesting: DeepPartial<StateSchema> = {
   createCategory: {
     newCategoryFormData: getCategoryFormValues({}),
   },
-  // createDictionary: {
-  //   newDictionaryFormData: getDictionaryFormValues({}),
-  // },
   category: {
     allCategories: [],
-    toolbarSearchByValue: '',
     selectedCategory: categoriesFromCategoryApiMaxType.converted[0],
   },
   user: {
     allUsersFromSalesforce: [],
     authUser: userFromSalesforceConverted1,
-  },
-  template: {
-    allTemplates: [],
   },
 }
 

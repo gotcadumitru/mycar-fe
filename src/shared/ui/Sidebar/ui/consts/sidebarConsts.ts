@@ -1,1 +1,0 @@
-export const SIDEBAR_OPEN_WIDTH = 1350

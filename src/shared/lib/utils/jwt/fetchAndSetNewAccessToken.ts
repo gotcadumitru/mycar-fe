@@ -1,6 +1,6 @@
 import { apiConfig } from 'shared/api/apiUtils'
 
 export const fetchAndSetNewAccessToken = async () => {
-  const jwt = "jwt"
+  const jwt = 'jwt'
   apiConfig.setJWT(jwt)
 }
