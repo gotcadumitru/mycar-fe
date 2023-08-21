@@ -1,7 +1,6 @@
 .card {
   background-color: var(--natterbox-char-fourth-col);
   border-radius: 16px;
-  margin-top: 12px;
   padding: 16px;
 
   &--with-icon {
@@ -28,9 +27,12 @@
   }
 
   &__count {
-    display: flex;
     font-size: 48px;
     margin-right: 3px;
+
+    &--center {
+      text-align: center;
+    }
 
     &--red {
       color: var(--natterbox-lighter-red);

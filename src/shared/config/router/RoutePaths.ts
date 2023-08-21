@@ -5,7 +5,7 @@ export enum AppRoutes {
   GARAGE = 'garage',
   ALERTS = 'alerts',
   MENU = 'menu',
-  NEW_CAR='new_car'
+  NEW_CAR='new_car',
 }
 
 export const RoutePaths: Record<AppRoutes, string> = {

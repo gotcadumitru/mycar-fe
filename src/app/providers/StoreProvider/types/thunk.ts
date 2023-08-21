@@ -4,8 +4,7 @@ import type { AppDispatch } from '../config/store'
 import type { StateSchema } from './stateSchema'
 
 export interface ThunkExtraArg {
-  categoryAPI: AxiosInstance
-  sapienAPI: AxiosInstance
+  carAPI: AxiosInstance
 }
 
 export type ThunkValue<T> = T & { notification?: RequestMessageType | false }

@@ -54,6 +54,7 @@ const Footer: FC<FooterPropsType> = () => {
           <div
             className={classNames('footer__item', {
               'footer__item--notification': menuOption.isNotification,
+              'footer__item--active': location.pathname.includes(menuOption.route),
             })}
           >
             <Icon

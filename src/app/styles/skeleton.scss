@@ -44,12 +44,6 @@
     animation-iteration-count: infinite;
   }
 
-  &--create-category {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-  }
-
   &--grid-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;

@@ -1,6 +1,7 @@
 import classNames from 'classnames'
 import type { FC } from 'react'
 import { IconType } from 'react-icons/lib'
+import Button, { ButtonCategoryType, ButtonTheme } from 'shared/ui/Button'
 import { CardColor, CardType } from 'shared/ui/Card/card.types'
 import { CardContainer } from 'shared/ui/Card/CardContainer'
 import './card.scss'
@@ -8,7 +9,7 @@ import './card.scss'
 type CardTypeOneProps = {
   className?: string
   title: string
-  count: number
+  count: number | string
   description: string
   cardColor: CardColor
 } & (
@@ -18,6 +19,7 @@ type CardTypeOneProps = {
   | {
       type: CardType.WITH_ICON
       Icon: IconType
+      to: string
     }
 )
 
@@ -41,6 +43,7 @@ export const Card: FC<CardTypeOneProps> = ({
   const cardCountClassName = classNames('card__count', {
     'card__count--blue': cardColor === CardColor.BLUE,
     'card__count--red': cardColor === CardColor.RED,
+    'card__count--center': rest.type === CardType.WITHOUT_ICON,
   })
 
   if (rest.type === CardType.WITH_ICON)
@@ -48,28 +51,26 @@ export const Card: FC<CardTypeOneProps> = ({
       <CardContainer>
         <div className={cardClassName}>
           <div className='card__left-side'>
-            <span className={cardCountClassName}>{count}</span>
+            <div className={cardCountClassName}>{count}</div>
             <div className='card__text'>
               <div className='card__title'>{title}</div>
               <div className='card__description'>{description}</div>
             </div>
           </div>
+          <Button category={ButtonCategoryType.LINK} to={rest.to} theme={ButtonTheme.EMPTY}>
             <rest.Icon className={cardIconClassName} />
+          </Button>
         </div>
       </CardContainer>
     )
-  return (
-      <CardContainer>
-        <div className={cardClassName}>
-          <div className='card__left-side'>
-            <span className={cardCountClassName}>{count}</span>
-            <div className='card__text'>
-              <div className='card__title'>{title}</div>
-              <div className='card__description'>{description}</div>
-            </div>
-          </div>
 
-        </div>
-      </CardContainer>
+  return (
+    <CardContainer>
+      <div className={cardClassName}>
+        <div className='card__title'>{title}</div>
+        <div className={cardCountClassName}>{count}</div>
+        <div className='card__description'>{description}</div>
+      </div>
+    </CardContainer>
   )
 }

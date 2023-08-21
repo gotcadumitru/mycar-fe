@@ -1,12 +1,12 @@
 import type { UiSliceState } from 'app/providers/StoreProvider/slices/ui'
-import type { CategorySliceState } from 'enteties/category'
+import type { CarSliceState } from 'enteties/car'
 import type { UserSliceState } from 'enteties/user'
-import type { CreateEditCategorySliceState } from 'features/category/category-create-edit'
+import type { EditCarSliceState } from 'features/car/car-edit-form'
 
 export interface StateSchema {
   ui: UiSliceState
-  createCategory: CreateEditCategorySliceState
-  category: CategorySliceState
+  editCar: EditCarSliceState
+  car: CarSliceState
   user: UserSliceState
 }
 

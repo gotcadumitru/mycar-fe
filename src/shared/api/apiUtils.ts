@@ -1,7 +1,6 @@
 export type ApiConfigData = {
   jwt: string
-  sapienAPI: string
-  categoryAPI: string
+  carAPI: string
   namespace: '' | 'nbavs__'
 }
 

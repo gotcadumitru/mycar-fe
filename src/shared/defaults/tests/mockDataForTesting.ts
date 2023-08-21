@@ -1,23 +1,20 @@
 import type { StateSchema } from 'app/providers/StoreProvider'
-import { getCategoryFormValues } from 'enteties/category'
-import { categoriesFromCategoryApiMaxType } from 'shared/defaults/tests/categories'
-import { userFromSalesforceConverted1 } from 'shared/defaults/tests/users'
+import { getCarFormValues } from 'enteties/car'
 
 const reduxMockStateForTesting: DeepPartial<StateSchema> = {
   ui: {
     actionsWithFetchStatus: {},
     isSidebarShow: false,
   },
-  createCategory: {
-    newCategoryFormData: getCategoryFormValues({}),
+  editCar: {
+    newCarFormData: getCarFormValues({}),
   },
-  category: {
-    allCategories: [],
-    selectedCategory: categoriesFromCategoryApiMaxType.converted[0],
+  car: {
+    allCars: [],
+    selectedCar: null,
   },
   user: {
-    allUsersFromSalesforce: [],
-    authUser: userFromSalesforceConverted1,
+    authUser: null,
   },
 }
 

@@ -25,7 +25,7 @@ The following decorators are used in Storybook:
 ## Emitting Actions (Hover/Click) on Elements
 To emit actions such as hover or click on an element in the page, use the **@storybook/addon-interactions** library. Actions should be written in the **play** function, as shown in the example below:
 ```
-export const CategoryDisable: Story = {
+export const Car: Story = {
   play: decoratePlayFunctionForLoki(async ({ canvasElement }) => {
     const canvas = within(canvasElement)
     await waitFor(() => {
