@@ -1,0 +1,14 @@
+.panel-page {
+  display: flex;
+  padding-top: 12px;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  .card {
+    width: 100%;
+
+    &:not(:nth-child(-n + 2)) {
+      width: calc(50% - 6px);
+    }
+  }
+}

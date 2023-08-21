@@ -7,8 +7,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { ApiErrorCode, FetchStatus } from './apiConsts'
 import { apiConfig, getAuthorizationHeader } from './apiUtils'
 
-export const categoryAPI = axios.create()
-export const sapienAPI = axios.create()
+export const carAPI = axios.create()
 const onRequest = (requestConfig: InternalAxiosRequestConfig, baseUrl: string) => {
   requestConfig.baseURL = baseUrl
 
@@ -51,7 +50,7 @@ const onResponseError = async (error: any) => {
   ) {
     originalRequest.retry = true
     await fetchAndSetNewAccessToken()
-    return categoryAPI(originalRequest)
+    return carAPI(originalRequest)
   }
   const toastId = error?.response?.config?.toastId || error?.config?.toastId
   const message =
@@ -72,13 +71,8 @@ const onResponseError = async (error: any) => {
   return Promise.reject(error)
 }
 
-categoryAPI.interceptors.request.use((requestConfig) =>
-  onRequest(requestConfig, `${apiConfig.getConfig()?.categoryAPI}`),
+carAPI.interceptors.request.use((requestConfig) =>
+  onRequest(requestConfig, `${apiConfig.getConfig()?.carAPI}`),
 )
 
-categoryAPI.interceptors.response.use(onResponseSuccess, onResponseError)
-
-sapienAPI.interceptors.request.use((requestConfig) =>
-  onRequest(requestConfig, `${apiConfig.getConfig()?.sapienAPI}/v1`),
-)
-sapienAPI.interceptors.response.use(onResponseSuccess, onResponseError)
+carAPI.interceptors.response.use(onResponseSuccess, onResponseError)

@@ -1,20 +1,8 @@
 import MockAdapter from 'axios-mock-adapter'
-import { categoryAPI } from 'shared/api'
-import {
-  categoriesFromCategoryApiMaxType,
-  categoriesFromCategoryApiMinType,
-} from 'shared/defaults/tests/categories'
+import { carAPI } from 'shared/api'
 
-const mock = new MockAdapter(categoryAPI)
+const mock = new MockAdapter(carAPI)
 
-mock
-  .onGet('/categories/organisation/2647058')
-  .reply(200, { body: categoriesFromCategoryApiMinType.originalFromRequest })
-
-mock
-  .onGet(
-    `/category/organisation/2647058/${categoriesFromCategoryApiMaxType.originalFromRequest[0].categoryKey}`,
-  )
-  .reply(200, { body: categoriesFromCategoryApiMaxType.originalFromRequest[0] })
+mock.onGet('/categories/organisation/2647058').reply(200, { body: 'jostka' })
 
 export default mock

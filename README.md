@@ -126,7 +126,7 @@ Inside this layer the following layers can be used: **entities**, **shared**.
 
 The Entities layer is responsible for managing the application's data structures and business logic. This includes:
 
-* Data models and schemas (e.g., Category, Template, User)
+* Data models and schemas (e.g., Car, User)
 * API integrations
 * Business logic (e.g., validation, transformations)
 * Services (e.g., data fetching, state management)

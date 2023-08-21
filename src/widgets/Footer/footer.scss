@@ -14,6 +14,10 @@
     color: var(--grey-1);
     font-size: 15px;
 
+    &--active {
+      color: var(--natterbox-aqua);
+    }
+
     &--notification {
       position: relative;
 
