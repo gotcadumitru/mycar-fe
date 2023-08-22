@@ -147,37 +147,37 @@ Inside this layer the following layers can be used: **shared**,
 
 ## Color Reference
 
-| Color                     | Hex                                                                |
-|---------------------------|--------------------------------------------------------------------|
-| white                     | ![#fff](https://via.placeholder.com/10/ffffff?text=+) `#fff`       |
-| natterbox-aqua            | ![#64ccc9](https://via.placeholder.com/10/64ccc9?text=+) `#64ccc9` |
-| turquoise-blue            | ![#00a9ce](https://via.placeholder.com/10/00a9ce?text=+) `#00a9ce` |
-| sf-brand-blue             | ![#0b5cab](https://via.placeholder.com/10/0b5cab?text=+) `#0b5cab` |
-| natterbox-char-fourth-col | ![#dee1e2](https://via.placeholder.com/10/dee1e2?text=+) `#dee1e2` |
-| grey-1                    | ![#999](https://via.placeholder.com/10/999?text=+) `#999`          |
-| grey-2                    | ![#f8f8f8](https://via.placeholder.com/10/f8f8f8?text=+) `#f8f8f8` |
-| grey-3                    | ![#f4f2f2](https://via.placeholder.com/10/f4f2f2?text=+) `#f4f2f2` |
-| grey-4                    | ![#eaeaea](https://via.placeholder.com/10/eaeaea?text=+) `#eaeaea` |
-| pinkish-grey              | ![#ccc](https://via.placeholder.com/10/ccc?text=+) `#ccc`          |
-| pinkish-grey-two          | ![#bfbfbf](https://via.placeholder.com/10/bfbfbf?text=+) `#bfbfbf` |
-| natterbox-grey            | ![#5c6770](https://via.placeholder.com/10/5c6770?text=+) `#5c6770` |
-| natterbox-dark-blue-grey  | ![#49535c](https://via.placeholder.com/10/49535c?text=+) `#49535c` |
-| input-text-colour         | ![#999](https://via.placeholder.com/10/999?text=+) `#999`          |
-| silver                    | ![#bec2c6](https://via.placeholder.com/10/bec2c6?text=+) `#bec2c6` |
-| sick-green                | ![#b8c62a](https://via.placeholder.com/10/b8c62a?text=+) `#b8c62a` |
-| natterbox-green           | ![#c2d210](https://via.placeholder.com/10/c2d210?text=+) `#c2d210` |
-| sun-yellow                | ![#ffc72e](https://via.placeholder.com/10/ffc72e?text=+) `#ffc72e` |
-| natterbox-orange          | ![#dd8340](https://via.placeholder.com/10/dd8340?text=+) `#dd8340` |
-| green                     | ![#2e844a](https://via.placeholder.com/10/2e844a?text=+) `#2e844a` |
-| jungle-green              | ![#04844b](https://via.placeholder.com/10/04844b?text=+) `#04844b` |
-| natterbox-magenta         | ![#b4458d](https://via.placeholder.com/10/b4458d?text=+) `#b4458d` |
-| natterbox-lighter-red     | ![#f8485e](https://via.placeholder.com/10/f8485e?text=+) `#f8485e` |
-| natterbox-red             | ![#eb0c28](https://via.placeholder.com/10/eb0c28?text=+) `#eb0c28` |
-| black                     | ![#000](https://via.placeholder.com/10/000?text=+) `#000`          |
+| Color             | Hex                                                                |
+|-------------------|--------------------------------------------------------------------|
+| white             | ![#fff](https://via.placeholder.com/10/ffffff?text=+) `#fff`       |
+| aqua              | ![#64ccc9](https://via.placeholder.com/10/64ccc9?text=+) `#64ccc9` |
+| turquoise-blue    | ![#00a9ce](https://via.placeholder.com/10/00a9ce?text=+) `#00a9ce` |
+| sf-brand-blue     | ![#0b5cab](https://via.placeholder.com/10/0b5cab?text=+) `#0b5cab` |
+| char-fourth-col   | ![#dee1e2](https://via.placeholder.com/10/dee1e2?text=+) `#dee1e2` |
+| grey-1            | ![#999](https://via.placeholder.com/10/999?text=+) `#999`          |
+| grey-2            | ![#f8f8f8](https://via.placeholder.com/10/f8f8f8?text=+) `#f8f8f8` |
+| grey-3            | ![#f4f2f2](https://via.placeholder.com/10/f4f2f2?text=+) `#f4f2f2` |
+| grey-4            | ![#eaeaea](https://via.placeholder.com/10/eaeaea?text=+) `#eaeaea` |
+| pinkish-grey      | ![#ccc](https://via.placeholder.com/10/ccc?text=+) `#ccc`          |
+| pinkish-grey-two  | ![#bfbfbf](https://via.placeholder.com/10/bfbfbf?text=+) `#bfbfbf` |
+| grey              | ![#5c6770](https://via.placeholder.com/10/5c6770?text=+) `#5c6770` |
+| dark-blue-grey    | ![#49535c](https://via.placeholder.com/10/49535c?text=+) `#49535c` |
+| input-text-colour | ![#999](https://via.placeholder.com/10/999?text=+) `#999`          |
+| silver            | ![#bec2c6](https://via.placeholder.com/10/bec2c6?text=+) `#bec2c6` |
+| sick-green        | ![#b8c62a](https://via.placeholder.com/10/b8c62a?text=+) `#b8c62a` |
+| green             | ![#c2d210](https://via.placeholder.com/10/c2d210?text=+) `#c2d210` |
+| sun-yellow        | ![#ffc72e](https://via.placeholder.com/10/ffc72e?text=+) `#ffc72e` |
+| orange            | ![#dd8340](https://via.placeholder.com/10/dd8340?text=+) `#dd8340` |
+| green             | ![#2e844a](https://via.placeholder.com/10/2e844a?text=+) `#2e844a` |
+| jungle-green      | ![#04844b](https://via.placeholder.com/10/04844b?text=+) `#04844b` |
+| magenta           | ![#b4458d](https://via.placeholder.com/10/b4458d?text=+) `#b4458d` |
+| lighter-red       | ![#f8485e](https://via.placeholder.com/10/f8485e?text=+) `#f8485e` |
+| red               | ![#eb0c28](https://via.placeholder.com/10/eb0c28?text=+) `#eb0c28` |
+| black             | ![#000](https://via.placeholder.com/10/000?text=+) `#000`          |
 
 ## Screenshots
 
-![App Screenshot](.loki/reference/chrome_laptop_app_App_Category_Table_Page.png)
+![App Screenshot](.loki/reference.png)
 
 ## Documentation
 

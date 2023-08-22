@@ -1,7 +1,7 @@
 .button {
   padding: 0 19px;
   border-radius: 5px;
-  border: solid 1px var(--pinkish-grey);
+  border: solid 1px var(--grey-6);
   font-family: var(--poppins);
   font-size: 14px;
   color: var(--sf-brand-blue);
@@ -21,7 +21,7 @@
   }
 
   &:focus-visible {
-    outline: 1px solid var(--natterbox-dark-blue-grey);
+    outline: 1px solid var(--grey-9);
   }
 
   &--blue {
@@ -30,22 +30,22 @@
   }
 
   &--green {
-    background-color: var(--natterbox-green);
+    background-color: var(--green-1);
     color: var(--white) !important;
   }
 
   &--grey {
-    background-color: var(--pinkish-grey);
+    background-color: var(--grey-6);
     color: var(--white) !important;
   }
 
   &--red {
-    background-color: var(--natterbox-red);
+    background-color: var(--red-2);
     color: var(--white) !important;
   }
 
   &--disabled {
-    background-color: var(--pinkish-grey);
+    background-color: var(--grey-6);
     color: var(--white);
     cursor: default;
     pointer-events: none;

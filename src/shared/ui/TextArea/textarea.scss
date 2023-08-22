@@ -6,15 +6,15 @@
   min-height: 30px;
   max-height: 200px;
   border-radius: 5px;
-  border: solid 1px var(--pinkish-grey);
+  border: solid 1px var(--grey-6);
   font-size: 14px;
-  color: var(--natterbox-grey);
+  color: var(--grey-8);
   width: 100%;
   padding-top: 6px;
 
   &:focus,
   &:focus-visible {
-    outline: 1px solid var(--natterbox-dark-blue-grey);
+    outline: 1px solid var(--grey-9);
   }
 
   &::placeholder {
@@ -22,11 +22,11 @@
   }
 
   &--error {
-    border: solid 1px var(--natterbox-red);
+    border: solid 1px var(--red-2);
 
     &:focus {
-      border: solid 1px var(--pinkish-grey);
-      outline: 1px solid var(--natterbox-dark-blue-grey);
+      border: solid 1px var(--grey-6);
+      outline: 1px solid var(--grey-9);
     }
   }
 }
