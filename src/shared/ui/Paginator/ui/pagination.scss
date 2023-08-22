@@ -31,7 +31,7 @@
     color: var(--sf-brand-blue);
     text-decoration: none;
     background-color: var(--white);
-    border: solid 1px var(--pinkish-grey);
+    border: solid 1px var(--grey-6);
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
       border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     cursor: pointer;
@@ -40,7 +40,7 @@
       z-index: 2;
       color: var(--sf-brand-blue);
       background-color: var(--grey-4);
-      border-color: var(--pinkish-grey);
+      border-color: var(--grey-6);
     }
 
     &:focus {
@@ -54,13 +54,13 @@
 
   &__page-item {
     &--disabled {
-      color: var(--pinkish-grey);
+      color: var(--grey-6);
       pointer-events: none;
       background-color: var(--white);
-      border-color: var(--pinkish-grey);
+      border-color: var(--grey-6);
 
       .pagination__page-link {
-        color: var(--pinkish-grey);
+        color: var(--grey-6);
       }
     }
 

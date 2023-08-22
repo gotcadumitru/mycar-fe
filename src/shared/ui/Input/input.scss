@@ -1,7 +1,7 @@
 .input {
   &--simple {
     background-color: var(--grey-3);
-    border: solid 1px var(--pinkish-grey);
+    border: solid 1px var(--grey-6);
   }
 
   &--no-border {
@@ -22,13 +22,13 @@
   padding: 0 4px;
   border-radius: 5px;
   font-size: 14px;
-  color: var(--natterbox-grey);
+  color: var(--grey-8);
   width: 100%;
   height: 30px;
 
   &:focus,
   &:focus-visible {
-    outline: 1px solid var(--natterbox-dark-blue-grey);
+    outline: 1px solid var(--grey-9);
   }
 
   &--small-size {
@@ -40,11 +40,11 @@
   }
 
   &--error {
-    border: solid 1px var(--natterbox-red);
+    border: solid 1px var(--red-2);
 
     &:focus {
-      border: solid 1px var(--pinkish-grey);
-      outline: 1px solid var(--natterbox-dark-blue-grey);
+      border: solid 1px var(--grey-6);
+      outline: 1px solid var(--grey-9);
     }
   }
 
@@ -58,7 +58,7 @@
   }
 
   &__error-message {
-    color: var(--natterbox-red);
+    color: var(--red-2);
     font-size: 12px;
     margin-top: 5px;
   }

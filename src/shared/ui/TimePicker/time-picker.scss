@@ -26,19 +26,19 @@
     align-items: center;
     justify-content: space-around;
     background: var(--grey-3);
-    border: 1px solid var(--pinkish-grey);
+    border: 1px solid var(--grey-6);
     box-sizing: border-box;
     border-radius: 4px;
     padding: 0 9px;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
-    color: var(--natterbox-grey);
+    color: var(--grey-8);
     font-family: var(--poppins);
     font-variant-numeric: tabular-nums;
 
     &--error {
-      border: solid 1px var(--natterbox-red);
+      border: solid 1px var(--red-2);
     }
   }
 
@@ -47,7 +47,7 @@
     border-radius: 4px;
 
     &:focus {
-      outline: 1px solid var(--natterbox-dark-blue-grey);
+      outline: 1px solid var(--grey-9);
       margin: 0;
       transition: border 0.1s ease, box-shadow 0.1s ease;
     }
@@ -96,7 +96,7 @@
       font-weight: normal;
       font-size: 14px;
       line-height: 24px;
-      color: var(--natterbox-grey);
+      color: var(--grey-8);
 
       &.active {
         color: var(--turquoise-blue);

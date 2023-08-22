@@ -1,9 +1,4 @@
 interface JWTDecoded {
-  'https://natterbox.com/claim/username': string
-  'https://natterbox.com/claim/orgId': string
-  'https://natterbox.com/claim/userId': string
-  'https://natterbox.com/claim/requestorId': string
-  'https://natterbox.com/claim/ns': string
   scope: string
   exp: number
   iat: number
@@ -25,9 +20,6 @@ export const getInfoFromAPIJwt = () =>
 
   // const tokenDecoded = JSON.parse(jsonPayload) as JWTDecoded
   // return {
-  //   userId: Number(tokenDecoded['https://natterbox.com/claim/userId']),
-  //   username: tokenDecoded['https://natterbox.com/claim/username'],
-  //   orgId: tokenDecoded['https://natterbox.com/claim/orgId'],
   //   scope: tokenDecoded.scope,
   //   isAdmin: tokenDecoded.scope?.includes('insights:admin'),
   //   isTeamLeader: tokenDecoded.scope?.includes('insights:team-leader'),

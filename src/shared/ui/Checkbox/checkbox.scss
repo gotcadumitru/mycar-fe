@@ -5,7 +5,7 @@
   cursor: pointer;
   user-select: none;
   font-size: 14px;
-  color: var(--natterbox-grey);
+  color: var(--grey-8);
   height: 15px;
 
   &--m-left {
@@ -35,7 +35,7 @@
     transform: translateY(-50%);
     height: 13px;
     width: 13px;
-    background-color: var(--natterbox-grey);
+    background-color: var(--grey-8);
     border-radius: 2px;
   }
 
@@ -50,11 +50,11 @@
   }
 
   &:hover input ~ .checkbox__checkmark {
-    background-color: var(--natterbox-grey);
+    background-color: var(--grey-8);
   }
 
   input:checked ~ .checkbox__checkmark {
-    background-color: var(--natterbox-grey);
+    background-color: var(--grey-8);
   }
 
   input:checked ~ .checkbox__checkmark::after {
@@ -71,16 +71,16 @@
     &__checkmark {
       height: 20px;
       width: 20px;
-      background-color: var(--pinkish-grey);
+      background-color: var(--grey-6);
     }
     /* stylelint-enable */
 
     &:hover input ~ .checkbox__checkmark {
-      background-color: var(--pinkish-grey);
+      background-color: var(--grey-6);
     }
 
     input:checked ~ .checkbox__checkmark {
-      background-color: var(--pinkish-grey);
+      background-color: var(--grey-6);
     }
 
     /* stylelint-disable */
@@ -92,7 +92,7 @@
       top: 1px;
       width: 7px;
       height: 13px;
-      border: solid var(--natterbox-grey);
+      border: solid var(--grey-8);
       border-width: 0 0.21em 0.21em 0;
     }
     /* stylelint-enable */
@@ -100,10 +100,10 @@
 
   &--disabled {
     input:disabled ~ .checkbox__checkmark {
-      background-color: var(--pinkish-grey);
+      background-color: var(--grey-6);
     }
 
-    color: var(--pinkish-grey);
+    color: var(--grey-6);
     cursor: not-allowed;
   }
 }

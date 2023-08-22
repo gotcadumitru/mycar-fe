@@ -2,8 +2,8 @@ import { apiConfig } from 'shared/api'
 
 const mockLocalStorage = () => {
   apiConfig.setConfig({
-    carAPI: 'https://insight-category.redmatter-dev05.pub',
-    jwt: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjI1NTYxNDM5OTksImh0dHBzOi8vbmF0dGVyYm94LmNvbS9jbGFpbS9vcmdJZCI6IjI2NDcwNTgiLCJodHRwczovL25hdHRlcmJveC5jb20vY2xhaW0vdXNlcklkIjoiNzc0ODM3MiIsImh0dHBzOi8vbmF0dGVyYm94LmNvbS9jbGFpbS91c2VybmFtZSI6ImR1bWl0cnUuZ290Y2FAbmF0dGVyYm94LmNvbSIsImlhdCI6MTQ0NTQyODgwMCwiaXNzIjoiaHR0cHM6Ly9nYXRla2VlcGVyLnJlZG1hdHRlci1xYTAxLnB1Yi8iLCJuYmYiOjQ4OTIyOTIwMCwic2NvcGUiOiJpbnNpZ2h0czphZG1pbiJ9.VOUtkFEmv-Ug4ARLBXSrHZEeksVuD_3Z_Q8urAdBjvzodrg5rbNwm_aBaxsOMZ-4EmdloCWvhuAshNrgI6RrRN1XxmgJF4u1qAFeT0asU1j48UpqpVn8ucMK-1oqLrMq9i8kD9SbMGwwGYr2D_b2fqelWhxLaoJea1erJSIA7OFRAWMXG0Vx0b9E-gYF35CqwE5ICUqwPXwq7JEjkrz2u_-1ZSUYz7uq1TgfYBJ3BIbEO4OYe8ZcuklK48y9FTj8bzr5aGeT1K73t5kjNc64sGzoql1dRFlECt3EiYSfNIj5T5C08RTe1UfBKiBJuxtFthMbEgYrIs6pJ0KcKchD4Q',
+    carAPI: 'https://hiii.pub',
+    jwt: 'jwt',
     namespace: '',
   })
 }
