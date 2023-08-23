@@ -1,17 +1,18 @@
 /* eslint-disable no-console */
-import axios, { AxiosResponse, InternalAxiosRequestConfig } from 'axios'
-import { toast } from 'react-toastify'
-import { toastDefaultValues } from 'shared/config/toastify'
-import { fetchAndSetNewAccessToken } from 'shared/lib/utils/jwt/fetchAndSetNewAccessToken'
-import { v4 as uuidv4 } from 'uuid'
-import { ApiErrorCode, FetchStatus } from './apiConsts'
-import { apiConfig, getAuthorizationHeader } from './apiUtils'
+import axios, {AxiosResponse, InternalAxiosRequestConfig} from 'axios'
+import {toast} from 'react-toastify'
+import {toastDefaultValues} from 'shared/config/toastify'
+import {fetchAndSetNewAccessToken} from 'shared/lib/utils/jwt/fetchAndSetNewAccessToken'
+import {v4 as uuidv4} from 'uuid'
+import {ApiErrorCode, FetchStatus} from './apiConsts'
+import {apiConfig} from './apiUtils'
 
 export const carAPI = axios.create()
+export const vehicleAPI = axios.create()
 const onRequest = (requestConfig: InternalAxiosRequestConfig, baseUrl: string) => {
   requestConfig.baseURL = baseUrl
 
-  if (requestConfig.headers) requestConfig.headers.authorization = getAuthorizationHeader()
+  // if (requestConfig.headers) requestConfig.headers.authorization = getAuthorizationHeader()
   if (requestConfig.notification) {
     requestConfig.toastId = uuidv4()
     toast.loading(requestConfig.notification[FetchStatus.IN_PROGRESS], {
@@ -74,5 +75,9 @@ const onResponseError = async (error: any) => {
 carAPI.interceptors.request.use((requestConfig) =>
   onRequest(requestConfig, `${apiConfig.getConfig()?.carAPI}`),
 )
+vehicleAPI.interceptors.request.use((requestConfig) =>
+  onRequest(requestConfig, 'https://vpic.nhtsa.dot.gov/api/vehicles'),
+)
 
+vehicleAPI.interceptors.response.use(onResponseSuccess, onResponseError)
 carAPI.interceptors.response.use(onResponseSuccess, onResponseError)
