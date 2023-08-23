@@ -1,10 +1,11 @@
-import { FuelTypeOptions } from 'enteties/car'
-import { ChangeEvent, FC, memo } from 'react'
+import { CarOwnedByOptions } from 'enteties/car'
+import { ChangeEvent, FC, memo, useEffect, useState } from 'react'
+import { vehicleAPI } from 'shared/api/api'
 import { SECTION_TITLE } from 'shared/defaults/text'
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
 import Checkbox from 'shared/ui/Checkbox'
 import Form from 'shared/ui/Form'
-import Input from 'shared/ui/Input'
+import Input, { InputOptionType } from 'shared/ui/Input'
 import InputSelect from 'shared/ui/InputSelect'
 import Label from 'shared/ui/Label'
 import { Section } from 'shared/ui/Section'
@@ -19,7 +20,19 @@ interface EditCarFormProps {
 const EditCarForm: FC<EditCarFormProps> = ({ formId, onSubmit }) => {
   const formFields = useAppSelector((state) => state.editCar.formFields)
   const dispatch = useAppDispatch()
+  const [options, setOptions] = useState<InputOptionType<number>[]>([])
 
+  useEffect(() => {
+    ;(async () => {
+      const resp = await vehicleAPI.get('/getallmakes?format=json')
+      setOptions(
+        resp.data.Results.map((r: any) => ({
+          id: r.Make_ID,
+          label: r.Make_Name,
+        })),
+      )
+    })()
+  }, [])
   const onInputChange = (event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) => {
     const { value } = event.target
     const name = event.target.name as keyof typeof formFields
@@ -114,8 +127,9 @@ const EditCarForm: FC<EditCarFormProps> = ({ formId, onSubmit }) => {
         onChange={onInputChange}
         label='Seria CIV'
       />
-      <Input
+      <InputSelect
         valueFullType={formFields.ownedBy}
+        options={CarOwnedByOptions}
         name='ownedBy'
         onChange={onInputChange}
         label='Detinut de'
@@ -158,12 +172,12 @@ const EditCarForm: FC<EditCarFormProps> = ({ formId, onSubmit }) => {
       />
       <InputSelect
         valueFullType={formFields.fuelType}
-        options={FuelTypeOptions}
+        options={options}
         name='fuelType'
         onChange={onInputChange}
         label='Tip combustibil'
       />
-        <Label label='Consum (Urb/Mix/Exraurb)' />
+      <Label label='Consum (Urb/Mix/Exraurb)' />
       <div className='edit-car__three'>
         <Input
           valueFullType={formFields.fuelConsumptionUrb}
