@@ -12,4 +12,14 @@ export { mapCarFromApi, getCarFormValues } from './utils/car.utils'
 
 export { carReducer, carActions } from './model/slice/carSlice'
 
-export { CarActions } from './model/consts/carConsts'
+export {
+  CarActions,
+  CarOwnedBy,
+  CarOwnedByOptions,
+  FuelType,
+  FuelTypeOptions,
+  CarOwnedByLabels,
+  FuelTypeLabels,
+  SummerTyreSizeOptions,
+  SummerTyreSize,
+} from './model/consts/carConsts'

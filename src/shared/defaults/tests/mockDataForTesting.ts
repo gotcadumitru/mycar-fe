@@ -7,7 +7,7 @@ const reduxMockStateForTesting: DeepPartial<StateSchema> = {
     isSidebarShow: false,
   },
   editCar: {
-    newCarFormData: getCarFormValues({}),
+    formFields: getCarFormValues({}),
   },
   car: {
     allCars: [],

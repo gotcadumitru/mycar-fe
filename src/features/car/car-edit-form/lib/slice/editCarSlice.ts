@@ -3,7 +3,7 @@ import { getCarFormValues } from 'enteties/car'
 import type { EditCarSliceState } from '../../model/types/editCar.types'
 
 export const initialState: EditCarSliceState = {
-  newCarFormData: getCarFormValues({}),
+  formFields: getCarFormValues({}),
 }
 
 export const editCarSlice = createSlice({
@@ -11,10 +11,10 @@ export const editCarSlice = createSlice({
   initialState,
   reducers: {
     changeCarDataAC(state, action: PayloadAction<ReturnType<typeof getCarFormValues>>) {
-      state.newCarFormData = action.payload
+      state.formFields = action.payload
     },
     resetCarDataAC(state) {
-      state.newCarFormData = getCarFormValues({})
+      state.formFields = getCarFormValues({})
     },
   },
 })
