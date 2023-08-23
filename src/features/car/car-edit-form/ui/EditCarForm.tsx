@@ -1,9 +1,12 @@
+import { FuelTypeOptions } from 'enteties/car'
 import { ChangeEvent, FC, memo } from 'react'
 import { SECTION_TITLE } from 'shared/defaults/text'
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
 import Checkbox from 'shared/ui/Checkbox'
 import Form from 'shared/ui/Form'
 import Input from 'shared/ui/Input'
+import InputSelect from 'shared/ui/InputSelect'
+import Label from 'shared/ui/Label'
 import { Section } from 'shared/ui/Section'
 import { editCarActions } from '../lib/slice/editCarSlice'
 import '../styles/edit-car.scss'
@@ -153,48 +156,55 @@ const EditCarForm: FC<EditCarFormProps> = ({ formId, onSubmit }) => {
         onChange={onInputChange}
         label='DOT anvelope iarna'
       />
-      <Input
-        valueFullType={formFields.fuelConsumptionUrb}
-        type='number'
-        name='fuelConsumptionUrb'
+      <InputSelect
+        valueFullType={formFields.fuelType}
+        options={FuelTypeOptions}
+        name='fuelType'
         onChange={onInputChange}
-        label='Tip vehicul'
+        label='Tip combustibil'
       />
-      <Input
-        valueFullType={formFields.fuelConsumptionMix}
-        type='number'
-        name='fuelConsumptionMix'
-        onChange={onInputChange}
-        label='Tip vehicul'
-      />
-      <Input
-        valueFullType={formFields.fuelConsumptionExtraurb}
-        type='number'
-        name='fuelConsumptionExtraurb'
-        onChange={onInputChange}
-        label='Tip vehicul'
-      />
-      <Input
-        valueFullType={formFields.usagePercentUrb}
-        type='number'
-        name='usagePercentUrb'
-        onChange={onInputChange}
-        label='Tip vehicul'
-      />
-      <Input
-        valueFullType={formFields.usagePercentMix}
-        type='number'
-        name='usagePercentMix'
-        onChange={onInputChange}
-        label='Tip vehicul'
-      />
-      <Input
-        valueFullType={formFields.usagePercentExtraurb}
-        type='number'
-        name='usagePercentExtraurb'
-        onChange={onInputChange}
-        label='Tip vehicul'
-      />
+        <Label label='Consum (Urb/Mix/Exraurb)' />
+      <div className='edit-car__three'>
+        <Input
+          valueFullType={formFields.fuelConsumptionUrb}
+          type='number'
+          name='fuelConsumptionUrb'
+          onChange={onInputChange}
+        />
+        <Input
+          valueFullType={formFields.fuelConsumptionMix}
+          type='number'
+          name='fuelConsumptionMix'
+          onChange={onInputChange}
+        />
+        <Input
+          valueFullType={formFields.fuelConsumptionExtraUrb}
+          type='number'
+          name='fuelConsumptionExtraUrb'
+          onChange={onInputChange}
+        />
+      </div>
+      <Label label='Procent utilizare (Urb/Mix/Exraurb)' />
+      <div className='edit-car__three'>
+        <Input
+          valueFullType={formFields.usagePercentUrb}
+          type='number'
+          name='usagePercentUrb'
+          onChange={onInputChange}
+        />
+        <Input
+          valueFullType={formFields.usagePercentMix}
+          type='number'
+          name='usagePercentMix'
+          onChange={onInputChange}
+        />
+        <Input
+          valueFullType={formFields.usagePercentExtraUrb}
+          type='number'
+          name='fuelConsumptionExtraUrb'
+          onChange={onInputChange}
+        />
+      </div>
     </Form>
   )
 }

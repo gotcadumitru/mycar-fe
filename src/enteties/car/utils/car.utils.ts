@@ -1,5 +1,5 @@
 import type { CarFormDataFullType, CarFormDataType } from 'features/car/car-edit-form'
-import { CarOwnedBy } from '../model/consts/carConsts'
+import { CarOwnedBy, FuelType } from '../model/consts/carConsts'
 import type { Car, CarFromApi } from '../model/types/car.types'
 
 export const getCarFormValues = ({
@@ -22,12 +22,13 @@ export const getCarFormValues = ({
   dotSummerTyre = '',
   winterTyreSize = '',
   dotWinterTyre = '',
+  fuelType = FuelType.Gasoline,
   fuelConsumptionUrb = '',
   fuelConsumptionMix = '',
-  fuelConsumptionExtraurb = '',
+  fuelConsumptionExtraUrb = '',
   usagePercentUrb = '',
   usagePercentMix = '',
-  usagePercentExtraurb = '',
+  usagePercentExtraUrb = '',
 }: Partial<CarFormDataType>): CarFormDataFullType => ({
   type: {
     value: type,
@@ -124,6 +125,11 @@ export const getCarFormValues = ({
     errorMessage: '',
     isRequired: true,
   },
+  fuelType: {
+    value: fuelType,
+    errorMessage: '',
+    isRequired: true,
+  },
   fuelConsumptionUrb: {
     value: fuelConsumptionUrb,
     errorMessage: '',
@@ -134,8 +140,8 @@ export const getCarFormValues = ({
     errorMessage: '',
     isRequired: true,
   },
-  fuelConsumptionExtraurb: {
-    value: fuelConsumptionExtraurb,
+  fuelConsumptionExtraUrb: {
+    value: fuelConsumptionExtraUrb,
     errorMessage: '',
     isRequired: true,
   },
@@ -149,8 +155,8 @@ export const getCarFormValues = ({
     errorMessage: '',
     isRequired: true,
   },
-  usagePercentExtraurb: {
-    value: usagePercentExtraurb,
+  usagePercentExtraUrb: {
+    value: usagePercentExtraUrb,
     errorMessage: '',
     isRequired: true,
   },
