@@ -1,3 +1,4 @@
+import EditCarForm from 'features/car/car-edit-form';
 import { useNavigate } from 'react-router-dom'
 import { useSwipeable } from 'react-swipeable'
 import './newCarPage.scss'
@@ -9,14 +10,7 @@ const NewCarPage = () => {
   })
   return (
     <div {...handlers} className='new-car-page'>
-      Hai sa adaugam niste detalii
-      {/*<Input*/}
-      {/*    valueFullType={createCategoryFormData.language}*/}
-      {/*    name='language'*/}
-      {/*    onChange={onInputChange}*/}
-      {/*    placeholder={INPUT_PLACEHOLDER.SELECT_OPTION}*/}
-      {/*    label={INPUT_LABEL.CAR_NAME}*/}
-      {/*    infoText={InfoBoxLanguage}*/}
+      <EditCarForm formId="f" onSubmit={alert}/>
     </div>
   )
 }

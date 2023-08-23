@@ -1,9 +1,35 @@
+import { CarOwnedBy } from 'enteties/car'
 
 export type EditCarSliceState = {
-  newCarFormData: CarFormDataFullType
+  formFields: CarFormDataFullType
 }
+
 export type CarFormDataType = {
-  name: string
+  type: string
+  mark: string
+  model: string
+  yearOfProduction: string
+  registrationNumber: string
+  vin: string
+  power: string
+  cylinderCapacity: string
+  numberOfSeats: string
+  color: string
+  maximumAuthorisedMass: string
+  civSeries: string
+  ownedBy: CarOwnedBy
+  isLeasingVehicle: boolean
+  leasingCompany: string
+  summerTyreSize: string
+  dotSummerTyre: string
+  winterTyreSize: string
+  dotWinterTyre: string
+  fuelConsumptionUrb: string
+  fuelConsumptionMix: string
+  fuelConsumptionExtraurb: string
+  usagePercentUrb: string
+  usagePercentMix: string
+  usagePercentExtraurb: string
 }
 export type CarFormDataFullType = {
   [K in keyof CarFormDataType]: {
