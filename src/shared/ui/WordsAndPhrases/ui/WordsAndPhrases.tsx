@@ -113,8 +113,8 @@ export const WordsAndPhrases: FC<WordsAndPhrasesWithLabelProps> = ({
         return (
           <input
             value={item.value}
-            onFocus={() => setLastFocusedInputId(item.id)}
-            onChange={(e) => onInputChange(item.id, e.target.value)}
+            onFocus={() => setLastFocusedInputId(item.value)}
+            onChange={(e) => onInputChange(item.value, e.target.value)}
           />
         )
       }

@@ -1,18 +1,17 @@
 import classNames from 'classnames'
-import { FC, useId } from 'react'
+import { FC, useId, useMemo } from 'react'
+import Select from 'react-select-virtualized'
 import Label from 'shared/ui/Label'
 import type { InputSelectWithLabel } from './input-select.types'
 
 const InputSelect: FC<InputSelectWithLabel> = ({
   label,
-
   errorMessage,
   className,
   containerClassName,
   disabled,
   placeholder,
   options = [],
-  isFirstOptionDisabled = true,
   value = '',
   valueFullType,
   infoText,
@@ -30,30 +29,30 @@ const InputSelect: FC<InputSelectWithLabel> = ({
     'input--error': errorMessageLocal,
     'input--select-grey': valueLocal === '',
   })
-
   return (
     <div className={containerClassNames}>
       {label && <Label label={label} infoText={infoText} inputId={inputId} />}
-      <select
-        id={inputId}
-        className={inputClassName}
+      <Select
+
+        className={`input-select ${errorMessage ? 'input--error' : ''} ${className}`}
+        classNamePrefix='input-select'
+        onChange={(newValue: any, actionMeta) => {
+          if (actionMeta.action === 'clear') {
+            onChange({ target: { name: actionMeta.name!, label: '', value: '' } })
+          } else {
+            onChange({
+              target: { name: actionMeta.name!, label: newValue!.label, value: newValue.value },
+            })
+          }
+        }}
+        options={options}
         {...props}
-        value={valueLocal}
-        disabled={disabled}
-      >
-        {[
-          {
-            id: '',
-            label: placeholder,
-            disabled: isFirstOptionDisabled,
-          },
-          ...options,
-        ].map((option) => (
-          <option key={option.id} value={option.id} disabled={option.disabled}>
-            {option.label}
-          </option>
-        ))}
-      </select>
+        isClearable
+        value={{ inputValue: value, label: label || value }}
+        menuPortalTarget={document.body}
+        isDisabled={disabled}
+        styles={{ menuPortal: (base) => ({ ...base, zIndex: 9999 }) }}
+      />
       {errorMessageLocal && <div className='input__error-message'>{errorMessageLocal} </div>}
     </div>
   )
