@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { FC, useId, useMemo } from 'react'
+import { FC, useId } from 'react'
 import Select from 'react-select-virtualized'
 import Label from 'shared/ui/Label'
 import type { InputSelectWithLabel } from './input-select.types'
@@ -10,11 +10,14 @@ const InputSelect: FC<InputSelectWithLabel> = ({
   className,
   containerClassName,
   disabled,
+                                                 isLoading,
+    name,
   placeholder,
   options = [],
   value = '',
   valueFullType,
   infoText,
+  onChange,
   ...props
 }) => {
   const inputId = useId()
@@ -33,24 +36,25 @@ const InputSelect: FC<InputSelectWithLabel> = ({
     <div className={containerClassNames}>
       {label && <Label label={label} infoText={infoText} inputId={inputId} />}
       <Select
-
         className={`input-select ${errorMessage ? 'input--error' : ''} ${className}`}
         classNamePrefix='input-select'
-        onChange={(newValue: any, actionMeta) => {
+        onChange={(newValue, actionMeta) => {
           if (actionMeta.action === 'clear') {
-            onChange({ target: { name: actionMeta.name!, label: '', value: '' } })
+            onChange?.({ target: { name: actionMeta.name!, value: '' } })
           } else {
-            onChange({
-              target: { name: actionMeta.name!, label: newValue!.label, value: newValue.value },
+            onChange?.({
+              target: { name: name!, value: newValue!.value },
             })
           }
         }}
         options={options}
-        {...props}
-        isClearable
-        value={{ inputValue: value, label: label || value }}
-        menuPortalTarget={document.body}
         isDisabled={disabled}
+        isLoading={isLoading}
+        isClearable
+        name={name}
+        isSearchable
+        value={options[0]}
+        menuPortalTarget={document.body}
         styles={{ menuPortal: (base) => ({ ...base, zIndex: 9999 }) }}
       />
       {errorMessageLocal && <div className='input__error-message'>{errorMessageLocal} </div>}
