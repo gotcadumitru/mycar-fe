@@ -36,7 +36,7 @@ export type WordAndPhrasesAndOrAndNotType = {
 }
 
 export type WordsAndPhrasesItemType = {
-  id: string
+  value: string
 } & (
   | WordAndPhrasesValueType
   | WordAndPhrasesExtraWordsType

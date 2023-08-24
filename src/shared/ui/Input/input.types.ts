@@ -2,9 +2,11 @@ import type { InputHTMLAttributes } from 'react'
 import type { LabelProps } from 'shared/ui/Label'
 
 export type InputOptionType<LabelType> = {
-  id: string | number
-  label: LabelType
-  disabled?: boolean
+  readonly value: string | number
+  readonly label: LabelType
+  readonly color?: string
+  readonly isDisabled?: boolean
+  readonly isFixed?: boolean
 }
 
 export type OnChangeMinType<T = number | string> = {

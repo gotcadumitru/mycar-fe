@@ -27,7 +27,7 @@ const EditCarForm: FC<EditCarFormProps> = ({ formId, onSubmit }) => {
       const resp = await vehicleAPI.get('/getallmakes?format=json')
       setOptions(
         resp.data.Results.map((r: any) => ({
-          id: r.Make_ID,
+          value: r.Make_ID,
           label: r.Make_Name,
         })),
       )

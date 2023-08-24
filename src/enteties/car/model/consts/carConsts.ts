@@ -14,7 +14,7 @@ export const CarTypeLabels = {
 
 export const CarTypeOptions = [
   ...Object.values(CarType).map((value) => ({
-    id: value as CarType,
+    value: value as CarType,
     label: CarTypeLabels[value],
   })),
 ]
@@ -31,7 +31,7 @@ export const CarOwnedByLabels = {
 
 export const CarOwnedByOptions = [
   ...Object.values(CarOwnedBy).map((value) => ({
-    id: value as CarOwnedBy,
+    value: value as CarOwnedBy,
     label: CarOwnedByLabels[value],
   })),
 ]
@@ -60,7 +60,7 @@ export const FuelTypeLabels = {
 
 export const FuelTypeOptions = [
   ...Object.values(FuelType).map((value) => ({
-    id: value as FuelType,
+    value: value as FuelType,
     label: FuelTypeLabels[value],
   })),
 ]
@@ -234,7 +234,7 @@ export const SummerTyreSize = [
 
 export const SummerTyreSizeOptions = [
   SummerTyreSize.map((value) => ({
-    id: value,
+    value,
     label: value,
   })),
 ]

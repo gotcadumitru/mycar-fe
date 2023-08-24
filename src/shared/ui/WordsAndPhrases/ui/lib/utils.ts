@@ -6,7 +6,7 @@ export const findNodeById = (
   item: WordsAndPhrasesItemType,
   id: string,
 ): WordsAndPhrasesItemType | null => {
-  if (item.id === id) return item
+  if (item.value === id) return item
   if (
     item.type === WordsAndPhrasesTypes.AND ||
     item.type === WordsAndPhrasesTypes.OR ||
@@ -35,7 +35,7 @@ export const replaceNode = (
   if (!originalNode || originalNode.type !== WordsAndPhrasesTypes.VALUE) return
   // Please ignore these @ts-ignore, this is not the final version
   // @ts-ignore
-  originalNode.id = newNode.id
+  originalNode.value = newNode.value
   // @ts-ignore
   originalNode.type = newNode.type
 
@@ -80,15 +80,15 @@ export const getNewAndOrAndNotBlock = (
 
   return {
     type,
-    id: idContainer,
+    value: idContainer,
     ElementLeft: {
-      id: idRight,
+      value: idRight,
       type: WordsAndPhrasesTypes.VALUE,
       value,
     },
     ElementRight: {
       value: '',
-      id: idLeft,
+      value: idLeft,
       type: WordsAndPhrasesTypes.VALUE,
     },
   }
@@ -103,9 +103,9 @@ export const getNewExtraLettersBlock = (
 
   return {
     type: WordsAndPhrasesTypes.EXTRA_LETTERS,
-    id: idContainer,
+    value: idContainer,
     Element: {
-      id: idElement,
+      value: idElement,
       type: WordsAndPhrasesTypes.VALUE,
       value,
     },
