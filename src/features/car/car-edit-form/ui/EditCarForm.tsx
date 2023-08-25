@@ -1,6 +1,6 @@
+import axios from 'axios'
 import { CarOwnedByOptions } from 'enteties/car'
 import { ChangeEvent, FC, memo, useEffect, useState } from 'react'
-import { vehicleAPI } from 'shared/api/api'
 import { SECTION_TITLE } from 'shared/defaults/text'
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
 import Checkbox from 'shared/ui/Checkbox'
@@ -21,18 +21,75 @@ const EditCarForm: FC<EditCarFormProps> = ({ formId, onSubmit }) => {
   const formFields = useAppSelector((state) => state.editCar.formFields)
   const dispatch = useAppDispatch()
   const [options, setOptions] = useState<InputOptionType<number>[]>([])
-
-  useEffect(() => {
-    ;(async () => {
-      const resp = await vehicleAPI.get('/getallmakes?format=json')
-      setOptions(
-        resp.data.Results.map((r: any) => ({
-          value: r.Make_ID,
-          label: r.Make_Name,
-        })),
-      )
-    })()
-  }, [])
+  //
+  // useEffect(() => {
+  //   ;(async () => {
+  //
+  //     const vehicleTypesResp = await axios.get(
+  //       'https://app.my-car.site/backend/api/v1/vehicles/dropdown/vehicleTypes',
+  //       {
+  //         headers: {
+  //           Authorization:
+  //             'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImN0eSI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkR1bWl0cnUuZ290Y2FAc3R1ZGVudC51c3Yucm8iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiI5MjBmMjkwNi1jODAxLTRlMzEtYjUxMi1jYWQyNDEwZGE5ZGUiLCJyb2xlIjoiVXNlciIsImp0aSI6IjI1M2JiNGEyLWNkMDctNGZkZS04YTM3LTlkOWRjMDJkZjc5NCIsInN1YiI6IkR1bWl0cnUuZ290Y2FAc3R1ZGVudC51c3Yucm8iLCJuYmYiOjE2OTI4NzAxMjIsImV4cCI6MTY5NTQ2MjEyMiwiaWF0IjoxNjkyODcwMTIyLCJpc3MiOiJNeUNhciIsImF1ZCI6Ik15Q2FyIn0.iCXIUiWGMaZ4aBqrVwOj55kpqxvcWdegQNYy91FOtpY',
+  //         },
+  //       },
+  //     )
+  //
+  //     const data = []
+  //
+  //     for (let i = 0; i < vehicleTypesResp.data.length; i += 1) {
+  //       const vehicleType = vehicleTypesResp.data[i]
+  //       const tireSizesResp = await axios.get(
+  //         `https://app.my-car.site/backend/api/v1/vehicles/dropdown/tireSizes/${vehicleType.id}`,
+  //         {
+  //           headers: {
+  //             Authorization:
+  //               'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImN0eSI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkR1bWl0cnUuZ290Y2FAc3R1ZGVudC51c3Yucm8iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiI5MjBmMjkwNi1jODAxLTRlMzEtYjUxMi1jYWQyNDEwZGE5ZGUiLCJyb2xlIjoiVXNlciIsImp0aSI6IjI1M2JiNGEyLWNkMDctNGZkZS04YTM3LTlkOWRjMDJkZjc5NCIsInN1YiI6IkR1bWl0cnUuZ290Y2FAc3R1ZGVudC51c3Yucm8iLCJuYmYiOjE2OTI4NzAxMjIsImV4cCI6MTY5NTQ2MjEyMiwiaWF0IjoxNjkyODcwMTIyLCJpc3MiOiJNeUNhciIsImF1ZCI6Ik15Q2FyIn0.iCXIUiWGMaZ4aBqrVwOj55kpqxvcWdegQNYy91FOtpY',
+  //           },
+  //         },
+  //       )
+  //       const vehicleBrandsResp = await axios.get(
+  //         `https://app.my-car.site/backend/api/v1/vehicle-brands/${vehicleType.id}`,
+  //         {
+  //           headers: {
+  //             Authorization:
+  //               'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImN0eSI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkR1bWl0cnUuZ290Y2FAc3R1ZGVudC51c3Yucm8iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiI5MjBmMjkwNi1jODAxLTRlMzEtYjUxMi1jYWQyNDEwZGE5ZGUiLCJyb2xlIjoiVXNlciIsImp0aSI6IjI1M2JiNGEyLWNkMDctNGZkZS04YTM3LTlkOWRjMDJkZjc5NCIsInN1YiI6IkR1bWl0cnUuZ290Y2FAc3R1ZGVudC51c3Yucm8iLCJuYmYiOjE2OTI4NzAxMjIsImV4cCI6MTY5NTQ2MjEyMiwiaWF0IjoxNjkyODcwMTIyLCJpc3MiOiJNeUNhciIsImF1ZCI6Ik15Q2FyIn0.iCXIUiWGMaZ4aBqrVwOj55kpqxvcWdegQNYy91FOtpY',
+  //           },
+  //         },
+  //       )
+  //       for (let j = 0; j < vehicleBrandsResp.data.length; j += 1) {
+  //         const vehicleBrand = vehicleBrandsResp.data[j]
+  //         const vehicleModelsResp = await axios.get(
+  //           `https://app.my-car.site/backend/api/v1/vehicle-models/dropdown/vehicleModelList?vehicleTypeId=${vehicleType.id}&brandId=${vehicleBrand.id}`,
+  //           {
+  //             headers: {
+  //               Authorization:
+  //                 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImN0eSI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkR1bWl0cnUuZ290Y2FAc3R1ZGVudC51c3Yucm8iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiI5MjBmMjkwNi1jODAxLTRlMzEtYjUxMi1jYWQyNDEwZGE5ZGUiLCJyb2xlIjoiVXNlciIsImp0aSI6IjI1M2JiNGEyLWNkMDctNGZkZS04YTM3LTlkOWRjMDJkZjc5NCIsInN1YiI6IkR1bWl0cnUuZ290Y2FAc3R1ZGVudC51c3Yucm8iLCJuYmYiOjE2OTI4NzAxMjIsImV4cCI6MTY5NTQ2MjEyMiwiaWF0IjoxNjkyODcwMTIyLCJpc3MiOiJNeUNhciIsImF1ZCI6Ik15Q2FyIn0.iCXIUiWGMaZ4aBqrVwOj55kpqxvcWdegQNYy91FOtpY',
+  //             },
+  //           },
+  //         )
+  //         vehicleBrandsResp.data.vehicleModels = vehicleModelsResp.data
+  //           await new Promise((resolve)=>{
+  //               setTimeout(resolve,500)
+  //           })
+  //       }
+  //
+  //       data.push({
+  //         tyreSize: tireSizesResp.data,
+  //         vehicleBrands: vehicleBrandsResp.data,
+  //           ...vehicleType
+  //       })
+  //     }
+  //     debugger
+  //
+  //     // setOptions(
+  //     //   resp.data.Results.map((r: any) => ({
+  //     //     value: r.Make_ID,
+  //     //     label: r.Make_Name,
+  //     //   })),
+  //     // )
+  //   })()
+  // }, [])
   const onInputChange = (event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) => {
     const { value } = event.target
     const name = event.target.name as keyof typeof formFields
