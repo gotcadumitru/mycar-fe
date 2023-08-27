@@ -1,7 +1,5 @@
 export type ApiConfigData = {
   jwt: string
-  carAPI: string
-  namespace: '' | 'nbavs__'
 }
 
 export const apiConfig = {

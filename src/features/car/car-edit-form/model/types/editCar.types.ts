@@ -1,14 +1,12 @@
-import { CarOwnedBy, FuelType } from 'enteties/car'
-
 export type EditCarSliceState = {
   formFields: CarFormDataFullType
 }
 
 export type CarFormDataType = {
-  type: string
-  mark: string
-  model: string
-  yearOfProduction: string
+  type: number | null
+  mark: number | null
+  model: number | null
+  yearOfProduction: number | null
   registrationNumber: string
   vin: string
   power: string
@@ -17,14 +15,14 @@ export type CarFormDataType = {
   color: string
   maximumAuthorisedMass: string
   civSeries: string
-  ownedBy: CarOwnedBy
+  ownedBy: number | null
   isLeasingVehicle: boolean
-  leasingCompany: string
-  summerTyreSize: string
+  leasingCompany: number | null
+  summerTyreSize: number | null
   dotSummerTyre: string
-  winterTyreSize: string
+  winterTyreSize: number | null
   dotWinterTyre: string
-  fuelType: FuelType
+  fuelType: number | null
   fuelConsumptionUrb: string
   fuelConsumptionMix: string
   fuelConsumptionExtraUrb: string

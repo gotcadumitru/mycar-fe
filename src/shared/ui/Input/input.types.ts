@@ -9,7 +9,7 @@ export type InputOptionType<LabelType> = {
   readonly isFixed?: boolean
 }
 
-export type OnChangeMinType<T = number | string> = {
+export type OnChangeMinType<T = number | string | null> = {
   target: {
     name: string
     value: T
@@ -27,7 +27,7 @@ interface InputPropsType extends InputHTMLAttributes<HTMLInputElement> {
   containerClassName?: string
   className?: string
   disabled?: boolean
-  valueFullType?: ValueFullType<string>
+  valueFullType?: ValueFullType<string >
   uiType?: InputUiType
 }
 

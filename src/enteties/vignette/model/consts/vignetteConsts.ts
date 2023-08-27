@@ -1,0 +1,3 @@
+export enum VignetteActions {
+  FETCH_ALL_VIGNETTE_COUNTRIES = 'FETCH_ALL_VIGNETTE_COUNTRIES',
+}
