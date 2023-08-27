@@ -13,9 +13,9 @@ interface InputSelectPropsType
   disabled?: boolean
   isLoading?: boolean
   options: InputOptionType<number | string>[]
-  valueFullType?: ValueFullType<string>
+  valueFullType?: ValueFullType<string | number | null>
   isFirstOptionDisabled?: boolean
-  onChange: (e: OnChangeMinType)=>void
+  onChange: (e: OnChangeMinType) => void
 }
 
 export type InputSelectWithLabel = InputSelectPropsType & LabelProps

@@ -1,12 +1,11 @@
 import type { CarFormDataFullType, CarFormDataType } from 'features/car/car-edit-form'
-import { CarOwnedBy, FuelType } from '../model/consts/carConsts'
 import type { Car, CarFromApi } from '../model/types/car.types'
 
 export const getCarFormValues = ({
-  type = '',
-  mark = '',
-  model = '',
-  yearOfProduction = '',
+  type = null,
+  mark = null,
+  model = null,
+  yearOfProduction = null,
   registrationNumber = '',
   vin = '',
   power = '',
@@ -15,14 +14,14 @@ export const getCarFormValues = ({
   color = '',
   maximumAuthorisedMass = '',
   civSeries = '',
-  ownedBy = CarOwnedBy.NaturalPerson,
+  ownedBy = null,
   isLeasingVehicle = false,
-  leasingCompany = '',
-  summerTyreSize = '',
+  leasingCompany = null,
+  summerTyreSize = null,
   dotSummerTyre = '',
-  winterTyreSize = '',
+  winterTyreSize = null,
   dotWinterTyre = '',
-  fuelType = FuelType.Gasoline,
+  fuelType = null,
   fuelConsumptionUrb = '',
   fuelConsumptionMix = '',
   fuelConsumptionExtraUrb = '',

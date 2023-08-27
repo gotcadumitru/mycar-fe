@@ -10,20 +10,19 @@ const InputSelect: FC<InputSelectWithLabel> = ({
   className,
   containerClassName,
   disabled,
-                                                 isLoading,
-    name,
+  isLoading,
+  name,
   placeholder,
   options = [],
   value = '',
   valueFullType,
   infoText,
   onChange,
-  ...props
 }) => {
   const inputId = useId()
   const errorMessageLocal = valueFullType?.errorMessage ?? errorMessage
   const valueLocal = valueFullType?.value ?? value
-
+  const selectedOption = options.find((option) => option.value === valueLocal)
   const containerClassNames = classNames(containerClassName, {
     'input--disabled': disabled,
   })
@@ -36,11 +35,13 @@ const InputSelect: FC<InputSelectWithLabel> = ({
     <div className={containerClassNames}>
       {label && <Label label={label} infoText={infoText} inputId={inputId} />}
       <Select
+        inputId={inputId}
+        openMenuOnFocus
         className={`input-select ${errorMessage ? 'input--error' : ''} ${className}`}
         classNamePrefix='input-select'
         onChange={(newValue, actionMeta) => {
           if (actionMeta.action === 'clear') {
-            onChange?.({ target: { name: actionMeta.name!, value: '' } })
+            onChange?.({ target: { name: name!, value: null } })
           } else {
             onChange?.({
               target: { name: name!, value: newValue!.value },
@@ -53,7 +54,7 @@ const InputSelect: FC<InputSelectWithLabel> = ({
         isClearable
         name={name}
         isSearchable
-        value={options[0]}
+        value={selectedOption}
         menuPortalTarget={document.body}
         styles={{ menuPortal: (base) => ({ ...base, zIndex: 9999 }) }}
       />

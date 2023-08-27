@@ -1,0 +1,3 @@
+export enum LeasingActions {
+  FETCH_ALL_LEASING_COMPANIES = 'FETCH_ALL_LEASING_COMPANIES',
+}

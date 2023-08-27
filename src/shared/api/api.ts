@@ -5,10 +5,8 @@ import {toastDefaultValues} from 'shared/config/toastify'
 import {fetchAndSetNewAccessToken} from 'shared/lib/utils/jwt/fetchAndSetNewAccessToken'
 import {v4 as uuidv4} from 'uuid'
 import {ApiErrorCode, FetchStatus} from './apiConsts'
-import {apiConfig} from './apiUtils'
 
 export const carAPI = axios.create()
-export const vehicleAPI = axios.create()
 const onRequest = (requestConfig: InternalAxiosRequestConfig, baseUrl: string) => {
   requestConfig.baseURL = baseUrl
 
@@ -73,11 +71,7 @@ const onResponseError = async (error: any) => {
 }
 
 carAPI.interceptors.request.use((requestConfig) =>
-  onRequest(requestConfig, `${apiConfig.getConfig()?.carAPI}`),
-)
-vehicleAPI.interceptors.request.use((requestConfig) =>
-  onRequest(requestConfig, 'https://vpic.nhtsa.dot.gov/api/vehicles'),
+  onRequest(requestConfig, process.env.CAR_API_URL!),
 )
 
-vehicleAPI.interceptors.response.use(onResponseSuccess, onResponseError)
 carAPI.interceptors.response.use(onResponseSuccess, onResponseError)

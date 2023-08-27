@@ -14,12 +14,4 @@ export { carReducer, carActions } from './model/slice/carSlice'
 
 export {
   CarActions,
-  CarOwnedBy,
-  CarOwnedByOptions,
-  FuelType,
-  FuelTypeOptions,
-  CarOwnedByLabels,
-  FuelTypeLabels,
-  SummerTyreSizeOptions,
-  SummerTyreSize,
 } from './model/consts/carConsts'

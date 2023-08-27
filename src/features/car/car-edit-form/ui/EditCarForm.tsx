@@ -1,11 +1,16 @@
-import axios from 'axios'
-import { CarOwnedByOptions } from 'enteties/car'
-import { ChangeEvent, FC, memo, useEffect, useState } from 'react'
+import { fetchAllVignetteCountriesThunk } from 'enteties/vignette'
+import FuelTypesSelect from 'features/fuelTypesSelect'
+import LeasingCompaniesSelect from 'features/leasingCompaniesSelect'
+import MarkTypesSelect from 'features/markTypesSelect/ui/MarkTypesSelect/MarkTypesSelect'
+import ModelTypesSelect from 'features/modelTypesSelect'
+import OwnershipTypesSelect from 'features/ownershipTypesSelect'
+import VehicleTypesSelect from 'features/vehicleTypesSelect'
+import { ChangeEvent, FC, memo, useEffect } from 'react'
 import { SECTION_TITLE } from 'shared/defaults/text'
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
 import Checkbox from 'shared/ui/Checkbox'
 import Form from 'shared/ui/Form'
-import Input, { InputOptionType } from 'shared/ui/Input'
+import Input, { OnChangeMinType } from 'shared/ui/Input'
 import InputSelect from 'shared/ui/InputSelect'
 import Label from 'shared/ui/Label'
 import { Section } from 'shared/ui/Section'
@@ -19,78 +24,16 @@ interface EditCarFormProps {
 
 const EditCarForm: FC<EditCarFormProps> = ({ formId, onSubmit }) => {
   const formFields = useAppSelector((state) => state.editCar.formFields)
+  const vignetteCountries = useAppSelector((state) => state.vignette.vignetteCountries)
+  const vehiclesWithDetails = useAppSelector((state) => state.vehicle.vehiclesWithDetails)
   const dispatch = useAppDispatch()
-  const [options, setOptions] = useState<InputOptionType<number>[]>([])
-  //
-  // useEffect(() => {
-  //   ;(async () => {
-  //
-  //     const vehicleTypesResp = await axios.get(
-  //       'https://app.my-car.site/backend/api/v1/vehicles/dropdown/vehicleTypes',
-  //       {
-  //         headers: {
-  //           Authorization:
-  //             'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImN0eSI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkR1bWl0cnUuZ290Y2FAc3R1ZGVudC51c3Yucm8iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiI5MjBmMjkwNi1jODAxLTRlMzEtYjUxMi1jYWQyNDEwZGE5ZGUiLCJyb2xlIjoiVXNlciIsImp0aSI6IjI1M2JiNGEyLWNkMDctNGZkZS04YTM3LTlkOWRjMDJkZjc5NCIsInN1YiI6IkR1bWl0cnUuZ290Y2FAc3R1ZGVudC51c3Yucm8iLCJuYmYiOjE2OTI4NzAxMjIsImV4cCI6MTY5NTQ2MjEyMiwiaWF0IjoxNjkyODcwMTIyLCJpc3MiOiJNeUNhciIsImF1ZCI6Ik15Q2FyIn0.iCXIUiWGMaZ4aBqrVwOj55kpqxvcWdegQNYy91FOtpY',
-  //         },
-  //       },
-  //     )
-  //
-  //     const data = []
-  //
-  //     for (let i = 0; i < vehicleTypesResp.data.length; i += 1) {
-  //       const vehicleType = vehicleTypesResp.data[i]
-  //       const tireSizesResp = await axios.get(
-  //         `https://app.my-car.site/backend/api/v1/vehicles/dropdown/tireSizes/${vehicleType.id}`,
-  //         {
-  //           headers: {
-  //             Authorization:
-  //               'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImN0eSI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkR1bWl0cnUuZ290Y2FAc3R1ZGVudC51c3Yucm8iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiI5MjBmMjkwNi1jODAxLTRlMzEtYjUxMi1jYWQyNDEwZGE5ZGUiLCJyb2xlIjoiVXNlciIsImp0aSI6IjI1M2JiNGEyLWNkMDctNGZkZS04YTM3LTlkOWRjMDJkZjc5NCIsInN1YiI6IkR1bWl0cnUuZ290Y2FAc3R1ZGVudC51c3Yucm8iLCJuYmYiOjE2OTI4NzAxMjIsImV4cCI6MTY5NTQ2MjEyMiwiaWF0IjoxNjkyODcwMTIyLCJpc3MiOiJNeUNhciIsImF1ZCI6Ik15Q2FyIn0.iCXIUiWGMaZ4aBqrVwOj55kpqxvcWdegQNYy91FOtpY',
-  //           },
-  //         },
-  //       )
-  //       const vehicleBrandsResp = await axios.get(
-  //         `https://app.my-car.site/backend/api/v1/vehicle-brands/${vehicleType.id}`,
-  //         {
-  //           headers: {
-  //             Authorization:
-  //               'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImN0eSI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkR1bWl0cnUuZ290Y2FAc3R1ZGVudC51c3Yucm8iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiI5MjBmMjkwNi1jODAxLTRlMzEtYjUxMi1jYWQyNDEwZGE5ZGUiLCJyb2xlIjoiVXNlciIsImp0aSI6IjI1M2JiNGEyLWNkMDctNGZkZS04YTM3LTlkOWRjMDJkZjc5NCIsInN1YiI6IkR1bWl0cnUuZ290Y2FAc3R1ZGVudC51c3Yucm8iLCJuYmYiOjE2OTI4NzAxMjIsImV4cCI6MTY5NTQ2MjEyMiwiaWF0IjoxNjkyODcwMTIyLCJpc3MiOiJNeUNhciIsImF1ZCI6Ik15Q2FyIn0.iCXIUiWGMaZ4aBqrVwOj55kpqxvcWdegQNYy91FOtpY',
-  //           },
-  //         },
-  //       )
-  //       for (let j = 0; j < vehicleBrandsResp.data.length; j += 1) {
-  //         const vehicleBrand = vehicleBrandsResp.data[j]
-  //         const vehicleModelsResp = await axios.get(
-  //           `https://app.my-car.site/backend/api/v1/vehicle-models/dropdown/vehicleModelList?vehicleTypeId=${vehicleType.id}&brandId=${vehicleBrand.id}`,
-  //           {
-  //             headers: {
-  //               Authorization:
-  //                 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImN0eSI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkR1bWl0cnUuZ290Y2FAc3R1ZGVudC51c3Yucm8iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiI5MjBmMjkwNi1jODAxLTRlMzEtYjUxMi1jYWQyNDEwZGE5ZGUiLCJyb2xlIjoiVXNlciIsImp0aSI6IjI1M2JiNGEyLWNkMDctNGZkZS04YTM3LTlkOWRjMDJkZjc5NCIsInN1YiI6IkR1bWl0cnUuZ290Y2FAc3R1ZGVudC51c3Yucm8iLCJuYmYiOjE2OTI4NzAxMjIsImV4cCI6MTY5NTQ2MjEyMiwiaWF0IjoxNjkyODcwMTIyLCJpc3MiOiJNeUNhciIsImF1ZCI6Ik15Q2FyIn0.iCXIUiWGMaZ4aBqrVwOj55kpqxvcWdegQNYy91FOtpY',
-  //             },
-  //           },
-  //         )
-  //         vehicleBrandsResp.data.vehicleModels = vehicleModelsResp.data
-  //           await new Promise((resolve)=>{
-  //               setTimeout(resolve,500)
-  //           })
-  //       }
-  //
-  //       data.push({
-  //         tyreSize: tireSizesResp.data,
-  //         vehicleBrands: vehicleBrandsResp.data,
-  //           ...vehicleType
-  //       })
-  //     }
-  //     debugger
-  //
-  //     // setOptions(
-  //     //   resp.data.Results.map((r: any) => ({
-  //     //     value: r.Make_ID,
-  //     //     label: r.Make_Name,
-  //     //   })),
-  //     // )
-  //   })()
-  // }, [])
-  const onInputChange = (event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) => {
+
+  useEffect(() => {
+    dispatch(fetchAllVignetteCountriesThunk())
+  }, [])
+  const onInputChange = (
+    event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement> | OnChangeMinType,
+  ) => {
     const { value } = event.target
     const name = event.target.name as keyof typeof formFields
     dispatch(
@@ -122,15 +65,28 @@ const EditCarForm: FC<EditCarFormProps> = ({ formId, onSubmit }) => {
   return (
     <Form id={formId} onSubmit={onSubmit}>
       <Section title={SECTION_TITLE.CAR}>section car</Section>
-      <Input
+      <VehicleTypesSelect
         valueFullType={formFields.type}
         name='type'
         onChange={onInputChange}
         label='Tip vehicul'
       />
-      <Input valueFullType={formFields.mark} name='mark' onChange={onInputChange} label='Marca' />
-      <Input valueFullType={formFields.model} name='model' onChange={onInputChange} label='Model' />
-      <Input
+      <MarkTypesSelect
+        vehicleTypeId={formFields.type.value}
+        valueFullType={formFields.mark}
+        name='mark'
+        onChange={onInputChange}
+        label='Marca'
+      />
+      <ModelTypesSelect
+        vehicleTypeId={formFields.type.value}
+        markTypeId={formFields.mark.value}
+        valueFullType={formFields.model}
+        name='model'
+        onChange={onInputChange}
+        label='Model'
+      />
+      <InputSelect
         valueFullType={formFields.yearOfProduction}
         name='yearOfProduction'
         onChange={onInputChange}
@@ -184,9 +140,8 @@ const EditCarForm: FC<EditCarFormProps> = ({ formId, onSubmit }) => {
         onChange={onInputChange}
         label='Seria CIV'
       />
-      <InputSelect
+      <OwnershipTypesSelect
         valueFullType={formFields.ownedBy}
-        options={CarOwnedByOptions}
         name='ownedBy'
         onChange={onInputChange}
         label='Detinut de'
@@ -197,13 +152,13 @@ const EditCarForm: FC<EditCarFormProps> = ({ formId, onSubmit }) => {
         onChange={onCheckboxChange}
         label='Vehicul in leasing'
       />
-      <Input
+      <LeasingCompaniesSelect
         valueFullType={formFields.leasingCompany}
         name='leasingCompany'
         onChange={onInputChange}
         label='Alege compania de leasing'
       />
-      <Input
+      <InputSelect
         valueFullType={formFields.summerTyreSize}
         name='summerTyreSize'
         onChange={onInputChange}
@@ -215,7 +170,7 @@ const EditCarForm: FC<EditCarFormProps> = ({ formId, onSubmit }) => {
         onChange={onInputChange}
         label='DOT anvelope vara'
       />
-      <Input
+      <InputSelect
         valueFullType={formFields.winterTyreSize}
         name='winterTyreSize'
         onChange={onInputChange}
@@ -227,9 +182,8 @@ const EditCarForm: FC<EditCarFormProps> = ({ formId, onSubmit }) => {
         onChange={onInputChange}
         label='DOT anvelope iarna'
       />
-      <InputSelect
+      <FuelTypesSelect
         valueFullType={formFields.fuelType}
-        options={options}
         name='fuelType'
         onChange={onInputChange}
         label='Tip combustibil'
