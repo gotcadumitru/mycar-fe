@@ -1,6 +1,6 @@
+import { Analytics } from '@vercel/analytics/react'
+
 import AppRouter from 'app/providers/router'
-import axios from 'axios'
-import { useEffect } from 'react'
 import { ToastContainer } from 'react-toastify'
 import { toastDefaultValues } from 'shared/config/toastify'
 import { useAppDispatch } from 'shared/lib/hooks/reduxHooks'
@@ -91,6 +91,7 @@ const App = () => {
         <AppRouter />
       </div>
       <ToastContainer position='bottom-center' {...toastDefaultValues} />
+      <Analytics />
     </>
   )
 }
