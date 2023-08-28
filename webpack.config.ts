@@ -4,8 +4,9 @@ import { Configuration } from 'webpack'
 import buildWebpackConfig from './config/build/buildWebpackConfig'
 import { BuildEnv, BuildMode, BuildPaths } from './config/build/types/config'
 
-config()
-
+config({
+  path:resolve(__dirname,'.env.development.local')
+})
 const paths: BuildPaths = {
   entry: resolve(__dirname, 'src', 'index.tsx'),
   html: resolve(__dirname, 'public', 'index.html'),

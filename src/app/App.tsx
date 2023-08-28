@@ -1,5 +1,4 @@
 import { Analytics } from '@vercel/analytics/react'
-
 import AppRouter from 'app/providers/router'
 import { ToastContainer } from 'react-toastify'
 import { toastDefaultValues } from 'shared/config/toastify'
