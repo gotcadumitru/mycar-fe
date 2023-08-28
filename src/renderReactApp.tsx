@@ -1,3 +1,4 @@
+import ErrorBoundary from 'app/providers/ErrorBoundary'
 import { StoreProvider } from 'app/providers/StoreProvider'
 import 'app/styles/main.scss'
 import { NotFoundPage } from 'pages/NotFoundPage'
@@ -16,7 +17,9 @@ const renderReactApp = () => {
     root.render(
       <BrowserRouter>
         <StoreProvider>
-          <App />
+          <ErrorBoundary>
+            <App />
+          </ErrorBoundary>
         </StoreProvider>
       </BrowserRouter>,
     )

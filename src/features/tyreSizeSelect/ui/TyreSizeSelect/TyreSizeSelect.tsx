@@ -5,11 +5,11 @@ import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
 import { InputOptionType } from 'shared/ui/Input'
 import InputSelect, { InputSelectWithLabel } from 'shared/ui/InputSelect'
 
-interface MarkTypesSelectProps extends Omit<InputSelectWithLabel, 'options'> {
+interface TyreSizeSelectProps extends Omit<InputSelectWithLabel, 'options'> {
   vehicleTypeId: number | null
 }
 
-const MarkTypesSelect: FC<MarkTypesSelectProps> = ({ className, vehicleTypeId, ...props }) => {
+const TyreSizeSelect: FC<TyreSizeSelectProps> = ({ className, vehicleTypeId, ...props }) => {
   const dispatch = useAppDispatch()
   const vehiclesWithDetails = useAppSelector((state) => state.vehicle.vehiclesWithDetails)
   const fetchStatus = useAppSelector(
@@ -20,11 +20,11 @@ const MarkTypesSelect: FC<MarkTypesSelectProps> = ({ className, vehicleTypeId, .
     [vehiclesWithDetails, vehicleTypeId],
   )
 
-  const markTypesOptions: InputOptionType<string>[] = useMemo(
+  const tyreSizeOptions: InputOptionType<string>[] = useMemo(
     () =>
-      vehicleWithDetails?.vehicleBrands?.map((vehicleBrand) => ({
-        label: vehicleBrand.name,
-        value: vehicleBrand.id,
+      vehicleWithDetails?.tyreSize?.map((size) => ({
+        label: size.name,
+        value: size.id,
       })) ?? [],
     [vehicleWithDetails],
   )
@@ -37,9 +37,9 @@ const MarkTypesSelect: FC<MarkTypesSelectProps> = ({ className, vehicleTypeId, .
   return (
     <InputSelect
       isLoading={!!vehicleTypeId && fetchStatus !== FetchStatus.SUCCESS}
-      options={markTypesOptions}
+      options={tyreSizeOptions}
       {...props}
     />
   )
 }
-export default memo(MarkTypesSelect)
+export default memo(TyreSizeSelect)

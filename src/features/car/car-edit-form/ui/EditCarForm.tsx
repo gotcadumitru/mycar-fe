@@ -4,6 +4,7 @@ import LeasingCompaniesSelect from 'features/leasingCompaniesSelect'
 import MarkTypesSelect from 'features/markTypesSelect/ui/MarkTypesSelect/MarkTypesSelect'
 import ModelTypesSelect from 'features/modelTypesSelect'
 import OwnershipTypesSelect from 'features/ownershipTypesSelect'
+import TyreSizeSelect from 'features/tyreSizeSelect'
 import VehicleTypesSelect from 'features/vehicleTypesSelect'
 import { ChangeEvent, FC, memo, useEffect } from 'react'
 import { SECTION_TITLE } from 'shared/defaults/text'
@@ -158,7 +159,8 @@ const EditCarForm: FC<EditCarFormProps> = ({ formId, onSubmit }) => {
         onChange={onInputChange}
         label='Alege compania de leasing'
       />
-      <InputSelect
+      <TyreSizeSelect
+        vehicleTypeId={formFields.type.value}
         valueFullType={formFields.summerTyreSize}
         name='summerTyreSize'
         onChange={onInputChange}
@@ -170,7 +172,8 @@ const EditCarForm: FC<EditCarFormProps> = ({ formId, onSubmit }) => {
         onChange={onInputChange}
         label='DOT anvelope vara'
       />
-      <InputSelect
+      <TyreSizeSelect
+        vehicleTypeId={formFields.type.value}
         valueFullType={formFields.winterTyreSize}
         name='winterTyreSize'
         onChange={onInputChange}
