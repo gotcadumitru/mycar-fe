@@ -9,7 +9,7 @@ import { getInfoFromAPIJwt } from 'shared/lib/utils/jwt'
 import App from './app/App'
 
 const renderReactApp = () => {
-  const container = document.getElementById('mycar-root')
+  const container = document.getElementById('carmaster-root')
   const root = createRoot(container as HTMLElement)
   const userDataFromToken = getInfoFromAPIJwt()
   if (userDataFromToken.isAdmin || userDataFromToken.isTeamLeader) {
