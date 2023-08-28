@@ -9,6 +9,17 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import { BuildOptions } from './types/config'
 
 const buildPlugins = (config: BuildOptions): webpack.WebpackPluginInstance[] => {
+  const raw = Object.keys(process.env).reduce((env, key) => {
+    // @ts-ignore
+    env[key] = process.env[key]
+    return env
+  }, {})
+
+  const env = Object.keys(raw).reduce((env, key) => {
+    // @ts-ignore
+    env[key] = JSON.stringify(raw[key])
+    return env
+  }, {})
   const plugins: webpack.WebpackPluginInstance[] = [
     new HtmlWebpackPlugin({
       template: config.paths.html,
@@ -21,7 +32,8 @@ const buildPlugins = (config: BuildOptions): webpack.WebpackPluginInstance[] => 
     }),
     new webpack.DefinePlugin({
       __IS_DEV__: JSON.stringify(config.isDev),
-      'process.env': JSON.stringify(process.env),
+      'process.env': env,
+      'process.version': JSON.stringify('16.14.2'),
     }),
     // new webpack.optimize.LimitChunkCountPlugin({
     //   maxChunks: 1,
@@ -46,12 +58,12 @@ const buildPlugins = (config: BuildOptions): webpack.WebpackPluginInstance[] => 
     plugins.push(
       new CopyPlugin({
         patterns: [
-            { from: 'public',globOptions: {
-                ignore: [
-                  '**/index.html',
-                  '**/favicon.ico',
-                ]
-              } },
+          {
+            from: 'public',
+            globOptions: {
+              ignore: ['**/index.html', '**/favicon.ico'],
+            },
+          },
         ],
       }),
     )

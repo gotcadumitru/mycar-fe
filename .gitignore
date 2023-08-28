@@ -33,3 +33,4 @@ yarn-error.log*
 # loki
 /.loki/report.html
 /.loki/report.json
+.vercel

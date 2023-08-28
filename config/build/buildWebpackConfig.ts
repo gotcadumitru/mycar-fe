@@ -29,6 +29,7 @@ const buildWebpackConfig = (config: BuildOptions): webpack.Configuration => {
       path: paths.build,
       clean: true,
     },
+    target:"browserslist",
     plugins: buildPlugins(config),
     devtool: isDev ? 'inline-source-map' : false,
     devServer: isDev ? buildDevServer(config) : undefined,
