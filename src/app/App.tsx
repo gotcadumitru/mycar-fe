@@ -65,7 +65,6 @@ const App = () => {
   //         ...vehicleType,
   //       })
   //     }
-  //     debugger
   //
   //     // setOptions(
   //     //   resp.data.Results.map((r: any) => ({
