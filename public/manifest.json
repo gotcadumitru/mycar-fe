@@ -4,9 +4,9 @@
   "display": "standalone",
   "scope": ".",
   "start_url": ".",
-  "name": "myCar",
-  "short_name": "myCar",
-  "description": "Controleaza-ti masina waa",
+  "name": "CarMaster",
+  "short_name": "CarMaster",
+  "description": "Jurnalul călătoriilor tale pe șosea, unde fiecare kilometru are o poveste.",
   "icons": [
     {
       "src": "manifest-icon-192.maskable.png",

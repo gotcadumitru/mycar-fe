@@ -1,4 +1,4 @@
-# MyCar
+# CarMaster
 
 ## Tech Stack
 
@@ -35,7 +35,7 @@
 2. Go to the project directory
 
     ```bash
-    cd mycar-fe
+    cd carmaster-fe
     ```
 
 3. In case you don't have **yarn** installed, run the next command ( If you have yarn installed you can go to the next
