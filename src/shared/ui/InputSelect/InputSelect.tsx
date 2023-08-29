@@ -3,6 +3,7 @@ import { FC, useId } from 'react'
 import Select from 'react-select-virtualized'
 import Label from 'shared/ui/Label'
 import type { InputSelectWithLabel } from './input-select.types'
+import './inputSelect.scss'
 
 const InputSelect: FC<InputSelectWithLabel> = ({
   label,
@@ -12,7 +13,7 @@ const InputSelect: FC<InputSelectWithLabel> = ({
   disabled,
   isLoading,
   name,
-  placeholder,
+  placeholder = '',
   options = [],
   value = '',
   valueFullType,
@@ -55,7 +56,8 @@ const InputSelect: FC<InputSelectWithLabel> = ({
         isSearchable
         value={selectedOption}
         menuPortalTarget={document.body}
-        // styles={{ menuPortal: (base) => ({ ...base, zIndex: 9999 }) }}
+        placeholder={placeholder}
+        styles={{ menuPortal: (base) => ({ ...base, zIndex: 9999 }) }}
       />
       {errorMessageLocal && <div className='input__error-message'>{errorMessageLocal} </div>}
     </div>

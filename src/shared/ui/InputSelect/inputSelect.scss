@@ -1,0 +1,10 @@
+.input-select{
+  &__control{
+    min-height: 30px!important;
+    background-color: var(--grey-3)!important;
+    border: solid 1px var(--grey-6)!important;
+  }
+  &__indicator{
+    padding: 4px!important;
+  }
+}
