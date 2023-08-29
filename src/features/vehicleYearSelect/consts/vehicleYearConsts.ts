@@ -4,4 +4,4 @@ export const vehicleYearOptions = Array.from(
     value: 1971 + index,
     label: (1971 + index).toString(),
   }),
-)
+).reverse()
