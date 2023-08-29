@@ -36,7 +36,6 @@ const InputSelect: FC<InputSelectWithLabel> = ({
       {label && <Label label={label} infoText={infoText} inputId={inputId} />}
       <Select
         inputId={inputId}
-        openMenuOnFocus
         className={`input-select ${errorMessage ? 'input--error' : ''} ${className}`}
         classNamePrefix='input-select'
         onChange={(newValue, actionMeta) => {
@@ -56,7 +55,7 @@ const InputSelect: FC<InputSelectWithLabel> = ({
         isSearchable
         value={selectedOption}
         menuPortalTarget={document.body}
-        styles={{ menuPortal: (base) => ({ ...base, zIndex: 9999 }) }}
+        // styles={{ menuPortal: (base) => ({ ...base, zIndex: 9999 }) }}
       />
       {errorMessageLocal && <div className='input__error-message'>{errorMessageLocal} </div>}
     </div>

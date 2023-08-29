@@ -11,6 +11,5 @@ export const fetchAllOwnershipTypesThunk = createAsyncThunk<
 >(OwnershipActions.FETCH_ALL_OWNERSHIP_TYPES, async (_, thunkApi) => {
   // const r = await kv.json.set("ownershipTypes", "$", JSON.stringify(response.data))
   const response: OwnershipType[] = await kv.json.get('ownershipTypes')
-  // return response
   return response
 })

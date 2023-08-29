@@ -1,11 +1,12 @@
 import { fetchAllVignetteCountriesThunk } from 'enteties/vignette'
 import FuelTypesSelect from 'features/fuelTypesSelect'
 import LeasingCompaniesSelect from 'features/leasingCompaniesSelect'
-import MarkTypesSelect from 'features/markTypesSelect/ui/MarkTypesSelect/MarkTypesSelect'
-import ModelTypesSelect from 'features/modelTypesSelect'
+import ModelTypesSelect from 'features/vehicleModelSelect'
 import OwnershipTypesSelect from 'features/ownershipTypesSelect'
 import TyreSizeSelect from 'features/tyreSizeSelect'
+import VehicleBrandSelect from 'features/vehicleBrandSelect'
 import VehicleTypesSelect from 'features/vehicleTypesSelect'
+import VehicleYearSelect from 'features/vehicleYearSelect'
 import { ChangeEvent, FC, memo, useEffect } from 'react'
 import { SECTION_TITLE } from 'shared/defaults/text'
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
@@ -25,8 +26,6 @@ interface EditCarFormProps {
 
 const EditCarForm: FC<EditCarFormProps> = ({ formId, onSubmit }) => {
   const formFields = useAppSelector((state) => state.editCar.formFields)
-  const vignetteCountries = useAppSelector((state) => state.vignette.vignetteCountries)
-  const vehiclesWithDetails = useAppSelector((state) => state.vehicle.vehiclesWithDetails)
   const dispatch = useAppDispatch()
 
   useEffect(() => {
@@ -72,22 +71,22 @@ const EditCarForm: FC<EditCarFormProps> = ({ formId, onSubmit }) => {
           onChange={onInputChange}
           label='Tip vehicul'
         />
-        <MarkTypesSelect
+        <VehicleBrandSelect
           vehicleTypeId={formFields.type.value}
-          valueFullType={formFields.mark}
-          name='mark'
+          valueFullType={formFields.brand}
+          name='brand'
           onChange={onInputChange}
           label='Marca'
         />
         <ModelTypesSelect
           vehicleTypeId={formFields.type.value}
-          markTypeId={formFields.mark.value}
+          vehicleBrandId={formFields.brand.value}
           valueFullType={formFields.model}
           name='model'
           onChange={onInputChange}
           label='Model'
         />
-        <InputSelect
+        <VehicleYearSelect
           valueFullType={formFields.yearOfProduction}
           name='yearOfProduction'
           onChange={onInputChange}

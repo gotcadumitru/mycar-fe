@@ -3,7 +3,7 @@ import type { Car, CarFromApi } from '../model/types/car.types'
 
 export const getCarFormValues = ({
   type = null,
-  mark = null,
+  brand = null,
   model = null,
   yearOfProduction = null,
   registrationNumber = '',
@@ -34,8 +34,8 @@ export const getCarFormValues = ({
     errorMessage: '',
     isRequired: true,
   },
-  mark: {
-    value: mark,
+  brand: {
+    value: brand,
     errorMessage: '',
     isRequired: true,
   },

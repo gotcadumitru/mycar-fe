@@ -1,4 +1,5 @@
-import { fetchVehicleWithDetailsThunk } from 'enteties/vehicle/model/slice/vehicleThunks'
+import { getFetchStatus } from 'app/providers/StoreProvider/slices/ui'
+import { fetchTyreSizesFroVehicleTypeIdThunk } from 'enteties/tyre'
 import { FC, memo, useEffect, useMemo } from 'react'
 import { FetchStatus } from 'shared/api'
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
@@ -11,18 +12,18 @@ interface TyreSizeSelectProps extends Omit<InputSelectWithLabel, 'options'> {
 
 const TyreSizeSelect: FC<TyreSizeSelectProps> = ({ className, vehicleTypeId, ...props }) => {
   const dispatch = useAppDispatch()
-  const vehiclesWithDetails = useAppSelector((state) => state.vehicle.vehiclesWithDetails)
-  const fetchStatus = useAppSelector(
-    (state) => state.vehicle.vehiclesWithDetailsFetchStatus[vehicleTypeId!],
+  const tyreSizes = useAppSelector((state) => state.tyre.tyreSizes)
+  const fetchStatus = useAppSelector((state) =>
+    getFetchStatus(state.tyre.tyreSizesWithFetchStatus[vehicleTypeId!]?.fetchStatus),
   )
   const vehicleWithDetails = useMemo(
-    () => vehiclesWithDetails.find((vehicle) => vehicle.id === vehicleTypeId),
-    [vehiclesWithDetails, vehicleTypeId],
+    () => tyreSizes.find((tyreSize) => tyreSize.id === vehicleTypeId),
+    [tyreSizes, vehicleTypeId],
   )
 
   const tyreSizeOptions: InputOptionType<string>[] = useMemo(
     () =>
-      vehicleWithDetails?.tyreSize?.map((size) => ({
+      vehicleWithDetails?.sizes?.map((size) => ({
         label: size.name,
         value: size.id,
       })) ?? [],
@@ -30,7 +31,7 @@ const TyreSizeSelect: FC<TyreSizeSelectProps> = ({ className, vehicleTypeId, ...
   )
   useEffect(() => {
     if (vehicleTypeId) {
-      dispatch(fetchVehicleWithDetailsThunk(vehicleTypeId))
+      dispatch(fetchTyreSizesFroVehicleTypeIdThunk(vehicleTypeId))
     }
   }, [vehicleTypeId])
 
