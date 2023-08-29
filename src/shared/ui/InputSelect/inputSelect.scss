@@ -1,10 +1,37 @@
-.input-select{
-  &__control{
-    min-height: 30px!important;
-    background-color: var(--grey-3)!important;
-    border: solid 1px var(--grey-6)!important;
+.input-select {
+  .input-select {
+
+    &__control {
+      min-height: 30px;
+      background-color: var(--grey-3);
+      border: solid 1px var(--grey-6);
+
+
+      &--is-focused {
+        box-shadow: none;
+        border: solid 1px var(--grey-6);
+        outline: 1px solid var(--grey-9) !important;
+      }
+    }
+
+    &__indicator {
+      padding: 4px;
+    }
+
+    &__single-value {
+      font-size: 14px;
+      color: var(--grey-8);
+      margin-left: 4px;
+    }
+
+    &__value-container {
+      padding: 0;
+    }
+
   }
-  &__indicator{
-    padding: 4px!important;
+
+  &--error {
+    border: solid 1px var(--red-2);
+    border-radius: 5px;
   }
 }

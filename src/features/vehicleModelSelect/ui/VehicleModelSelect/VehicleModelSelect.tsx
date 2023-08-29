@@ -32,7 +32,6 @@ const VehicleModelSelect: FC<VehicleModelSelectProps> = ({
       ]?.fetchStatus,
     ),
   )
-  console.log(vehicleModels)
   const vehicleModel = useMemo(
     () =>
       vehicleModels.find(

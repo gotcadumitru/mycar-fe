@@ -1,10 +1,11 @@
+import { getCarFormValues } from 'enteties/car'
 import { fetchAllVignetteCountriesThunk } from 'enteties/vignette'
 import FuelTypesSelect from 'features/fuelTypesSelect'
 import LeasingCompaniesSelect from 'features/leasingCompaniesSelect'
-import ModelTypesSelect from 'features/vehicleModelSelect'
 import OwnershipTypesSelect from 'features/ownershipTypesSelect'
 import TyreSizeSelect from 'features/tyreSizeSelect'
 import VehicleBrandSelect from 'features/vehicleBrandSelect'
+import ModelTypesSelect from 'features/vehicleModelSelect'
 import VehicleTypesSelect from 'features/vehicleTypesSelect'
 import VehicleYearSelect from 'features/vehicleYearSelect'
 import { ChangeEvent, FC, memo, useEffect } from 'react'
@@ -13,7 +14,6 @@ import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
 import Checkbox from 'shared/ui/Checkbox'
 import Form from 'shared/ui/Form'
 import Input, { OnChangeMinType } from 'shared/ui/Input'
-import InputSelect from 'shared/ui/InputSelect'
 import Label from 'shared/ui/Label'
 import { Section } from 'shared/ui/Section'
 import { editCarActions } from '../lib/slice/editCarSlice'
@@ -33,19 +33,29 @@ const EditCarForm: FC<EditCarFormProps> = ({ formId, onSubmit }) => {
   }, [])
   const onInputChange = (
     event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement> | OnChangeMinType,
+    keysToReset: (keyof typeof formFields)[] = [],
   ) => {
     const { value } = event.target
     const name = event.target.name as keyof typeof formFields
-    dispatch(
-      editCarActions.changeCarDataAC({
+
+    const carInitialValues = getCarFormValues({})
+    const newData = keysToReset.reduce(
+      (formData, key) => {
+        return {
+          ...formData,
+          [key]: carInitialValues[key],
+        }
+      },
+      {
         ...formFields,
         [name]: {
           ...formFields[name],
           value,
           errorMessage: '',
         },
-      }),
+      },
     )
+    dispatch(editCarActions.changeCarDataAC(newData))
   }
 
   const onCheckboxChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -68,14 +78,14 @@ const EditCarForm: FC<EditCarFormProps> = ({ formId, onSubmit }) => {
         <VehicleTypesSelect
           valueFullType={formFields.type}
           name='type'
-          onChange={onInputChange}
+          onChange={(e) => onInputChange(e, ['brand', 'model'])}
           label='Tip vehicul'
         />
         <VehicleBrandSelect
           vehicleTypeId={formFields.type.value}
           valueFullType={formFields.brand}
           name='brand'
-          onChange={onInputChange}
+          onChange={(e) => onInputChange(e, ['model'])}
           label='Marca'
         />
         <ModelTypesSelect
@@ -150,6 +160,7 @@ const EditCarForm: FC<EditCarFormProps> = ({ formId, onSubmit }) => {
           valueFullType={formFields.isLeasingVehicle}
           name='isLeasingVehicle'
           onChange={onCheckboxChange}
+          isGrey
           label='Vehicul in leasing'
         />
         <LeasingCompaniesSelect
