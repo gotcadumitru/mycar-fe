@@ -8,8 +8,8 @@
 
 
       &--is-focused {
-        box-shadow: none;
-        border: solid 1px var(--grey-6);
+        box-shadow: none!important;
+        border: solid 1px var(--grey-6)!important;
         outline: 1px solid var(--grey-9) !important;
       }
     }
