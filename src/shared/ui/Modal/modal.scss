@@ -13,7 +13,7 @@
   &__container {
     width: 100%;
     max-width: 800px;
-    max-height: calc(100vh - 10px);
+    height: calc(100svh - 10px);
     background-color: var(--white);
     border-radius: 12px;
     animation-name: animatetop;
