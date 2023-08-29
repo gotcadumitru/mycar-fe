@@ -23,13 +23,13 @@ const InputSelect: FC<InputSelectWithLabel> = ({
   const inputId = useId()
   const errorMessageLocal = valueFullType?.errorMessage ?? errorMessage
   const valueLocal = valueFullType?.value ?? value
-  const selectedOption = options.find((option) => option.value === valueLocal)
+  const selectedOption = options.find((option) => option.value === valueLocal) || null
   const containerClassNames = classNames(containerClassName, {
     'input--disabled': disabled,
   })
-
-  const inputClassName = classNames('input', 'input--simple', className, {
-    'input--error': errorMessageLocal,
+  console.log(valueFullType)
+  const inputClassName = classNames('input-select', className, {
+    'input-select--error': !!errorMessageLocal,
     'input--select-grey': valueLocal === '',
   })
   return (
@@ -37,7 +37,7 @@ const InputSelect: FC<InputSelectWithLabel> = ({
       {label && <Label label={label} infoText={infoText} inputId={inputId} />}
       <Select
         inputId={inputId}
-        className={`input-select ${errorMessage ? 'input--error' : ''} ${className}`}
+        className={inputClassName}
         classNamePrefix='input-select'
         onChange={(newValue, actionMeta) => {
           if (actionMeta.action === 'clear') {
