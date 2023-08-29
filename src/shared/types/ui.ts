@@ -5,3 +5,10 @@ export type RequestMessageType = {
   [FetchStatus.SUCCESS]: string
   [FetchStatus.FAIL]: string
 }
+
+export type ThunkRequestFetchStatus = {
+  [key: number | string]: {
+    requestId: string
+    fetchStatus: FetchStatus
+  }
+}

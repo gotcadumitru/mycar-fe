@@ -4,7 +4,7 @@ export type EditCarSliceState = {
 
 export type CarFormDataType = {
   type: number | null
-  mark: number | null
+  brand: number | null
   model: number | null
   yearOfProduction: number | null
   registrationNumber: string

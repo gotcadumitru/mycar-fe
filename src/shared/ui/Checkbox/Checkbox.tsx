@@ -25,7 +25,6 @@ const Checkbox: FC<CheckboxPropsType> = ({
   const checkboxTextClassName = classNames('checkbox__checkmark', {
     'checkbox--grey__checkmark': isGrey,
   })
-  console.log(valueLocal)
   return (
     <label htmlFor={checkboxId} className={checkboxLabelClassName}>
       {label}

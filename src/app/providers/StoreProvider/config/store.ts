@@ -3,8 +3,11 @@ import { carReducer } from 'enteties/car'
 import { fuelReducer } from 'enteties/fuel'
 import { leasingReducer } from 'enteties/leasing'
 import { ownershipReducer } from 'enteties/ownership'
+import { tyreReducer } from 'enteties/tyre'
 import { userReducer } from 'enteties/user'
 import { vehicleReducer } from 'enteties/vehicle'
+import { vehicleBrandReducer } from 'enteties/vehicleBrand'
+import { vehicleModelReducer } from 'enteties/vehicleModel'
 import { vignetteReducer } from 'enteties/vignette'
 import { editCarReducer } from 'features/car/car-edit-form'
 import { carAPI } from 'shared/api'
@@ -22,6 +25,9 @@ export const rootReducers: ReducersMapObject<StateSchema> = {
   fuel: fuelReducer,
   ownership: ownershipReducer,
   vignette: vignetteReducer,
+  tyre: tyreReducer,
+  vehicleBrand: vehicleBrandReducer,
+  vehicleModel: vehicleModelReducer,
 }
 
 export function createReduxStore(initialState?: StateSchema) {
