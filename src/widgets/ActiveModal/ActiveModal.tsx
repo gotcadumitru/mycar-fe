@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { useLocation, useSearchParams } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 import { OpenMode, QueryParams } from 'shared/types/types'
 
 export const ActiveModal: FC = () => {
@@ -8,7 +8,6 @@ export const ActiveModal: FC = () => {
   const modalType = searchParams.get(QueryParams.MODAL) as OpenMode
 
   if (!modalType) return null
-
 
   return null
 }

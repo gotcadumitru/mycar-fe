@@ -16,6 +16,7 @@ import Form from 'shared/ui/Form'
 import Input, { OnChangeMinType } from 'shared/ui/Input'
 import Label from 'shared/ui/Label'
 import { Section } from 'shared/ui/Section'
+import TextArea from 'shared/ui/TextArea'
 import { editCarActions } from '../lib/slice/editCarSlice'
 import '../styles/edit-car.scss'
 
@@ -40,12 +41,10 @@ const EditCarForm: FC<EditCarFormProps> = ({ formId, onSubmit }) => {
 
     const carInitialValues = getCarFormValues({})
     const newData = keysToReset.reduce(
-      (formData, key) => {
-        return {
-          ...formData,
-          [key]: carInitialValues[key],
-        }
-      },
+      (formData, key) => ({
+        ...formData,
+        [key]: carInitialValues[key],
+      }),
       {
         ...formFields,
         [name]: {
@@ -102,7 +101,7 @@ const EditCarForm: FC<EditCarFormProps> = ({ formId, onSubmit }) => {
           onChange={onInputChange}
           label='Anul de fabricatie'
         />
-        <Input
+        <TextArea
           valueFullType={formFields.registrationNumber}
           name='registrationNumber'
           onChange={onInputChange}
@@ -160,7 +159,7 @@ const EditCarForm: FC<EditCarFormProps> = ({ formId, onSubmit }) => {
           valueFullType={formFields.isLeasingVehicle}
           name='isLeasingVehicle'
           onChange={onCheckboxChange}
-          isGrey
+          isBig
           label='Vehicul in leasing'
         />
         <LeasingCompaniesSelect

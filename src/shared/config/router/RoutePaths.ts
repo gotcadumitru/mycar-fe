@@ -5,7 +5,11 @@ export enum AppRoutes {
   GARAGE = 'garage',
   ALERTS = 'alerts',
   MENU = 'menu',
-  NEW_CAR='new_car',
+  NEW_CAR = 'new_car',
+  SIGN_IN = 'sign_in',
+  SIGN_UP = 'sign_up',
+  FORGOT_PASSWORD = 'forgot_password',
+  RESET_PASSWORD = 'reset_password',
 }
 
 export const RoutePaths: Record<AppRoutes, string> = {
@@ -15,5 +19,9 @@ export const RoutePaths: Record<AppRoutes, string> = {
   [AppRoutes.ALERTS]: '/alerts',
   [AppRoutes.MENU]: '/menu',
   [AppRoutes.NEW_CAR]: '/new-car',
+  [AppRoutes.SIGN_IN]: '/sign-in',
+  [AppRoutes.SIGN_UP]: '/sign-up',
+  [AppRoutes.FORGOT_PASSWORD]: '/forgot-password',
+  [AppRoutes.RESET_PASSWORD]: '/reset-password',
   [AppRoutes.NOT_FOUND]: '*',
 }

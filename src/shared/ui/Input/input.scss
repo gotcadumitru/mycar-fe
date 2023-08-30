@@ -1,34 +1,31 @@
 .input {
-  &--simple {
-    background-color: var(--grey-3);
-    border: solid 1px var(--grey-6);
-  }
-
-  &--no-border {
-    background-color: var(--grey-3);
-    padding: 10px 30px;
-    border-radius: 30px;
-    height: 37px;
-  }
-
-  &--no-border-small {
-    background-color: var(--grey-3);
-    border-radius: 30px;
-    height: 30px;
-    font-size: 12px;
-    padding: 3px 15px;
-  }
-
-  padding: 0 4px;
-  border-radius: 5px;
-  font-size: 14px;
-  color: var(--grey-8);
+  padding: 12px;
+  border: 2px solid var(--input-border);
+  border-radius: 4px;
+  font-size: 18px;
+  line-height: 20px;
+  height: 48px;
+  background: transparent;
+  transition: color 0.2s ease;
+  overflow: hidden;
   width: 100%;
-  height: 30px;
 
-  &:focus,
-  &:focus-visible {
-    outline: 1px solid var(--grey-9);
+  &__field-group {
+    margin-bottom: 22px;
+    margin-top: 12px;
+  }
+
+  &:hover {
+    border-color: var(--input-border-hover);
+    transition: border-color 0.1s ease;
+  }
+
+  &:focus {
+    border: 2px solid var(--blue-1);
+    outline: none;
+    margin: 0;
+    box-shadow: 0 0 0 1px var(--blue-1);
+    transition: border 0.1s ease, box-shadow 0.1s ease;
   }
 
   &--small-size {
@@ -40,43 +37,101 @@
   }
 
   &--error {
-    border: solid 1px var(--red-2);
+    border-color: var(--red-3);
+    box-shadow: 0 0 0 1px var(--red-3);
 
     &:focus {
-      border: solid 1px var(--grey-6);
-      outline: 1px solid var(--grey-9);
+      box-shadow: 0 0 0 1px var(--red-3);
+      border: solid 2px var(--red-3);
+    }
+
+    &:hover {
+      border-color: var(--red-3);
     }
   }
 
   &--select-grey {
-    font-size: 14px;
-    color: var(--input-text-colour);
+    font-size: 16px;
+    color: var(--grey-1);
   }
 
   &::placeholder {
-    color: var(--input-text-colour);
+    color: var(--grey-1);
+  }
+
+  &__info-icon {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-bottom: -5px;
+  }
+
+  &__info-text {
+    color: var(--gray-3);
+    font-size: 16px;
+    font-weight: 400;
+    padding: 4px 8px;
   }
 
   &__error-message {
-    color: var(--red-2);
-    font-size: 12px;
-    margin-top: 5px;
+    margin: 7px 0 5px;
+    font-size: 16px;
+    line-height: 90%;
+    color: var(--red-3);
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    svg {
+      margin-right: 8px;
+      font-size: 22px;
+    }
   }
 
-  &[type='date'] {
-    padding: 0 0 0 9px;
+  &__label {
+    position: absolute;
+    display: inline-block;
+    font-size: 17px;
+    line-height: 18px;
+    top: 50%;
+    left: 13px;
+    font-weight: 300;
+    transform: translateY(-50%);
+    transition: top 0.1s linear, font-size 0.1s linear;
 
-    &::-webkit-calendar-picker-indicator {
-      color: rgb(0 0 0 / 0%);
-      opacity: 1;
-      display: block;
-      background: #5b6770
-        url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAFrSURBVFhH7ZTdSwJBFMX7Q3sJgoIiFvoCQ6Ig36QeRAglsrAPk0IieumhfyGQZFmS8hMlCypLlmTiXnbggndjLov00Bw4DGdn5/BjLzsTO+mMmpxx/swWwAKIAe7KFdVqd9TU/NLI3lOtoVzvYeT5bzYCmF5YValMTu3u55XWUbGEWRuyFmR4H85xfdRGAOWKG1TLdO96bB+1EcDXYBBUysX1URsBxBNJtZVMiQ3nuD5qI4DZxTXlxDbEnluOs33UYx2B7/tsH7URQBRxfdSRAE7PL3H/rHSFWc+8+ljDDKI9nCMB7OULuJ87LmJeWU9gdr0qZhDt4RwJAGbcfe7hCnp7/8BMxfVRiwC+h0O8XOrNNubeyytmWMPE9VGLAPTN5sQ2MWcPTjDDKMJEeziLAOrNFv7f2+ks5uubW8ywhonrozYC6Pc/gzqZ4BzXR20EAJ9YehnB+4eFC7aP2ghgnLYAFsAC/HcAR/0A7GWIzbcQyR8AAAAASUVORK5CYII=')
-        no-repeat;
-      width: 28px;
-      height: 24px;
-      border-width: thin;
-      cursor: pointer;
+    &--top {
+      top: 0;
+      font-size: 14px;
+
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        background-color: var(--white);
+        width: 100%;
+        height: 4px;
+        margin-top: 0;
+        top: 7px;
+        z-index: -1;
+      }
     }
+  }
+
+  &__container {
+    position: relative;
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
+    background-color: var(--white);
+    flex-wrap: wrap;
+    border-radius: 4px;
+  }
+
+  &__icons {
+    position: absolute;
+    right: 12px;
+    display: flex;
+    align-items: center;
   }
 }

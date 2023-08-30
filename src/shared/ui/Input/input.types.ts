@@ -1,4 +1,4 @@
-import type { InputHTMLAttributes } from 'react'
+import type { InputHTMLAttributes, ReactNode } from 'react'
 import type { LabelProps } from 'shared/ui/Label'
 
 export type InputOptionType<LabelType> = {
@@ -27,8 +27,9 @@ interface InputPropsType extends InputHTMLAttributes<HTMLInputElement> {
   containerClassName?: string
   className?: string
   disabled?: boolean
-  valueFullType?: ValueFullType<string >
+  valueFullType?: ValueFullType<string>
   uiType?: InputUiType
+  icons?: ReactNode
 }
 
 export type InputWithLabelProps = InputPropsType & LabelProps

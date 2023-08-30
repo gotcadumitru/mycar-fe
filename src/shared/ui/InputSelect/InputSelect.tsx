@@ -27,7 +27,6 @@ const InputSelect: FC<InputSelectWithLabel> = ({
   const containerClassNames = classNames(containerClassName, {
     'input--disabled': disabled,
   })
-  console.log(valueFullType)
   const inputClassName = classNames('input-select', className, {
     'input-select--error': !!errorMessageLocal,
     'input--select-grey': valueLocal === '',

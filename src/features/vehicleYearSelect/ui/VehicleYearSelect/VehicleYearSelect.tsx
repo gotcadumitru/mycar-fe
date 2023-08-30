@@ -4,7 +4,7 @@ import { vehicleYearOptions } from '../../consts/vehicleYearConsts'
 
 type VehicleYearSelectProps = Omit<InputSelectWithLabel, 'options'>
 
-const VehicleYearSelect: FC<VehicleYearSelectProps> = ({ ...props }) => {
-  return <InputSelect options={vehicleYearOptions} {...props} />
-}
+const VehicleYearSelect: FC<VehicleYearSelectProps> = ({ ...props }) => (
+  <InputSelect options={vehicleYearOptions} {...props} />
+)
 export default memo(VehicleYearSelect)
