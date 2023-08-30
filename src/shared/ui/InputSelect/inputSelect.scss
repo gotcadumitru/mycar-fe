@@ -34,7 +34,7 @@
     }
   }
 
-  &__skeleton{
+  &__skeleton {
     height: 48px;
     border: 2px solid var(--input-border);
     border-radius: 4px;
@@ -42,7 +42,11 @@
   }
 
   &--error {
-    border: solid 1px var(--red-2);
     border-radius: 5px;
+
+    .input-select__control {
+      border: solid 2px var(--red-3);
+      box-shadow: 0 0 0 1px var(--red-3);
+    }
   }
 }

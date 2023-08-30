@@ -101,7 +101,7 @@ const EditCarForm: FC<EditCarFormProps> = ({ formId, onSubmit }) => {
           onChange={onInputChange}
           label='Anul de fabricatie'
         />
-        <TextArea
+        <Input
           valueFullType={formFields.registrationNumber}
           name='registrationNumber'
           onChange={onInputChange}
@@ -187,7 +187,7 @@ const EditCarForm: FC<EditCarFormProps> = ({ formId, onSubmit }) => {
           valueFullType={formFields.winterTyreSize}
           name='winterTyreSize'
           onChange={onInputChange}
-          label='Marimea anvelopelor de iarn'
+          label='Marimea anvelopelor de iarna'
         />
         <Input
           valueFullType={formFields.dotWinterTyre}
