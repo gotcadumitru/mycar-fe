@@ -7,7 +7,7 @@ const BlackCar = lazyWithPreload(() => import('shared/assets/lottie/BlackCar/Bla
 const AuthPage: FC<PropsWithChildren> = ({ children }) => (
   <div className='auth-page'>
     <div className='auth-page__image-container'>
-      <Suspense fallback='Loading'>
+      <Suspense>
         <BlackCar />
       </Suspense>
       {/*<CarMasterSVG className='auth-page__image' />*/}
