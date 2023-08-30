@@ -8,7 +8,7 @@ export const fetchAllVignetteCountriesThunk = createAsyncThunk<
   VignetteCountriesType[],
   void,
   ThunkConfig<string>
->(VignetteActions.FETCH_ALL_VIGNETTE_COUNTRIES, async (_, thunkApi) => {
+>(VignetteActions.FETCH_ALL_VIGNETTE_COUNTRIES, async () => {
   // const r = await kv.json.set('vignetteCountries', '$', JSON.stringify(response.data))
   const response: VignetteCountriesType[] = await kv.json.get('vignetteCountries')
   return response

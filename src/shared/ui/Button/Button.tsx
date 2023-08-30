@@ -15,6 +15,7 @@ const Button: FC<ButtonConditionalPropsType> = ({
   size = ButtonSize.NORMAL_SIZE,
   theme,
   children,
+  icon,
   displayType = ButtonDisplayType.DEFAULT,
   ...props
 }) => {
@@ -36,7 +37,8 @@ const Button: FC<ButtonConditionalPropsType> = ({
   if (props.category === ButtonCategoryType.LINK) {
     return (
       <Link className={buttonClassName} {...props}>
-        {children}
+        {icon}
+        <span>{children}</span>
       </Link>
     )
   }
@@ -44,7 +46,8 @@ const Button: FC<ButtonConditionalPropsType> = ({
   if (props.category === ButtonCategoryType.EXTERNAL_LINK) {
     return (
       <a className={buttonClassName} {...props}>
-        {children}
+        {icon}
+        <span>{children}</span>
       </a>
     )
   }
@@ -52,7 +55,8 @@ const Button: FC<ButtonConditionalPropsType> = ({
   return (
     // eslint-disable-next-line react/button-has-type
     <button className={buttonClassName} {...props}>
-      {children}
+      {icon}
+      <span>{children}</span>
     </button>
   )
 }

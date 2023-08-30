@@ -1,5 +1,7 @@
 import Layout from 'app/layout/Layout/Layout'
+import { SignIn } from 'features/auth'
 import NewCarPage from 'pages/AddCarPage'
+import AuthPage from 'pages/AuthPage'
 import { NotFoundPage } from 'pages/NotFoundPage'
 import PanelPage from 'pages/PanelPage'
 import { Navigate, RouteProps } from 'react-router-dom'
@@ -25,21 +27,29 @@ export const routeConfig: Partial<Record<AppRoutes, RouteProps>> = {
     ),
   },
   [AppRoutes.NEW_CAR]: {
-    path: `${RoutePaths.new_car}/*`,
+    path: RoutePaths.new_car,
     element: (
       <>
-        <Header isWithGoBackIcon title="Vehicul nou" />
+        <Header isWithGoBackIcon title='Vehicul nou' />
         <Layout>
           <NewCarPage />
         </Layout>
       </>
     ),
   },
+  [AppRoutes.SIGN_IN]: {
+    path: `${RoutePaths.sign_in}`,
+    element: (
+      <AuthPage>
+        <SignIn />
+      </AuthPage>
+    ),
+  },
   [AppRoutes.NOT_FOUND]: {
     path: RoutePaths.not_found,
     element: (
       <>
-        <Header isWithGoBackIcon/>
+        <Header isWithGoBackIcon />
         <Layout>
           <NotFoundPage />
         </Layout>

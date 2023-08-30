@@ -1,0 +1,25 @@
+.auth-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100lvh;
+  background-color: var(--red-1);
+
+  &__image-container {
+    display: flex;
+    flex: 1 1 auto;
+  }
+
+  &__image {
+    display: block;
+    margin: auto;
+    width: 85px;
+    padding: 20px 0;
+  }
+
+  &__form {
+    padding: 20px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    background-color: var(--white);
+  }
+}

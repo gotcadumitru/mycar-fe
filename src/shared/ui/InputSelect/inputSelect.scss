@@ -1,17 +1,19 @@
 .input-select {
   .input-select {
-
     &__control {
-      min-height: 30px;
-      background-color: var(--grey-3);
-      border: solid 1px var(--grey-6);
-
+      line-height: 20px;
+      height: 48px;
+      background: var(--white);
+      border-radius: 4px !important;
+      border: 2px solid var(--input-border);
+      padding-left: 12px;
 
       &--is-focused {
-        box-shadow: none !important;
-        border: solid 1px var(--grey-6) !important;
-        outline: 1px solid var(--grey-9) !important;
-        caret-color: var(--grey-8) !important;;
+        caret-color: var(--black) !important;
+        border: 2px solid var(--blue-1);
+        outline: none;
+        margin: 0;
+        box-shadow: 0 0 0 1px var(--blue-1);
       }
     }
 
@@ -20,15 +22,14 @@
     }
 
     &__single-value {
-      font-size: 14px;
-      color: var(--grey-8);
-      margin-left: 4px;
+      font-size: 18px;
+      line-height: 20px;
+      margin-left: 0;
     }
 
     &__value-container {
       padding: 0;
     }
-
   }
 
   &--error {

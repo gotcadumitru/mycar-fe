@@ -12,7 +12,7 @@
   }
 
   &__title {
-    color: var(--turquoise-blue);
+    color: var(--blue-1);
     font-weight: 500;
     font-size: 20px;
     margin: 5px 0;
@@ -26,7 +26,7 @@
 
   &__collapse-icon {
     font-size: 30px;
-    fill: var(--turquoise-blue);
+    fill: var(--blue-1);
     cursor: pointer;
     transition: all 0.2s ease-out;
 

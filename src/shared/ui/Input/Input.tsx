@@ -1,6 +1,7 @@
 import classNames from 'classnames'
-import { forwardRef, useId } from 'react'
-import Label from 'shared/ui/Label'
+import { FocusEvent, forwardRef, useId, useState } from 'react'
+import InfoIcon from 'shared/assets/icons/InfoIcon'
+import Popup from 'shared/ui/Popup'
 import './input.scss'
 import { InputUiType, InputWithLabelProps } from './input.types'
 
@@ -14,33 +15,66 @@ const Input = forwardRef<HTMLInputElement, InputWithLabelProps>(
       className = '',
       disabled,
       value,
+      onFocus,
+      onBlur,
       infoText,
       uiType = InputUiType.SIMPLE,
+      icons,
       ...props
     },
     ref,
   ) => {
     const inputId = useId()
+    const [isInputFocused, setIsInputFocused] = useState(false)
     const errorMessageLocal = valueFullType?.errorMessage ?? errorMessage
     const valueLocal = valueFullType?.value ?? value
+    const containerClassNames = classNames('input__field-group', containerClassName, {
+      'input--disabled': disabled,
+    })
+
     const inputClassName = classNames('input', className, {
       'input--error': errorMessageLocal,
-      'input--simple': uiType === InputUiType.SIMPLE,
-      'input--no-border': uiType === InputUiType.NO_BORDER,
-      'input--no-border-small': uiType === InputUiType.SMALL_NO_BORDER,
     })
+    const inputLabelClassName = classNames('input__label', {
+      'input__label--top': valueLocal?.toString().length || isInputFocused,
+    })
+    const onInputFocus = (e: FocusEvent<HTMLInputElement>) => {
+      setIsInputFocused(true)
+      onFocus?.(e)
+    }
+    const onInputBlur = (e: FocusEvent<HTMLInputElement>) => {
+      setIsInputFocused(false)
+      onBlur?.(e)
+    }
     return (
-      <div className={`${containerClassName}${disabled ? ' input--disabled' : ''}`}>
-        {label && <Label label={label} infoText={infoText} inputId={inputId} />}
-        <input
-          ref={ref}
-          type='text'
-          id={inputId}
-          value={valueLocal}
-          className={inputClassName}
-          disabled={disabled}
-          {...props}
-        />
+      <div className={containerClassNames}>
+        <span className='input__container'>
+          <input
+            ref={ref}
+            type='text'
+            id={inputId}
+            value={valueLocal}
+            className={inputClassName}
+            disabled={disabled}
+            onFocus={onInputFocus}
+            onBlur={onInputBlur}
+            {...props}
+          />
+          <label htmlFor={inputId} className={inputLabelClassName}>
+            {label}{' '}
+          </label>
+          {(!!infoText || !!icons) && (
+            <div className='input__icons'>
+              {!!infoText && (
+                <Popup
+                  referenceElement={<InfoIcon className='input__info-icon' />}
+                  popupElement={<div className='input__info-text'>{infoText}</div>}
+                />
+              )}
+              {icons}
+            </div>
+          )}
+        </span>
         {errorMessageLocal && <div className='input__error-message'>{errorMessageLocal} </div>}
       </div>
     )

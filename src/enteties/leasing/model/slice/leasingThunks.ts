@@ -8,7 +8,7 @@ export const fetchAllLeasingCompaniesThunk = createAsyncThunk<
   LeasingCompaniesType[],
   void,
   ThunkConfig<string>
->(LeasingActions.FETCH_ALL_LEASING_COMPANIES, async (_, thunkApi) => {
+>(LeasingActions.FETCH_ALL_LEASING_COMPANIES, async () => {
   // const r = await kv.json.set("leasingCompanies", "$", JSON.stringify(response.data))
   const response: LeasingCompaniesType[] = await kv.json.get('leasingCompanies')
   return response

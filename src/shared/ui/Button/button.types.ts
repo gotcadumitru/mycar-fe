@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, DetailedHTMLProps, HTMLProps } from 'react'
+import { ButtonHTMLAttributes, DetailedHTMLProps, HTMLProps, ReactNode } from 'react'
 import { LinkProps } from 'react-router-dom'
 
 export enum ButtonCategoryType {
@@ -27,6 +27,8 @@ export enum ButtonSize {
 export type ButtonConditionalPropsType = {
   theme?: ButtonTheme
   size?: ButtonSize
+  icon?: ReactNode
+
   displayType?: ButtonDisplayType
 } & (
   | ({

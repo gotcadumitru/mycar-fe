@@ -15,7 +15,7 @@
     font-size: 15px;
 
     &--active {
-      color: var(--aqua);
+      color: var(--red-1);
     }
 
     &--notification {
@@ -47,11 +47,11 @@
     }
 
     &--active.footer__icon--stroke {
-      stroke: var(--aqua);
+      stroke: var(--red-1);
     }
 
     &--active.footer__icon--fill {
-      fill: var(--aqua);
+      fill: var(--red-1);
     }
   }
 }

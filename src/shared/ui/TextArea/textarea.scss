@@ -1,32 +1,8 @@
 .textarea {
   white-space: pre-wrap;
-  background-color: var(--grey-3);
-  resize: none;
   overflow: auto;
-  min-height: 30px;
+  padding-top: 12px;
+  resize: none;
+  min-height: 48px;
   max-height: 200px;
-  border-radius: 5px;
-  border: solid 1px var(--grey-6);
-  font-size: 14px;
-  color: var(--grey-8);
-  width: 100%;
-  padding-top: 6px;
-
-  &:focus,
-  &:focus-visible {
-    outline: 1px solid var(--grey-9);
-  }
-
-  &::placeholder {
-    color: var(--input-text-colour);
-  }
-
-  &--error {
-    border: solid 1px var(--red-2);
-
-    &:focus {
-      border: solid 1px var(--grey-6);
-      outline: 1px solid var(--grey-9);
-    }
-  }
 }

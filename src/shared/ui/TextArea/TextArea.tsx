@@ -1,6 +1,7 @@
 import classNames from 'classnames'
-import { FC, useEffect, useId, useRef } from 'react'
-import Label from 'shared/ui/Label'
+import React, { FC, FocusEvent, useEffect, useId, useRef, useState } from 'react'
+import InfoIcon from 'shared/assets/icons/InfoIcon'
+import Popup from 'shared/ui/Popup'
 import './textarea.scss'
 import type { TextAreaWithLabelProps } from './textarea.types'
 
@@ -11,12 +12,16 @@ const TextArea: FC<TextAreaWithLabelProps> = ({
   label,
   value,
   errorMessage,
+  onFocus,
+  onBlur,
   className = '',
   infoText,
   ...props
 }) => {
   const inputRef = useRef<HTMLTextAreaElement>(null)
   const inputId = useId()
+  const [isInputFocused, setIsInputFocused] = useState(false)
+
   const errorMessageLocal = valueFullType?.errorMessage ?? errorMessage
   const valueLocal = valueFullType?.value ?? value
 
@@ -26,6 +31,10 @@ const TextArea: FC<TextAreaWithLabelProps> = ({
 
   const textAreaClassName = classNames('input', 'textarea', className, {
     'textarea--error': errorMessageLocal,
+  })
+
+  const inputLabelClassName = classNames('input__label', {
+    'input__label--top': valueLocal?.toString().length || isInputFocused,
   })
 
   useEffect(() => {
@@ -40,17 +49,37 @@ const TextArea: FC<TextAreaWithLabelProps> = ({
     }
   }, [valueLocal])
 
+  const onInputFocus = (e: FocusEvent<HTMLTextAreaElement>) => {
+    setIsInputFocused(true)
+    onFocus?.(e)
+  }
+  const onInputBlur = (e: FocusEvent<HTMLTextAreaElement>) => {
+    setIsInputFocused(false)
+    onBlur?.(e)
+  }
   return (
     <div className={containerClassNames}>
-      {label && <Label label={label} infoText={infoText} inputId={inputId} />}
-      <textarea
-        id={inputId}
-        className={textAreaClassName}
-        ref={inputRef}
-        value={valueLocal}
-        disabled={disabled}
-        {...props}
-      />
+      <span className='input__container'>
+        <textarea
+          id={inputId}
+          className={textAreaClassName}
+          ref={inputRef}
+          value={valueLocal}
+          disabled={disabled}
+          onFocus={onInputFocus}
+          onBlur={onInputBlur}
+          {...props}
+        />
+        <label htmlFor={inputId} className={inputLabelClassName}>
+          {label}{' '}
+          {infoText && (
+            <Popup
+              referenceElement={<InfoIcon className='input__info-icon' />}
+              popupElement={<div className='input__info-text'>{infoText}</div>}
+            />
+          )}
+        </label>
+      </span>
       {errorMessageLocal && <div className='input__error-message'>{errorMessageLocal} </div>}
     </div>
   )

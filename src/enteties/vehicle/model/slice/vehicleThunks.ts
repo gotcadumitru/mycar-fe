@@ -6,7 +6,7 @@ import type { VehicleType } from '../types/vehicleTypes'
 
 export const fetchAllVehicleTypesThunk = createAsyncThunk<VehicleType[], void, ThunkConfig<string>>(
   VehicleActions.FETCH_ALL_VEHICLE_TYPES,
-  async (_, thunkApi) => {
+  async () => {
     // const r = await kv.json.set('vehicleTypes', '$', JSON.stringify(response.data))
     const response: VehicleType[] = await kv.json.get('vehicleTypes')
     return response

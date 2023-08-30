@@ -8,7 +8,7 @@ const Checkbox: FC<CheckboxPropsType> = ({
   errorMessage,
   value,
   valueFullType,
-  isGrey,
+  isBig,
   className = '',
   disabled,
   checked,
@@ -16,14 +16,13 @@ const Checkbox: FC<CheckboxPropsType> = ({
 }) => {
   const checkboxId = useId()
 
-  // const errorMessageLocal = valueFullType?.errorMessage ?? errorMessage
   const valueLocal = valueFullType?.value ?? value
   const checkboxLabelClassName = classNames('checkbox', className, {
-    'checkbox--grey': isGrey,
+    'checkbox--big': isBig,
     'checkbox--disabled': disabled,
   })
   const checkboxTextClassName = classNames('checkbox__checkmark', {
-    'checkbox--grey__checkmark': isGrey,
+    'checkbox--big__checkmark': isBig,
   })
   return (
     <label htmlFor={checkboxId} className={checkboxLabelClassName}>
