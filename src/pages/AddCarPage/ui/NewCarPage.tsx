@@ -1,8 +1,8 @@
 import EditCarForm, { editCarActions } from 'features/car/car-edit-form'
-import { checkIfExistErrorsOnEditCar } from 'features/car/car-edit-form/lib/utils/edit-car.utils'
 import { useId } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
+import { checkIfExistErrors } from 'shared/lib/utils/checkIfExistErrors'
 import Button, { ButtonCategoryType, ButtonTheme } from 'shared/ui/Button'
 import './newCarPage.scss'
 
@@ -12,7 +12,7 @@ const NewCarPage = () => {
   const dispatch = useAppDispatch()
   const formId = useId()
   const onSubmit = () => {
-    const { formFieldsWithErrors, isErrors } = checkIfExistErrorsOnEditCar(formFields)
+    const { formFieldsWithErrors, isErrors } = checkIfExistErrors(formFields)
     if (isErrors) return dispatch(editCarActions.changeCarDataAC(formFieldsWithErrors))
   }
   return (

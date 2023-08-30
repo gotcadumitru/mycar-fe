@@ -1,3 +1,5 @@
+import { FormDataField } from 'shared/lib/utils/checkIfExistErrors'
+
 export type EditCarSliceState = {
   formFields: CarFormDataFullType
 }
@@ -30,10 +32,7 @@ export type CarFormDataType = {
   usagePercentMix: string
   usagePercentExtraUrb: string
 }
+
 export type CarFormDataFullType = {
-  [K in keyof CarFormDataType]: {
-    value: CarFormDataType[K]
-    errorMessage: string
-    isRequired: boolean
-  }
+  [K in keyof CarFormDataType]: FormDataField<CarFormDataType[K]>
 }

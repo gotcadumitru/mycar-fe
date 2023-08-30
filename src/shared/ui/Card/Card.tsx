@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import type { FC, FunctionComponent, ReactNode, SVGAttributes } from 'react'
+import type { FC, FunctionComponent, SVGAttributes } from 'react'
 import Button, { ButtonCategoryType, ButtonTheme } from 'shared/ui/Button'
 import { CardColor, CardType } from 'shared/ui/Card/card.types'
 import { CardContainer } from 'shared/ui/Card/CardContainer'

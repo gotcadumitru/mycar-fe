@@ -1,5 +1,6 @@
 import type { DetailedHTMLProps, FocusEvent, InputHTMLAttributes } from 'react'
-import type { InputOptionType, OnChangeMinType, ValueFullType } from 'shared/ui/Input'
+import type { FormDataField } from 'shared/lib/utils/checkIfExistErrors'
+import type { InputOptionType, OnChangeMinType } from 'shared/ui/Input'
 import type { LabelProps } from 'shared/ui/Label'
 
 interface InputSelectPropsType
@@ -13,7 +14,7 @@ interface InputSelectPropsType
   disabled?: boolean
   isLoading?: boolean
   options: InputOptionType<number | string>[]
-  valueFullType?: ValueFullType<string | number | null>
+  valueFullType?: FormDataField<string | number | null>
   isFirstOptionDisabled?: boolean
   onChange: (e: OnChangeMinType) => void
   onBlur?: (e: FocusEvent<HTMLInputElement>) => void

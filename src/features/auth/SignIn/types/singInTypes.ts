@@ -1,3 +1,5 @@
+import type { FormDataField } from 'shared/lib/utils/checkIfExistErrors'
+
 export type SignInFormType = {
   firstName: string
   lastName: string
@@ -6,9 +8,5 @@ export type SignInFormType = {
   confirmPassword: string
 }
 export type SignInFormFullType = {
-  [K in keyof SignInFormType]: {
-    value: SignInFormType[K]
-    errorMessage: string
-    isRequired: boolean
-  }
+  [K in keyof SignInFormType]: FormDataField<SignInFormType[K]>
 }

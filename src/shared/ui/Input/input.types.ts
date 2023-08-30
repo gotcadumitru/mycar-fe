@@ -1,4 +1,5 @@
 import type { InputHTMLAttributes, ReactNode } from 'react'
+import type { FormDataField } from 'shared/lib/utils/checkIfExistErrors'
 import type { LabelProps } from 'shared/ui/Label'
 
 export type InputOptionType<LabelType> = {
@@ -16,25 +17,13 @@ export type OnChangeMinType<T = number | string | null> = {
   }
 }
 
-export type ValueFullType<T> = {
-  value: T
-  errorMessage: string
-  isRequired: boolean
-}
-
 interface InputPropsType extends InputHTMLAttributes<HTMLInputElement> {
   errorMessage?: string
   containerClassName?: string
   className?: string
   disabled?: boolean
-  valueFullType?: ValueFullType<string>
-  uiType?: InputUiType
+  valueFullType?: FormDataField<string>
   icons?: ReactNode
 }
 
 export type InputWithLabelProps = InputPropsType & LabelProps
-export enum InputUiType {
-  SIMPLE = 'SIMPLE',
-  NO_BORDER = 'NO_BORDER',
-  SMALL_NO_BORDER = 'SMALL_NO_BORDER',
-}
