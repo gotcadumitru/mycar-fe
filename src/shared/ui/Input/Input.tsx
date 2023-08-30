@@ -29,6 +29,7 @@ const Input = forwardRef<HTMLInputElement, InputWithLabelProps>(
     const valueLocal = valueFullType?.value ?? value
     const containerClassNames = classNames('input__field-group', containerClassName, {
       'input--disabled': disabled,
+      'input__field-group--error': errorMessageLocal,
     })
 
     const inputClassName = classNames('input', className, {

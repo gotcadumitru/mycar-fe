@@ -1,18 +1,15 @@
 export const TOAST_MESSAGE = {
-  NOT_IMPLEMENTED: 'Not implemented yet',
+  NOT_IMPLEMENTED: 'Funcționalitatea nu a fost implementată încă',
   PLEASE_REVIEW_FIELDS:
-    'Please review the fields with errors and ensure that all required information is entered correctly.',
-  GREATER_THAN_ZERO: 'The selected value must be greater than 0',
-  NAME_UP_TO: 'The name can be up to 70 characters long, the current number of characters is',
-  DESCRIPTION_UP_TO:
-    'The description can be up to 300 characters long, the current number of characters is',
-  ACCESS_DENIED_EDIT: 'Access denied: Unable to edit car.',
+    'Vă rugăm să verificați câmpurile cu erori și asigurați-vă că toate informațiile obligatorii sunt introduse corect.',
+  GREATER_THAN_ZERO: 'Valoarea selectată trebuie să fie mai mare decât 0',
+  ACCESS_DENIED_EDIT: 'Acces interzis: Imposibil de editat mașina.',
   CHECK_INTERNET:
-    'Please ensure that you have a stable internet connection or verify if the car exists.',
+    'Vă rugăm să vă asigurați că aveți o conexiune la internet stabilă sau verificați dacă mașina există.',
   INCORRECT_URL:
-    'Oops! The URL you accessed may be incorrect. Please double-check it and try again',
-  COULD_NOT_COPY: 'Could not copy the text, please try to copy it manually',
-  COPIED_SUCCESSFULLY: 'Text was successfully copied',
-  PAGE_NOT_FOUND: 'Page not found',
-  PAGE_NO_ACCESS: 'Sorry, you do not have access to view this page.',
+    'Oops! Adresa URL la care ați accesat s-ar putea să fie incorectă. Vă rugăm să o verificați și să încercați din nou.',
+  COULD_NOT_COPY: 'Nu s-a putut copia textul, vă rugăm să încercați să-l copiați manual',
+  COPIED_SUCCESSFULLY: 'Textul a fost copiat cu succes',
+  PAGE_NOT_FOUND: 'Pagina nu a fost găsită',
+  PAGE_NO_ACCESS: 'Ne pare rău, nu aveți acces pentru a vizualiza această pagină.',
 }

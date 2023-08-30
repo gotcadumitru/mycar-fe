@@ -27,6 +27,7 @@ const TextArea: FC<TextAreaWithLabelProps> = ({
 
   const containerClassNames = classNames('input__field-group', containerClassName, {
     'input--disabled': disabled,
+    'input__field-group--error': errorMessageLocal,
   })
 
   const textAreaClassName = classNames('input', 'textarea', className, {

@@ -11,12 +11,12 @@ import Form from 'shared/ui/Form'
 import Input, { OnChangeMinType } from 'shared/ui/Input'
 import { authActions } from '../../lib/slice/authSlice'
 
-interface SignInProps {
+interface SignUpProps {
   className?: string
 }
 
-export const SignIn: FC<SignInProps> = ({ className }) => {
-  const formFields = useAppSelector((state) => state.auth.signInForm)
+export const SignUp: FC<SignUpProps> = ({ className }) => {
+  const formFields = useAppSelector((state) => state.auth.signUpForm)
   const dispatch = useAppDispatch()
   const formId = useId()
 
@@ -27,7 +27,7 @@ export const SignIn: FC<SignInProps> = ({ className }) => {
     const name = event.target.name as keyof typeof formFields
 
     dispatch(
-      authActions.changeSignInFormAC({
+      authActions.changeSignUpFormAC({
         ...formFields,
         [name]: {
           ...formFields[name],
@@ -39,11 +39,23 @@ export const SignIn: FC<SignInProps> = ({ className }) => {
   }
   const onSubmit = () => {
     const { formFieldsWithErrors, isErrors } = checkIfExistErrors(formFields)
-    if (isErrors) return dispatch(authActions.changeSignInFormAC(formFieldsWithErrors))
+    if (isErrors) return dispatch(authActions.changeSignUpFormAC(formFieldsWithErrors))
   }
 
   return (
     <Form id={formId} onSubmit={onSubmit} className={className}>
+      <Input
+        valueFullType={formFields.firstName}
+        name='firstName'
+        onChange={onInputChange}
+        label='Numele'
+      />
+      <Input
+        valueFullType={formFields.lastName}
+        name='lastName'
+        onChange={onInputChange}
+        label='Prenumele'
+      />
       <Input
         valueFullType={formFields.email}
         name='email'
@@ -56,17 +68,25 @@ export const SignIn: FC<SignInProps> = ({ className }) => {
         valueFullType={formFields.password}
         name='password'
         type='password'
-        autoComplete='current-password'
+        autoComplete='new-password'
         onChange={onInputChange}
-        label='Parola'
+        label='Gandeste-te la o parola sigura'
       />
-      <Button type='submit'>Autentificare</Button>
+      <Input
+        valueFullType={formFields.confirmPassword}
+        name='confirmPassword'
+        type='password'
+        autoComplete='new-password'
+        onChange={onInputChange}
+        label='Confirma parola'
+      />
+      <Button type='submit'>Inregistrare</Button>
       <Button
         category={ButtonCategoryType.LINK}
         theme={ButtonTheme.OUTLINE_RED}
-        to={RoutePaths.sign_up}
+        to={RoutePaths.sign_in}
       >
-        Creare Cont
+        Autentificare
       </Button>
       <Button
         theme={ButtonTheme.OUTLINE_BLUE}
