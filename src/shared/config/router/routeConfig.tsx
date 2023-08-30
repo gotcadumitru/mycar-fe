@@ -1,5 +1,6 @@
 import Layout from 'app/layout/Layout/Layout'
 import { SignIn } from 'features/auth'
+import { SignUp } from 'features/auth/SignUp/ui/SignUp'
 import NewCarPage from 'pages/AddCarPage'
 import AuthPage from 'pages/AuthPage'
 import { NotFoundPage } from 'pages/NotFoundPage'
@@ -42,6 +43,14 @@ export const routeConfig: Partial<Record<AppRoutes, RouteProps>> = {
     element: (
       <AuthPage>
         <SignIn />
+      </AuthPage>
+    ),
+  },
+  [AppRoutes.SIGN_UP]: {
+    path: `${RoutePaths.sign_up}`,
+    element: (
+      <AuthPage>
+        <SignUp />
       </AuthPage>
     ),
   },

@@ -18,7 +18,9 @@ export enum ValidationRules {
   MIN_VALUE = 'MIN_VALUE',
 }
 
-export type Validations =
+export type Validations = {
+  messageToDisplay?: string
+} & (
   | {
       rule: ValidationRules.REQUIRED
     }
@@ -34,6 +36,7 @@ export type Validations =
       rule: ValidationRules.MIN_VALUE
       value: number
     }
+)
 export const checkIfExistErrors = <T extends FormFieldFullData<number | null | string | boolean>>(
   formFields: T,
 ) => {
@@ -42,11 +45,20 @@ export const checkIfExistErrors = <T extends FormFieldFullData<number | null | s
 
   Object.keys(formFieldsWithErrors).forEach((key) => {
     const property = formFieldsWithErrors[key as keyof typeof formFieldsWithErrors]
-    const isRequired = property.validations.some(({ rule }) => rule === ValidationRules.REQUIRED)
-    if (isRequired && !property.value) {
-      isErrors = true
-      property.errorMessage = ERROR_MESSAGES.REQUIRED_FIELD
-    }
+
+    property.validations.forEach((validationRule) => {
+      if (validationRule.rule === ValidationRules.REQUIRED && !property.value) {
+        isErrors = true
+        property.errorMessage = validationRule.messageToDisplay || ERROR_MESSAGES.REQUIRED_FIELD
+      }
+      if (
+        validationRule.rule === ValidationRules.EQUAL_TO_FIELD &&
+        formFieldsWithErrors[validationRule.value].value !== property.value
+      ) {
+        isErrors = true
+        property.errorMessage = validationRule.messageToDisplay || ERROR_MESSAGES.DIFFERENT_VALUES
+      }
+    })
   })
 
   if (isErrors) {

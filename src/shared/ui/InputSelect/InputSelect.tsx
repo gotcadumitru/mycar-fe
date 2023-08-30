@@ -30,6 +30,7 @@ const InputSelect: FC<InputSelectWithLabel> = ({
   const selectedOption = options.find((option) => option.value === valueLocal) || null
   const containerClassNames = classNames('input__field-group', containerClassName, {
     'input--disabled': disabled,
+    'input__field-group--error': errorMessageLocal,
   })
 
   const inputClassName = classNames('input-select', className, {
