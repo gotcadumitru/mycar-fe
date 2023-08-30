@@ -5,33 +5,26 @@ import './button.scss'
 import {
   ButtonCategoryType,
   ButtonConditionalPropsType,
-  ButtonDisplayType,
-  ButtonSize,
+  ButtonMargin,
   ButtonTheme,
 } from './button.types'
 
 const Button: FC<ButtonConditionalPropsType> = ({
   className,
-  size = ButtonSize.NORMAL_SIZE,
+  margin = ButtonMargin.BOTTOM,
   theme,
   children,
   icon,
-  displayType = ButtonDisplayType.DEFAULT,
   ...props
 }) => {
   const buttonClassName = classNames('button', className, {
-    'button--blue': ButtonTheme.BLUE === theme,
-    'button--green': ButtonTheme.GREEN === theme,
-    'button--grey': ButtonTheme.GREY === theme,
-    'button--red': ButtonTheme.RED === theme,
-    'button--disabled': ButtonTheme.DISABLED === theme,
-    'button--empty': ButtonTheme.EMPTY === theme,
-    'button--normal-size': ButtonSize.NORMAL_SIZE === size,
-    'button--input-size': ButtonSize.INPUT_SIZE === size,
+    'button--no-margin': margin === ButtonMargin.NO_MARGIN,
+    'button--empty': theme === ButtonTheme.EMPTY,
+    'button--outline button--outline--red': theme === ButtonTheme.OUTLINE_RED,
+    'button--outline button--outline--blue': theme === ButtonTheme.OUTLINE_BLUE,
     'button--link':
       ButtonCategoryType.LINK === props.category ||
       ButtonCategoryType.EXTERNAL_LINK === props.category,
-    'button--contents': ButtonDisplayType.CONTENTS === displayType,
   })
 
   if (props.category === ButtonCategoryType.LINK) {

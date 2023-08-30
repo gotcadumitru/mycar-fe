@@ -1,6 +1,5 @@
 import classNames from 'classnames'
-import type { FC } from 'react'
-import { IconType } from 'react-icons/lib'
+import type { FC, FunctionComponent, ReactNode, SVGAttributes } from 'react'
 import Button, { ButtonCategoryType, ButtonTheme } from 'shared/ui/Button'
 import { CardColor, CardType } from 'shared/ui/Card/card.types'
 import { CardContainer } from 'shared/ui/Card/CardContainer'
@@ -18,7 +17,7 @@ type CardTypeOneProps = {
     }
   | {
       type: CardType.WITH_ICON
-      Icon: IconType
+      Icon: FunctionComponent<SVGAttributes<SVGElement>>
       to: string
     }
 )

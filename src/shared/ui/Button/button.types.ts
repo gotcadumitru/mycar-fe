@@ -8,28 +8,18 @@ export enum ButtonCategoryType {
 }
 export enum ButtonTheme {
   EMPTY = 'EMPTY',
-  DISABLED = 'DISABLED',
-  RED = 'RED',
-  GREY = 'GREY',
-  GREEN = 'GREEN',
-  BLUE = 'BLUE',
+  OUTLINE_RED = 'OUTLINE_RED',
+  OUTLINE_BLUE = 'OUTLINE_BLUE',
 }
-
-export enum ButtonDisplayType {
-  DEFAULT = 'DEFAULT',
-  CONTENTS = 'CONTENTS',
-}
-export enum ButtonSize {
-  NORMAL_SIZE = 'NORMAL_SIZE',
-  INPUT_SIZE = 'INPUT_SIZE',
+export enum ButtonMargin {
+  BOTTOM = 'BOTTOM',
+  NO_MARGIN = 'NO_MARGIN',
 }
 
 export type ButtonConditionalPropsType = {
   theme?: ButtonTheme
-  size?: ButtonSize
+  margin?: ButtonMargin
   icon?: ReactNode
-
-  displayType?: ButtonDisplayType
 } & (
   | ({
       category?: ButtonCategoryType.BUTTON

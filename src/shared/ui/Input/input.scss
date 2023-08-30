@@ -9,10 +9,10 @@
   transition: color 0.2s ease;
   overflow: hidden;
   width: 100%;
+  caret-color: var(--black);
 
   &__field-group {
     margin-bottom: 22px;
-    margin-top: 12px;
   }
 
   &:hover {
@@ -90,6 +90,7 @@
   }
 
   &__label {
+    user-select: none;
     position: absolute;
     display: inline-block;
     font-size: 17px;
