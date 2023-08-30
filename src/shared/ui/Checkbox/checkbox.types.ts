@@ -1,5 +1,5 @@
-import { HTMLProps } from 'react'
-import { ValueFullType } from 'shared/ui/Input'
+import type { HTMLProps } from 'react'
+import type { FormDataField } from 'shared/lib/utils/checkIfExistErrors'
 
 export type CheckboxOptionType<LabelType> = {
   id: string | number
@@ -7,7 +7,7 @@ export type CheckboxOptionType<LabelType> = {
 }
 
 export interface CheckboxPropsType extends Omit<HTMLProps<HTMLInputElement>, 'value'> {
-  valueFullType?: ValueFullType<boolean>
+  valueFullType?: FormDataField<boolean>
   errorMessage?: string
   value?: boolean
   label?: string

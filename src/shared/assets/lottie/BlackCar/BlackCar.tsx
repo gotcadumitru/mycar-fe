@@ -2,33 +2,27 @@ import Lottie from 'lottie-react'
 import { FC } from 'react'
 import blackCar from './blueCar.json'
 
-interface BlackCarProps {
-  className?: string
-}
-
-const BlackCar: FC<BlackCarProps> = ({ className }) => {
-  return (
-    <div
+const BlackCar: FC = () => (
+  <div
+    style={{
+      margin: 'auto',
+      height: '100px',
+      width: '150px',
+      position: 'relative',
+    }}
+  >
+    <Lottie
+      animationData={blackCar}
+      loop
       style={{
-        margin: 'auto',
-        height: '100px',
-        width: '150px',
-        position: 'relative',
+        position: 'absolute',
+        height: '300px',
+        width: '300px',
+        top: '50%',
+        left: '50%',
+        transform: 'translateY(-50%) translateX(-50%)',
       }}
-    >
-      <Lottie
-        animationData={blackCar}
-        loop
-        style={{
-          position: 'absolute',
-          height: '300px',
-          width: '300px',
-          top: '50%',
-          left: '50%',
-          transform: 'translateY(-50%) translateX(-50%)',
-        }}
-      />
-    </div>
-  )
-}
+    />
+  </div>
+)
 export default BlackCar

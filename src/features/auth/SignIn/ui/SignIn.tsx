@@ -5,6 +5,7 @@ import FaFacebook from 'shared/assets/icons/FaFacebook.svg'
 import FcGoogle from 'shared/assets/icons/FcGoogle.svg'
 import { RoutePaths } from 'shared/config/router/RoutePaths'
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
+import { checkIfExistErrors } from 'shared/lib/utils/checkIfExistErrors'
 import Button, { ButtonCategoryType, ButtonTheme } from 'shared/ui/Button'
 import Form from 'shared/ui/Form'
 import Input, { OnChangeMinType } from 'shared/ui/Input'
@@ -36,7 +37,11 @@ export const SignIn: FC<SignInProps> = ({ className }) => {
       }),
     )
   }
-  const onSubmit = () => {}
+  const onSubmit = () => {
+    const { formFieldsWithErrors, isErrors } = checkIfExistErrors(formFields)
+    if (isErrors) return dispatch(authActions.changeSignInFormAC(formFieldsWithErrors))
+  }
+
   return (
     <Form id={formId} onSubmit={onSubmit} className={className}>
       <Input

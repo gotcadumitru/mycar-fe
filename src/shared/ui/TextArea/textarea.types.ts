@@ -1,5 +1,5 @@
-import type { ValueFullType } from 'shared/ui/Input'
 import type { DetailedHTMLProps, ReactNode, TextareaHTMLAttributes } from 'react'
+import type { FormDataField } from 'shared/lib/utils/checkIfExistErrors'
 import type { LabelProps } from 'shared/ui/Label'
 
 interface TextAreaPropsType
@@ -7,7 +7,7 @@ interface TextAreaPropsType
   errorMessage?: string
   infoText?: string | ReactNode
   className?: string
-  valueFullType?: ValueFullType<string>
+  valueFullType?: FormDataField<string>
   containerClassName?: string
 }
 

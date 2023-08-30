@@ -3,7 +3,7 @@ import { FocusEvent, forwardRef, useId, useState } from 'react'
 import InfoIcon from 'shared/assets/icons/InfoIcon'
 import Popup from 'shared/ui/Popup'
 import './input.scss'
-import { InputUiType, InputWithLabelProps } from './input.types'
+import { InputWithLabelProps } from './input.types'
 
 const Input = forwardRef<HTMLInputElement, InputWithLabelProps>(
   (
@@ -18,7 +18,6 @@ const Input = forwardRef<HTMLInputElement, InputWithLabelProps>(
       onFocus,
       onBlur,
       infoText,
-      uiType = InputUiType.SIMPLE,
       icons,
       ...props
     },

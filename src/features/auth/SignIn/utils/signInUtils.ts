@@ -1,5 +1,5 @@
-import type { SignInFormFullType } from '../types/singInTypes'
-import { SignInFormType } from '../types/singInTypes'
+import { ValidationRules } from 'shared/lib/utils/checkIfExistErrors'
+import type { SignInFormFullType, SignInFormType } from '../types/singInTypes'
 
 export const getSignInFormValues = ({
   firstName = '',
@@ -11,26 +11,26 @@ export const getSignInFormValues = ({
   firstName: {
     value: firstName,
     errorMessage: '',
-    isRequired: true,
+    validations: [{ rule: ValidationRules.REQUIRED }],
   },
   lastName: {
     value: lastName,
     errorMessage: '',
-    isRequired: true,
+    validations: [{ rule: ValidationRules.REQUIRED }],
   },
   email: {
     value: email,
     errorMessage: '',
-    isRequired: true,
+    validations: [{ rule: ValidationRules.REQUIRED }],
   },
   password: {
     value: password,
     errorMessage: '',
-    isRequired: true,
+    validations: [{ rule: ValidationRules.REQUIRED }],
   },
   confirmPassword: {
     value: confirmPassword,
     errorMessage: '',
-    isRequired: true,
+    validations: [{ rule: ValidationRules.REQUIRED }],
   },
 })

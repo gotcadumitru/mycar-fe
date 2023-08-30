@@ -5,7 +5,7 @@ import useOnClickOutside from 'shared/lib/hooks/useOnClickOutside'
 import useWindowSize from 'shared/lib/hooks/useWindowSize'
 import compareTwoStrings from 'shared/lib/utils/compareTwoStrings'
 import isScrolledIntoView from 'shared/lib/utils/isScrolledIntoView'
-import Input, { InputUiType, OnChangeMinType } from 'shared/ui/Input'
+import Input, { OnChangeMinType } from 'shared/ui/Input'
 import './autosuggest.scss'
 import type { AutosuggestPropsType } from './autosuggest.types'
 
@@ -90,7 +90,6 @@ const Autosuggestion: FC<AutosuggestPropsType> = ({
         name={name}
         label={label}
         value={inputValue}
-        uiType={InputUiType.NO_BORDER}
         onChange={onInputChangeInsideAutosuggest}
         {...props}
       />

@@ -1,4 +1,5 @@
 import type { CarFormDataFullType, CarFormDataType } from 'features/car/car-edit-form'
+import { ValidationRules } from 'shared/lib/utils/checkIfExistErrors'
 import type { Car, CarFromApi } from '../model/types/car.types'
 
 export const getCarFormValues = ({
@@ -32,132 +33,132 @@ export const getCarFormValues = ({
   type: {
     value: type,
     errorMessage: '',
-    isRequired: true,
+    validations: [{ rule: ValidationRules.REQUIRED }],
   },
   brand: {
     value: brand,
     errorMessage: '',
-    isRequired: true,
+    validations: [{ rule: ValidationRules.REQUIRED }],
   },
   model: {
     value: model,
     errorMessage: '',
-    isRequired: true,
+    validations: [{ rule: ValidationRules.REQUIRED }],
   },
   yearOfProduction: {
     value: yearOfProduction,
     errorMessage: '',
-    isRequired: true,
+    validations: [{ rule: ValidationRules.REQUIRED }],
   },
   registrationNumber: {
     value: registrationNumber,
     errorMessage: '',
-    isRequired: true,
+    validations: [{ rule: ValidationRules.REQUIRED }],
   },
   vin: {
     value: vin,
     errorMessage: '',
-    isRequired: true,
+    validations: [{ rule: ValidationRules.REQUIRED }],
   },
   power: {
     value: power,
     errorMessage: '',
-    isRequired: true,
+    validations: [{ rule: ValidationRules.REQUIRED }],
   },
   cylinderCapacity: {
     value: cylinderCapacity,
     errorMessage: '',
-    isRequired: true,
+    validations: [{ rule: ValidationRules.REQUIRED }],
   },
   numberOfSeats: {
     value: numberOfSeats,
     errorMessage: '',
-    isRequired: true,
+    validations: [{ rule: ValidationRules.REQUIRED }],
   },
   color: {
     value: color,
     errorMessage: '',
-    isRequired: true,
+    validations: [{ rule: ValidationRules.REQUIRED }],
   },
   maximumAuthorisedMass: {
     value: maximumAuthorisedMass,
     errorMessage: '',
-    isRequired: true,
+    validations: [{ rule: ValidationRules.REQUIRED }],
   },
   civSeries: {
     value: civSeries,
     errorMessage: '',
-    isRequired: true,
+    validations: [{ rule: ValidationRules.REQUIRED }],
   },
   ownedBy: {
     value: ownedBy,
     errorMessage: '',
-    isRequired: true,
+    validations: [{ rule: ValidationRules.REQUIRED }],
   },
   isLeasingVehicle: {
     value: isLeasingVehicle,
     errorMessage: '',
-    isRequired: true,
+    validations: [{ rule: ValidationRules.REQUIRED }],
   },
   leasingCompany: {
     value: leasingCompany,
     errorMessage: '',
-    isRequired: true,
+    validations: [{ rule: ValidationRules.REQUIRED }],
   },
   summerTyreSize: {
     value: summerTyreSize,
     errorMessage: '',
-    isRequired: true,
+    validations: [{ rule: ValidationRules.REQUIRED }],
   },
   dotSummerTyre: {
     value: dotSummerTyre,
     errorMessage: '',
-    isRequired: true,
+    validations: [{ rule: ValidationRules.REQUIRED }],
   },
   winterTyreSize: {
     value: winterTyreSize,
     errorMessage: '',
-    isRequired: true,
+    validations: [{ rule: ValidationRules.REQUIRED }],
   },
   dotWinterTyre: {
     value: dotWinterTyre,
     errorMessage: '',
-    isRequired: true,
+    validations: [{ rule: ValidationRules.REQUIRED }],
   },
   fuelType: {
     value: fuelType,
     errorMessage: '',
-    isRequired: true,
+    validations: [{ rule: ValidationRules.REQUIRED }],
   },
   fuelConsumptionUrb: {
     value: fuelConsumptionUrb,
     errorMessage: '',
-    isRequired: true,
+    validations: [{ rule: ValidationRules.REQUIRED }],
   },
   fuelConsumptionMix: {
     value: fuelConsumptionMix,
     errorMessage: '',
-    isRequired: true,
+    validations: [{ rule: ValidationRules.REQUIRED }],
   },
   fuelConsumptionExtraUrb: {
     value: fuelConsumptionExtraUrb,
     errorMessage: '',
-    isRequired: true,
+    validations: [{ rule: ValidationRules.REQUIRED }],
   },
   usagePercentUrb: {
     value: usagePercentUrb,
     errorMessage: '',
-    isRequired: true,
+    validations: [{ rule: ValidationRules.REQUIRED }],
   },
   usagePercentMix: {
     value: usagePercentMix,
     errorMessage: '',
-    isRequired: true,
+    validations: [{ rule: ValidationRules.REQUIRED }],
   },
   usagePercentExtraUrb: {
     value: usagePercentExtraUrb,
     errorMessage: '',
-    isRequired: true,
+    validations: [{ rule: ValidationRules.REQUIRED }],
   },
 })
 export const mapCarFromApi = (carFromApi: CarFromApi[]): Car[] => carFromApi

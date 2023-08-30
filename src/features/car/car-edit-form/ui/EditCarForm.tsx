@@ -1,5 +1,4 @@
 import { getCarFormValues } from 'enteties/car'
-import { fetchAllVignetteCountriesThunk } from 'enteties/vignette'
 import FuelTypesSelect from 'features/fuelTypesSelect'
 import LeasingCompaniesSelect from 'features/leasingCompaniesSelect'
 import OwnershipTypesSelect from 'features/ownershipTypesSelect'
@@ -8,7 +7,7 @@ import VehicleBrandSelect from 'features/vehicleBrandSelect'
 import ModelTypesSelect from 'features/vehicleModelSelect'
 import VehicleTypesSelect from 'features/vehicleTypesSelect'
 import VehicleYearSelect from 'features/vehicleYearSelect'
-import { ChangeEvent, FC, memo, useEffect } from 'react'
+import { ChangeEvent, FC, memo } from 'react'
 import { SECTION_TITLE } from 'shared/defaults/text'
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
 import Checkbox from 'shared/ui/Checkbox'
@@ -16,7 +15,6 @@ import Form from 'shared/ui/Form'
 import Input, { OnChangeMinType } from 'shared/ui/Input'
 import Label from 'shared/ui/Label'
 import { Section } from 'shared/ui/Section'
-import TextArea from 'shared/ui/TextArea'
 import { editCarActions } from '../lib/slice/editCarSlice'
 import '../styles/edit-car.scss'
 
@@ -28,10 +26,6 @@ interface EditCarFormProps {
 const EditCarForm: FC<EditCarFormProps> = ({ formId, onSubmit }) => {
   const formFields = useAppSelector((state) => state.editCar.formFields)
   const dispatch = useAppDispatch()
-
-  useEffect(() => {
-    dispatch(fetchAllVignetteCountriesThunk())
-  }, [])
   const onInputChange = (
     event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement> | OnChangeMinType,
     keysToReset: (keyof typeof formFields)[] = [],
