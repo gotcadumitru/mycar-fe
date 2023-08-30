@@ -37,7 +37,7 @@
   }
 
   &--error {
-    border-color: var(--red-3);
+    border: 2px solid var(--red-3);
     box-shadow: 0 0 0 1px var(--red-3);
 
     &:focus {
@@ -90,6 +90,7 @@
   }
 
   &__label {
+    pointer-events: none;
     user-select: none;
     position: absolute;
     display: inline-block;

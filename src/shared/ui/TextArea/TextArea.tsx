@@ -30,7 +30,7 @@ const TextArea: FC<TextAreaWithLabelProps> = ({
   })
 
   const textAreaClassName = classNames('input', 'textarea', className, {
-    'textarea--error': errorMessageLocal,
+    'input--error': errorMessageLocal,
   })
 
   const inputLabelClassName = classNames('input__label', {
