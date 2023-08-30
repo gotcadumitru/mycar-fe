@@ -1,9 +1,13 @@
 import classNames from 'classnames'
-import { FC, useId } from 'react'
-import Select from 'react-select-virtualized'
-import Label from 'shared/ui/Label'
+import { FC, FocusEvent, Suspense, useId, useState } from 'react'
+import Skeleton from 'react-loading-skeleton'
+import lazyWithPreload from 'shared/lib/utils/lazyWithPreload'
+import Input from 'shared/ui/Input'
+import { InputSelectSkeleton } from 'shared/ui/InputSelect/InputSelectSkeleton'
 import type { InputSelectWithLabel } from './input-select.types'
 import './inputSelect.scss'
+
+const Select = lazyWithPreload(() => import('react-select-virtualized'))
 
 const InputSelect: FC<InputSelectWithLabel> = ({
   label,
@@ -17,47 +21,71 @@ const InputSelect: FC<InputSelectWithLabel> = ({
   options = [],
   value = '',
   valueFullType,
-  infoText,
+  onFocus,
+  onBlur,
   onChange,
 }) => {
   const inputId = useId()
+  const [isInputFocused, setIsInputFocused] = useState(false)
   const errorMessageLocal = valueFullType?.errorMessage ?? errorMessage
   const valueLocal = valueFullType?.value ?? value
   const selectedOption = options.find((option) => option.value === valueLocal) || null
-  const containerClassNames = classNames(containerClassName, {
+  const containerClassNames = classNames('input__field-group', containerClassName, {
     'input--disabled': disabled,
   })
+
   const inputClassName = classNames('input-select', className, {
     'input-select--error': !!errorMessageLocal,
     'input--select-grey': valueLocal === '',
   })
+
+  const inputLabelClassName = classNames('input__label', {
+    'input__label--top': valueLocal?.toString().length || isInputFocused,
+  })
+  const onInputFocus = (e: FocusEvent<HTMLInputElement>) => {
+    setIsInputFocused(true)
+    onFocus?.(e)
+  }
+  const onInputBlur = (e: FocusEvent<HTMLInputElement>) => {
+    setIsInputFocused(false)
+    onBlur?.(e)
+  }
   return (
     <div className={containerClassNames}>
-      {label && <Label label={label} infoText={infoText} inputId={inputId} />}
-      <Select
-        inputId={inputId}
-        className={inputClassName}
-        classNamePrefix='input-select'
-        onChange={(newValue, actionMeta) => {
-          if (actionMeta.action === 'clear') {
-            onChange?.({ target: { name: name!, value: null } })
-          } else {
-            onChange?.({
-              target: { name: name!, value: newValue!.value },
-            })
-          }
-        }}
-        options={options}
-        isDisabled={disabled}
-        isLoading={isLoading}
-        isClearable
-        name={name}
-        isSearchable
-        value={selectedOption}
-        menuPortalTarget={document.body}
-        placeholder={placeholder}
-        styles={{ menuPortal: (base) => ({ ...base, zIndex: 9999 }) }}
-      />
+      <span className='input__container'>
+        <Suspense fallback={<InputSelectSkeleton />}>
+          <Select
+            inputId={inputId}
+            className={inputClassName}
+            classNamePrefix='input-select'
+            onChange={(newValue, actionMeta) => {
+              if (actionMeta.action === 'clear') {
+                onChange?.({ target: { name: name!, value: null } })
+              } else {
+                onChange?.({
+                  target: { name: name!, value: newValue!.value },
+                })
+              }
+            }}
+            options={options}
+            isDisabled={disabled}
+            isLoading={isLoading}
+            isClearable
+            name={name}
+            onFocus={onInputFocus}
+            onBlur={onInputBlur}
+            isSearchable
+            value={selectedOption}
+            menuPortalTarget={document.body}
+            placeholder={placeholder}
+            styles={{ menuPortal: (base) => ({ ...base, zIndex: 9999 }) }}
+          />
+        </Suspense>
+
+        <label htmlFor={inputId} className={inputLabelClassName}>
+          {label}{' '}
+        </label>
+      </span>
       {errorMessageLocal && <div className='input__error-message'>{errorMessageLocal} </div>}
     </div>
   )

@@ -124,6 +124,7 @@ const EditCarForm: FC<EditCarFormProps> = ({ formId, onSubmit }) => {
           name='cylinderCapacity'
           onChange={onInputChange}
           label='Capacitate cilindrica - CC'
+          infoText='hi'
         />
         <Input
           valueFullType={formFields.numberOfSeats}

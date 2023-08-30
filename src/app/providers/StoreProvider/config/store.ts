@@ -9,6 +9,7 @@ import { vehicleReducer } from 'enteties/vehicle'
 import { vehicleBrandReducer } from 'enteties/vehicleBrand'
 import { vehicleModelReducer } from 'enteties/vehicleModel'
 import { vignetteReducer } from 'enteties/vignette'
+import { authReducer } from 'features/auth'
 import { editCarReducer } from 'features/car/car-edit-form'
 import { carAPI } from 'shared/api'
 import { uiReducer } from '../slices/ui'
@@ -28,6 +29,7 @@ export const rootReducers: ReducersMapObject<StateSchema> = {
   tyre: tyreReducer,
   vehicleBrand: vehicleBrandReducer,
   vehicleModel: vehicleModelReducer,
+  auth: authReducer,
 }
 
 export function createReduxStore(initialState?: StateSchema) {

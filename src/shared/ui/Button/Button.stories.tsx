@@ -15,37 +15,16 @@ export const PRIMARY: Story = {
     children: 'Button text',
   },
 }
-export const DISABLED: Story = {
+export const OUTLINE_RED: Story = {
   args: {
-    theme: ButtonTheme.DISABLED,
+    theme: ButtonTheme.OUTLINE_RED,
     children: 'Button text',
   },
 }
 
-export const GREEN: Story = {
+export const OUTLINE_BLUE: Story = {
   args: {
-    theme: ButtonTheme.GREEN,
-    children: 'Button text',
-  },
-}
-
-export const BLUE: Story = {
-  args: {
-    theme: ButtonTheme.BLUE,
-    children: 'Button text',
-  },
-}
-
-export const RED: Story = {
-  args: {
-    theme: ButtonTheme.RED,
-    children: 'Button text',
-  },
-}
-
-export const GREY: Story = {
-  args: {
-    theme: ButtonTheme.GREY,
+    theme: ButtonTheme.OUTLINE_BLUE,
     children: 'Button text',
   },
 }

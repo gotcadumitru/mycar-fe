@@ -1,5 +1,5 @@
-import { BsPlusLg } from 'react-icons/bs'
-import { HiOutlineBellAlert } from 'react-icons/hi2'
+import BsPlusLg from 'shared/assets/icons/BsPlusLg.svg'
+import HiOutlineBellAlert from 'shared/assets/icons/HiOutlineBellAlert.svg'
 import { RoutePaths } from 'shared/config/router/RoutePaths'
 import { Card, CardColor } from 'shared/ui/Card'
 import { CardType } from 'shared/ui/Card/card.types'

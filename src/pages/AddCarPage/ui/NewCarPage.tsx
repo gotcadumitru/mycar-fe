@@ -23,7 +23,7 @@ const NewCarPage = () => {
           form={formId}
           type='submit'
           category={ButtonCategoryType.BUTTON}
-          theme={ButtonTheme.BLUE}
+          theme={ButtonTheme.EMPTY}
         >
           Salveaza
         </Button>

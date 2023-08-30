@@ -35,7 +35,7 @@ export const ConfirmModal: FC<ConfirmModalProps> = ({
         <Button onClick={onClose} className='margin--right-15'>
           {MODAL_TITLE.CLOSE}
         </Button>
-        <Button onClick={onConfirm} theme={ButtonTheme.BLUE}>
+        <Button onClick={onConfirm} theme={ButtonTheme.OUTLINE_BLUE}>
           {MODAL_TITLE.OK}
         </Button>
       </div>

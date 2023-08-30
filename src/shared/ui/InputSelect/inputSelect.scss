@@ -1,4 +1,6 @@
 .input-select {
+  width: 100%;
+
   .input-select {
     &__control {
       line-height: 20px;
@@ -30,6 +32,13 @@
     &__value-container {
       padding: 0;
     }
+  }
+
+  &__skeleton{
+    height: 48px;
+    border: 2px solid var(--input-border);
+    border-radius: 4px;
+    width: 100%;
   }
 
   &--error {

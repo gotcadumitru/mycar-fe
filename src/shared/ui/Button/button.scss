@@ -16,7 +16,7 @@
   font-weight: 700 !important;
   background-color: transparent !important;
   transition: all 0.1s ease;
-  margin: 0 0 24px;
+  margin: 0 0 22px;
   min-width: 150px;
   justify-content: center;
   align-items: center;
@@ -208,12 +208,6 @@
   }
 
   /* stylelint-enable */
-  &--disabled {
-    background-color: var(--pinkish-grey);
-    color: var(--white);
-    cursor: default;
-    pointer-events: none;
-  }
 
   &--m-auto {
     margin: 0 auto;
