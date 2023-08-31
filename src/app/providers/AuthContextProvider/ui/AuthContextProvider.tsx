@@ -136,7 +136,11 @@ const AuthContextProvider: FC<PropsWithChildren> = ({ children }) => {
 
   return (
     <AuthContext.Provider value={value}>
-      {currentUserFetchStatus === FetchStatus.IN_PROGRESS ? <div /> : children}
+      {currentUserFetchStatus === FetchStatus.IN_PROGRESS ? (
+        <div className='loading-page' />
+      ) : (
+        children
+      )}
     </AuthContext.Provider>
   )
 }
