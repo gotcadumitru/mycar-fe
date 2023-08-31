@@ -1,8 +1,7 @@
 import type { FormDataField } from 'shared/lib/utils/checkIfExistErrors'
 
 export type SignUpFormType = {
-  firstName: string
-  lastName: string
+  fullName: string
   email: string
   password: string
   confirmPassword: string

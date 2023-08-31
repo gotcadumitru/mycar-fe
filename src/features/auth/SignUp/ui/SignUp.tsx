@@ -1,13 +1,11 @@
 import { useAuth } from 'app/providers/AuthContextProvider'
-import firebase from 'firebase/compat'
+import LoginWith from 'features/loginWith'
 import { ChangeEvent, FC, useId } from 'react'
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { FirebaseErrorCode } from 'shared/api/firebase'
 import { isFirebaseError } from 'shared/api/firebase/firebaseUtils'
 import BsArrowRightShort from 'shared/assets/icons/BsArrowRightShort.svg'
-import FaFacebook from 'shared/assets/icons/FaFacebook.svg'
-import FcGoogle from 'shared/assets/icons/FcGoogle.svg'
 import { RoutePaths } from 'shared/config/router/RoutePaths'
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
 import { checkIfExistErrors } from 'shared/lib/utils/checkIfExistErrors'
@@ -24,7 +22,7 @@ export const SignUp: FC<SignUpProps> = ({ className }) => {
   const formFields = useAppSelector((state) => state.auth.signUpForm)
   const dispatch = useAppDispatch()
   const formId = useId()
-  const { register, login } = useAuth()
+  const { register } = useAuth()
   const onInputChange = (
     event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement> | OnChangeMinType,
   ) => {
@@ -46,8 +44,11 @@ export const SignUp: FC<SignUpProps> = ({ className }) => {
     const { formFieldsWithErrors, isErrors } = checkIfExistErrors(formFields)
     if (isErrors) return dispatch(authActions.changeSignUpFormAC(formFieldsWithErrors))
     try {
-      const registerResponse = await register(formFields.email.value, formFields.password.value)
-      const loginResponse = await login(formFields.email.value, formFields.password.value)
+      const registerResponse = await register(
+        formFields.email.value,
+        formFields.password.value,
+        formFields.fullName.value,
+      )
     } catch (err) {
       if (isFirebaseError(err)) {
         if (err.code === FirebaseErrorCode.WEAK_PASSWORD) {
@@ -65,16 +66,10 @@ export const SignUp: FC<SignUpProps> = ({ className }) => {
   return (
     <Form id={formId} onSubmit={onSubmit} className={className}>
       <Input
-        valueFullType={formFields.firstName}
-        name='firstName'
+        valueFullType={formFields.fullName}
+        name='fullName'
         onChange={onInputChange}
-        label='Numele'
-      />
-      <Input
-        valueFullType={formFields.lastName}
-        name='lastName'
-        onChange={onInputChange}
-        label='Prenumele'
+        label='Numele complet'
       />
       <Input
         valueFullType={formFields.email}
@@ -108,18 +103,7 @@ export const SignUp: FC<SignUpProps> = ({ className }) => {
       >
         Autentificare
       </Button>
-      <Button
-        theme={ButtonTheme.OUTLINE_BLUE}
-        icon={<FaFacebook className='auth-page__facebook' />}
-      >
-        Login with
-      </Button>
-      <Button theme={ButtonTheme.OUTLINE_RED} icon={<FcGoogle className='auth-page__google' />}>
-        Login with
-      </Button>
-      <Link to='/auth/forgot' className='auth-page__forgot'>
-        <BsArrowRightShort /> Forgot password
-      </Link>
+      <LoginWith />
     </Form>
   )
 }

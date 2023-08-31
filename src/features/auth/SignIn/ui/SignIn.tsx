@@ -1,12 +1,11 @@
 import { useAuth } from 'app/providers/AuthContextProvider'
+import LoginWith from 'features/loginWith/ui/LoginWith/LoginWith'
 import { ChangeEvent, FC, useId } from 'react'
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { FirebaseErrorCode } from 'shared/api/firebase'
 import { isFirebaseError } from 'shared/api/firebase/firebaseUtils'
 import BsArrowRightShort from 'shared/assets/icons/BsArrowRightShort.svg'
-import FaFacebook from 'shared/assets/icons/FaFacebook.svg'
-import FcGoogle from 'shared/assets/icons/FcGoogle.svg'
 import { RoutePaths } from 'shared/config/router/RoutePaths'
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
 import { checkIfExistErrors } from 'shared/lib/utils/checkIfExistErrors'
@@ -87,15 +86,7 @@ export const SignIn: FC<SignInProps> = ({ className }) => {
       >
         Creare Cont
       </Button>
-      <Button
-        theme={ButtonTheme.OUTLINE_BLUE}
-        icon={<FaFacebook className='auth-page__facebook' />}
-      >
-        Login with
-      </Button>
-      <Button theme={ButtonTheme.OUTLINE_RED} icon={<FcGoogle className='auth-page__google' />}>
-        Login with
-      </Button>
+      <LoginWith />
       <Link to='/auth/forgot' className='auth-page__forgot'>
         <BsArrowRightShort /> Forgot password
       </Link>

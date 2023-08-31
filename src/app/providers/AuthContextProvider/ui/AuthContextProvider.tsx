@@ -5,8 +5,10 @@ import {
   onAuthStateChanged,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
+  FacebookAuthProvider,
   signInWithPopup,
   signOut,
+  updateProfile,
   User,
   UserCredential,
 } from 'firebase/auth'
@@ -30,13 +32,17 @@ type AuthContextType = {
   currentUserFetchStatus: FetchStatus
   signInWithGoogle: () => Promise<UserCredential>
   login: (email: string, password: string) => Promise<UserCredential>
-  register: (email: string, password: string) => Promise<UserCredential>
+  register: (email: string, password: string, displayName: string) => Promise<UserCredential>
   logout: () => Promise<void>
   forgotPassword: (email: string) => Promise<void>
   resetPassword: (oobCode: string, newPassword: string) => Promise<void>
 }
 const AuthContext = createContext<AuthContextType>({} as AuthContextType)
 
+type UserFieldAvailableToUpdate = {
+  displayName?: string | null
+  photoURL?: string | null
+}
 export const useAuth = () => useContext(AuthContext)
 
 const AuthContextProvider: FC<PropsWithChildren> = ({ children }) => {
@@ -46,6 +52,7 @@ const AuthContextProvider: FC<PropsWithChildren> = ({ children }) => {
   const [currentUserFetchStatus, setCurrentUserFetchStatus] = useState(FetchStatus.IN_PROGRESS)
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(firebaseAuth, (user) => {
+      console.log(user)
       setCurrentUser(user)
       setCurrentUserFetchStatus(FetchStatus.SUCCESS)
     })
@@ -63,7 +70,10 @@ const AuthContextProvider: FC<PropsWithChildren> = ({ children }) => {
       RoutePathsFroAuthenticatedUsers.includes(location.pathname)
     )
       navigate(RoutePaths.sign_in)
-  }, [currentUser, location])
+  }, [currentUser, location, currentUserFetchStatus])
+  const updateUserDetails = async (user: User, updatedFields: UserFieldAvailableToUpdate) => {
+    await updateProfile(user, updatedFields)
+  }
 
   const login: AuthContextType['login'] = useCallback(
     (email, password) => signInWithEmailAndPassword(firebaseAuth, email, password),
@@ -71,7 +81,13 @@ const AuthContextProvider: FC<PropsWithChildren> = ({ children }) => {
   )
 
   const register: AuthContextType['register'] = useCallback(
-    (email, password) => createUserWithEmailAndPassword(firebaseAuth, email, password),
+    async (email, password, displayName) => {
+      const createUserResponse = await createUserWithEmailAndPassword(firebaseAuth, email, password)
+      await updateUserDetails(createUserResponse.user, {
+        displayName,
+      })
+      return createUserResponse
+    },
     [],
   )
 
@@ -82,7 +98,6 @@ const AuthContextProvider: FC<PropsWithChildren> = ({ children }) => {
       }),
     [],
   )
-
   const resetPassword: AuthContextType['resetPassword'] = useCallback(
     (oobCode, newPassword) => confirmPasswordReset(firebaseAuth, oobCode, newPassword),
     [],
@@ -92,6 +107,14 @@ const AuthContextProvider: FC<PropsWithChildren> = ({ children }) => {
 
   const signInWithGoogle: AuthContextType['signInWithGoogle'] = useCallback(() => {
     const provider = new GoogleAuthProvider()
+    return signInWithPopup(firebaseAuth, provider)
+  }, [])
+
+  const signInWithFacebook: AuthContextType['signInWithGoogle'] = useCallback(() => {
+    const provider = new FacebookAuthProvider()
+    provider.setCustomParameters({
+      display: 'popup',
+    })
     return signInWithPopup(firebaseAuth, provider)
   }, [])
 

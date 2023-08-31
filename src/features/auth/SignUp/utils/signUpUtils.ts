@@ -3,19 +3,13 @@ import { ValidationRules } from 'shared/lib/utils/checkIfExistErrors'
 import type { SignUpFormFullType, SignUpFormType } from '../types/singUpTypes'
 
 export const getSignUpFormValues = ({
-  firstName = '',
-  lastName = '',
+  fullName = '',
   email = '',
   password = '',
   confirmPassword = '',
 }: Partial<SignUpFormType>): SignUpFormFullType => ({
-  firstName: {
-    value: firstName,
-    errorMessage: '',
-    validations: [{ rule: ValidationRules.REQUIRED }],
-  },
-  lastName: {
-    value: lastName,
+  fullName: {
+    value: fullName,
     errorMessage: '',
     validations: [{ rule: ValidationRules.REQUIRED }],
   },

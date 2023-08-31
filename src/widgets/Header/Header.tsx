@@ -1,21 +1,29 @@
+import { useAuth } from 'app/providers/AuthContextProvider'
 import { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
 import AiOutlineLeft from 'shared/assets/icons/AiOutlineLeft.svg'
-import Button, { ButtonTheme } from 'shared/ui/Button'
+import Button, { ButtonMargin, ButtonTheme } from 'shared/ui/Button'
 import './header.scss'
 import type { HeaderPropsType } from './header.types'
 
 const Header: FC<HeaderPropsType> = ({ isWithGoBackIcon, title }) => {
   const navigate = useNavigate()
+  const { currentUser } = useAuth()
   return (
     <div className='header'>
-      {isWithGoBackIcon && (
-        <Button theme={ButtonTheme.EMPTY} onClick={() => navigate(-1)}>
-          <AiOutlineLeft />
-        </Button>
-      )}
-      <div className='header__title'>{title}</div>
-      <div />
+      <div className='header__left-side'>
+        {isWithGoBackIcon && (
+          <Button
+            margin={ButtonMargin.NO_MARGIN}
+            theme={ButtonTheme.EMPTY}
+            onClick={() => navigate(-1)}
+          >
+            <AiOutlineLeft />
+          </Button>
+        )}
+        <div className='header__title'>{title}</div>
+      </div>
+      <div>{currentUser?.displayName}</div>
     </div>
   )
 }
