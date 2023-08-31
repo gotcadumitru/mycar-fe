@@ -31,6 +31,7 @@ type AuthContextType = {
   currentUser: User | null
   currentUserFetchStatus: FetchStatus
   signInWithGoogle: () => Promise<UserCredential>
+  signInWithFacebook: () => Promise<UserCredential>
   login: (email: string, password: string) => Promise<UserCredential>
   register: (email: string, password: string, displayName: string) => Promise<UserCredential>
   logout: () => Promise<void>
@@ -123,6 +124,7 @@ const AuthContextProvider: FC<PropsWithChildren> = ({ children }) => {
       currentUser,
       currentUserFetchStatus,
       signInWithGoogle,
+      signInWithFacebook,
       login,
       register,
       logout,

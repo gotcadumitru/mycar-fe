@@ -5,12 +5,12 @@ import FcGoogle from 'shared/assets/icons/FcGoogle.svg'
 import Button, { ButtonTheme } from 'shared/ui/Button'
 
 const LoginWith: FC = () => {
-  const { signInWithGoogle } = useAuth()
-
+  const { signInWithGoogle, signInWithFacebook } = useAuth()
   return (
     <>
       <Button
         type='button'
+        onClick={signInWithFacebook}
         theme={ButtonTheme.OUTLINE_BLUE}
         icon={<FaFacebook className='auth-page__facebook' />}
       >
