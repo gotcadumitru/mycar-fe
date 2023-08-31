@@ -1,5 +1,7 @@
 import Layout from 'app/layout/Layout/Layout'
 import { SignIn } from 'features/auth'
+import { ForgotPassword } from 'features/auth/ForgotPassword/ui/ForgotPassword'
+import { ResetPassword } from 'features/auth/ResetPassword/ui/ResetPassword'
 import { SignUp } from 'features/auth/SignUp/ui/SignUp'
 import NewCarPage from 'pages/AddCarPage'
 import AuthPage from 'pages/AuthPage'
@@ -64,6 +66,22 @@ export const routeConfig: Partial<Record<AppRoutes, RouteProps>> = {
     element: (
       <AuthPage>
         <SignUp />
+      </AuthPage>
+    ),
+  },
+  [AppRoutes.FORGOT_PASSWORD]: {
+    path: `${RoutePaths.forgot_password}`,
+    element: (
+      <AuthPage>
+        <ForgotPassword />
+      </AuthPage>
+    ),
+  },
+  [AppRoutes.RESET_PASSWORD]: {
+    path: `${RoutePaths.reset_password}`,
+    element: (
+      <AuthPage>
+        <ResetPassword />
       </AuthPage>
     ),
   },

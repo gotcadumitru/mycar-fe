@@ -95,7 +95,7 @@ const AuthContextProvider: FC<PropsWithChildren> = ({ children }) => {
   const forgotPassword: AuthContextType['forgotPassword'] = useCallback(
     (email) =>
       sendPasswordResetEmail(firebaseAuth, email, {
-        url: `${process.env.CAR_MASTER_DOMAIN}/${RoutePaths.reset_password}`,
+        url: `${process.env.CAR_MASTER_DOMAIN}${RoutePaths.sign_in}`,
       }),
     [],
   )
