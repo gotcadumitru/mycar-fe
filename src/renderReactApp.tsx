@@ -1,3 +1,4 @@
+import AuthContextProvider from 'app/providers/AuthContextProvider'
 import ErrorBoundary from 'app/providers/ErrorBoundary'
 import { StoreProvider } from 'app/providers/StoreProvider'
 import 'app/styles/main.scss'
@@ -18,7 +19,9 @@ const renderReactApp = () => {
       <BrowserRouter>
         <StoreProvider>
           <ErrorBoundary>
-            <App />
+            <AuthContextProvider>
+              <App />
+            </AuthContextProvider>
           </ErrorBoundary>
         </StoreProvider>
       </BrowserRouter>,

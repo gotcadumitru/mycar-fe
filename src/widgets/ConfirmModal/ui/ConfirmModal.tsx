@@ -1,7 +1,7 @@
 import classNames from 'classnames'
-import { FC, ReactNode } from 'react'
+import { FC, ReactNode, useEffect, useLayoutEffect, useState } from 'react'
 import { MODAL_TITLE } from 'shared/defaults/text'
-import Button, { ButtonTheme } from 'shared/ui/Button'
+import Button, { ButtonMargin, ButtonTheme } from 'shared/ui/Button'
 import Modal from 'shared/ui/Modal'
 
 interface ConfirmModalProps {
@@ -9,7 +9,7 @@ interface ConfirmModalProps {
   title: string
   questionText: ReactNode
   onConfirm: () => void
-  onClose: () => void
+  onClose?: () => void
 }
 
 export const ConfirmModal: FC<ConfirmModalProps> = ({
@@ -30,15 +30,12 @@ export const ConfirmModal: FC<ConfirmModalProps> = ({
     </div>
     <div className='modal__body'>{questionText}</div>
     <div className='modal__footer'>
-      <div />
-      <div>
-        <Button onClick={onClose} className='margin--right-15'>
-          {MODAL_TITLE.CLOSE}
-        </Button>
-        <Button onClick={onConfirm} theme={ButtonTheme.OUTLINE_BLUE}>
-          {MODAL_TITLE.OK}
-        </Button>
-      </div>
+      <Button onClick={onClose} theme={ButtonTheme.OUTLINE_RED} margin={ButtonMargin.NO_MARGIN}>
+        {MODAL_TITLE.CLOSE}
+      </Button>
+      <Button onClick={onConfirm} margin={ButtonMargin.NO_MARGIN}>
+        {MODAL_TITLE.OK}
+      </Button>
     </div>
   </Modal>
 )

@@ -1,5 +1,9 @@
+import { useAuth } from 'app/providers/AuthContextProvider'
 import { ChangeEvent, FC, useId } from 'react'
 import { Link } from 'react-router-dom'
+import { toast } from 'react-toastify'
+import { FirebaseErrorCode } from 'shared/api/firebase'
+import { isFirebaseError } from 'shared/api/firebase/firebaseUtils'
 import BsArrowRightShort from 'shared/assets/icons/BsArrowRightShort.svg'
 import FaFacebook from 'shared/assets/icons/FaFacebook.svg'
 import FcGoogle from 'shared/assets/icons/FcGoogle.svg'
@@ -17,6 +21,7 @@ interface SignInProps {
 
 export const SignIn: FC<SignInProps> = ({ className }) => {
   const formFields = useAppSelector((state) => state.auth.signInForm)
+  const { login } = useAuth()
   const dispatch = useAppDispatch()
   const formId = useId()
 
@@ -37,9 +42,23 @@ export const SignIn: FC<SignInProps> = ({ className }) => {
       }),
     )
   }
-  const onSubmit = () => {
+  const onSubmit = async () => {
     const { formFieldsWithErrors, isErrors } = checkIfExistErrors(formFields)
     if (isErrors) return dispatch(authActions.changeSignInFormAC(formFieldsWithErrors))
+    try {
+      const loginResponse = await login(formFields.email.value, formFields.password.value)
+    } catch (err) {
+      if (isFirebaseError(err)) {
+        if (err.code === FirebaseErrorCode.WRONG_PASSWORD) {
+          formFieldsWithErrors.password.errorMessage = err.message
+        }
+        if (err.code === FirebaseErrorCode.USER_NOT_FOUND) {
+          formFieldsWithErrors.password.errorMessage = err.message
+        }
+        toast.error(err.message)
+      }
+      dispatch(authActions.changeSignInFormAC(formFieldsWithErrors))
+    }
   }
 
   return (

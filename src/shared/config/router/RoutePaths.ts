@@ -25,3 +25,12 @@ export const RoutePaths: Record<AppRoutes, string> = {
   [AppRoutes.RESET_PASSWORD]: '/reset-password',
   [AppRoutes.NOT_FOUND]: '*',
 }
+
+export const RoutePathsFroAuthenticatedUsers: string[] = [
+  RoutePaths.new_car,
+  RoutePaths.alerts,
+  RoutePaths.garage,
+  RoutePaths.root,
+  RoutePaths.menu,
+  RoutePaths.panel,
+]

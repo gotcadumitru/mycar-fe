@@ -1,5 +1,10 @@
+import { useAuth } from 'app/providers/AuthContextProvider'
+import firebase from 'firebase/compat'
 import { ChangeEvent, FC, useId } from 'react'
 import { Link } from 'react-router-dom'
+import { toast } from 'react-toastify'
+import { FirebaseErrorCode } from 'shared/api/firebase'
+import { isFirebaseError } from 'shared/api/firebase/firebaseUtils'
 import BsArrowRightShort from 'shared/assets/icons/BsArrowRightShort.svg'
 import FaFacebook from 'shared/assets/icons/FaFacebook.svg'
 import FcGoogle from 'shared/assets/icons/FcGoogle.svg'
@@ -19,7 +24,7 @@ export const SignUp: FC<SignUpProps> = ({ className }) => {
   const formFields = useAppSelector((state) => state.auth.signUpForm)
   const dispatch = useAppDispatch()
   const formId = useId()
-
+  const { register, login } = useAuth()
   const onInputChange = (
     event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement> | OnChangeMinType,
   ) => {
@@ -37,9 +42,24 @@ export const SignUp: FC<SignUpProps> = ({ className }) => {
       }),
     )
   }
-  const onSubmit = () => {
+  const onSubmit = async () => {
     const { formFieldsWithErrors, isErrors } = checkIfExistErrors(formFields)
     if (isErrors) return dispatch(authActions.changeSignUpFormAC(formFieldsWithErrors))
+    try {
+      const registerResponse = await register(formFields.email.value, formFields.password.value)
+      const loginResponse = await login(formFields.email.value, formFields.password.value)
+    } catch (err) {
+      if (isFirebaseError(err)) {
+        if (err.code === FirebaseErrorCode.WEAK_PASSWORD) {
+          formFieldsWithErrors.password.errorMessage = err.message
+        }
+        if (err.code === FirebaseErrorCode.EMAIL_ALREADY_IN_USE) {
+          formFieldsWithErrors.email.errorMessage = err.message
+        }
+        toast.error(err.message)
+      }
+      dispatch(authActions.changeSignUpFormAC(formFieldsWithErrors))
+    }
   }
 
   return (
