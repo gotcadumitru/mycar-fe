@@ -1,11 +1,9 @@
 import { useAuth } from 'app/providers/AuthContextProvider'
 import LoginWith from 'features/loginWith'
 import { ChangeEvent, FC, useId } from 'react'
-import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { FirebaseErrorCode } from 'shared/api/firebase'
 import { isFirebaseError } from 'shared/api/firebase/firebaseUtils'
-import BsArrowRightShort from 'shared/assets/icons/BsArrowRightShort.svg'
 import { RoutePaths } from 'shared/config/router/RoutePaths'
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
 import { checkIfExistErrors } from 'shared/lib/utils/checkIfExistErrors'
@@ -23,9 +21,7 @@ export const SignUp: FC<SignUpProps> = ({ className }) => {
   const dispatch = useAppDispatch()
   const formId = useId()
   const { register } = useAuth()
-  const onInputChange = (
-    event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement> | OnChangeMinType,
-  ) => {
+  const onInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target
     const name = event.target.name as keyof typeof formFields
 
@@ -54,7 +50,11 @@ export const SignUp: FC<SignUpProps> = ({ className }) => {
         if (err.code === FirebaseErrorCode.WEAK_PASSWORD) {
           formFieldsWithErrors.password.errorMessage = err.message
         }
-        if (err.code === FirebaseErrorCode.EMAIL_ALREADY_IN_USE) {
+        if (
+          [FirebaseErrorCode.EMAIL_ALREADY_IN_USE, FirebaseErrorCode.INVALID_EMAIL].includes(
+            err.code as FirebaseErrorCode,
+          )
+        ) {
           formFieldsWithErrors.email.errorMessage = err.message
         }
         toast.error(err.message)

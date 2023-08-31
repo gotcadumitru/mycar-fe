@@ -11,7 +11,7 @@ import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
 import { checkIfExistErrors } from 'shared/lib/utils/checkIfExistErrors'
 import Button, { ButtonCategoryType, ButtonTheme } from 'shared/ui/Button'
 import Form from 'shared/ui/Form'
-import Input, { OnChangeMinType } from 'shared/ui/Input'
+import Input from 'shared/ui/Input'
 import { authActions } from '../../lib/slice/authSlice'
 
 interface SignInProps {
@@ -24,9 +24,7 @@ export const SignIn: FC<SignInProps> = ({ className }) => {
   const dispatch = useAppDispatch()
   const formId = useId()
 
-  const onInputChange = (
-    event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement> | OnChangeMinType,
-  ) => {
+  const onInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target
     const name = event.target.name as keyof typeof formFields
 
@@ -87,7 +85,7 @@ export const SignIn: FC<SignInProps> = ({ className }) => {
         Creare Cont
       </Button>
       <LoginWith />
-      <Link to='/auth/forgot' className='auth-page__forgot'>
+      <Link to={RoutePaths.forgot_password} className='auth-page__forgot'>
         <BsArrowRightShort /> Forgot password
       </Link>
     </Form>
