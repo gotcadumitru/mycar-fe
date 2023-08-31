@@ -1,6 +1,5 @@
 .header {
-  display: grid;
-  grid-template-columns: 25px 1fr 25px;
+  display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: var(--blue-1);
@@ -9,7 +8,10 @@
   color: var(--white);
   font-size: 24px;
   text-align: center;
-
+  &__left-side{
+    display: flex;
+    align-items: center;
+  }
   &__title {
     color: inherit;
   }

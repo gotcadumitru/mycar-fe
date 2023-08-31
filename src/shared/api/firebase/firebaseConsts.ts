@@ -14,6 +14,16 @@ const actionCodeSettings = {
   },
   dynamicLinkDomain: 'example.page.link',
 }
+
+export const firebaseConfig = {
+  apiKey: 'AIzaSyDOGpe5dTNq22fMFZCKf1t5u7r-9b4kvdI',
+  authDomain: 'car-master-a976d.firebaseapp.com',
+  projectId: 'car-master-a976d',
+  storageBucket: 'car-master-a976d.appspot.com',
+  messagingSenderId: '838346134841',
+  appId: '1:838346134841:web:02aa48e20abcc27cf404e8',
+  measurementId: 'G-ZQF9RGW128',
+}
 export enum FirebaseErrorCode {
   WEAK_PASSWORD = 'auth/weak-password',
   WRONG_PASSWORD = 'auth/wrong-password',
