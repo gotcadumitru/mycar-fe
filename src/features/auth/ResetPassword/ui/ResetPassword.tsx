@@ -14,6 +14,7 @@ interface ResetPasswordProps {
   className?: string
 }
 
+// not used
 export const ResetPassword: FC<ResetPasswordProps> = ({ className }) => {
   const [searchParams] = useSearchParams()
   const formFields = useAppSelector((state) => state.auth.resetPasswordForm)
