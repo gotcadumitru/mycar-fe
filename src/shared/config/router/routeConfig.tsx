@@ -3,6 +3,7 @@ import { SignIn } from 'features/auth'
 import { SignUp } from 'features/auth/SignUp/ui/SignUp'
 import NewCarPage from 'pages/AddCarPage'
 import AuthPage from 'pages/AuthPage'
+import MenuPage from 'pages/MenuPage'
 import { NotFoundPage } from 'pages/NotFoundPage'
 import PanelPage from 'pages/PanelPage'
 import { Navigate, RouteProps } from 'react-router-dom'
@@ -22,6 +23,18 @@ export const routeConfig: Partial<Record<AppRoutes, RouteProps>> = {
         <Header />
         <Layout>
           <PanelPage />
+        </Layout>
+        <Footer />
+      </>
+    ),
+  },
+  [AppRoutes.MENU]: {
+    path: RoutePaths.menu,
+    element: (
+      <>
+        <Header />
+        <Layout>
+          <MenuPage />
         </Layout>
         <Footer />
       </>

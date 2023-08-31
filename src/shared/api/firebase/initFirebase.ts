@@ -18,10 +18,8 @@ const firebaseConfig = {
 }
 
 // Initialize Firebase
-const firebaseApp = initializeApp(firebaseConfig)
+export const firebaseApp = initializeApp(firebaseConfig)
 export const analytics = getAnalytics(firebaseApp)
 
 // Initialize Firebase Authentication and get a reference to the service
 export const firebaseAuth = getAuth(firebaseApp)
-
-export default firebaseApp
