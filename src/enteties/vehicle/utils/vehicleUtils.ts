@@ -212,9 +212,11 @@ export const calculateAverageConsumption = (vehicles: Vehicle[]): number => {
 }
 
 export const calculateAverageAge = (vehicles: Vehicle[]): number => {
+  if (!vehicles.length) return 0
   const currentYear = new Date().getFullYear()
-  return (
-    vehicles.reduce((ages, vehicle) => ages + currentYear - vehicle.yearOfProduction!, 0) /
-    vehicles.length
+  const sumOfYears = vehicles.reduce(
+    (ages, vehicle) => ages + currentYear - vehicle.yearOfProduction!,
+    0,
   )
+  return sumOfYears / vehicles.length
 }
