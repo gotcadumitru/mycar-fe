@@ -1,9 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { kv } from '@vercel/kv'
 import type { ThunkConfig } from 'app/providers/StoreProvider'
 import { FetchStatus } from 'shared/api'
 import { TyreActions } from '../consts/tyreConsts'
-import type { TyreSizeType, VehicleTypeWithTyreSizes } from '../types/tyreTypes'
+import type { VehicleTypeWithTyreSizes } from '../types/tyreTypes'
 
 export const fetchTyreSizesFroVehicleTypeIdThunk = createAsyncThunk<
   VehicleTypeWithTyreSizes | null,
@@ -13,9 +12,9 @@ export const fetchTyreSizesFroVehicleTypeIdThunk = createAsyncThunk<
   const { requestId, fetchStatus } =
     thunkApi.getState().tyre.tyreSizesWithFetchStatus[vehicleTypeId]
   if (requestId !== thunkApi.requestId && FetchStatus.FAIL !== fetchStatus) return null
-  const sizes: TyreSizeType[] = await kv.json.get(`tyreSize_${vehicleTypeId}`)
+  const vehicleTypesJsonResponse = await import(`../consts/json/tyreSize_${vehicleTypeId}.json`)
   return {
-    sizes,
+    sizes: vehicleTypesJsonResponse.default,
     id: vehicleTypeId,
   }
 })

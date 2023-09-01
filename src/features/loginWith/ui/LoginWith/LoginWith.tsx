@@ -2,7 +2,7 @@ import { useAuth } from 'app/providers/AuthContextProvider'
 import { FC, memo } from 'react'
 import FaFacebook from 'shared/assets/icons/FaFacebook.svg'
 import FcGoogle from 'shared/assets/icons/FcGoogle.svg'
-import Button, { ButtonTheme } from 'shared/ui/Button'
+import Button, { ButtonMargin, ButtonTheme } from 'shared/ui/Button'
 
 const LoginWith: FC = () => {
   const { signInWithGoogle, signInWithFacebook } = useAuth()
@@ -13,6 +13,7 @@ const LoginWith: FC = () => {
         onClick={signInWithFacebook}
         theme={ButtonTheme.OUTLINE_BLUE}
         icon={<FaFacebook className='auth-page__facebook' />}
+        margin={ButtonMargin.BOTTOM}
       >
         Login with
       </Button>
@@ -21,6 +22,7 @@ const LoginWith: FC = () => {
         onClick={signInWithGoogle}
         theme={ButtonTheme.OUTLINE_RED}
         icon={<FcGoogle className='auth-page__google' />}
+        margin={ButtonMargin.BOTTOM}
       >
         Login with
       </Button>

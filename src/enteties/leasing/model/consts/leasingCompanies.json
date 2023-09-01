@@ -1,0 +1,38 @@
+[
+  {
+    "name": "BT Leasing MD",
+    "id": 45
+  },
+  {
+    "name": "Capital Leasing",
+    "id": 46
+  },
+  {
+    "id": 49,
+    "name": "Finance Leasing Company"
+  },
+  {
+    "id": 51,
+    "name": "Inter Auto"
+  },
+  {
+    "id": 50,
+    "name": "MAIB Leasing"
+  },
+  {
+    "name": "Mogo Leasing",
+    "id": 52
+  },
+  {
+    "id": 53,
+    "name": "Raiffeisen Leasing"
+  },
+  {
+    "id": 48,
+    "name": "Total Leasing"
+  },
+  {
+    "id": 47,
+    "name": "Victoria Leasing"
+  }
+]

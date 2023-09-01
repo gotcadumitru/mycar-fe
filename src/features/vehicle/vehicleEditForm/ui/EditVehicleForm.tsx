@@ -161,12 +161,14 @@ const EditVehicleForm: FC<EditCarFormProps> = ({ formId, onSubmit }) => {
           isBig
           label='Vehicul in leasing'
         />
-        <LeasingCompaniesSelect
-          valueFullType={formFields.leasingCompany}
-          name='leasingCompany'
-          onChange={onInputChange}
-          label='Alege compania de leasing'
-        />
+        {formFields.isLeasingVehicle.value && (
+          <LeasingCompaniesSelect
+            valueFullType={formFields.leasingCompany}
+            name='leasingCompany'
+            onChange={onInputChange}
+            label='Alege compania de leasing'
+          />
+        )}
         <TyreSizeSelect
           vehicleTypeId={formFields.type.value}
           valueFullType={formFields.summerTyreSize}
@@ -199,44 +201,50 @@ const EditVehicleForm: FC<EditCarFormProps> = ({ formId, onSubmit }) => {
           onChange={onInputChange}
           label='Tip combustibil'
         />
-        <Label label='Consum (Urb/Mix/Exraurb)' />
+        <Label label='Consum' className='label--mb' />
         <div className='edit-vehicle__three'>
           <Input
             valueFullType={formFields.fuelConsumptionUrb}
             type='number'
             name='fuelConsumptionUrb'
+            label='Urban'
             onChange={onInputChange}
           />
           <Input
             valueFullType={formFields.fuelConsumptionMix}
             type='number'
             name='fuelConsumptionMix'
+            label='Mix'
             onChange={onInputChange}
           />
           <Input
             valueFullType={formFields.fuelConsumptionExtraUrb}
             type='number'
             name='fuelConsumptionExtraUrb'
+            label='Extra yrban'
             onChange={onInputChange}
           />
         </div>
-        <Label label='Procent utilizare (Urb/Mix/Exraurb)' />
+        <Label label='Procent utilizare' className='label--mb' />
         <div className='edit-vehicle__three'>
           <Input
             valueFullType={formFields.usagePercentUrb}
             type='number'
+            label='Urban'
             name='usagePercentUrb'
             onChange={onInputChange}
           />
           <Input
             valueFullType={formFields.usagePercentMix}
             type='number'
+            label='Mix'
             name='usagePercentMix'
             onChange={onInputChange}
           />
           <Input
             valueFullType={formFields.usagePercentExtraUrb}
             type='number'
+            label='Extra yrban'
             name='usagePercentExtraUrb'
             onChange={onInputChange}
           />

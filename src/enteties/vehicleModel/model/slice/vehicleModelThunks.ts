@@ -1,9 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { kv } from '@vercel/kv'
 import type { ThunkConfig } from 'app/providers/StoreProvider'
 import { FetchStatus } from 'shared/api'
 import { VehicleModelActions } from '../consts/vehicleModelConsts'
-import type { VehicleModelType, VehicleTypeAndBrandWithModel } from '../types/vehicleModelTypes'
+import type { VehicleTypeAndBrandWithModel } from '../types/vehicleModelTypes'
 import { FetchVehicleModelParams } from '../types/vehicleModelTypes'
 import { getIdFromVehicleTypeAndModel } from '../utils/getIdFromVehicleTypeAndModel'
 
@@ -19,11 +18,11 @@ export const fetchVehicleModelsFroVehicleTypeIdAndBrandIdThunk = createAsyncThun
         getIdFromVehicleTypeAndModel(ids)
       ]
     if (requestId !== thunkApi.requestId && FetchStatus.FAIL !== fetchStatus) return null
-    const models: VehicleModelType[] = await kv.json.get(
-      `vehicleBrands_${ids.vehicleTypeId}_model_${ids.vehicleBrandId}`,
+    const vehicleModelsJsonResponse = await import(
+      `../consts/json/vehicleBrands_${ids.vehicleTypeId}_model_${ids.vehicleBrandId}.json`
     )
     return {
-      models,
+      models: vehicleModelsJsonResponse.default,
       ...ids,
     }
   },
