@@ -107,7 +107,7 @@ const NewVehiclePage = () => {
                   validations: [],
                 },
                 isLeasingVehicle: {
-                  value: false,
+                  value: true,
                   errorMessage: '',
                   validations: [],
                 },

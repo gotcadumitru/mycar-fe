@@ -9,7 +9,7 @@ import BsArrowRightShort from 'shared/assets/icons/BsArrowRightShort.svg'
 import { RoutePaths } from 'shared/config/router/RoutePaths'
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
 import { checkIfExistErrors } from 'shared/lib/utils/checkIfExistErrors'
-import Button, { ButtonCategoryType, ButtonTheme } from 'shared/ui/Button'
+import Button, { ButtonCategoryType, ButtonMargin, ButtonTheme } from 'shared/ui/Button'
 import Form from 'shared/ui/Form'
 import Input from 'shared/ui/Input'
 import { authActions } from '../../lib/slice/authSlice'
@@ -76,8 +76,11 @@ export const SignIn: FC<SignInProps> = ({ className }) => {
         onChange={onInputChange}
         label='Parola'
       />
-      <Button type='submit'>Autentificare</Button>
+      <Button margin={ButtonMargin.BOTTOM} type='submit'>
+        Autentificare
+      </Button>
       <Button
+        margin={ButtonMargin.BOTTOM}
         category={ButtonCategoryType.LINK}
         theme={ButtonTheme.OUTLINE_RED}
         to={RoutePaths.sign_up}

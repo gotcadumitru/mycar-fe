@@ -62,7 +62,7 @@ export const getVehicleFormValues = ({
   vin: {
     value: vin,
     errorMessage: '',
-    validations: [{ rule: ValidationRules.REQUIRED }],
+    validations: [],
   },
   power: {
     value: power,
@@ -82,7 +82,7 @@ export const getVehicleFormValues = ({
   color: {
     value: color,
     errorMessage: '',
-    validations: [{ rule: ValidationRules.REQUIRED }],
+    validations: [],
   },
   maximumAuthorisedMass: {
     value: maximumAuthorisedMass,
@@ -92,7 +92,7 @@ export const getVehicleFormValues = ({
   civSeries: {
     value: civSeries,
     errorMessage: '',
-    validations: [{ rule: ValidationRules.REQUIRED }],
+    validations: [],
   },
   ownedBy: {
     value: ownedBy,
@@ -107,32 +107,32 @@ export const getVehicleFormValues = ({
   leasingCompany: {
     value: leasingCompany,
     errorMessage: '',
-    validations: [{ rule: ValidationRules.REQUIRED }],
+    validations: [],
   },
   summerTyreSize: {
     value: summerTyreSize,
     errorMessage: '',
-    validations: [{ rule: ValidationRules.REQUIRED }],
+    validations: [],
   },
   dotSummerTyre: {
     value: dotSummerTyre,
     errorMessage: '',
-    validations: [{ rule: ValidationRules.REQUIRED }],
+    validations: [],
   },
   winterTyreSize: {
     value: winterTyreSize,
     errorMessage: '',
-    validations: [{ rule: ValidationRules.REQUIRED }],
+    validations: [],
   },
   dotWinterTyre: {
     value: dotWinterTyre,
     errorMessage: '',
-    validations: [{ rule: ValidationRules.REQUIRED }],
+    validations: [],
   },
   fuelType: {
     value: fuelType,
     errorMessage: '',
-    validations: [{ rule: ValidationRules.REQUIRED }],
+    validations: [],
   },
   fuelConsumptionUrb: {
     value: fuelConsumptionUrb,

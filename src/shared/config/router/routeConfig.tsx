@@ -5,6 +5,7 @@ import { ResetPassword } from 'features/auth/ResetPassword/ui/ResetPassword'
 import { SignUp } from 'features/auth/SignUp/ui/SignUp'
 import NewVehiclePage from 'pages/AddVehiclePage'
 import AuthPage from 'pages/AuthPage'
+import GaragePage from 'pages/GaragePage'
 import MenuPage from 'pages/MenuPage'
 import { NotFoundPage } from 'pages/NotFoundPage'
 import PanelPage from 'pages/PanelPage'
@@ -25,6 +26,17 @@ export const routeConfig: Partial<Record<AppRoutes, RouteProps>> = {
         <Header />
         <Layout>
           <PanelPage />
+        </Layout>
+        <Footer />
+      </>
+    ),
+  },
+  [AppRoutes.GARAGE]: {
+    path: RoutePaths.garage,
+    element: (
+      <>
+        <Layout>
+          <GaragePage />
         </Layout>
         <Footer />
       </>

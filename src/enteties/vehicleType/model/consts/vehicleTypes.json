@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "name": "Autoturism"
+  },
+  {
+    "id": 2,
+    "name": "Motocicletă"
+  },
+  {
+    "name": "Camion",
+    "id": 3
+  },
+  {
+    "id": 7,
+    "name": "Remorcă"
+  },
+  {
+    "id": 8,
+    "name": "Semiremorcă"
+  },
+  {
+    "id": 18,
+    "name": "Autoutilitară"
+  },
+  {
+    "id": 24,
+    "name": "Cisterna"
+  },
+  {
+    "id": 22,
+    "name": "Altul"
+  },
+  {
+    "id": 5,
+    "name": "Ambarcațiune"
+  },
+  {
+    "id": 23,
+    "name": "ATV"
+  },
+  {
+    "name": "Autobuz",
+    "id": 10
+  },
+  {
+    "id": 4,
+    "name": "Autoturism de teren"
+  },
+  {
+    "id": 19,
+    "name": "Avion"
+  },
+  {
+    "id": 17,
+    "name": "Elicopter"
+  },
+  {
+    "id": 14,
+    "name": "Furgonetă"
+  },
+  {
+    "id": 20,
+    "name": "Grup tractabil"
+  },
+  {
+    "id": 11,
+    "name": "Microbuz"
+  },
+  {
+    "id": 13,
+    "name": "Motostivuitor"
+  },
+  {
+    "id": 12,
+    "name": "Peridoc"
+  },
+  {
+    "id": 21,
+    "name": "Platformă"
+  },
+  {
+    "id": 9,
+    "name": "Rulotă"
+  },
+  {
+    "name": "Tractor",
+    "id": 6
+  },
+  {
+    "name": "Utilaj de construcții",
+    "id": 15
+  },
+  {
+    "id": 16,
+    "name": "Vehicul special"
+  }
+]

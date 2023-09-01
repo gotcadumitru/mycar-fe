@@ -7,9 +7,9 @@ import { isFirebaseError } from 'shared/api/firebase/firebaseUtils'
 import { RoutePaths } from 'shared/config/router/RoutePaths'
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
 import { checkIfExistErrors } from 'shared/lib/utils/checkIfExistErrors'
-import Button, { ButtonCategoryType, ButtonTheme } from 'shared/ui/Button'
+import Button, { ButtonCategoryType, ButtonMargin, ButtonTheme } from 'shared/ui/Button'
 import Form from 'shared/ui/Form'
-import Input, { OnChangeMinType } from 'shared/ui/Input'
+import Input from 'shared/ui/Input'
 import { authActions } from '../../lib/slice/authSlice'
 
 interface SignUpProps {
@@ -95,8 +95,11 @@ export const SignUp: FC<SignUpProps> = ({ className }) => {
         onChange={onInputChange}
         label='Confirma parola'
       />
-      <Button type='submit'>Inregistrare</Button>
+      <Button margin={ButtonMargin.BOTTOM} type='submit'>
+        Inregistrare
+      </Button>
       <Button
+        margin={ButtonMargin.BOTTOM}
         category={ButtonCategoryType.LINK}
         theme={ButtonTheme.OUTLINE_RED}
         to={RoutePaths.sign_in}
