@@ -4,7 +4,6 @@
   border: 0;
   font-family: var(--public-sans);
   scrollbar-width: thin;
-  color: var(--grey-8);
 }
 
 *,
@@ -94,7 +93,7 @@ h6 {
 }
 
 select option {
-  color: var(--grey-8);
+  color: var(--grey-6);
 }
 
 select option:first-child {
