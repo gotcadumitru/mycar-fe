@@ -16,7 +16,6 @@
   font-weight: 700 !important;
   background-color: transparent !important;
   transition: all 0.1s ease;
-  margin: 0 0 22px;
   min-width: 150px;
   justify-content: center;
   align-items: center;
@@ -26,8 +25,20 @@
   overflow: visible;
   text-transform: uppercase;
 
-  &--no-margin {
-    margin: 0;
+  &--bottom {
+    margin: 0 0 22px;
+  }
+
+  &--top {
+    margin: 22px 0 0;
+  }
+
+  &--left {
+    margin: 0 0 0 22px;
+  }
+
+  &--right {
+    margin: 0 22px 0 0;
   }
 
   span {

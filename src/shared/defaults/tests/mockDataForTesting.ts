@@ -1,17 +1,17 @@
 import type { StateSchema } from 'app/providers/StoreProvider'
-import { getCarFormValues } from 'enteties/car'
+import { getVehicleFormValues } from 'enteties/vehicle'
 
 const reduxMockStateForTesting: DeepPartial<StateSchema> = {
   ui: {
     actionsWithFetchStatus: {},
     isSidebarShow: false,
   },
-  editCar: {
-    formFields: getCarFormValues({}),
+  editVehicle: {
+    formFields: getVehicleFormValues({}),
   },
-  car: {
-    allCars: [],
-    selectedCar: null,
+  vehicle: {
+    allVehiclesOfCurrentUser: [],
+    selectedVehicle: null,
   },
   user: {
     authUser: null,

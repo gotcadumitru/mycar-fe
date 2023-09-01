@@ -3,7 +3,7 @@ import { SignIn } from 'features/auth'
 import { ForgotPassword } from 'features/auth/ForgotPassword/ui/ForgotPassword'
 import { ResetPassword } from 'features/auth/ResetPassword/ui/ResetPassword'
 import { SignUp } from 'features/auth/SignUp/ui/SignUp'
-import NewCarPage from 'pages/AddCarPage'
+import NewVehiclePage from 'pages/AddVehiclePage'
 import AuthPage from 'pages/AuthPage'
 import MenuPage from 'pages/MenuPage'
 import { NotFoundPage } from 'pages/NotFoundPage'
@@ -42,13 +42,13 @@ export const routeConfig: Partial<Record<AppRoutes, RouteProps>> = {
       </>
     ),
   },
-  [AppRoutes.NEW_CAR]: {
-    path: RoutePaths.new_car,
+  [AppRoutes.NEW_VEHICLE]: {
+    path: RoutePaths.new_vehicle,
     element: (
       <>
         <Header isWithGoBackIcon title='Vehicul nou' />
         <Layout>
-          <NewCarPage />
+          <NewVehiclePage />
         </Layout>
       </>
     ),

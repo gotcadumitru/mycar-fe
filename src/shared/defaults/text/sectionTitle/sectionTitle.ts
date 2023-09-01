@@ -1,3 +1,3 @@
 export const SECTION_TITLE = {
-  NEW_CAR: 'Adauga o masina noua',
+  NEW_VEHICLE: 'Adauga un vehicul nou',
 }

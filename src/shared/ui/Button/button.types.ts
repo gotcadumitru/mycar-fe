@@ -13,7 +13,9 @@ export enum ButtonTheme {
 }
 export enum ButtonMargin {
   BOTTOM = 'BOTTOM',
-  NO_MARGIN = 'NO_MARGIN',
+  LEFT = 'LEFT',
+  RIGHT = 'RIGHT',
+  TOP = 'TOP',
 }
 
 export type ButtonConditionalPropsType = {

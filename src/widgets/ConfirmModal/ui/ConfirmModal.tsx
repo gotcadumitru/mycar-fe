@@ -30,12 +30,10 @@ export const ConfirmModal: FC<ConfirmModalProps> = ({
     </div>
     <div className='modal__body'>{questionText}</div>
     <div className='modal__footer'>
-      <Button onClick={onClose} theme={ButtonTheme.OUTLINE_RED} margin={ButtonMargin.NO_MARGIN}>
+      <Button onClick={onClose} theme={ButtonTheme.OUTLINE_RED}>
         {MODAL_TITLE.CLOSE}
       </Button>
-      <Button onClick={onConfirm} margin={ButtonMargin.NO_MARGIN}>
-        {MODAL_TITLE.OK}
-      </Button>
+      <Button onClick={onConfirm}>{MODAL_TITLE.OK}</Button>
     </div>
   </Modal>
 )

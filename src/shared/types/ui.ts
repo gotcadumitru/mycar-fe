@@ -12,3 +12,4 @@ export type ThunkRequestFetchStatus = {
     fetchStatus: FetchStatus
   }
 }
+export type ModifyProperties<T, Keys extends keyof T, U> = Omit<T, Keys> & { [K in Keys]: U }

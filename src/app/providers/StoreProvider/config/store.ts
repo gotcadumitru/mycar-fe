@@ -1,5 +1,4 @@
 import { configureStore, ReducersMapObject } from '@reduxjs/toolkit'
-import { carReducer } from 'enteties/car'
 import { fuelReducer } from 'enteties/fuel'
 import { leasingReducer } from 'enteties/leasing'
 import { ownershipReducer } from 'enteties/ownership'
@@ -8,9 +7,10 @@ import { userReducer } from 'enteties/user'
 import { vehicleReducer } from 'enteties/vehicle'
 import { vehicleBrandReducer } from 'enteties/vehicleBrand'
 import { vehicleModelReducer } from 'enteties/vehicleModel'
+import { vehicleTypeReducer } from 'enteties/vehicleType'
 import { vignetteReducer } from 'enteties/vignette'
 import { authReducer } from 'features/auth'
-import { editCarReducer } from 'features/car/car-edit-form'
+import { editVehicleReducer } from 'features/vehicle/vehicleEditForm'
 import { carAPI } from 'shared/api'
 import { uiReducer } from '../slices/ui'
 import type { StateSchema } from '../types/stateSchema'
@@ -18,11 +18,11 @@ import type { ThunkExtraArg } from '../types/thunk'
 
 export const rootReducers: ReducersMapObject<StateSchema> = {
   ui: uiReducer,
-  editCar: editCarReducer,
-  car: carReducer,
+  editVehicle: editVehicleReducer,
+  vehicle: vehicleReducer,
   user: userReducer,
   leasing: leasingReducer,
-  vehicle: vehicleReducer,
+  vehicleType: vehicleTypeReducer,
   fuel: fuelReducer,
   ownership: ownershipReducer,
   vignette: vignetteReducer,

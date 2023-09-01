@@ -1,10 +1,18 @@
 export type {
+  VehicleCreateBody,
+  VehicleFormDataFullType,
+  VehicleFormDataType,
   VehicleSliceState,
-  VehicleWithDetailsType,
-  VehicleType,
+  Vehicle,
 } from './model/types/vehicleTypes'
 
-export { fetchAllVehicleTypesThunk } from './model/slice/vehicleThunks'
+export { fetchAllVehiclesByUserId } from './model/slice/vehicleThunks'
+
+export {
+  getVehicleFormValues,
+  calculateAverageAge,
+  calculateAverageConsumption,
+} from './utils/vehicleUtils'
 
 export { vehicleReducer, vehicleActions } from './model/slice/vehicleSlice'
 
