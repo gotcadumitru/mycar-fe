@@ -43,7 +43,7 @@ export const SignIn: FC<SignInProps> = ({ className }) => {
     const { formFieldsWithErrors, isErrors } = checkIfExistErrors(formFields)
     if (isErrors) return dispatch(authActions.changeSignInFormAC(formFieldsWithErrors))
     try {
-      const loginResponse = await login(formFields.email.value, formFields.password.value)
+      await login(formFields.email.value, formFields.password.value)
     } catch (err) {
       if (isFirebaseError(err)) {
         if (err.code === FirebaseErrorCode.WRONG_PASSWORD) {

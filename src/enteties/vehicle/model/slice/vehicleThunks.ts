@@ -23,7 +23,6 @@ export const createNewVehiclesForUserId = createAsyncThunk<
   }>
 >(VehicleActions.CREATE_VEHICLE_FOR_USER_ID, async ({ userId, vehicleFormData }) => {
   const vehicleCreateBody = vehicleFormDataToCreateBody(vehicleFormData, userId)
-  console.log(JSON.stringify(vehicleCreateBody, null, 2))
   const createdVehicle = await vehicleDataService.createVehicle(vehicleCreateBody)
   if (!createdVehicle) throw new Error(REQUEST_MESSAGES.SAVE_NEW_VEHICLE[FetchStatus.FAIL])
   return createdVehicle

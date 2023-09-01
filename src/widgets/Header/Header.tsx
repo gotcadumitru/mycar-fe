@@ -2,7 +2,7 @@ import { useAuth } from 'app/providers/AuthContextProvider'
 import { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
 import AiOutlineLeft from 'shared/assets/icons/AiOutlineLeft.svg'
-import Button, { ButtonMargin, ButtonTheme } from 'shared/ui/Button'
+import Button, { ButtonTheme } from 'shared/ui/Button'
 import './header.scss'
 import type { HeaderPropsType } from './header.types'
 

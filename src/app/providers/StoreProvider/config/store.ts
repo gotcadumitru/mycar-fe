@@ -11,7 +11,6 @@ import { vehicleTypeReducer } from 'enteties/vehicleType'
 import { vignetteReducer } from 'enteties/vignette'
 import { authReducer } from 'features/auth'
 import { editVehicleReducer } from 'features/vehicle/vehicleEditForm'
-import { carAPI } from 'shared/api'
 import { uiReducer } from '../slices/ui'
 import type { StateSchema } from '../types/stateSchema'
 import type { ThunkExtraArg } from '../types/thunk'
@@ -34,7 +33,7 @@ export const rootReducers: ReducersMapObject<StateSchema> = {
 
 export function createReduxStore(initialState?: StateSchema) {
   const extraArg: ThunkExtraArg = {
-    carAPI,
+    api: null,
   }
 
   return configureStore({

@@ -1,8 +1,8 @@
+import axios from 'axios'
 import MockAdapter from 'axios-mock-adapter'
-import { carAPI } from 'shared/api'
 
-const mock = new MockAdapter(carAPI)
+const mock = new MockAdapter(axios)
 
-mock.onGet('/categories/organisation/2647058').reply(200, { body: 'jostka' })
+mock.onGet('/8').reply(200, { body: 'jostka' })
 
 export default mock

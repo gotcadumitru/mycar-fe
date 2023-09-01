@@ -6,6 +6,4 @@ export const isFirebaseError = (error: unknown): error is FirebaseError =>
   (error as FirebaseError).code !== undefined
 
 // This is just a helper to add the type to the db responses
-export const createCollection = <T = DocumentData>(collectionName: string) => {
-  return collection(firestoreDb, collectionName) as CollectionReference<T>
-}
+export const createCollection = <T = DocumentData>(collectionName: string) => collection(firestoreDb, collectionName) as CollectionReference<T>

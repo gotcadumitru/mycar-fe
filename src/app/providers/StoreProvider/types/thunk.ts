@@ -1,10 +1,9 @@
-import type { AxiosInstance } from 'axios'
 import type { RequestMessageType } from 'shared/types/ui'
 import type { AppDispatch } from '../config/store'
 import type { StateSchema } from './stateSchema'
 
 export interface ThunkExtraArg {
-  carAPI: AxiosInstance
+  api?: any
 }
 
 export type ThunkValue<T> = T & { notification?: RequestMessageType | false }
