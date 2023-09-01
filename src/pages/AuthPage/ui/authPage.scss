@@ -21,15 +21,18 @@
     border-top-right-radius: 12px;
     background-color: var(--white);
   }
+
   &__facebook {
     position: absolute;
     left: 15px;
     color: var(--blue-2);
   }
+
   &__google {
     position: absolute;
     left: 15px;
   }
+
   &__forgot {
     display: flex;
     align-items: center;
