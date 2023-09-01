@@ -13,11 +13,7 @@ const Header: FC<HeaderPropsType> = ({ isWithGoBackIcon, title }) => {
     <div className='header'>
       <div className='header__left-side'>
         {isWithGoBackIcon && (
-          <Button
-            margin={ButtonMargin.NO_MARGIN}
-            theme={ButtonTheme.EMPTY}
-            onClick={() => navigate(-1)}
-          >
+          <Button theme={ButtonTheme.EMPTY} onClick={() => navigate(-1)}>
             <AiOutlineLeft />
           </Button>
         )}

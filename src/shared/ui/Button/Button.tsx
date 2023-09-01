@@ -11,14 +11,17 @@ import {
 
 const Button: FC<ButtonConditionalPropsType> = ({
   className,
-  margin = ButtonMargin.BOTTOM,
+  margin,
   theme,
   children,
   icon,
   ...props
 }) => {
   const buttonClassName = classNames('button', className, {
-    'button--no-margin': margin === ButtonMargin.NO_MARGIN,
+    'button--top': margin === ButtonMargin.TOP,
+    'button--bottom': margin === ButtonMargin.BOTTOM,
+    'button--left': margin === ButtonMargin.LEFT,
+    'button--right': margin === ButtonMargin.RIGHT,
     'button--empty': theme === ButtonTheme.EMPTY,
     'button--outline button--outline--red': theme === ButtonTheme.OUTLINE_RED,
     'button--outline button--outline--blue': theme === ButtonTheme.OUTLINE_BLUE,

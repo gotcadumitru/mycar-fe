@@ -1,5 +1,5 @@
 import { selectRequestStatus } from 'app/providers/StoreProvider/slices/ui'
-import { fetchAllVehicleTypesThunk, VehicleActions } from 'enteties/vehicle'
+import { fetchAllVehicleTypesThunk, VehicleTypeActions } from 'enteties/vehicleType'
 import { FC, memo, useEffect, useMemo } from 'react'
 import { FetchStatus } from 'shared/api'
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
@@ -10,8 +10,10 @@ type VehicleTypesSelectProps = Omit<InputSelectWithLabel, 'options'>
 
 const VehicleTypesSelect: FC<VehicleTypesSelectProps> = ({ className, ...props }) => {
   const dispatch = useAppDispatch()
-  const vehicleTypes = useAppSelector((state) => state.vehicle.vehicleTypes)
-  const fetchStatus = useAppSelector(selectRequestStatus(VehicleActions.FETCH_ALL_VEHICLE_TYPES))
+  const vehicleTypes = useAppSelector((state) => state.vehicleType.vehicleTypes)
+  const fetchStatus = useAppSelector(
+    selectRequestStatus(VehicleTypeActions.FETCH_ALL_VEHICLE_TYPES),
+  )
 
   const vehicleTypesOptions: InputOptionType<string>[] = useMemo(
     () =>

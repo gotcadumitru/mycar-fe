@@ -1,14 +1,30 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { kv } from '@vercel/kv'
-import type { ThunkConfig } from 'app/providers/StoreProvider'
+import type { ThunkConfig, ThunkValue } from 'app/providers/StoreProvider'
+import { FetchStatus } from 'shared/api'
+import { vehicleDataService } from 'shared/api/firebase'
+import { REQUEST_MESSAGES } from 'shared/defaults/text'
+import { vehicleFormDataToCreateBody } from '../../utils/vehicleUtils'
 import { VehicleActions } from '../consts/vehicleConsts'
-import type { VehicleType } from '../types/vehicleTypes'
+import type { Vehicle, VehicleFormDataFullType } from '../types/vehicleTypes'
 
-export const fetchAllVehicleTypesThunk = createAsyncThunk<VehicleType[], void, ThunkConfig<string>>(
-  VehicleActions.FETCH_ALL_VEHICLE_TYPES,
-  async () => {
-    // const r = await kv.json.set('vehicleTypes', '$', JSON.stringify(response.data))
-    const response: VehicleType[] = await kv.json.get('vehicleTypes')
+export const fetchAllVehiclesByUserId = createAsyncThunk<Vehicle[], string, ThunkConfig<string>>(
+  VehicleActions.FETCH_ALL_VEHICLES_BY_USER_ID,
+  async (userId) => {
+    const response = await vehicleDataService.getAllByUserId(userId)
     return response
   },
 )
+
+export const createNewVehiclesForUserId = createAsyncThunk<
+  Vehicle,
+  ThunkValue<{
+    vehicleFormData: VehicleFormDataFullType
+    userId: string
+  }>
+>(VehicleActions.CREATE_VEHICLE_FOR_USER_ID, async ({ userId, vehicleFormData }) => {
+  const vehicleCreateBody = vehicleFormDataToCreateBody(vehicleFormData, userId)
+  console.log(JSON.stringify(vehicleCreateBody, null, 2))
+  const createdVehicle = await vehicleDataService.createVehicle(vehicleCreateBody)
+  if (!createdVehicle) throw new Error(REQUEST_MESSAGES.SAVE_NEW_VEHICLE[FetchStatus.FAIL])
+  return createdVehicle
+})

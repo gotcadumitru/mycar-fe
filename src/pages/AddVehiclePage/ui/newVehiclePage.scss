@@ -1,0 +1,9 @@
+.new-vehicle-page {
+  font-size: 10px;
+  padding-bottom: calc(env(safe-area-inset-bottom) + 12px);
+
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

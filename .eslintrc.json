@@ -68,6 +68,7 @@
     "jsx-a11y/label-has-associated-control": "off",
     "no-debugger": "warn",
     "consistent-return": "off",
+    "class-methods-use-this": "off",
     "spaced-comment": "off",
     "react/no-unescaped-entities": "off",
     "no-duplicate-imports": "off",

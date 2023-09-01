@@ -5,7 +5,7 @@
 }
 
 .react-loading-skeleton {
-  --base-color: var(--grey-4);
+  --base-color: var(--grey-5);
   --highlight-color: var(--white);
   --animation-duration: 1s;
   --animation-direction: normal;
@@ -18,7 +18,6 @@
   line-height: 1;
   position: relative;
   overflow: hidden;
-  margin-bottom: 5px;
   z-index: 1; /* Necessary for overflow: hidden to work correctly in Safari */
 
   &::after {
@@ -44,9 +43,14 @@
     animation-iteration-count: infinite;
   }
 
+  &--panel {
+    margin-top: 12px;
+    border-radius: 16px;
+  }
+
   &--grid-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 15px;
+    gap: 12px;
   }
 }
