@@ -17,10 +17,9 @@ For a file to be considered a story, its name must meet the condition specified 
 ## Decorators in Storybook
 The following decorators are used in Storybook:
 
-1. [BrowserStorageDecorator](../../src/shared/config/storybook/BrowserStorageDecorator/BrowserStorageDecorator.tsx): Mocks the local storage.
-2. [ReduxStoreDecorator](../../src/shared/config/storybook/ReduxStoreDecorator/ReduxStoreDecorator.tsx): Decorator for mocking the Redux store.
-3. [SalesforceActionsDecorator](../../src/shared/config/storybook/SalesforceActionsDecorator/SalesforceActionsDecorator.tsx): Decorator for mocking Salesforce remote actions.
-4. [StyleDecorator](../../src/shared/config/storybook/StyleDecorator/StyleDecorator.tsx): Decorator for loading global styles from the main.scss file.
+1. [ReduxStoreDecorator](../../src/shared/config/storybook/ReduxStoreDecorator/ReduxStoreDecorator.tsx): Decorator for mocking the Redux store.
+2. [SalesforceActionsDecorator](../../src/shared/config/storybook/SalesforceActionsDecorator/SalesforceActionsDecorator.tsx): Decorator for mocking Salesforce remote actions.
+3. [StyleDecorator](../../src/shared/config/storybook/StyleDecorator/StyleDecorator.tsx): Decorator for loading global styles from the main.scss file.
 
 ## Emitting Actions (Hover/Click) on Elements
 To emit actions such as hover or click on an element in the page, use the **@storybook/addon-interactions** library. Actions should be written in the **play** function, as shown in the example below:

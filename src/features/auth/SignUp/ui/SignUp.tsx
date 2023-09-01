@@ -40,11 +40,7 @@ export const SignUp: FC<SignUpProps> = ({ className }) => {
     const { formFieldsWithErrors, isErrors } = checkIfExistErrors(formFields)
     if (isErrors) return dispatch(authActions.changeSignUpFormAC(formFieldsWithErrors))
     try {
-      const registerResponse = await register(
-        formFields.email.value,
-        formFields.password.value,
-        formFields.fullName.value,
-      )
+      await register(formFields.email.value, formFields.password.value, formFields.fullName.value)
     } catch (err) {
       if (isFirebaseError(err)) {
         if (err.code === FirebaseErrorCode.WEAK_PASSWORD) {

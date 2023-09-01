@@ -5,7 +5,6 @@ import {
   fetchAllVehiclesByUserId,
   VehicleActions,
 } from 'enteties/vehicle'
-import { PanelPageSkeleton } from './PanelPageSkeleton'
 import { useEffect, useMemo } from 'react'
 import { FetchStatus } from 'shared/api'
 import BsPlusLg from 'shared/assets/icons/BsPlusLg.svg'
@@ -14,6 +13,7 @@ import { RoutePaths } from 'shared/config/router/RoutePaths'
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
 import { Card, CardColor } from 'shared/ui/Card'
 import { CardType } from 'shared/ui/Card/card.types'
+import { PanelPageSkeleton } from './PanelPageSkeleton'
 import './panelPage.scss'
 
 const PanelPage = () => {

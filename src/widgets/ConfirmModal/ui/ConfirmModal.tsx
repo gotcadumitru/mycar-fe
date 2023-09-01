@@ -1,7 +1,7 @@
 import classNames from 'classnames'
-import { FC, ReactNode, useEffect, useLayoutEffect, useState } from 'react'
+import { FC, ReactNode } from 'react'
 import { MODAL_TITLE } from 'shared/defaults/text'
-import Button, { ButtonMargin, ButtonTheme } from 'shared/ui/Button'
+import Button, { ButtonTheme } from 'shared/ui/Button'
 import Modal from 'shared/ui/Modal'
 
 interface ConfirmModalProps {
