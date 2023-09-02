@@ -14,14 +14,13 @@ const LogOutButton: FC = () => {
 
   return (
     <>
-      {isConfirmModalShow && (
-        <ConfirmModal
-          title='Log out'
-          questionText='Esti sigur ca doresti sa iesi din cont?'
-          onConfirm={onConfirmLogOut}
-          onClose={() => setIsConfirmModalShow(false)}
-        />
-      )}
+      <ConfirmModal
+        title='Log out'
+        questionText='Esti sigur ca doresti sa iesi din cont?'
+        onConfirm={onConfirmLogOut}
+        onClose={() => setIsConfirmModalShow(false)}
+        isOpen={isConfirmModalShow}
+      />
       <Button onClick={() => setIsConfirmModalShow(true)} theme={ButtonTheme.OUTLINE_RED}>
         Log out
       </Button>

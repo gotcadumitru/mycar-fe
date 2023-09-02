@@ -1,2 +1,2 @@
 export { default } from './Modal'
-export type { ModalPropsType } from './modal.types'
+export type { ModalPropsType } from 'src/shared/ui/Modal/modalTypes'

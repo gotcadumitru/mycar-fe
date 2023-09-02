@@ -10,6 +10,7 @@ interface ConfirmModalProps {
   questionText: ReactNode
   onConfirm: () => void
   onClose?: () => void
+  isOpen?: boolean
 }
 
 export const ConfirmModal: FC<ConfirmModalProps> = ({
@@ -22,7 +23,7 @@ export const ConfirmModal: FC<ConfirmModalProps> = ({
 }) => (
   <Modal
     className={classNames('modal__container--confirm', className)}
-    onModalClose={onClose}
+    onClose={onClose}
     {...props}
   >
     <div className='modal__header'>
