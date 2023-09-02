@@ -1,7 +1,10 @@
 import classNames from 'classnames'
 import React, { useId } from 'react'
-import { FormDataField } from 'shared/lib/utils/checkIfExistErrors'
+import AiOutlineDelete from 'shared/assets/icons/AiOutlineDelete.svg'
 import BiImageAdd from 'shared/assets/icons/BiImageAdd.svg'
+import { FormDataField } from 'shared/lib/utils/checkIfExistErrors'
+import Button, { ButtonTheme } from 'shared/ui/Button'
+import { v4 } from 'uuid'
 import File, { FileInputType } from '../File'
 import './file-input.scss'
 
@@ -35,26 +38,27 @@ const FileInput: React.FC<FileInputPropsType> = ({
   const errorMessageLocal = valueFullType?.errorMessage ?? errorMessage
   const valueLocal = valueFullType?.value ?? value
   const handleFiles = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const filesFromPC = Array.from(event.target.files || []).map((file) => ({
+    const filesFromPC: FileInputType[] = Array.from(event.target.files || []).map((file) => ({
       name: file.name,
       file,
       mimetype: file.type,
       size: file.size,
+      id: v4(),
     }))
-
     onChange([...valueLocal, ...filesFromPC])
   }
 
-  const removeFile = (index: number) => {
-    onChange(valueLocal.filter((_, i) => i !== index))
+  const removeFile = (id: string) => {
+    onChange(valueLocal.filter((file) => file.id !== id))
   }
 
   const containerClassNames = classNames('input__field-group', 'file-input', containerClassName, {
     'input--disabled': disabled,
     'input__field-group--error': errorMessageLocal,
+    'file-input--no-margin': !valueLocal.length,
   })
   return (
-    <>
+    <div className='file-input__container'>
       <label htmlFor={fileInputId} className={containerClassNames}>
         {label && (
           <div className='file-input__label'>
@@ -63,53 +67,48 @@ const FileInput: React.FC<FileInputPropsType> = ({
           </div>
         )}
         {!disabled && (
-          <div className='file-input__files'>
-            <div className='file-input__select-files'>
-              <input
-                id={fileInputId}
-                multiple={multiple}
-                type='file'
-                accept={accept}
-                onChange={handleFiles}
-              />
-            </div>
-          </div>
+          <input
+            id={fileInputId}
+            multiple={multiple}
+            type='file'
+            accept={accept}
+            onChange={handleFiles}
+          />
         )}
       </label>
-      {isDisplayImagesEnabled &&
-        valueLocal.map((file, index) => {
-          const isFileFromBE = typeof file.file === 'string'
-          const fileSrc = (
-            isFileFromBE ? file.file : URL.createObjectURL(file.file as Blob)
-          ) as string
-          return (
-            <div key={file.name + index} className='file-input__file-container'>
-              <div className='file-input__file-name'>
-                {!disabled && (
-                  <span
-                    onClick={() => {
-                      removeFile(index)
-                    }}
-                    className='file-input__remove-file'
-                  >
-                    X
-                  </span>
-                )}
+      {isDisplayImagesEnabled && (
+        <div className='file-input__files'>
+          {valueLocal.map((file) => {
+            const isFileFromBE = typeof file.file === 'string'
+            const fileSrc = (
+              isFileFromBE ? file.file : URL.createObjectURL(file.file as Blob)
+            ) as string
+            return (
+              <div key={file.id} className='file-input__file-container'>
+                <Button
+                  type='button'
+                  theme={ButtonTheme.EMPTY}
+                  onClick={() => removeFile(file.id)}
+                  className='file-input__remove-icon'
+                >
+                  <AiOutlineDelete />
+                </Button>
+                <File
+                  fileSrc={fileSrc}
+                  isFileFromBE={isFileFromBE}
+                  mimetype={file.mimetype}
+                  name={file.name}
+                  disabled={disabled}
+                  size={file.size}
+                  className='file-input__file'
+                />
               </div>
-              <File
-                fileSrc={fileSrc}
-                isFileFromBE={isFileFromBE}
-                mimetype={file.mimetype}
-                name={file.name}
-                disabled={disabled}
-                size={file.size}
-                className='file-input__file'
-              />
-            </div>
-          )
-        })}
+            )
+          })}
+        </div>
+      )}
       {errorMessageLocal && <div className='input__error-message'>{errorMessageLocal} </div>}
-    </>
+    </div>
   )
 }
 export default FileInput

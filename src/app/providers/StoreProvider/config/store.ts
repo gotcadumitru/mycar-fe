@@ -42,6 +42,7 @@ export function createReduxStore(initialState?: StateSchema) {
     preloadedState: initialState,
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
+        serializableCheck: false,
         thunk: {
           extraArgument: extraArg,
         },

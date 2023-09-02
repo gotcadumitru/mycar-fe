@@ -7,6 +7,7 @@ import {
 } from '../model/types/vehicleTypes'
 
 export const getVehicleFormValues = ({
+  image = [],
   type = null,
   brand = null,
   model = null,
@@ -34,6 +35,11 @@ export const getVehicleFormValues = ({
   usagePercentMix = '',
   usagePercentExtraUrb = '',
 }: Partial<VehicleFormDataType>): VehicleFormDataFullType => ({
+  image: {
+    value: image,
+    errorMessage: '',
+    validations: [{ rule: ValidationRules.REQUIRED }],
+  },
   type: {
     value: type,
     errorMessage: '',
@@ -170,6 +176,7 @@ export const vehicleFormDataToCreateBody = (
   vehicleFormData: VehicleFormDataFullType,
   userId: string,
 ): VehicleCreateBody => ({
+  image: vehicleFormData.image.value,
   type: vehicleFormData.type.value,
   brand: vehicleFormData.brand.value,
   model: vehicleFormData.model.value,

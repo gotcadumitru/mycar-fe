@@ -11,6 +11,7 @@ import { ChangeEvent, FC, memo } from 'react'
 import { SECTION_TITLE } from 'shared/defaults/text'
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
 import Checkbox from 'shared/ui/Checkbox'
+import type { FileInputType } from 'shared/ui/File'
 import FileInput from 'shared/ui/FileInput'
 import Form from 'shared/ui/Form'
 import Input, { OnChangeMinType } from 'shared/ui/Input'
@@ -66,16 +67,25 @@ const EditVehicleForm: FC<EditCarFormProps> = ({ formId, onSubmit }) => {
       }),
     )
   }
+
+  const handleChangeInputFile = (files: FileInputType[]) => {
+    dispatch(
+      editVehicleActions.changeVehicleDataAC({
+        ...formFields,
+        image: {
+          ...formFields.image,
+          value: files,
+          errorMessage: '',
+        },
+      }),
+    )
+  }
   return (
     <Form id={formId} onSubmit={onSubmit}>
       <Section title={SECTION_TITLE.NEW_VEHICLE}>
         <FileInput
-          valueFullType={{
-            value: [],
-            validations: [],
-            errorMessage: '',
-          }}
-          onChange={(e) => {}}
+          valueFullType={formFields.image}
+          onChange={handleChangeInputFile}
           label='Selecteaza o poza'
         />
         <VehicleTypesSelect
