@@ -1,15 +1,15 @@
 import classNames from 'classnames'
-import React, { useId, useState } from 'react'
-import { Carousel } from 'react-responsive-carousel'
-import 'react-responsive-carousel/lib/styles/carousel.min.css'
+import React, { Suspense, useId, useState } from 'react'
 import AiOutlineDelete from 'shared/assets/icons/AiOutlineDelete.svg'
 import BiImageAdd from 'shared/assets/icons/BiImageAdd.svg'
 import { FormDataField } from 'shared/lib/utils/checkIfExistErrors'
+import lazyWithPreload from 'shared/lib/utils/lazyWithPreload'
 import Button, { ButtonTheme } from 'shared/ui/Button'
-import Modal from 'shared/ui/Modal'
 import { v4 } from 'uuid'
 import File, { FileInputType } from '../File'
 import './file-input.scss'
+
+const FileInputCarousel = lazyWithPreload(() => import('./FileInputCarousel'))
 
 interface FileInputPropsType
   extends Omit<
@@ -61,37 +61,17 @@ const FileInput: React.FC<FileInputPropsType> = ({
     'input__field-group--error': errorMessageLocal,
     'file-input--no-margin': !valueLocal.length,
   })
-  const selectedImageIndex = valueFullType?.value.findIndex((file) => file.id === selectedImageId)
+  const selectedImageIndex = valueLocal.findIndex((file) => file.id === selectedImageId)
   return (
     <>
       {selectedImageIndex !== -1 && (
-        <Modal
-          isCloseIconShow
-          onClose={() => setSelectedImageId('')}
-          isOpen={selectedImageIndex !== -1}
-        >
-          <Carousel
-            infiniteLoop
-            emulateTouch
-            selectedItem={selectedImageIndex}
-            useKeyboardArrows
-            swipeable
-            showThumbs={false}
-          >
-            {valueLocal.map((file) => (
-              <File
-                key={file.id}
-                fileSrc={URL.createObjectURL(file.file as Blob)}
-                isFileFromBE={false}
-                mimetype={file.mimetype}
-                name={file.name}
-                disabled={disabled}
-                size={file.size}
-                className='file-input__file'
-              />
-            ))}
-          </Carousel>
-        </Modal>
+        <Suspense>
+          <FileInputCarousel
+            selectedImageIndex={selectedImageIndex}
+            images={valueLocal}
+            setSelectedImageId={setSelectedImageId}
+          />
+        </Suspense>
       )}
       <div className='file-input__container'>
         <label htmlFor={fileInputId} className={containerClassNames}>
