@@ -1,9 +1,12 @@
 import classNames from 'classnames'
-import React, { useId } from 'react'
+import React, { useId, useState } from 'react'
+import { Carousel } from 'react-responsive-carousel'
+import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import AiOutlineDelete from 'shared/assets/icons/AiOutlineDelete.svg'
 import BiImageAdd from 'shared/assets/icons/BiImageAdd.svg'
 import { FormDataField } from 'shared/lib/utils/checkIfExistErrors'
 import Button, { ButtonTheme } from 'shared/ui/Button'
+import Modal from 'shared/ui/Modal'
 import { v4 } from 'uuid'
 import File, { FileInputType } from '../File'
 import './file-input.scss'
@@ -34,6 +37,7 @@ const FileInput: React.FC<FileInputPropsType> = ({
   multiple = true,
   isDisplayImagesEnabled = true,
 }) => {
+  const [selectedImageId, setSelectedImageId] = useState<string>('')
   const fileInputId = useId()
   const errorMessageLocal = valueFullType?.errorMessage ?? errorMessage
   const valueLocal = valueFullType?.value ?? value
@@ -57,58 +61,91 @@ const FileInput: React.FC<FileInputPropsType> = ({
     'input__field-group--error': errorMessageLocal,
     'file-input--no-margin': !valueLocal.length,
   })
+  const selectedImageIndex = valueFullType?.value.findIndex((file) => file.id === selectedImageId)
   return (
-    <div className='file-input__container'>
-      <label htmlFor={fileInputId} className={containerClassNames}>
-        {label && (
-          <div className='file-input__label'>
-            <span>{label}</span>
-            <BiImageAdd className='file-input__icon' />
+    <>
+      {selectedImageIndex !== -1 && (
+        <Modal
+          isCloseIconShow
+          onClose={() => setSelectedImageId('')}
+          isOpen={selectedImageIndex !== -1}
+        >
+          <Carousel
+            infiniteLoop
+            emulateTouch
+            selectedItem={selectedImageIndex}
+            useKeyboardArrows
+            swipeable
+            showThumbs={false}
+          >
+            {valueLocal.map((file) => (
+              <File
+                key={file.id}
+                fileSrc={URL.createObjectURL(file.file as Blob)}
+                isFileFromBE={false}
+                mimetype={file.mimetype}
+                name={file.name}
+                disabled={disabled}
+                size={file.size}
+                className='file-input__file'
+              />
+            ))}
+          </Carousel>
+        </Modal>
+      )}
+      <div className='file-input__container'>
+        <label htmlFor={fileInputId} className={containerClassNames}>
+          {label && (
+            <div className='file-input__label'>
+              <span>{label}</span>
+              <BiImageAdd className='file-input__icon' />
+            </div>
+          )}
+          {!disabled && (
+            <input
+              id={fileInputId}
+              multiple={multiple}
+              type='file'
+              accept={accept}
+              onChange={handleFiles}
+            />
+          )}
+        </label>
+        {isDisplayImagesEnabled && (
+          <div className='file-input__files'>
+            {valueLocal.map((file) => {
+              const isFileFromBE = typeof file.file === 'string'
+              const fileSrc = (
+                isFileFromBE ? file.file : URL.createObjectURL(file.file as Blob)
+              ) as string
+              return (
+                <div key={file.id} className='file-input__file-container'>
+                  <Button
+                    type='button'
+                    theme={ButtonTheme.EMPTY}
+                    onClick={() => removeFile(file.id)}
+                    className='file-input__remove-icon'
+                  >
+                    <AiOutlineDelete />
+                  </Button>
+                  <File
+                    fileSrc={fileSrc}
+                    isFileFromBE={isFileFromBE}
+                    mimetype={file.mimetype}
+                    name={file.name}
+                    disabled={disabled}
+                    size={file.size}
+                    onClick={() => setSelectedImageId(file.id)}
+                    className='file-input__file'
+                  />
+                </div>
+              )
+            })}
           </div>
         )}
-        {!disabled && (
-          <input
-            id={fileInputId}
-            multiple={multiple}
-            type='file'
-            accept={accept}
-            onChange={handleFiles}
-          />
-        )}
-      </label>
-      {isDisplayImagesEnabled && (
-        <div className='file-input__files'>
-          {valueLocal.map((file) => {
-            const isFileFromBE = typeof file.file === 'string'
-            const fileSrc = (
-              isFileFromBE ? file.file : URL.createObjectURL(file.file as Blob)
-            ) as string
-            return (
-              <div key={file.id} className='file-input__file-container'>
-                <Button
-                  type='button'
-                  theme={ButtonTheme.EMPTY}
-                  onClick={() => removeFile(file.id)}
-                  className='file-input__remove-icon'
-                >
-                  <AiOutlineDelete />
-                </Button>
-                <File
-                  fileSrc={fileSrc}
-                  isFileFromBE={isFileFromBE}
-                  mimetype={file.mimetype}
-                  name={file.name}
-                  disabled={disabled}
-                  size={file.size}
-                  className='file-input__file'
-                />
-              </div>
-            )
-          })}
-        </div>
-      )}
-      {errorMessageLocal && <div className='input__error-message'>{errorMessageLocal} </div>}
-    </div>
+        {errorMessageLocal && <div className='input__error-message'>{errorMessageLocal} </div>}
+      </div>
+    </>
   )
 }
 export default FileInput
