@@ -23,10 +23,12 @@ export function useModal({ isOpen, onClose }: UseModalProps) {
   useEffect(() => {
     if (isOpen) {
       window.addEventListener('keydown', onKeyDown)
+      document.body.style.overflow = 'hidden'
     }
 
     return () => {
       window.removeEventListener('keydown', onKeyDown)
+      document.body.style.overflow = 'unset'
     }
   }, [isOpen, onKeyDown])
 }
