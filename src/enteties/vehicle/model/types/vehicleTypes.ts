@@ -1,5 +1,6 @@
-import { FormDataField } from 'shared/lib/utils/checkIfExistErrors'
-import { ModifyProperties } from 'shared/types/ui'
+import type { FormDataField } from 'shared/lib/utils/checkIfExistErrors'
+import type { ModifyProperties } from 'shared/types/ui'
+import type { FileInputType } from 'shared/ui/File'
 
 export type VehicleSliceState = {
   allVehiclesOfCurrentUser: Vehicle[]
@@ -7,6 +8,7 @@ export type VehicleSliceState = {
 }
 
 export type VehicleFormDataType = {
+  image: FileInputType[]
   type: number | null
   brand: number | null
   model: number | null

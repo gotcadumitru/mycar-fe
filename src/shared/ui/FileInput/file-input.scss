@@ -7,6 +7,11 @@
   border-radius: 4px;
   border: 2px solid var(--input-border);
   padding: 0 12px;
+  margin-bottom: 12px;
+
+  &.input__field-group.file-input--no-margin {
+    margin-bottom: 0;
+  }
 
   &__label {
     display: flex;
@@ -19,6 +24,10 @@
     white-space: break-spaces;
   }
 
+  &__container {
+    margin-bottom: 25px;
+  }
+
   &__icon {
     font-size: 28px;
     fill: var(--input-border);
@@ -26,5 +35,39 @@
 
   input[type='file'] {
     display: none;
+  }
+
+  &__file {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__files {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+  }
+
+  &__file-container {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  &__remove-icon {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+
+    svg {
+      font-size: 16px;
+      padding: 5px;
+      color: black;
+      background: white;
+      border-radius: 50%;
+      box-sizing: content-box;
+    }
   }
 }
