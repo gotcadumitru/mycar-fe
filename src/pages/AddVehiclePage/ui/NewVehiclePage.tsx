@@ -41,6 +41,11 @@ const NewVehiclePage = () => {
           onClick={() => {
             dispatch(
               editVehicleActions.changeVehicleDataAC({
+                image: {
+                  value: [],
+                  errorMessage: '',
+                  validations: [],
+                },
                 type: {
                   value: 1,
                   errorMessage: '',
