@@ -24,6 +24,7 @@ const FileInputCarousel: FC<FileInputCarouselProps> = ({
       useKeyboardArrows
       swipeable
       showThumbs={false}
+      dynamicHeight={false}
     >
       {images.map((file) => (
         <File
@@ -33,7 +34,7 @@ const FileInputCarousel: FC<FileInputCarouselProps> = ({
           mimetype={file.mimetype}
           name={file.name}
           size={file.size}
-          className='file-input__file'
+          className='file-input__file-modal'
         />
       ))}
     </Carousel>
