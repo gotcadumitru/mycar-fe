@@ -9,10 +9,7 @@ import type { Vehicle, VehicleFormDataFullType } from '../types/vehicleTypes'
 
 export const fetchAllVehiclesByUserId = createAsyncThunk<Vehicle[], string, ThunkConfig<string>>(
   VehicleActions.FETCH_ALL_VEHICLES_BY_USER_ID,
-  async (userId) => {
-    const response = await vehicleDataService.getAllByUserId(userId)
-    return response
-  },
+  async (userId) => vehicleDataService.getAllByUserId(userId),
 )
 
 export const createNewVehiclesForUserId = createAsyncThunk<
@@ -23,7 +20,7 @@ export const createNewVehiclesForUserId = createAsyncThunk<
   }>
 >(VehicleActions.CREATE_VEHICLE_FOR_USER_ID, async ({ userId, vehicleFormData }) => {
   const vehicleCreateBody = vehicleFormDataToCreateBody(vehicleFormData, userId)
-  const createdVehicle = await vehicleDataService.createVehicle(vehicleCreateBody)
+  const createdVehicle = await vehicleDataService.createDocument(vehicleCreateBody)
   if (!createdVehicle) throw new Error(REQUEST_MESSAGES.SAVE_NEW_VEHICLE[FetchStatus.FAIL])
   return createdVehicle
 })

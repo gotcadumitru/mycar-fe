@@ -1,5 +1,6 @@
 import { toast } from 'react-toastify'
 import { ERROR_MESSAGES, TOAST_MESSAGE } from 'shared/defaults/text'
+import { FileInputType } from 'shared/ui/File'
 
 export type FormDataField<T> = {
   value: T
@@ -37,7 +38,9 @@ export type Validations = {
       value: number
     }
 )
-export const checkIfExistErrors = <T extends FormFieldFullData<number | null | string | boolean>>(
+export const checkIfExistErrors = <
+  T extends FormFieldFullData<number | null | string | boolean | FileInputType[]>,
+>(
   formFields: T,
 ) => {
   let isErrors = false

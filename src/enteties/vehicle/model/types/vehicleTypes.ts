@@ -1,6 +1,5 @@
 import type { FormDataField } from 'shared/lib/utils/checkIfExistErrors'
-import type { ModifyProperties } from 'shared/types/ui'
-import type { FileInputType } from 'shared/ui/File'
+import type { FileCollectionCreateType, FileCollectionType, FileInputType } from 'shared/ui/File'
 
 export type VehicleSliceState = {
   allVehiclesOfCurrentUser: Vehicle[]
@@ -8,7 +7,7 @@ export type VehicleSliceState = {
 }
 
 export type VehicleFormDataType = {
-  image: FileInputType[]
+  files: FileInputType[]
   type: number | null
   brand: number | null
   model: number | null
@@ -38,7 +37,7 @@ export type VehicleFormDataType = {
 }
 
 export type VehicleCreateBody = ModifyProperties<
-  VehicleFormDataType,
+  ModifyProperties<VehicleFormDataType, 'files', FileInputType[]>,
   | 'fuelConsumptionUrb'
   | 'fuelConsumptionMix'
   | 'fuelConsumptionExtraUrb'
@@ -54,8 +53,9 @@ export type VehicleCreateBody = ModifyProperties<
   userId: string
 }
 
-export type Vehicle = VehicleCreateBody & {
+export type Vehicle = Omit<VehicleCreateBody, 'files'> & {
   uid: string
+  files: FileCollectionType[]
 }
 
 export type VehicleFormDataFullType = {

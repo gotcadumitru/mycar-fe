@@ -1,5 +1,5 @@
 import { useAuth } from 'app/providers/AuthContextProvider'
-import { createNewVehiclesForUserId } from 'enteties/vehicle/model/slice/vehicleThunks'
+import { createNewVehiclesForUserId } from 'enteties/vehicle'
 import EditVehicleForm, { editVehicleActions } from 'features/vehicle/vehicleEditForm'
 import { useId } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -41,7 +41,7 @@ const NewVehiclePage = () => {
           onClick={() => {
             dispatch(
               editVehicleActions.changeVehicleDataAC({
-                image: {
+                files: {
                   value: [],
                   errorMessage: '',
                   validations: [],
