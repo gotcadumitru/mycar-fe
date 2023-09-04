@@ -5,7 +5,7 @@ export type {
   VehicleSliceState,
   Vehicle,
 } from './model/types/vehicleTypes'
-
+export { useUserVehicles } from './hooks/useUserVehicles'
 export { fetchAllVehiclesByUserId, createNewVehiclesForUserId } from './model/slice/vehicleThunks'
 
 export {

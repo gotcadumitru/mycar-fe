@@ -58,7 +58,7 @@ const FileInput: React.FC<FileInputPropsType> = ({
 
   const containerClassNames = classNames('input__field-group', 'file-input', containerClassName, {
     'input--disabled': disabled,
-    'input__field-group--error': errorMessageLocal,
+    'file-input--error': errorMessageLocal,
     'file-input--no-margin': !valueLocal.length,
   })
   const selectedImageIndex = valueLocal.findIndex((file) => file.id === selectedImageId)

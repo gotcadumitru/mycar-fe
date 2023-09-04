@@ -24,9 +24,8 @@ const File: FC<FilePropsType> = ({
   size,
   ...props
 }) => {
-  const fileFinalSrc = typeof fileSrc === 'string' ? fileSrc : URL.createObjectURL(fileSrc)
   if (MIME_TYPE_TO_FILE_TYPE[mimetype] === FILE_TYPE.PDF) {
-    return <embed className={className} src={fileFinalSrc} {...props} />
+    return <embed className={className} src={fileSrc} {...props} />
   }
   if (MIME_TYPE_TO_FILE_TYPE[mimetype] === FILE_TYPE.VIDEO) {
     if (isFileFromBE && size > 99) {
@@ -38,13 +37,13 @@ const File: FC<FilePropsType> = ({
       )
     }
     return (
-      <video className={className} src={fileFinalSrc} controls={controls} {...props}>
+      <video className={className} src={fileSrc} controls={controls} {...props}>
         Loading
       </video>
     )
   }
   if (MIME_TYPE_TO_FILE_TYPE[mimetype] === FILE_TYPE.IMG) {
-    return <img className={className} src={fileFinalSrc} alt={name} {...props} />
+    return <img className={className} src={fileSrc} alt={name} {...props} />
   }
 
   return (

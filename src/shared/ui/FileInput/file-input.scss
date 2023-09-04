@@ -9,6 +9,11 @@
   padding: 0 12px;
   margin-bottom: 12px;
 
+  &--error {
+    border: solid 2px var(--red-3);
+    box-shadow: 0 0 0 1px var(--red-3);
+  }
+
   &.input__field-group.file-input--no-margin {
     margin-bottom: 0;
   }

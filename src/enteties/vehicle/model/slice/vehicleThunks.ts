@@ -5,11 +5,14 @@ import { vehicleDataService } from 'shared/api/firebase'
 import { REQUEST_MESSAGES } from 'shared/defaults/text'
 import { vehicleFormDataToCreateBody } from '../../utils/vehicleUtils'
 import { VehicleActions } from '../consts/vehicleConsts'
-import type { Vehicle, VehicleFormDataFullType } from '../types/vehicleTypes'
+import type { Vehicle, VehicleFormDataFullType, VehicleWithFiles } from '../types/vehicleTypes'
 
-export const fetchAllVehiclesByUserId = createAsyncThunk<Vehicle[], string, ThunkConfig<string>>(
-  VehicleActions.FETCH_ALL_VEHICLES_BY_USER_ID,
-  async (userId) => vehicleDataService.getAllByUserId(userId),
+export const fetchAllVehiclesByUserId = createAsyncThunk<
+  VehicleWithFiles[],
+  string,
+  ThunkConfig<string>
+>(VehicleActions.FETCH_ALL_VEHICLES_BY_USER_ID, async (userId) =>
+  vehicleDataService.getAllByUserId(userId),
 )
 
 export const createNewVehiclesForUserId = createAsyncThunk<

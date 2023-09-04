@@ -61,17 +61,17 @@ const AuthContextProvider: FC<PropsWithChildren> = ({ children }) => {
       unsubscribe()
     }
   }, [])
+  const isPageForAuthenticatedUsers = RoutePathsFroAuthenticatedUsers.includes(location.pathname)
 
   useEffect(() => {
-    if (currentUser && !RoutePathsFroAuthenticatedUsers.includes(location.pathname))
-      navigate(RoutePaths.panel)
+    if (currentUser && !isPageForAuthenticatedUsers) navigate(RoutePaths.panel)
     if (
       !currentUser &&
       currentUserFetchStatus === FetchStatus.SUCCESS &&
-      RoutePathsFroAuthenticatedUsers.includes(location.pathname)
+      isPageForAuthenticatedUsers
     )
       navigate(RoutePaths.sign_in)
-  }, [currentUser, location, currentUserFetchStatus])
+  }, [currentUser, isPageForAuthenticatedUsers, currentUserFetchStatus])
   const updateUserDetails = async (user: User, updatedFields: UserFieldAvailableToUpdate) => {
     await updateProfile(user, updatedFields)
   }
@@ -136,7 +136,8 @@ const AuthContextProvider: FC<PropsWithChildren> = ({ children }) => {
 
   return (
     <AuthContext.Provider value={value}>
-      {currentUserFetchStatus === FetchStatus.IN_PROGRESS ? (
+      {isPageForAuthenticatedUsers &&
+      (currentUserFetchStatus === FetchStatus.IN_PROGRESS || !currentUser) ? (
         <div className='loading-page' />
       ) : (
         children
