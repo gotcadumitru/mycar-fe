@@ -11,7 +11,7 @@ type DataServiceCollectionWithFiles<T> = {
 
 class DataServiceWithFiles<
   CreateType extends DataServiceCollectionWithFiles<FileInputType>,
-  BaseType extends DataServiceCollectionWithFiles<FileCollectionType>,
+  BaseType extends DataServiceCollectionWithFiles<string>,
 > extends DataService<CreateType, BaseType> {
   fileStorage
 

@@ -5,6 +5,7 @@ import {
   VehicleCreateBody,
   VehicleFormDataFullType,
   VehicleFormDataType,
+  VehicleWithFiles,
 } from '../model/types/vehicleTypes'
 
 export const getVehicleFormValues = ({
@@ -39,7 +40,7 @@ export const getVehicleFormValues = ({
   files: {
     value: files,
     errorMessage: '',
-    validations: [{ rule: ValidationRules.REQUIRED }],
+    validations: [{ rule: ValidationRules.REQUIRED_FILES }],
   },
   type: {
     value: type,
@@ -207,7 +208,7 @@ export const vehicleFormDataToCreateBody = (
   userId,
 })
 
-export const calculateAverageConsumption = (vehicles: Vehicle[]): number => {
+export const calculateAverageConsumption = (vehicles: (VehicleWithFiles | Vehicle)[]): number => {
   const totalConsumptionForAllCars = vehicles.reduce((consumption, vehicle) => {
     const vehicleAverageConsumption =
       (vehicle.usagePercentExtraUrb / 100) * vehicle.fuelConsumptionExtraUrb +
@@ -216,15 +217,15 @@ export const calculateAverageConsumption = (vehicles: Vehicle[]): number => {
 
     return vehicleAverageConsumption + consumption
   }, 0)
-  return totalConsumptionForAllCars / vehicles.length || 0
+  return +(totalConsumptionForAllCars / vehicles.length || 0).toFixed(2)
 }
 
-export const calculateAverageAge = (vehicles: Vehicle[]): number => {
+export const calculateAverageAge = (vehicles: (VehicleWithFiles | Vehicle)[]): number => {
   if (!vehicles.length) return 0
   const currentYear = new Date().getFullYear()
   const sumOfYears = vehicles.reduce(
     (ages, vehicle) => ages + currentYear - vehicle.yearOfProduction!,
     0,
   )
-  return sumOfYears / vehicles.length
+  return +(sumOfYears / vehicles.length).toFixed(2)
 }

@@ -1,9 +1,9 @@
 import type { FormDataField } from 'shared/lib/utils/checkIfExistErrors'
-import type { FileCollectionCreateType, FileCollectionType, FileInputType } from 'shared/ui/File'
+import type { FileCollectionType, FileInputType } from 'shared/ui/File'
 
 export type VehicleSliceState = {
-  allVehiclesOfCurrentUser: Vehicle[]
-  selectedVehicle: Vehicle | null
+  allVehiclesOfCurrentUser: VehicleWithFiles[]
+  selectedVehicle: VehicleWithFiles | null
 }
 
 export type VehicleFormDataType = {
@@ -55,6 +55,10 @@ export type VehicleCreateBody = ModifyProperties<
 
 export type Vehicle = Omit<VehicleCreateBody, 'files'> & {
   uid: string
+  files: string[]
+}
+
+export type VehicleWithFiles = Omit<Vehicle, 'files'> & {
   files: FileCollectionType[]
 }
 

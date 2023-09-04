@@ -1,6 +1,42 @@
 .garage-page {
-  padding: 12px;
+  padding: 12px 0;
   display: flex;
   width: 100%;
   flex-direction: column;
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__model {
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--grey-3);
+  }
+
+  &__title {
+    color: var(--black);
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 18px;
+  }
+
+  &__item {
+    display: grid;
+    grid-template-columns: 75px 1fr auto;
+    gap: 12px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    min-height: 75px;
+  }
+
+  &__image {
+    max-width: 75px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 8px;
+  }
 }

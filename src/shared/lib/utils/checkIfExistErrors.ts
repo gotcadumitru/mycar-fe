@@ -14,6 +14,7 @@ export type FormFieldFullData<T> = {
 
 export enum ValidationRules {
   REQUIRED = 'REQUIRED',
+  REQUIRED_FILES = 'REQUIRED_FILES',
   EQUAL_TO_FIELD = 'EQUAL_TO_FIELD',
   MIN_LENGTH = 'MIN_LENGTH',
   MIN_VALUE = 'MIN_VALUE',
@@ -23,7 +24,7 @@ export type Validations = {
   messageToDisplay?: string
 } & (
   | {
-      rule: ValidationRules.REQUIRED
+      rule: ValidationRules.REQUIRED | ValidationRules.REQUIRED_FILES
     }
   | {
       rule: ValidationRules.EQUAL_TO_FIELD
@@ -51,6 +52,14 @@ export const checkIfExistErrors = <
 
     property.validations.forEach((validationRule) => {
       if (validationRule.rule === ValidationRules.REQUIRED && !property.value) {
+        isErrors = true
+        property.errorMessage = validationRule.messageToDisplay || ERROR_MESSAGES.REQUIRED_FIELD
+      }
+      if (
+        validationRule.rule === ValidationRules.REQUIRED_FILES &&
+        Array.isArray(property.value) &&
+        !property.value.length
+      ) {
         isErrors = true
         property.errorMessage = validationRule.messageToDisplay || ERROR_MESSAGES.REQUIRED_FIELD
       }

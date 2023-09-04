@@ -1,27 +1,16 @@
-import { useAuth } from 'app/providers/AuthContextProvider'
-import {
-  calculateAverageAge,
-  calculateAverageConsumption,
-  fetchAllVehiclesByUserId,
-  VehicleActions,
-} from 'enteties/vehicle'
-import { useEffect, useMemo } from 'react'
+import { calculateAverageAge, calculateAverageConsumption, useUserVehicles } from 'enteties/vehicle'
+import { useMemo } from 'react'
 import { FetchStatus } from 'shared/api'
 import BsPlusLg from 'shared/assets/icons/BsPlusLg.svg'
 import HiOutlineBellAlert from 'shared/assets/icons/HiOutlineBellAlert.svg'
 import { RoutePaths } from 'shared/config/router/RoutePaths'
-import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
 import { Card, CardColor } from 'shared/ui/Card'
 import { CardType } from 'shared/ui/Card/card.types'
-import { PanelPageSkeleton } from './PanelPageSkeleton'
 import './panelPage.scss'
+import { PanelPageSkeleton } from './PanelPageSkeleton'
 
 const PanelPage = () => {
-  const dispatch = useAppDispatch()
-  const allVehiclesOfCurrentUser = useAppSelector((state) => state.vehicle.allVehiclesOfCurrentUser)
-  const allVehiclesOfCurrentUserFetchStatus = useAppSelector(
-    (state) => state.ui.actionsWithFetchStatus[VehicleActions.FETCH_ALL_VEHICLES_BY_USER_ID],
-  )
+  const { allVehiclesOfCurrentUserFetchStatus, allVehiclesOfCurrentUser } = useUserVehicles()
   const averageVehicleAge = useMemo(
     () => calculateAverageAge(allVehiclesOfCurrentUser),
     [allVehiclesOfCurrentUser],
@@ -31,11 +20,6 @@ const PanelPage = () => {
     [allVehiclesOfCurrentUser],
   )
 
-  const { currentUser } = useAuth()
-  useEffect(() => {
-    dispatch(fetchAllVehiclesByUserId(currentUser!.uid))
-  }, [])
-
   if (allVehiclesOfCurrentUserFetchStatus !== FetchStatus.SUCCESS) return <PanelPageSkeleton />
   return (
     <div className='panel-page'>
@@ -43,7 +27,7 @@ const PanelPage = () => {
         count={allVehiclesOfCurrentUser.length}
         title='Vehicule'
         cardColor={CardColor.BLUE}
-        description='/5 locuri disponibile'
+        description='/46 locuri disponibile'
         type={CardType.WITH_ICON}
         Icon={BsPlusLg}
         to={RoutePaths.new_vehicle}
