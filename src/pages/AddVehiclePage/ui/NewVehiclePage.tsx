@@ -28,7 +28,7 @@ const NewVehiclePage = () => {
       }),
     )
     if (dispatchAction.meta.requestStatus === FetchStatus.SUCCESS) {
-      editVehicleActions.resetVehicleDataAC()
+      dispatch(editVehicleActions.resetVehicleDataAC())
       navigate(RoutePaths.garage)
     }
   }
