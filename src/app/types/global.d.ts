@@ -53,3 +53,7 @@ type DeepPartial<T> = T extends object
       [P in keyof T]?: DeepPartial<T[P]>
     }
   : T
+
+type ModifyProperties<T, Keys extends keyof T, U> = {
+  [K in keyof T]: K extends Keys ? U : T[K]
+}

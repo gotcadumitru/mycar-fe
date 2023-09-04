@@ -7,8 +7,8 @@ interface OverlayProps {
   onClick?: () => void
 }
 
-const Overlay: FC<OverlayProps> = ({ className, onClick }) => {
-  return <div onClick={onClick} className={classNames('overlay', className)} />
-}
+const Overlay: FC<OverlayProps> = ({ className, onClick }) => (
+  <div onClick={onClick} className={classNames('overlay', className)} />
+)
 
 export default memo(Overlay)

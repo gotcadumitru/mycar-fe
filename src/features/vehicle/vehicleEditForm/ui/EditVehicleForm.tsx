@@ -72,8 +72,8 @@ const EditVehicleForm: FC<EditCarFormProps> = ({ formId, onSubmit }) => {
     dispatch(
       editVehicleActions.changeVehicleDataAC({
         ...formFields,
-        image: {
-          ...formFields.image,
+        files: {
+          ...formFields.files,
           value: files,
           errorMessage: '',
         },
@@ -84,7 +84,7 @@ const EditVehicleForm: FC<EditCarFormProps> = ({ formId, onSubmit }) => {
     <Form id={formId} onSubmit={onSubmit}>
       <Section title={SECTION_TITLE.NEW_VEHICLE}>
         <FileInput
-          valueFullType={formFields.image}
+          valueFullType={formFields.files}
           onChange={handleChangeInputFile}
           label='Selecteaza o poza'
         />

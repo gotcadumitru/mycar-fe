@@ -1,4 +1,5 @@
 import { ValidationRules } from 'shared/lib/utils/checkIfExistErrors'
+import { FileCollectionCreateType } from 'shared/ui/File'
 import {
   Vehicle,
   VehicleCreateBody,
@@ -7,7 +8,7 @@ import {
 } from '../model/types/vehicleTypes'
 
 export const getVehicleFormValues = ({
-  image = [],
+  files = [],
   type = null,
   brand = null,
   model = null,
@@ -35,8 +36,8 @@ export const getVehicleFormValues = ({
   usagePercentMix = '',
   usagePercentExtraUrb = '',
 }: Partial<VehicleFormDataType>): VehicleFormDataFullType => ({
-  image: {
-    value: image,
+  files: {
+    value: files,
     errorMessage: '',
     validations: [{ rule: ValidationRules.REQUIRED }],
   },
@@ -176,7 +177,7 @@ export const vehicleFormDataToCreateBody = (
   vehicleFormData: VehicleFormDataFullType,
   userId: string,
 ): VehicleCreateBody => ({
-  image: vehicleFormData.image.value,
+  files: vehicleFormData.files.value,
   type: vehicleFormData.type.value,
   brand: vehicleFormData.brand.value,
   model: vehicleFormData.model.value,

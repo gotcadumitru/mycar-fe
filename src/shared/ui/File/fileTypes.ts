@@ -1,12 +1,23 @@
 export type FileInputType = {
-  file: File | string
+  file: File
   name: string
   mimetype: string
   id: string
   size: number
 }
 
-export type FileType = FileInputType & {
+export type FileType = {
+  path: ''
+}
+
+export type FileCollectionCreateType = {
+  name: string
+  size: number
+  mimetype: string
+  storagePath: string
   fileUrl: string
-  downloadLink: string
+}
+
+export type FileCollectionType = FileCollectionCreateType & {
+  uid: string
 }

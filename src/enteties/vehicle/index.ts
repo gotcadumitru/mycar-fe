@@ -6,7 +6,7 @@ export type {
   Vehicle,
 } from './model/types/vehicleTypes'
 
-export { fetchAllVehiclesByUserId } from './model/slice/vehicleThunks'
+export { fetchAllVehiclesByUserId, createNewVehiclesForUserId } from './model/slice/vehicleThunks'
 
 export {
   getVehicleFormValues,
