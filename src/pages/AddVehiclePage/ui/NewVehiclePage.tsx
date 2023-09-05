@@ -129,10 +129,6 @@ const NewVehiclePage = () => {
                   ...formFields.fuelConsumptionUrb,
                   value: '6',
                 },
-                fuelConsumptionMix: {
-                  ...formFields.fuelConsumptionMix,
-                  value: '5.5',
-                },
                 fuelConsumptionExtraUrb: {
                   ...formFields.fuelConsumptionExtraUrb,
                   value: '5',
@@ -140,10 +136,6 @@ const NewVehiclePage = () => {
                 usagePercentUrb: {
                   ...formFields.usagePercentUrb,
                   value: '20',
-                },
-                usagePercentMix: {
-                  ...formFields.usagePercentMix,
-                  value: '40',
                 },
                 usagePercentExtraUrb: {
                   ...formFields.usagePercentExtraUrb,

@@ -29,20 +29,16 @@ export type VehicleFormDataType = {
   dotWinterTyre: string
   fuelType: number | null
   fuelConsumptionUrb: string
-  fuelConsumptionMix: string
   fuelConsumptionExtraUrb: string
   usagePercentUrb: string
-  usagePercentMix: string
   usagePercentExtraUrb: string
 }
 
 export type VehicleCreateBody = ModifyProperties<
   ModifyProperties<VehicleFormDataType, 'files', FileInputType[]>,
   | 'fuelConsumptionUrb'
-  | 'fuelConsumptionMix'
   | 'fuelConsumptionExtraUrb'
   | 'usagePercentUrb'
-  | 'usagePercentMix'
   | 'usagePercentExtraUrb'
   | 'power'
   | 'cylinderCapacity'

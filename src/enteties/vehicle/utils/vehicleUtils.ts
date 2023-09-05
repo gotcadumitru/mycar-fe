@@ -1,5 +1,4 @@
 import { ValidationRules } from 'shared/lib/utils/checkIfExistErrors'
-import { FileCollectionCreateType } from 'shared/ui/File'
 import {
   Vehicle,
   VehicleCreateBody,
@@ -31,10 +30,8 @@ export const getVehicleFormValues = ({
   dotWinterTyre = '',
   fuelType = null,
   fuelConsumptionUrb = '',
-  fuelConsumptionMix = '',
   fuelConsumptionExtraUrb = '',
   usagePercentUrb = '',
-  usagePercentMix = '',
   usagePercentExtraUrb = '',
 }: Partial<VehicleFormDataType>): VehicleFormDataFullType => ({
   files: {
@@ -147,11 +144,6 @@ export const getVehicleFormValues = ({
     errorMessage: '',
     validations: [{ rule: ValidationRules.REQUIRED }],
   },
-  fuelConsumptionMix: {
-    value: fuelConsumptionMix,
-    errorMessage: '',
-    validations: [{ rule: ValidationRules.REQUIRED }],
-  },
   fuelConsumptionExtraUrb: {
     value: fuelConsumptionExtraUrb,
     errorMessage: '',
@@ -159,11 +151,6 @@ export const getVehicleFormValues = ({
   },
   usagePercentUrb: {
     value: usagePercentUrb,
-    errorMessage: '',
-    validations: [{ rule: ValidationRules.REQUIRED }],
-  },
-  usagePercentMix: {
-    value: usagePercentMix,
     errorMessage: '',
     validations: [{ rule: ValidationRules.REQUIRED }],
   },
@@ -200,10 +187,8 @@ export const vehicleFormDataToCreateBody = (
   dotWinterTyre: vehicleFormData.dotWinterTyre.value,
   fuelType: vehicleFormData.fuelType.value,
   fuelConsumptionUrb: +vehicleFormData.fuelConsumptionUrb.value,
-  fuelConsumptionMix: +vehicleFormData.fuelConsumptionMix.value,
   fuelConsumptionExtraUrb: +vehicleFormData.fuelConsumptionExtraUrb.value,
   usagePercentUrb: +vehicleFormData.usagePercentUrb.value,
-  usagePercentMix: +vehicleFormData.usagePercentMix.value,
   usagePercentExtraUrb: +vehicleFormData.usagePercentExtraUrb.value,
   userId,
 })
@@ -212,9 +197,7 @@ export const calculateAverageConsumption = (vehicles: (VehicleWithFiles | Vehicl
   const totalConsumptionForAllCars = vehicles.reduce((consumption, vehicle) => {
     const vehicleAverageConsumption =
       (vehicle.usagePercentExtraUrb / 100) * vehicle.fuelConsumptionExtraUrb +
-      (vehicle.usagePercentUrb / 100) * vehicle.fuelConsumptionUrb +
-      (vehicle.usagePercentMix / 100) * vehicle.fuelConsumptionMix
-
+      (vehicle.usagePercentUrb / 100) * vehicle.fuelConsumptionUrb
     return vehicleAverageConsumption + consumption
   }, 0)
   return +(totalConsumptionForAllCars / vehicles.length || 0).toFixed(2)
