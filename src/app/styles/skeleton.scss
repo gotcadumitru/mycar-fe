@@ -48,6 +48,10 @@
     border-radius: 16px;
   }
 
+  &--small-text {
+    width: 70px;
+  }
+
   &--grid-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;

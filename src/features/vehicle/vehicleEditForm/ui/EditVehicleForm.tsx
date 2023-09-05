@@ -222,7 +222,7 @@ const EditVehicleForm: FC<EditCarFormProps> = ({ formId, onSubmit }) => {
           label='Tip combustibil'
         />
         <Label label='Consum' className='label--mb' />
-        <div className='edit-vehicle__three'>
+        <div className='edit-vehicle__two'>
           <Input
             valueFullType={formFields.fuelConsumptionUrb}
             type='number'
@@ -231,22 +231,15 @@ const EditVehicleForm: FC<EditCarFormProps> = ({ formId, onSubmit }) => {
             onChange={onInputChange}
           />
           <Input
-            valueFullType={formFields.fuelConsumptionMix}
-            type='number'
-            name='fuelConsumptionMix'
-            label='Mix'
-            onChange={onInputChange}
-          />
-          <Input
             valueFullType={formFields.fuelConsumptionExtraUrb}
             type='number'
             name='fuelConsumptionExtraUrb'
-            label='Extra yrban'
+            label='Extra urban'
             onChange={onInputChange}
           />
         </div>
         <Label label='Procent utilizare' className='label--mb' />
-        <div className='edit-vehicle__three'>
+        <div className='edit-vehicle__two'>
           <Input
             valueFullType={formFields.usagePercentUrb}
             type='number'
@@ -255,16 +248,9 @@ const EditVehicleForm: FC<EditCarFormProps> = ({ formId, onSubmit }) => {
             onChange={onInputChange}
           />
           <Input
-            valueFullType={formFields.usagePercentMix}
-            type='number'
-            label='Mix'
-            name='usagePercentMix'
-            onChange={onInputChange}
-          />
-          <Input
             valueFullType={formFields.usagePercentExtraUrb}
             type='number'
-            label='Extra yrban'
+            label='Extra urban'
             name='usagePercentExtraUrb'
             onChange={onInputChange}
           />

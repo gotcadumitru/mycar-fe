@@ -14,6 +14,7 @@
     font-weight: 400;
     font-size: 16px;
     color: var(--grey-3);
+    display: flex;
   }
 
   &__title {
@@ -31,6 +32,15 @@
     align-items: center;
     margin-bottom: 12px;
     min-height: 75px;
+  }
+
+  &__car-icon {
+    width: 75px;
+    height: 75px;
+    color: var(--grey-4);
+    border: 3px solid var(--grey-4);
+    padding-bottom: 15px;
+    border-radius: 8px;
   }
 
   &__image {
