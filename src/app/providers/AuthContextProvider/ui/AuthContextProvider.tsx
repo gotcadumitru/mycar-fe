@@ -1,11 +1,11 @@
 import {
   confirmPasswordReset,
   createUserWithEmailAndPassword,
+  FacebookAuthProvider,
   GoogleAuthProvider,
   onAuthStateChanged,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
-  FacebookAuthProvider,
   signInWithPopup,
   signOut,
   updateProfile,
@@ -25,7 +25,7 @@ import React, {
 import { useLocation, useNavigate } from 'react-router-dom'
 import { FetchStatus } from 'shared/api'
 import { firebaseAuth } from 'shared/api/firebase'
-import { RoutePaths, RoutePathsFroAuthenticatedUsers } from 'shared/config/router/RoutePaths'
+import { RoutePaths } from 'shared/config/router/RoutePaths'
 
 type AuthContextType = {
   currentUser: User | null
@@ -47,13 +47,10 @@ type UserFieldAvailableToUpdate = {
 export const useAuth = () => useContext(AuthContext)
 
 const AuthContextProvider: FC<PropsWithChildren> = ({ children }) => {
-  const location = useLocation()
-  const navigate = useNavigate()
   const [currentUser, setCurrentUser] = useState<User | null>(null)
   const [currentUserFetchStatus, setCurrentUserFetchStatus] = useState(FetchStatus.IN_PROGRESS)
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(firebaseAuth, (user) => {
-      console.log(user)
       setCurrentUser(user)
       setCurrentUserFetchStatus(FetchStatus.SUCCESS)
     })
@@ -61,17 +58,7 @@ const AuthContextProvider: FC<PropsWithChildren> = ({ children }) => {
       unsubscribe()
     }
   }, [])
-  const isPageForAuthenticatedUsers = RoutePathsFroAuthenticatedUsers.includes(location.pathname)
 
-  useEffect(() => {
-    if (currentUser && !isPageForAuthenticatedUsers) navigate(RoutePaths.panel)
-    if (
-      !currentUser &&
-      currentUserFetchStatus === FetchStatus.SUCCESS &&
-      isPageForAuthenticatedUsers
-    )
-      navigate(RoutePaths.sign_in)
-  }, [currentUser, isPageForAuthenticatedUsers, currentUserFetchStatus])
   const updateUserDetails = async (user: User, updatedFields: UserFieldAvailableToUpdate) => {
     await updateProfile(user, updatedFields)
   }
@@ -134,16 +121,7 @@ const AuthContextProvider: FC<PropsWithChildren> = ({ children }) => {
     [currentUser, currentUserFetchStatus],
   )
 
-  return (
-    <AuthContext.Provider value={value}>
-      {isPageForAuthenticatedUsers &&
-      (currentUserFetchStatus === FetchStatus.IN_PROGRESS || !currentUser) ? (
-        <div className='loading-page' />
-      ) : (
-        children
-      )}
-    </AuthContext.Provider>
-  )
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }
 
 export default AuthContextProvider

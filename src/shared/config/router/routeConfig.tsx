@@ -3,69 +3,113 @@ import { SignIn } from 'features/auth'
 import { ForgotPassword } from 'features/auth/ForgotPassword/ui/ForgotPassword'
 import { ResetPassword } from 'features/auth/ResetPassword/ui/ResetPassword'
 import { SignUp } from 'features/auth/SignUp/ui/SignUp'
-import NewVehiclePage from 'pages/AddVehiclePage'
+import NewVehiclePage, { NewVehiclePageSkeleton } from 'pages/AddVehiclePage'
 import AuthPage from 'pages/AuthPage'
-import GaragePage from 'pages/GaragePage'
+import GaragePage, { GaragePageSkeleton } from 'pages/GaragePage'
 import MenuPage from 'pages/MenuPage'
 import { NotFoundPage } from 'pages/NotFoundPage'
-import PanelPage from 'pages/PanelPage'
-import { Navigate, RouteProps } from 'react-router-dom'
+import PanelPage, { PanelPageSkeleton } from 'pages/PanelPage'
+import VehiclePage from 'pages/VehiclePage'
+import { Suspense } from 'react'
+import { Navigate } from 'react-router-dom'
+import type { AppRoutesProps } from 'shared/types/router'
 import Footer from 'widgets/Footer'
 import Header from 'widgets/Header'
 import { AppRoutes, RoutePaths } from './RoutePaths'
 
-export const routeConfig: Partial<Record<AppRoutes, RouteProps>> = {
+export const routeConfig: Partial<Record<AppRoutes, AppRoutesProps>> = {
   [AppRoutes.ROOT]: {
+    isForAuthOnly: true,
     path: RoutePaths.root,
     element: <Navigate to={RoutePaths.panel} />,
   },
   [AppRoutes.PANEL]: {
+    isForAuthOnly: true,
     path: RoutePaths.panel,
     element: (
       <>
         <Header />
         <Layout>
-          <PanelPage />
+          <Suspense fallback={<PanelPageSkeleton />}>
+            <PanelPage />
+          </Suspense>
         </Layout>
         <Footer />
       </>
     ),
   },
   [AppRoutes.GARAGE]: {
+    isForAuthOnly: true,
     path: RoutePaths.garage,
     element: (
       <>
         <Layout>
-          <GaragePage />
+          <Suspense fallback={<GaragePageSkeleton />}>
+            <GaragePage />
+          </Suspense>
         </Layout>
         <Footer />
       </>
     ),
   },
   [AppRoutes.MENU]: {
+    isForAuthOnly: true,
     path: RoutePaths.menu,
     element: (
       <>
         <Header />
         <Layout>
-          <MenuPage />
+          <Suspense fallback='menu page skeleton'>
+            <MenuPage />
+          </Suspense>
+        </Layout>
+        <Footer />
+      </>
+    ),
+  },
+  [AppRoutes.ALERTS]: {
+    isForAuthOnly: true,
+    path: RoutePaths.alerts,
+    element: (
+      <>
+        <Header isWithGoBackIcon />
+        <Layout>
+          <NotFoundPage />
         </Layout>
         <Footer />
       </>
     ),
   },
   [AppRoutes.NEW_VEHICLE]: {
+    isForAuthOnly: true,
     path: RoutePaths.new_vehicle,
     element: (
       <>
         <Header isWithGoBackIcon title='Vehicul nou' />
         <Layout>
-          <NewVehiclePage />
+          <Suspense fallback={<NewVehiclePageSkeleton />}>
+            <NewVehiclePage />
+          </Suspense>
+        </Layout>
+      </>
+    ),
+  },
+  [AppRoutes.VEHICLE]: {
+    isForAuthOnly: true,
+    path: `${RoutePaths.vehicle}/:id`,
+    element: (
+      <>
+        <Header isWithGoBackIcon />
+        <Layout>
+          <Suspense fallback='loading'>
+            <VehiclePage />
+          </Suspense>
         </Layout>
       </>
     ),
   },
   [AppRoutes.SIGN_IN]: {
+    isForAuthOnly: false,
     path: `${RoutePaths.sign_in}`,
     element: (
       <AuthPage>
@@ -74,6 +118,7 @@ export const routeConfig: Partial<Record<AppRoutes, RouteProps>> = {
     ),
   },
   [AppRoutes.SIGN_UP]: {
+    isForAuthOnly: false,
     path: `${RoutePaths.sign_up}`,
     element: (
       <AuthPage>
@@ -82,6 +127,7 @@ export const routeConfig: Partial<Record<AppRoutes, RouteProps>> = {
     ),
   },
   [AppRoutes.FORGOT_PASSWORD]: {
+    isForAuthOnly: false,
     path: `${RoutePaths.forgot_password}`,
     element: (
       <AuthPage>
@@ -90,6 +136,7 @@ export const routeConfig: Partial<Record<AppRoutes, RouteProps>> = {
     ),
   },
   [AppRoutes.RESET_PASSWORD]: {
+    isForAuthOnly: false,
     path: `${RoutePaths.reset_password}`,
     element: (
       <AuthPage>
@@ -98,6 +145,7 @@ export const routeConfig: Partial<Record<AppRoutes, RouteProps>> = {
     ),
   },
   [AppRoutes.NOT_FOUND]: {
+    isForAuthOnly: false,
     path: RoutePaths.not_found,
     element: (
       <>

@@ -42,6 +42,7 @@
     "build:prod": "webpack --env mode=production",
     "build:prod:analyzer": "webpack --env mode=production analyzer=enabled",
     "build:dev": "webpack --env mode=development",
+    "build:dev:analyzer": "webpack --env mode=development analyzer=enabled",
     "test:unit": "jest --config \"./config/jest/jest.config.ts\"",
     "test:ui": "npx loki test",
     "test:ui:ok": "npx loki approve",

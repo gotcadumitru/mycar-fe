@@ -13,15 +13,14 @@ type GarageVehicleCardPropsType = {
   vehicle: VehicleWithFiles
 }
 const GarageVehicleCard: FC<GarageVehicleCardPropsType> = ({ vehicle }) => {
-  const vehicleDetails = useVehicleWithDetails(vehicle)
+  const vehicleDetails = useVehicleWithDetails(vehicle.uid)
   const vehicleFile = vehicle.files.find(
     (file) => MIME_TYPE_TO_FILE_TYPE[file.mimetype] === FILE_TYPE.IMG,
   )
   return (
     <Link
-      to={RoutePaths.garage}
+      to={`${RoutePaths.vehicle}/${vehicle.uid}`}
       className='garage-page__item'
-      onClick={() => toast.error('Nihuia, asta inca nu e gata')}
       key={vehicle.uid}
     >
       {vehicleFile ? (
