@@ -3,6 +3,7 @@ export enum AppRoutes {
   NOT_FOUND = 'not_found',
   PANEL = 'panel',
   GARAGE = 'garage',
+  VEHICLE = 'vehicle',
   ALERTS = 'alerts',
   MENU = 'menu',
   NEW_VEHICLE = 'new_vehicle',
@@ -15,6 +16,7 @@ export enum AppRoutes {
 export const RoutePaths: Record<AppRoutes, string> = {
   [AppRoutes.ROOT]: '/',
   [AppRoutes.PANEL]: '/panel',
+  [AppRoutes.VEHICLE]: '/vehicle',
   [AppRoutes.GARAGE]: '/garage',
   [AppRoutes.ALERTS]: '/alerts',
   [AppRoutes.MENU]: '/menu',
@@ -25,12 +27,3 @@ export const RoutePaths: Record<AppRoutes, string> = {
   [AppRoutes.RESET_PASSWORD]: '/reset-password',
   [AppRoutes.NOT_FOUND]: '*',
 }
-
-export const RoutePathsFroAuthenticatedUsers: string[] = [
-  RoutePaths.new_vehicle,
-  RoutePaths.alerts,
-  RoutePaths.garage,
-  RoutePaths.root,
-  RoutePaths.menu,
-  RoutePaths.panel,
-]

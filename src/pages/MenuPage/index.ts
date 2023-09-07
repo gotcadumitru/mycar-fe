@@ -1,1 +1,1 @@
-export { default } from './ui/MenuPage'
+export { MenuPageAsync as default } from './ui/MenuPageAsync'

@@ -15,15 +15,22 @@ export const fetchAllVehiclesByUserId = createAsyncThunk<
   vehicleDataService.getAllByUserId(userId),
 )
 
+export const fetchVehicleById = createAsyncThunk<VehicleWithFiles, string, ThunkConfig<string>>(
+  VehicleActions.FETCH_VEHICLE_BY_ID,
+  async (userId) => vehicleDataService.getVehicleById(userId),
+)
+
 export const createNewVehiclesForUserId = createAsyncThunk<
-  Vehicle,
+  VehicleWithFiles,
   ThunkValue<{
     vehicleFormData: VehicleFormDataFullType
     userId: string
   }>
 >(VehicleActions.CREATE_VEHICLE_FOR_USER_ID, async ({ userId, vehicleFormData }) => {
   const vehicleCreateBody = vehicleFormDataToCreateBody(vehicleFormData, userId)
-  const createdVehicle = await vehicleDataService.createDocument(vehicleCreateBody)
+  const createdVehicle: VehicleWithFiles = await vehicleDataService.createDocument(
+    vehicleCreateBody,
+  )
   if (!createdVehicle) throw new Error(REQUEST_MESSAGES.SAVE_NEW_VEHICLE[FetchStatus.FAIL])
   return createdVehicle
 })

@@ -1,11 +1,6 @@
 import { useUserVehicles } from 'enteties/vehicle'
 import GarageVehicleCard from 'features/garageVehicleCard'
-import { Link } from 'react-router-dom'
-import { toast } from 'react-toastify'
 import { FetchStatus } from 'shared/api'
-import AiOutlineRight from 'shared/assets/icons/AiOutlineRight.svg'
-import { RoutePaths } from 'shared/config/router/RoutePaths'
-import File from 'shared/ui/File'
 import './garagePage.scss'
 import { GaragePageSkeleton } from './GaragePageSkeleton'
 
