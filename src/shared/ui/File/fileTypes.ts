@@ -1,21 +1,17 @@
-export type FileInputType = {
-  file: File
-  name: string
-  mimetype: string
-  id: string
-  size: number
-}
-
-export type FileType = {
-  path: ''
-}
-
-export type FileCollectionCreateType = {
-  name: string
-  size: number
-  mimetype: string
-  storagePath: string
+export type FileBaseType = {
   fileUrl: string
+  name: string
+  mimetype: string
+  uid: string
+  size: number
+}
+
+export type FileInputType = FileBaseType & {
+  file: File
+}
+
+export type FileCollectionCreateType = Omit<FileBaseType, 'uid'> & {
+  storagePath: string
 }
 
 export type FileCollectionType = FileCollectionCreateType & {

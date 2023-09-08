@@ -9,7 +9,6 @@ interface FilePropsType {
   mimetype: string
   disabled?: boolean
   size: number
-  isFileFromBE: boolean
   controls?: boolean
   onClick?: () => void
 }
@@ -20,7 +19,6 @@ const File: FC<FilePropsType> = ({
   name,
   controls,
   mimetype,
-  isFileFromBE,
   size,
   ...props
 }) => {
@@ -28,7 +26,7 @@ const File: FC<FilePropsType> = ({
     return <embed className={className} src={fileSrc} {...props} />
   }
   if (MIME_TYPE_TO_FILE_TYPE[mimetype] === FILE_TYPE.VIDEO) {
-    if (isFileFromBE && size > 99) {
+    if (size > 99) {
       return (
         <div className='too-large-file' {...props}>
           <div>This file is too large to see in the application!</div>

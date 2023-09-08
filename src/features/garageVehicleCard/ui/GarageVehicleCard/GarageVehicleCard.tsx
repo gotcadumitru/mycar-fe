@@ -8,6 +8,8 @@ import AiOutlineRight from 'shared/assets/icons/AiOutlineRight.svg'
 import TfiCar from 'shared/assets/icons/TfiCar.svg'
 import { RoutePaths } from 'shared/config/router/RoutePaths'
 import File, { FILE_TYPE, MIME_TYPE_TO_FILE_TYPE } from 'shared/ui/File'
+import { VehicleBrandAndModel } from 'shared/ui/VehicleBrandAndModel'
+import { VehicleFile } from 'shared/ui/VehicleFile'
 
 type GarageVehicleCardPropsType = {
   vehicle: VehicleWithFiles
@@ -23,31 +25,14 @@ const GarageVehicleCard: FC<GarageVehicleCardPropsType> = ({ vehicle }) => {
       className='garage-page__item'
       key={vehicle.uid}
     >
-      {vehicleFile ? (
-        <File
-          className='garage-page__image'
-          fileSrc={vehicleFile.fileUrl}
-          name={vehicleFile.name}
-          mimetype={vehicleFile.mimetype}
-          size={vehicleFile.size}
-          isFileFromBE
-        />
-      ) : (
-        <TfiCar className='garage-page__car-icon' />
-      )}
+      <VehicleFile vehicleFile={vehicleFile} />
       <div className='garage-page__details'>
         <div className='garage-page__title'>{vehicle.registrationNumber}</div>
         <div className='garage-page__model'>
-          {vehicleDetails.vehicleBrand ? (
-            vehicleDetails.vehicleBrand.name
-          ) : (
-            <Skeleton className='react-loading-skeleton--small-text' height={20} count={1} />
-          )}{' '}
-          {vehicleDetails.vehicleModel ? (
-            vehicleDetails.vehicleModel.name
-          ) : (
-            <Skeleton className='react-loading-skeleton--small-text' height={20} count={1} />
-          )}
+          <VehicleBrandAndModel
+            vehicleBrand={vehicleDetails.vehicleBrand}
+            vehicleModel={vehicleDetails.vehicleModel}
+          />
         </div>
       </div>
 

@@ -42,43 +42,10 @@
     display: none;
   }
 
-  &__file {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  &__file-modal {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-
   &__files {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 12px;
   }
 
-  &__file-container {
-    position: relative;
-    aspect-ratio: 1;
-    border-radius: 4px;
-    overflow: hidden;
-  }
-
-  &__remove-icon {
-    position: absolute;
-    top: 5px;
-    left: 5px;
-
-    svg {
-      font-size: 32px;
-      padding: 5px;
-      color: black;
-      background: white;
-      border-radius: 50%;
-      box-sizing: content-box;
-    }
-  }
 }
