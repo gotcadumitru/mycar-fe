@@ -1,15 +1,12 @@
 import Layout from 'app/layout/Layout/Layout'
-import { SignIn } from 'features/auth'
-import { ForgotPassword } from 'features/auth/ForgotPassword/ui/ForgotPassword'
-import { ResetPassword } from 'features/auth/ResetPassword/ui/ResetPassword'
-import { SignUp } from 'features/auth/SignUp/ui/SignUp'
+import { ForgotPassword, ResetPassword, SignIn, SignUp } from 'features/auth'
 import NewVehiclePage, { NewVehiclePageSkeleton } from 'pages/AddVehiclePage'
 import AuthPage from 'pages/AuthPage'
 import GaragePage, { GaragePageSkeleton } from 'pages/GaragePage'
 import MenuPage from 'pages/MenuPage'
 import { NotFoundPage } from 'pages/NotFoundPage'
 import PanelPage, { PanelPageSkeleton } from 'pages/PanelPage'
-import VehiclePage from 'pages/VehiclePage'
+import VehiclePage, { VehiclePageSkeleton } from 'pages/VehiclePage'
 import { Suspense } from 'react'
 import { Navigate } from 'react-router-dom'
 import type { AppRoutesProps } from 'shared/types/router'
@@ -101,7 +98,7 @@ export const routeConfig: Partial<Record<AppRoutes, AppRoutesProps>> = {
       <>
         <Header isWithGoBackIcon />
         <Layout>
-          <Suspense fallback='loading'>
+          <Suspense fallback={<VehiclePageSkeleton />}>
             <VehiclePage />
           </Suspense>
         </Layout>

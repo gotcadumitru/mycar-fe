@@ -1,15 +1,11 @@
 import classNames from 'classnames'
-import React, { Suspense, useId, useState } from 'react'
-import AiOutlineDelete from 'shared/assets/icons/AiOutlineDelete.svg'
+import React, { useId } from 'react'
 import BiImageAdd from 'shared/assets/icons/BiImageAdd.svg'
 import { FormDataField } from 'shared/lib/utils/checkIfExistErrors'
-import lazyWithPreload from 'shared/lib/utils/lazyWithPreload'
-import Button, { ButtonTheme } from 'shared/ui/Button'
+import { FileCarouselAsync } from 'shared/ui/FileCarousel'
 import { v4 } from 'uuid'
-import File, { FileInputType } from '../File'
+import { FileInputType, MIME_TYPES } from '../File'
 import './file-input.scss'
-
-const FileInputCarousel = lazyWithPreload(() => import('./FileInputCarousel'))
 
 interface FileInputPropsType
   extends Omit<
@@ -30,30 +26,52 @@ const FileInput: React.FC<FileInputPropsType> = ({
   errorMessage,
   disabled,
   onChange,
-  accept = '.png, .jpg, .jpeg',
+  accept = '.png, .jpg, .jpeg, application/pdf,',
   containerClassName,
   value = [],
   valueFullType,
   multiple = true,
   isDisplayImagesEnabled = true,
 }) => {
-  const [selectedImageId, setSelectedImageId] = useState<string>('')
   const fileInputId = useId()
   const errorMessageLocal = valueFullType?.errorMessage ?? errorMessage
   const valueLocal = valueFullType?.value ?? value
-  const handleFiles = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const filesFromPC: FileInputType[] = Array.from(event.target.files || []).map((file) => ({
-      name: file.name,
-      file,
-      mimetype: file.type,
-      size: file.size,
-      id: v4(),
-    }))
+  const handleFiles = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const filesArray = Array.from(event.target.files || [])
+
+    const filesFromPC: FileInputType[] = await Promise.all(
+      filesArray.map(
+        (file) =>
+          new Promise((resolve: (value: FileInputType) => void) => {
+            const fileInput: FileInputType = {
+              name: file.name,
+              file,
+              fileUrl: URL.createObjectURL(file as Blob),
+              mimetype: file.type,
+              size: file.size,
+              uid: v4(),
+            }
+            // if (file && file.type === MIME_TYPES['.pdf']) {
+            //   const reader = new FileReader()
+            //
+            //   reader.onload = (e) => {
+            //     fileInput.fileUrl = e.target?.result as string
+            //     resolve(fileInput)
+            //   }
+            //
+            //   reader.readAsDataURL(file)
+            // } else {
+            resolve(fileInput)
+            // }
+          }),
+      ),
+    )
+    debugger
     onChange([...valueLocal, ...filesFromPC])
   }
 
   const removeFile = (id: string) => {
-    onChange(valueLocal.filter((file) => file.id !== id))
+    onChange(valueLocal.filter((file) => file.uid !== id))
   }
 
   const containerClassNames = classNames('input__field-group', 'file-input', containerClassName, {
@@ -61,71 +79,32 @@ const FileInput: React.FC<FileInputPropsType> = ({
     'file-input--error': errorMessageLocal,
     'file-input--no-margin': !valueLocal.length,
   })
-  const selectedImageIndex = valueLocal.findIndex((file) => file.id === selectedImageId)
   return (
-    <>
-      {selectedImageIndex !== -1 && (
-        <Suspense>
-          <FileInputCarousel
-            selectedImageIndex={selectedImageIndex}
-            images={valueLocal}
-            setSelectedImageId={setSelectedImageId}
-          />
-        </Suspense>
-      )}
-      <div className='file-input__container'>
-        <label htmlFor={fileInputId} className={containerClassNames}>
-          {label && (
-            <div className='file-input__label'>
-              <span>{label}</span>
-              <BiImageAdd className='file-input__icon' />
-            </div>
-          )}
-          {!disabled && (
-            <input
-              id={fileInputId}
-              multiple={multiple}
-              type='file'
-              accept={accept}
-              onChange={handleFiles}
-            />
-          )}
-        </label>
-        {isDisplayImagesEnabled && (
-          <div className='file-input__files'>
-            {valueLocal.map((file) => {
-              const isFileFromBE = typeof file.file === 'string'
-              const fileSrc = (
-                isFileFromBE ? file.file : URL.createObjectURL(file.file as Blob)
-              ) as string
-              return (
-                <div key={file.id} className='file-input__file-container'>
-                  <Button
-                    type='button'
-                    theme={ButtonTheme.EMPTY}
-                    onClick={() => removeFile(file.id)}
-                    className='file-input__remove-icon'
-                  >
-                    <AiOutlineDelete />
-                  </Button>
-                  <File
-                    fileSrc={fileSrc}
-                    isFileFromBE={isFileFromBE}
-                    mimetype={file.mimetype}
-                    name={file.name}
-                    disabled={disabled}
-                    size={file.size}
-                    onClick={() => setSelectedImageId(file.id)}
-                    className='file-input__file'
-                  />
-                </div>
-              )
-            })}
+    <div className='file-input__container'>
+      <label htmlFor={fileInputId} className={containerClassNames}>
+        {label && (
+          <div className='file-input__label'>
+            <span>{label}</span>
+            <BiImageAdd className='file-input__icon' />
           </div>
         )}
-        {errorMessageLocal && <div className='input__error-message'>{errorMessageLocal} </div>}
-      </div>
-    </>
+        {!disabled && (
+          <input
+            id={fileInputId}
+            multiple={multiple}
+            type='file'
+            accept={accept}
+            onChange={handleFiles}
+          />
+        )}
+      </label>
+      {isDisplayImagesEnabled && (
+        <div className='file-input__files'>
+          <FileCarouselAsync files={valueLocal} onRemoveFileClick={removeFile} />
+        </div>
+      )}
+      {errorMessageLocal && <div className='input__error-message'>{errorMessageLocal} </div>}
+    </div>
   )
 }
 export default FileInput

@@ -1,15 +1,36 @@
-import { useUserVehicles } from 'enteties/vehicle'
 import { useVehicleWithDetails } from 'enteties/vehicle/hooks/useVehicleWithDetails'
+import React from 'react'
+import { useParams } from 'react-router-dom'
 import { FetchStatus } from 'shared/api'
-import { VehiclePageSkeleton } from './VehiclePageSkeleton'
+import File from 'shared/ui/File'
+import { FileCarouselAsync } from 'shared/ui/FileCarousel'
+import { VehicleBrandAndModel } from 'shared/ui/VehicleBrandAndModel'
 import './vehiclePage.scss'
+import { VehiclePageSkeleton } from './VehiclePageSkeleton'
 
 const VehiclePage = () => {
-  // const vehicleDetails = useVehicleWithDetails(vehicle)
+  const { id } = useParams()
+  const vehicleDetails = useVehicleWithDetails(id || '')
+  if (vehicleDetails.vehicleFetchStatus !== FetchStatus.SUCCESS || !vehicleDetails.vehicle)
+    return <VehiclePageSkeleton />
 
-  const { allVehiclesOfCurrentUserFetchStatus, allVehiclesOfCurrentUser } = useUserVehicles()
-  if (allVehiclesOfCurrentUserFetchStatus !== FetchStatus.SUCCESS) return <VehiclePageSkeleton />
-
-  return <div className='vehicle-page'>vehicle padaddawdaw</div>
+  return (
+    <div className='vehicle-page'>
+      <div className='vehicle-page__header'>
+        <div className='vehicle-page__title'>
+          <div className='vehicle-page__number'>{vehicleDetails.vehicle.registrationNumber}</div>
+          <div className='vehicle-page__model'>
+            <VehicleBrandAndModel
+              vehicleBrand={vehicleDetails.vehicleBrand}
+              vehicleModel={vehicleDetails.vehicleModel}
+            />
+          </div>
+        </div>
+      </div>
+      <div className='vehicle-page__files'>
+        <FileCarouselAsync files={vehicleDetails.vehicle.files} />
+      </div>
+    </div>
+  )
 }
 export default VehiclePage

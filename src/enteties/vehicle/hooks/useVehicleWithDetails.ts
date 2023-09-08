@@ -1,5 +1,6 @@
 import { getFetchStatus, selectRequestStatus } from 'app/providers/StoreProvider/slices/ui'
 import { fetchTyreSizesFroVehicleTypeIdThunk } from 'enteties/tyre'
+import { VehicleActions } from 'enteties/vehicle'
 import { fetchVehicleById } from 'enteties/vehicle/model/slice/vehicleThunks'
 import { fetchVehicleBrandsFroVehicleTypeIdThunk } from 'enteties/vehicleBrand'
 import {
@@ -13,6 +14,7 @@ import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
 export const useVehicleWithDetails = (vehicleId: string) => {
   const dispatch = useAppDispatch()
   const vehicles = useAppSelector((state) => state.vehicle.allVehiclesOfCurrentUser)
+  const vehicleFetchStatus = useAppSelector(selectRequestStatus(VehicleActions.FETCH_VEHICLE_BY_ID))
   const vehicle = vehicles.find((v) => v.uid === vehicleId)
   const vehicleTypes = useAppSelector((state) => state.vehicleType.vehicleTypes)
   const vehicleTypesFetchStatus = useAppSelector(
@@ -59,7 +61,7 @@ export const useVehicleWithDetails = (vehicleId: string) => {
     [vehicle?.type, vehicle?.brand, vehicleModels],
   )
   useEffect(() => {
-    if (!vehicle) dispatch(fetchVehicleById(vehicleId))
+    if (vehicleId) dispatch(fetchVehicleById(vehicleId))
   }, [])
 
   useEffect(() => {
@@ -93,9 +95,11 @@ export const useVehicleWithDetails = (vehicleId: string) => {
       ),
       vehicleModelsFetchStatus,
       vehicle,
+      vehicleFetchStatus,
     }),
     [
       vehicle,
+      vehicleFetchStatus,
       vehicleTypes,
       vehicleTypesFetchStatus,
       vehicleBrandForType,
