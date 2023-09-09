@@ -2,11 +2,10 @@ import { useVehicleWithDetails } from 'enteties/vehicle/hooks/useVehicleWithDeta
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { FetchStatus } from 'shared/api'
-import File from 'shared/ui/File'
 import { FileCarouselAsync } from 'shared/ui/FileCarousel'
 import { VehicleBrandAndModel } from 'shared/ui/VehicleBrandAndModel'
-import './vehiclePage.scss'
 import { VehicleFile } from 'shared/ui/VehicleFile'
+import './vehiclePage.scss'
 import { VehiclePageSkeleton } from './VehiclePageSkeleton'
 
 const VehiclePage = () => {

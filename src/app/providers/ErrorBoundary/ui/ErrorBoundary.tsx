@@ -1,4 +1,6 @@
+import { logEvent } from 'firebase/analytics'
 import React, { ErrorInfo, ReactNode, Suspense } from 'react'
+import { firebaseAnalytics } from 'shared/api/firebase'
 import { ErrorPage } from 'widgets/ErrorPage'
 
 interface ErrorBoundaryProps {
@@ -18,11 +20,18 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
   static getDerivedStateFromError(error: Error) {
     // Update state so the next render will show the fallback UI.
     console.log(error)
+
     return { hasError: true }
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     // You can also log the error to an error reporting service
+    logEvent(firebaseAnalytics, 'exception', {
+      description: 'ErrorBoundary exception',
+      fatal: true,
+      error,
+      errorInfo,
+    })
     console.log(error, errorInfo)
   }
 
