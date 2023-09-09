@@ -4,7 +4,7 @@ import BiImageAdd from 'shared/assets/icons/BiImageAdd.svg'
 import { FormDataField } from 'shared/lib/utils/checkIfExistErrors'
 import { FileCarouselAsync } from 'shared/ui/FileCarousel'
 import { v4 } from 'uuid'
-import { FileInputType, MIME_TYPES } from '../File'
+import { FileInputType } from '../File'
 import './file-input.scss'
 
 interface FileInputPropsType
@@ -36,37 +36,17 @@ const FileInput: React.FC<FileInputPropsType> = ({
   const fileInputId = useId()
   const errorMessageLocal = valueFullType?.errorMessage ?? errorMessage
   const valueLocal = valueFullType?.value ?? value
-  const handleFiles = async (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFiles = (event: React.ChangeEvent<HTMLInputElement>) => {
     const filesArray = Array.from(event.target.files || [])
 
-    const filesFromPC: FileInputType[] = await Promise.all(
-      filesArray.map(
-        (file) =>
-          new Promise((resolve: (value: FileInputType) => void) => {
-            const fileInput: FileInputType = {
-              name: file.name,
-              file,
-              fileUrl: URL.createObjectURL(file as Blob),
-              mimetype: file.type,
-              size: file.size,
-              uid: v4(),
-            }
-            // if (file && file.type === MIME_TYPES['.pdf']) {
-            //   const reader = new FileReader()
-            //
-            //   reader.onload = (e) => {
-            //     fileInput.fileUrl = e.target?.result as string
-            //     resolve(fileInput)
-            //   }
-            //
-            //   reader.readAsDataURL(file)
-            // } else {
-            resolve(fileInput)
-            // }
-          }),
-      ),
-    )
-    debugger
+    const filesFromPC: FileInputType[] = filesArray.map((file) => ({
+      name: file.name,
+      file,
+      fileUrl: URL.createObjectURL(file as Blob),
+      mimetype: file.type,
+      size: file.size,
+      uid: v4(),
+    }))
     onChange([...valueLocal, ...filesFromPC])
   }
 

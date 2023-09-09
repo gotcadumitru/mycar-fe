@@ -6,6 +6,7 @@ import File from 'shared/ui/File'
 import { FileCarouselAsync } from 'shared/ui/FileCarousel'
 import { VehicleBrandAndModel } from 'shared/ui/VehicleBrandAndModel'
 import './vehiclePage.scss'
+import { VehicleFile } from 'shared/ui/VehicleFile'
 import { VehiclePageSkeleton } from './VehiclePageSkeleton'
 
 const VehiclePage = () => {
@@ -26,9 +27,18 @@ const VehiclePage = () => {
             />
           </div>
         </div>
-      </div>
-      <div className='vehicle-page__files'>
-        <FileCarouselAsync files={vehicleDetails.vehicle.files} />
+        <div>
+          <div className='vehicle-page__files'>
+            {vehicleDetails.vehicle.files.length ? (
+              <FileCarouselAsync
+                filesToPreview={[vehicleDetails.vehicle.files[0]]}
+                files={vehicleDetails.vehicle.files}
+              />
+            ) : (
+              <VehicleFile />
+            )}
+          </div>
+        </div>
       </div>
     </div>
   )

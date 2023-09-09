@@ -8,6 +8,7 @@ import FileCarouselCard from './FileCarouselCard'
 
 interface FileCarouselProps<T> {
   files: T[]
+  filesToPreview?: T[]
   onRemoveFileClick?: (uid: string) => void
   renderCarouselFile?: (file: T) => any
   renderFile?: (file: T) => any
@@ -15,6 +16,7 @@ interface FileCarouselProps<T> {
 
 const FileCarousel = <T extends FileBaseType>({
   files,
+  filesToPreview,
   renderFile,
   renderCarouselFile,
   onRemoveFileClick,
@@ -24,7 +26,7 @@ const FileCarousel = <T extends FileBaseType>({
 
   return (
     <>
-      {files.map((file) => (
+      {(filesToPreview || files).map((file) => (
         <div
           className='file-carousel__file-container'
           key={file.uid}

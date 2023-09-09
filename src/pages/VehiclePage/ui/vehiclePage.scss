@@ -1,7 +1,27 @@
 .vehicle-page {
+  padding-top: 12px;
+
   &__files {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 12px;
+    width: 55px;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__title {
+    font-weight: 500;
+    font-size: 22px;
+  }
+
+  &__number {
+    text-transform: uppercase;
+  }
+
+  &__model {
+    margin-top: 10px;
+    color: var(--grey-3);
   }
 }
