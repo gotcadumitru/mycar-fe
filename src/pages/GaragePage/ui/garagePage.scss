@@ -1,5 +1,5 @@
 .garage-page {
-  padding: 12px 0;
+  padding: calc(env(safe-area-inset-top) + 12px) 0 12px 0;
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -34,19 +34,4 @@
     min-height: 75px;
   }
 
-  &__car-icon {
-    width: 75px;
-    height: 75px;
-    color: var(--grey-4);
-    border: 3px solid var(--grey-4);
-    padding-bottom: 15px;
-    border-radius: 8px;
-  }
-
-  &__image {
-    max-width: 75px;
-    aspect-ratio: 1;
-    object-fit: cover;
-    border-radius: 8px;
-  }
 }

@@ -1,6 +1,7 @@
 import { FC } from 'react'
-import TfiCar from 'shared/assets/icons/TfiCar.svg'
+import TfiCar from 'shared/assets/icons/PiCarProfileBold.svg'
 import File, { FileCollectionType } from 'shared/ui/File'
+import './vehicleFile.scss'
 
 interface VehicleFileProps {
   vehicleFile?: FileCollectionType
@@ -9,12 +10,12 @@ interface VehicleFileProps {
 export const VehicleFile: FC<VehicleFileProps> = ({ vehicleFile }) =>
   vehicleFile ? (
     <File
-      className='garage-page__image'
+      className='vehicle-file__image'
       fileSrc={vehicleFile.fileUrl}
       name={vehicleFile.name}
       mimetype={vehicleFile.mimetype}
       size={vehicleFile.size}
     />
   ) : (
-    <TfiCar className='garage-page__car-icon' />
+    <TfiCar className='vehicle-file__car-icon' />
   )
