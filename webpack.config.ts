@@ -5,7 +5,7 @@ import buildWebpackConfig from './config/build/buildWebpackConfig'
 import { BuildEnv, BuildMode, BuildPaths } from './config/build/types/config'
 
 config({
-  path:resolve(__dirname,'.env.development.local')
+  path: resolve(__dirname, '.env.development.local'),
 })
 const paths: BuildPaths = {
   entry: resolve(__dirname, 'src', 'index.tsx'),
@@ -13,6 +13,7 @@ const paths: BuildPaths = {
   favicon: resolve(__dirname, 'public', 'favicon.ico'),
   build: resolve(__dirname, 'build'),
   src: resolve(__dirname, 'src'),
+  swSrc: resolve(__dirname, 'src', 'service-worker'),
 }
 
 export default (env: BuildEnv) => {

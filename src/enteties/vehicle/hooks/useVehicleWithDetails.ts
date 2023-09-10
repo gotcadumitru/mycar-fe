@@ -1,4 +1,7 @@
 import { getFetchStatus, selectRequestStatus } from 'app/providers/StoreProvider/slices/ui'
+import { fetchAllTypesOfFuelThunk, FuelActions } from 'enteties/fuel'
+import { fetchAllLeasingCompaniesThunk, LeasingActions } from 'enteties/leasing'
+import { fetchAllOwnershipTypesThunk, OwnershipActions } from 'enteties/ownership'
 import { fetchTyreSizesFroVehicleTypeIdThunk } from 'enteties/tyre'
 import { VehicleActions } from 'enteties/vehicle'
 import { fetchVehicleById } from 'enteties/vehicle/model/slice/vehicleThunks'
@@ -17,6 +20,20 @@ export const useVehicleWithDetails = (vehicleId: string) => {
   const vehicleFetchStatus = useAppSelector(selectRequestStatus(VehicleActions.FETCH_VEHICLE_BY_ID))
   const vehicle = vehicles.find((v) => v.uid === vehicleId)
   const vehicleTypes = useAppSelector((state) => state.vehicleType.vehicleTypes)
+  const vehicleTypesOfFuel = useAppSelector((state) => state.fuel.typesOfFuel)
+  const leasingCompanies = useAppSelector((state) => state.leasing.leasingCompanies)
+  const leasingCompaniesFetchStatus = useAppSelector(
+    selectRequestStatus(LeasingActions.FETCH_ALL_LEASING_COMPANIES),
+  )
+  const ownershipTypes = useAppSelector((state) => state.ownership.ownershipTypes)
+  const ownershipTypesFetchStatus = useAppSelector(
+    selectRequestStatus(OwnershipActions.FETCH_ALL_OWNERSHIP_TYPES),
+  )
+
+  const vehicleTypesOfFuelFetchStatus = useAppSelector(
+    selectRequestStatus(FuelActions.FETCH_ALL_FUEL_TYPES),
+  )
+
   const vehicleTypesFetchStatus = useAppSelector(
     selectRequestStatus(VehicleTypeActions.FETCH_ALL_VEHICLE_TYPES),
   )
@@ -66,7 +83,10 @@ export const useVehicleWithDetails = (vehicleId: string) => {
 
   useEffect(() => {
     if (!vehicle) return
+    dispatch(fetchAllLeasingCompaniesThunk())
     dispatch(fetchAllVehicleTypesThunk())
+    dispatch(fetchAllTypesOfFuelThunk())
+    dispatch(fetchAllOwnershipTypesThunk())
     if (vehicle.type) dispatch(fetchVehicleBrandsFroVehicleTypeIdThunk(vehicle.type))
     if (vehicle.type) dispatch(fetchTyreSizesFroVehicleTypeIdThunk(vehicle.type))
     if (vehicle.type && vehicle.brand)
@@ -93,6 +113,12 @@ export const useVehicleWithDetails = (vehicleId: string) => {
       vehicleModel: vehicleModelsForTypeAndBrand?.models.find(
         (model) => model.id === vehicle?.model,
       ),
+      vehicleTypeOfFuel: vehicleTypesOfFuel.find((fuelType) => fuelType.id === vehicle?.fuelType),
+      vehicleTypesOfFuelFetchStatus,
+      leasingCompany: leasingCompanies.find((company) => company.id === vehicle?.leasingCompany),
+      leasingCompaniesFetchStatus,
+      ownershipType: ownershipTypes.find((ownership) => ownership.id === vehicle?.ownedBy),
+      ownershipTypesFetchStatus,
       vehicleModelsFetchStatus,
       vehicle,
       vehicleFetchStatus,
@@ -108,6 +134,12 @@ export const useVehicleWithDetails = (vehicleId: string) => {
       vehicleTyreSizesFetchStatus,
       vehicleModelsForTypeAndBrand,
       vehicleModelsFetchStatus,
+      vehicleTypesOfFuel,
+      vehicleTypesOfFuelFetchStatus,
+      leasingCompanies,
+      leasingCompaniesFetchStatus,
+      ownershipTypes,
+      ownershipTypesFetchStatus,
     ],
   )
 }
