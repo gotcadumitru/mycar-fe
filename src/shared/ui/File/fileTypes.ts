@@ -7,7 +7,7 @@ export type FileBaseType = {
 }
 
 export type FileInputType = FileBaseType & {
-  file: File
+  file: File | string
 }
 
 export type FileCollectionCreateType = Omit<FileBaseType, 'uid'> & {

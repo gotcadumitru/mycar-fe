@@ -2,6 +2,8 @@ import Layout from 'app/layout/Layout/Layout'
 import { ForgotPassword, ResetPassword, SignIn, SignUp } from 'features/auth'
 import NewVehiclePage, { NewVehiclePageSkeleton } from 'pages/AddVehiclePage'
 import AuthPage from 'pages/AuthPage'
+import { EditVehiclePageSkeleton } from 'pages/EditVehiclePage'
+import EditVehiclePage from 'pages/EditVehiclePage/ui/EditVehiclePage'
 import GaragePage, { GaragePageSkeleton } from 'pages/GaragePage'
 import MenuPage from 'pages/MenuPage'
 import { NotFoundPage } from 'pages/NotFoundPage'
@@ -100,6 +102,20 @@ export const routeConfig: Partial<Record<AppRoutes, AppRoutesProps>> = {
         <Layout>
           <Suspense fallback={<VehiclePageSkeleton />}>
             <VehiclePage />
+          </Suspense>
+        </Layout>
+      </>
+    ),
+  },
+  [AppRoutes.EDIT_VEHICLE]: {
+    isForAuthOnly: true,
+    path: `${RoutePaths.edit_vehicle}/:id`,
+    element: (
+      <>
+        <Header isWithGoBackIcon />
+        <Layout>
+          <Suspense fallback={<EditVehiclePageSkeleton />}>
+            <EditVehiclePage />
           </Suspense>
         </Layout>
       </>

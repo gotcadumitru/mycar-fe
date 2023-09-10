@@ -3,6 +3,9 @@ import { useVehicleWithDetails } from 'enteties/vehicle/hooks/useVehicleWithDeta
 import React, { useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 import { FetchStatus } from 'shared/api'
+import MdOutlineEdit from 'shared/assets/icons/MdOutlineEdit.svg'
+import { RoutePaths } from 'shared/config/router/RoutePaths'
+import Button, { ButtonCategoryType, ButtonTheme } from 'shared/ui/Button'
 import { FileCarouselAsync } from 'shared/ui/FileCarousel'
 import { VehicleBrandAndModel } from 'shared/ui/VehicleBrandAndModel'
 import { VehicleDetailsField } from 'shared/ui/VehicleDetailsField'
@@ -24,7 +27,16 @@ const VehiclePage = () => {
     <div className='vehicle-page'>
       <div className='vehicle-page__header'>
         <div className='vehicle-page__title'>
-          <div className='vehicle-page__number'>{vehicleDetails.vehicle.registrationNumber}</div>
+          <div className='vehicle-page__number'>
+            {vehicleDetails.vehicle.registrationNumber}
+            <Button
+              theme={ButtonTheme.EMPTY}
+              category={ButtonCategoryType.LINK}
+              to={`${RoutePaths.edit_vehicle}/${vehicleDetails.vehicle.uid}`}
+            >
+              <MdOutlineEdit className='vehicle-page__edit-icon' />
+            </Button>
+          </div>
           <div className='vehicle-page__model'>
             <VehicleBrandAndModel
               vehicleBrand={vehicleDetails.vehicleBrand}

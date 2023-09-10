@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { logEvent } from 'firebase/analytics'
 import React, { ErrorInfo, ReactNode, Suspense } from 'react'
 import { firebaseAnalytics } from 'shared/api/firebase'

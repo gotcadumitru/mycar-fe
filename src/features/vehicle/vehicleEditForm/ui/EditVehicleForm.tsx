@@ -8,15 +8,14 @@ import ModelTypesSelect from 'features/vehicleModelSelect'
 import VehicleTypesSelect from 'features/vehicleTypesSelect'
 import VehicleYearSelect from 'features/vehicleYearSelect'
 import { ChangeEvent, FC, memo } from 'react'
-import { SECTION_TITLE } from 'shared/defaults/text'
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
+import { checkIfExistErrors } from 'shared/lib/utils/checkIfExistErrors'
 import Checkbox from 'shared/ui/Checkbox'
 import type { FileInputType } from 'shared/ui/File'
 import FileInput from 'shared/ui/FileInput'
 import Form from 'shared/ui/Form'
 import Input, { OnChangeMinType } from 'shared/ui/Input'
 import Label from 'shared/ui/Label'
-import { Section } from 'shared/ui/Section'
 import { editVehicleActions } from '../lib/slice/editVehicleSlice'
 import '../styles/edit-vehicle.scss'
 
@@ -80,8 +79,13 @@ const EditVehicleForm: FC<EditCarFormProps> = ({ formId, onSubmit }) => {
       }),
     )
   }
+  const onSubmitLocal = async () => {
+    const { formFieldsWithErrors, isErrors } = checkIfExistErrors(formFields)
+    if (isErrors) return dispatch(editVehicleActions.changeVehicleDataAC(formFieldsWithErrors))
+    onSubmit()
+  }
   return (
-    <Form id={formId} onSubmit={onSubmit} className='edit-vehicle'>
+    <Form id={formId} onSubmit={onSubmitLocal} className='edit-vehicle'>
       <FileInput
         valueFullType={formFields.files}
         onChange={handleChangeInputFile}
