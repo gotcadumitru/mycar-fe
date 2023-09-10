@@ -34,7 +34,14 @@
     "react-transition-group": "^4.4.5",
     "react-virtualized": "^9.22.5",
     "uuid": "^9.0.0",
-    "web-vitals": "^3.1.1"
+    "web-vitals": "^3.1.1",
+    "workbox-cacheable-response": "^7.0.0",
+    "workbox-core": "^7.0.0",
+    "workbox-expiration": "^7.0.0",
+    "workbox-precaching": "^7.0.0",
+    "workbox-routing": "^7.0.0",
+    "workbox-strategies": "^7.0.0",
+    "workbox-window": "^7.0.0"
   },
   "scripts": {
     "start": "webpack serve --https --env port=3000",
@@ -166,6 +173,7 @@
     "typescript": "^5.0.4",
     "webpack": "^5.78.0",
     "webpack-bundle-analyzer": "^4.8.0",
-    "webpack-cli": "^5.0.1"
+    "webpack-cli": "^5.0.1",
+    "workbox-webpack-plugin": "^7.0.0"
   }
 }
