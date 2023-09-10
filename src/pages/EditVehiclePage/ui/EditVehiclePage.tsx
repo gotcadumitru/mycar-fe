@@ -90,7 +90,7 @@ const EditVehiclePage = () => {
   return (
     <div className='edit-vehicle-page'>
       <EditVehicleForm formId={formId} onSubmit={onSubmit} />
-      <div className='new-vehicle-page__footer'>
+      <div className='edit-vehicle-page__footer'>
         <Button
           form={formId}
           type='submit'
