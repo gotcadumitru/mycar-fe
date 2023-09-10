@@ -59,8 +59,11 @@ const FileInput: React.FC<FileInputPropsType> = ({
     'file-input--error': errorMessageLocal,
     'file-input--no-margin': !valueLocal.length,
   })
+  const inputContainerClassNames = classNames('file-input__container', {
+    'file-input__container--no-margin': errorMessageLocal,
+  })
   return (
-    <div className='file-input__container'>
+    <div className={inputContainerClassNames}>
       <label htmlFor={fileInputId} className={containerClassNames}>
         {label && (
           <div className='file-input__label'>
