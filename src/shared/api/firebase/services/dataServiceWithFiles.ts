@@ -1,5 +1,3 @@
-import type { Vehicle } from 'enteties/vehicle'
-import { VehicleWithFiles } from 'enteties/vehicle/model/types/vehicleTypes'
 import { addDoc, CollectionReference, doc, documentId, writeBatch } from 'firebase/firestore'
 import DataService from 'shared/api/firebase/services/dataService'
 import { fileDataService } from 'shared/api/firebase/services/fileDataService'

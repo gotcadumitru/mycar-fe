@@ -12,9 +12,9 @@ const GaragePage = () => {
     <div className='garage-page'>
       {!allVehiclesOfCurrentUser.length &&
         'Nihuia. nu ai masini, mergi pe pagina principala ca nu am adaugat inca un buton aici, vino dupa ce iti adaugi o masina'}
-      {allVehiclesOfCurrentUser.map((vehicle) => {
-        return <GarageVehicleCard key={vehicle.uid} vehicle={vehicle} />
-      })}
+      {allVehiclesOfCurrentUser.map((vehicle) => (
+        <GarageVehicleCard key={vehicle.uid} vehicle={vehicle} />
+      ))}
     </div>
   )
 }

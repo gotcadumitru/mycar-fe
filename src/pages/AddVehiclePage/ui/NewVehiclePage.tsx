@@ -7,7 +7,6 @@ import { FetchStatus } from 'shared/api'
 import { RoutePaths } from 'shared/config/router/RoutePaths'
 import { REQUEST_MESSAGES } from 'shared/defaults/text'
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
-import { checkIfExistErrors } from 'shared/lib/utils/checkIfExistErrors'
 import Button, { ButtonCategoryType, ButtonMargin, ButtonTheme } from 'shared/ui/Button'
 import './newVehiclePage.scss'
 
@@ -18,11 +17,9 @@ const NewVehiclePage = () => {
   const { currentUser } = useAuth()
   const formId = useId()
   const onSubmit = async () => {
-    const { formFieldsWithErrors, isErrors } = checkIfExistErrors(formFields)
-    if (isErrors) return dispatch(editVehicleActions.changeVehicleDataAC(formFieldsWithErrors))
     const dispatchAction = await dispatch(
       createNewVehiclesForUserId({
-        vehicleFormData: formFieldsWithErrors,
+        vehicleFormData: formFields,
         userId: currentUser!.uid,
         notification: REQUEST_MESSAGES.SAVE_NEW_VEHICLE,
       }),
@@ -146,7 +143,6 @@ const NewVehiclePage = () => {
           }}
           category={ButtonCategoryType.BUTTON}
           theme={ButtonTheme.OUTLINE_BLUE}
-          margin={ButtonMargin.BOTTOM}
         >
           Nissan q (TEST ONLY)
         </Button>

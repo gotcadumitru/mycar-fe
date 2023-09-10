@@ -22,7 +22,6 @@ import React, {
   useMemo,
   useState,
 } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
 import { FetchStatus } from 'shared/api'
 import { firebaseAuth } from 'shared/api/firebase'
 import { RoutePaths } from 'shared/config/router/RoutePaths'

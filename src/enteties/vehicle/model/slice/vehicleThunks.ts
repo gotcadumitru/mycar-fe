@@ -5,7 +5,7 @@ import { vehicleDataService } from 'shared/api/firebase'
 import { REQUEST_MESSAGES } from 'shared/defaults/text'
 import { vehicleFormDataToCreateBody } from '../../utils/vehicleUtils'
 import { VehicleActions } from '../consts/vehicleConsts'
-import type { Vehicle, VehicleFormDataFullType, VehicleWithFiles } from '../types/vehicleTypes'
+import type { VehicleFormDataFullType, VehicleWithFiles } from '../types/vehicleTypes'
 
 export const fetchAllVehiclesByUserId = createAsyncThunk<
   VehicleWithFiles[],
