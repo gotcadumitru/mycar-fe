@@ -7,7 +7,7 @@ import { FetchStatus } from 'shared/api'
 import { RoutePaths } from 'shared/config/router/RoutePaths'
 import { REQUEST_MESSAGES } from 'shared/defaults/text'
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
-import Button, { ButtonCategoryType, ButtonMargin, ButtonTheme } from 'shared/ui/Button'
+import Button, { ButtonCategoryType, ButtonTheme } from 'shared/ui/Button'
 import './newVehiclePage.scss'
 
 const NewVehiclePage = () => {

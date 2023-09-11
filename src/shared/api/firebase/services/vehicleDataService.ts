@@ -1,5 +1,4 @@
-import type { Vehicle, VehicleCreateBody } from 'enteties/vehicle'
-import { VehicleWithFiles } from 'enteties/vehicle/model/types/vehicleTypes'
+import type { Vehicle, VehicleCreateBody, VehicleWithFiles } from 'enteties/vehicle'
 import { createCollectionFromPath } from '../firebaseUtils'
 import DataServiceWithFiles from './dataServiceWithFiles'
 import { FileStorageService } from './fileStorageService'

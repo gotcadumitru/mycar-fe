@@ -4,10 +4,10 @@ export const MODAL_TITLE = {
   ENABLE_CAR: 'Enable Car',
   ENABLE_CAR_CONFIRMATION: 'Are you sure you want to enable this car?',
   DELETE_CAR_CONFIRMATION: 'Are you sure you want to delete this car?',
-  DELETE_CAR: 'Delete ',
+  DELETE_CAR: 'Sterge ',
   CREATE_CAR: 'Create a Car',
   CLONE_CAR: 'Clone a Car',
   EDIT_CAR: 'Edit a Car',
-  CLOSE: 'Close',
+  CLOSE: 'Inchide',
   OK: 'Ok',
 }

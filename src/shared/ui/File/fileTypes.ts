@@ -1,3 +1,5 @@
+import type { CollectionBaseType } from 'shared/api/firebase'
+
 export type FileBaseType = {
   fileUrl: string
   name: string
@@ -14,6 +16,7 @@ export type FileCollectionCreateType = Omit<FileBaseType, 'uid'> & {
   storagePath: string
 }
 
-export type FileCollectionType = FileCollectionCreateType & {
-  uid: string
-}
+export type FileCollectionType = FileCollectionCreateType &
+  CollectionBaseType & {
+    uid: string
+  }

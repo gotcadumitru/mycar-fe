@@ -1,5 +1,5 @@
-import { useVehicleWithDetails } from 'enteties/vehicle/hooks/useVehicleWithDetails'
-import { VehicleWithFiles } from 'enteties/vehicle/model/types/vehicleTypes'
+import type { VehicleWithFiles } from 'enteties/vehicle'
+import { useVehicleWithDetails } from 'enteties/vehicle'
 import { FC, memo } from 'react'
 import { Link } from 'react-router-dom'
 import AiOutlineRight from 'shared/assets/icons/AiOutlineRight.svg'

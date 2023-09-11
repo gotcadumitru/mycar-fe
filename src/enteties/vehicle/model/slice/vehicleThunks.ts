@@ -30,7 +30,39 @@ export const createNewVehiclesForUserId = createAsyncThunk<
   const vehicleCreateBody = vehicleFormDataToCreateBody(vehicleFormData, userId)
   const createdVehicle: VehicleWithFiles = await vehicleDataService.createDocument(
     vehicleCreateBody,
+    userId,
   )
   if (!createdVehicle) throw new Error(REQUEST_MESSAGES.SAVE_NEW_VEHICLE[FetchStatus.FAIL])
   return createdVehicle
+})
+
+export const editVehiclesForUserId = createAsyncThunk<
+  VehicleWithFiles,
+  ThunkValue<{
+    vehicleFormData: VehicleFormDataFullType
+    vehicleId: string
+    userId: string
+  }>
+>(VehicleActions.EDIT_VEHICLE_BY_ID, async ({ userId, vehicleId, vehicleFormData }) => {
+  const vehicleCreateBody = vehicleFormDataToCreateBody(vehicleFormData, userId)
+  const changedVehicle: VehicleWithFiles = await vehicleDataService.editDocument(
+    {
+      ...vehicleCreateBody,
+      uid: vehicleId,
+    },
+    userId,
+  )
+  if (!changedVehicle) throw new Error(REQUEST_MESSAGES.SAVE_NEW_VEHICLE[FetchStatus.FAIL])
+  return changedVehicle
+})
+
+export const softDeleteVehicleById = createAsyncThunk<
+  string,
+  ThunkValue<{
+    vehicleId: string
+    userId: string
+  }>
+>(VehicleActions.DELETE_VEHICLE_BY_ID, async ({ vehicleId, userId }) => {
+  await vehicleDataService.softDeleteDocument(vehicleId, userId)
+  return vehicleId
 })

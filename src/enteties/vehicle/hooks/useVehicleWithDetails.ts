@@ -3,8 +3,6 @@ import { fetchAllTypesOfFuelThunk, FuelActions } from 'enteties/fuel'
 import { fetchAllLeasingCompaniesThunk, LeasingActions } from 'enteties/leasing'
 import { fetchAllOwnershipTypesThunk, OwnershipActions } from 'enteties/ownership'
 import { fetchTyreSizesFroVehicleTypeIdThunk } from 'enteties/tyre'
-import { VehicleActions } from 'enteties/vehicle'
-import { fetchVehicleById } from 'enteties/vehicle/model/slice/vehicleThunks'
 import { fetchVehicleBrandsFroVehicleTypeIdThunk } from 'enteties/vehicleBrand'
 import {
   fetchVehicleModelsFroVehicleTypeIdAndBrandIdThunk,
@@ -13,6 +11,8 @@ import {
 import { fetchAllVehicleTypesThunk, VehicleTypeActions } from 'enteties/vehicleType'
 import { useEffect, useMemo } from 'react'
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
+import { VehicleActions } from '../model/consts/vehicleConsts'
+import { fetchVehicleById } from '../model/slice/vehicleThunks'
 
 export const useVehicleWithDetails = (vehicleId: string) => {
   const dispatch = useAppDispatch()
