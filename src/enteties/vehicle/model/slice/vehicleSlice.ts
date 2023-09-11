@@ -2,8 +2,10 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { VehicleSliceState } from '../types/vehicleTypes'
 import {
   createNewVehiclesForUserId,
+  editVehiclesForUserId,
   fetchAllVehiclesByUserId,
   fetchVehicleById,
+  softDeleteVehicleById,
 } from './vehicleThunks'
 
 export const initialState: VehicleSliceState = {
@@ -26,6 +28,16 @@ export const vehicleSlice = createSlice({
       })
       .addCase(createNewVehiclesForUserId.fulfilled, (state, action) => {
         state.allVehiclesOfCurrentUser.push(action.payload)
+      })
+      .addCase(softDeleteVehicleById.fulfilled, (state, action) => {
+        state.allVehiclesOfCurrentUser = state.allVehiclesOfCurrentUser.filter(
+          (vehicle) => vehicle.uid !== action.payload,
+        )
+      })
+      .addCase(editVehiclesForUserId.fulfilled, (state, action) => {
+        state.allVehiclesOfCurrentUser = state.allVehiclesOfCurrentUser.map((vehicle) =>
+          vehicle.uid === action.payload.uid ? action.payload : vehicle,
+        )
       })
       .addCase(fetchVehicleById.fulfilled, (state, action) => {
         const vehicleById = action.payload

@@ -1,3 +1,4 @@
+import { CollectionBaseType } from 'shared/api/firebase'
 import type { FormDataField } from 'shared/lib/utils/checkIfExistErrors'
 import type { FileCollectionType, FileInputType } from 'shared/ui/File'
 
@@ -49,10 +50,11 @@ export type VehicleCreateBody = ModifyProperties<
   userId: string
 }
 
-export type Vehicle = Omit<VehicleCreateBody, 'files'> & {
-  uid: string
-  files: string[]
-}
+export type Vehicle = CollectionBaseType &
+  Omit<VehicleCreateBody, 'files'> & {
+    uid: string
+    files: string[]
+  }
 
 export type VehicleWithFiles = Omit<Vehicle, 'files'> & {
   files: FileCollectionType[]

@@ -3,10 +3,18 @@ export type {
   VehicleFormDataFullType,
   VehicleFormDataType,
   VehicleSliceState,
+  VehicleWithFiles,
   Vehicle,
 } from './model/types/vehicleTypes'
 export { useUserVehicles } from './hooks/useUserVehicles'
-export { fetchAllVehiclesByUserId, createNewVehiclesForUserId } from './model/slice/vehicleThunks'
+export { useVehicleWithDetails } from './hooks/useVehicleWithDetails'
+export {
+  fetchAllVehiclesByUserId,
+  createNewVehiclesForUserId,
+  fetchVehicleById,
+  editVehiclesForUserId,
+  softDeleteVehicleById,
+} from './model/slice/vehicleThunks'
 
 export {
   getVehicleFormValues,

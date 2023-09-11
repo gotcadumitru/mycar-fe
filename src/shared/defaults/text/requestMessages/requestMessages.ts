@@ -16,6 +16,11 @@ export const REQUEST_MESSAGES = {
     [FetchStatus.SUCCESS]: 'The data was successfully deleted.',
     [FetchStatus.FAIL]: 'An error occurred when deleting data.',
   },
+  DELETE_VEHICLE: {
+    [FetchStatus.IN_PROGRESS]: 'Te rog asteapta, se sterge vehiculul.',
+    [FetchStatus.SUCCESS]: 'Stergerea a fost efectuata cu succes',
+    [FetchStatus.FAIL]: 'A aparut o eroare la stergere, te rog sa reancerci.',
+  },
   SAVE_NEW_VEHICLE: {
     [FetchStatus.IN_PROGRESS]: 'Te rog asteapta, se salveaza noul vehicul.',
     [FetchStatus.SUCCESS]: 'Salvarea a fost efectuata cu succes',

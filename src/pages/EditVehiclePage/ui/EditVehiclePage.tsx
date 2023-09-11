@@ -1,12 +1,15 @@
 import { useAuth } from 'app/providers/AuthContextProvider'
 import { selectRequestStatus } from 'app/providers/StoreProvider/slices/ui'
-import { createNewVehiclesForUserId, getVehicleFormValues, VehicleActions } from 'enteties/vehicle'
-import { fetchVehicleById } from 'enteties/vehicle/model/slice/vehicleThunks'
+import {
+  editVehiclesForUserId,
+  fetchVehicleById,
+  getVehicleFormValues,
+  VehicleActions,
+} from 'enteties/vehicle'
 import { editVehicleActions } from 'features/vehicle/vehicleEditForm'
 import EditVehicleForm from 'features/vehicle/vehicleEditForm/ui/EditVehicleForm'
 import React, { useEffect, useId, useMemo } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-import { toast } from 'react-toastify'
+import { Navigate, useNavigate, useParams } from 'react-router-dom'
 import { FetchStatus } from 'shared/api'
 import { RoutePaths } from 'shared/config/router/RoutePaths'
 import { REQUEST_MESSAGES } from 'shared/defaults/text'
@@ -27,6 +30,9 @@ const EditVehiclePage = () => {
   const formId = useId()
   useEffect(() => {
     if (id) dispatch(fetchVehicleById(id))
+    return () => {
+      dispatch(editVehicleActions.resetVehicleDataAC())
+    }
   }, [])
   useEffect(() => {
     if (vehicle) {
@@ -71,22 +77,23 @@ const EditVehiclePage = () => {
     }
   }, [vehicle])
 
+  if (vehicleFetchStatus === FetchStatus.FAIL) return <Navigate to={RoutePaths.garage} />
   if (vehicleFetchStatus !== FetchStatus.SUCCESS || !vehicle) return <EditVehiclePageSkeleton />
   const onSubmit = async () => {
-    toast.error('Opa nihuia., asta inca nu am facut')
-    return
+    if (!vehicle) return
     const dispatchAction = await dispatch(
-      createNewVehiclesForUserId({
+      editVehiclesForUserId({
         vehicleFormData: formFields,
+        vehicleId: vehicle.uid,
         userId: currentUser!.uid,
         notification: REQUEST_MESSAGES.SAVE_NEW_VEHICLE,
       }),
     )
     if (dispatchAction.meta.requestStatus === FetchStatus.SUCCESS) {
-      dispatch(editVehicleActions.resetVehicleDataAC())
       navigate(RoutePaths.garage)
     }
   }
+
   return (
     <div className='edit-vehicle-page'>
       <EditVehicleForm formId={formId} onSubmit={onSubmit} />

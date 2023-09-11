@@ -21,7 +21,7 @@ export class FileStorageService {
   uploadFile = async (file: FileInputType): Promise<FileCollectionCreateType> => {
     const path = this.generateNewUrl(file.name)
     const fileStorageRef = ref(this.firebaseStorage, path)
-    await uploadBytes(fileStorageRef, file.file)
+    await uploadBytes(fileStorageRef, file.file as File)
     const [fileUrl, fileMetadata] = await Promise.all([
       this.getFileUrl(path),
       this.getFileMetadata(path),
