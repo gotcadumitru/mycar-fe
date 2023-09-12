@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react'
-import './vehicle-details-field.scss'
 import Skeleton from 'react-loading-skeleton'
+import './vehicle-details-field.scss'
 
 interface VehicleDetailsFieldProps {
   title: ReactNode
@@ -12,7 +12,13 @@ export const VehicleDetailsField: FC<VehicleDetailsFieldProps> = ({ title, infoL
     <div className='vehicle-details-field__title'>{title}</div>
     {infoList.map((item, index) => (
       <div key={index} className='vehicle-details-field__info'>
-        {item || <Skeleton count={1} height={12} />}
+        {item || (
+          <Skeleton
+            count={1}
+            height={12}
+            className='react-loading-skeleton--no-m react-loading-skeleton--small-text'
+          />
+        )}
       </div>
     ))}
   </div>

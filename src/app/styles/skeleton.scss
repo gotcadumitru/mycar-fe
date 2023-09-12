@@ -49,6 +49,10 @@
     width: 70px;
   }
 
+  &--no-m {
+    margin: 0;
+  }
+
   &--grid-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;

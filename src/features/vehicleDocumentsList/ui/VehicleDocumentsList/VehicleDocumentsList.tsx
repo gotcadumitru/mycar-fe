@@ -20,28 +20,33 @@ const VehicleDocumentsList: FC<VehicleDocumentsProps> = ({ vehicleId }) => {
   const [selectedDocumentTypeIndex, setSelectedDocumentTypeIndex] = useState(0)
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
+
   useEffect(() => {
     dispatch(fetchAllVehicleDocumentsThunk(vehicleId))
   }, [])
+
   return (
     <div className='vehicle-documents-list'>
       <div className='vehicle-documents-list__types'>
-        {VEHICLE_DOCUMENT_TYPES.map((documentType, index) => {
-          const className = classNames('vehicle-documents-list__type', {
-            'vehicle-documents-list__type--active': index === selectedDocumentTypeIndex,
-          })
-          return (
-            <Button
-              key={documentType.id}
-              theme={ButtonTheme.EMPTY}
-              onClick={() => setSelectedDocumentTypeIndex(index)}
+        {VEHICLE_DOCUMENT_TYPES.map((documentType, index) => (
+          <Button
+            key={documentType.id}
+            theme={ButtonTheme.EMPTY}
+            onClick={() => setSelectedDocumentTypeIndex(index)}
+          >
+            <div
+              className={classNames('vehicle-documents-list__type', {
+                'vehicle-documents-list__type--active': index === selectedDocumentTypeIndex,
+              })}
             >
-              <div className={className}>{documentType.name}</div>
-            </Button>
-          )
-        })}
+              {documentType.name}
+            </div>
+          </Button>
+        ))}
       </div>
-
+      <Button className='vehicle-documents-list__add-btn' theme={ButtonTheme.EMPTY}>
+        Adauga +
+      </Button>
       <Carousel
         infiniteLoop
         emulateTouch
