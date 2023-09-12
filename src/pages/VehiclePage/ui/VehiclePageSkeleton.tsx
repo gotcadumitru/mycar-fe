@@ -2,7 +2,8 @@ import { FC } from 'react'
 import Skeleton from 'react-loading-skeleton'
 
 export const VehiclePageSkeleton: FC = () => (
-  <div>
-    <Skeleton count={4} height={75} className='react-loading-skeleton--panel' />
+  <div className='react-loading-skeleton__padding-h'>
+    <Skeleton count={1} height={55} />
+    <Skeleton count={11} height={12} />
   </div>
 )

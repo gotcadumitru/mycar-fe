@@ -12,6 +12,8 @@ interface FileCarouselProps<T> {
   onRemoveFileClick?: (uid: string) => void
   renderCarouselFile?: (file: T) => any
   renderFile?: (file: T) => any
+  showIndicators?: boolean
+  showArrows?: boolean
 }
 
 const FileCarousel = <T extends FileBaseType>({
@@ -20,6 +22,8 @@ const FileCarousel = <T extends FileBaseType>({
   renderFile,
   renderCarouselFile,
   onRemoveFileClick,
+  showIndicators = true,
+  showArrows = true,
 }: FileCarouselProps<T>) => {
   const [selectedImageId, setSelectedImageId] = useState<string>('')
   const selectedImageIndex = files.findIndex((file) => file.uid === selectedImageId)
@@ -49,6 +53,8 @@ const FileCarousel = <T extends FileBaseType>({
           emulateTouch
           selectedItem={selectedImageIndex}
           useKeyboardArrows
+          showIndicators={showIndicators}
+          showArrows={showArrows}
           swipeable
           showThumbs={false}
           dynamicHeight={false}
