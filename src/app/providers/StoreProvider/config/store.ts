@@ -6,6 +6,7 @@ import { tyreReducer } from 'enteties/tyre'
 import { userReducer } from 'enteties/user'
 import { vehicleReducer } from 'enteties/vehicle'
 import { vehicleBrandReducer } from 'enteties/vehicleBrand'
+import { vehicleDocumentReducer } from 'enteties/vehicleDocument'
 import { vehicleModelReducer } from 'enteties/vehicleModel'
 import { vehicleTypeReducer } from 'enteties/vehicleType'
 import { vignetteReducer } from 'enteties/vignette'
@@ -29,6 +30,7 @@ export const rootReducers: ReducersMapObject<StateSchema> = {
   vehicleBrand: vehicleBrandReducer,
   vehicleModel: vehicleModelReducer,
   auth: authReducer,
+  vehicleDocument: vehicleDocumentReducer,
 }
 
 export function createReduxStore(initialState?: StateSchema) {

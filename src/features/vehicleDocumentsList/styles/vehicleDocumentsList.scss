@@ -1,0 +1,43 @@
+.vehicle-documents {
+  &__types {
+    display: flex;
+    gap: 6px;
+    overflow: auto;
+
+    .button--empty:hover {
+      text-decoration: none;
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__type {
+    background-color: var(--blue-3);
+    color: var(--black);
+    padding: 6px 12px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: capitalize;
+
+    &:first-child {
+      margin-left: 6px;
+    }
+
+    &--active {
+      background-color: var(--blue-1);
+      color: var(--white);
+    }
+  }
+
+  &__document {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 12px;
+    border-bottom: 1px solid var(--blue-3);
+  }
+}

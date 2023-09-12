@@ -1,7 +1,8 @@
 import { calculateAverageConsumption } from 'enteties/vehicle'
 import { useVehicleWithDetails } from 'enteties/vehicle/hooks/useVehicleWithDetails'
 import DeleteVehicleButton from 'features/deleteVehicleButton'
-import React, { useMemo } from 'react'
+import VehicleDocuments from 'features/vehicleDocumentsList'
+import React, { memo, useMemo } from 'react'
 import { Navigate, useParams } from 'react-router-dom'
 import { FetchStatus } from 'shared/api'
 import MdOutlineEdit from 'shared/assets/icons/MdOutlineEdit.svg'
@@ -25,7 +26,6 @@ const VehiclePage = () => {
     return <Navigate to={RoutePaths.garage} />
   if (vehicleDetails.vehicleFetchStatus !== FetchStatus.SUCCESS || !vehicleDetails.vehicle)
     return <VehiclePageSkeleton />
-
   return (
     <div className='vehicle-page'>
       <div className='vehicle-page__header'>
@@ -103,7 +103,8 @@ const VehiclePage = () => {
           <VehicleDetailsField title='CIV' infoList={[vehicleDetails.vehicle.civSeries]} />
         </div>
       </div>
+      <VehicleDocuments vehicleId={vehicleDetails.vehicle.uid} />
     </div>
   )
 }
-export default VehiclePage
+export default memo(VehiclePage)
