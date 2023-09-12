@@ -16,12 +16,20 @@ export const VehicleBrandAndModel: FC<VehicleBrandAndModelProps> = ({
     {vehicleBrand ? (
       vehicleBrand.name
     ) : (
-      <Skeleton className='react-loading-skeleton--small-text' height={20} count={1} />
+      <Skeleton
+        className='react-loading-skeleton--small-text react-loading-skeleton--no-m'
+        height={15}
+        count={1}
+      />
     )}{' '}
     {vehicleModel ? (
       vehicleModel.name
     ) : (
-      <Skeleton className='react-loading-skeleton--small-text' height={20} count={1} />
+      <Skeleton
+        className='react-loading-skeleton--small-text react-loading-skeleton--no-m'
+        height={15}
+        count={1}
+      />
     )}
   </>
 )

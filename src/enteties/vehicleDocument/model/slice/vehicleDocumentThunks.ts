@@ -9,6 +9,7 @@ const docs: VehicleDocumentWithFiles[] = createArrayFromTo(0, 100).map((n) => ({
   uid: `1${n}`,
   vehicleId: 'evFqd5cAUCA2r35CLRRz',
   name: `RCA${n}`,
+  creationDate: '',
   expirationDate: '',
   notes: `string${n}`,
   type: n > 90 ? VehicleDocumentType.Mechanic : VehicleDocumentType.General,
