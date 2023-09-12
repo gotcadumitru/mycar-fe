@@ -11,6 +11,7 @@ export type VehicleDocumentFormDataType = {
   files: FileInputType[]
   vehicleId: string
   name: string
+  creationDate: string
   expirationDate: string
   notes: string
   type: VehicleDocumentType

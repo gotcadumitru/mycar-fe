@@ -5,13 +5,13 @@ import createArrayFromTo from 'shared/lib/utils/createArrayFromTo'
 import { VehicleDocumentActions, VehicleDocumentType } from '../consts/vehicleDocumentConsts'
 import { VehicleDocumentWithFiles } from '../types/vehicleDocumentTypes'
 
-const docs: VehicleDocumentWithFiles[] = createArrayFromTo(0, 10).map((n) => ({
+const docs: VehicleDocumentWithFiles[] = createArrayFromTo(0, 100).map((n) => ({
   uid: `1${n}`,
   vehicleId: 'evFqd5cAUCA2r35CLRRz',
   name: `RCA${n}`,
-  expirationDate: `1${n}`,
+  expirationDate: '',
   notes: `string${n}`,
-  type: VehicleDocumentType.General,
+  type: n > 90 ? VehicleDocumentType.Mechanic : VehicleDocumentType.General,
   files: [],
   createdAt: {
     seconds: n,

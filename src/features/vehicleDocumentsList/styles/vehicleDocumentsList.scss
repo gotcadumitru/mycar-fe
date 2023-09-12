@@ -1,4 +1,4 @@
-.vehicle-documents {
+.vehicle-documents-list {
   &__types {
     display: flex;
     gap: 6px;
@@ -35,9 +35,35 @@
   &__document {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     width: 100%;
     padding: 12px;
     border-bottom: 1px solid var(--blue-3);
+    font-size: 16px;
+    font-weight: 500;
   }
+
+  &__info-icon {
+    font-size: 24px;
+    color: var(--grey-3);
+  }
+
+  &__name-date {
+    text-align: left;
+    margin-left: 8px;
+  }
+
+  &__name {
+
+  }
+
+  &__date {
+    color: var(--grey-3);
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  &__arrow-icon {
+    margin-left: auto;
+  }
+
 }

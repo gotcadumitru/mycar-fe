@@ -2,7 +2,6 @@
   padding: 0;
   margin: 0;
   border: 0;
-  font-family: var(--public-sans);
   scrollbar-width: thin;
 }
 
@@ -49,6 +48,8 @@ body {
   text-size-adjust: 100%;
   display: flex;
   flex-direction: column;
+  font-family: var(--poppins);
+  color: var(--black);
 }
 
 input,
