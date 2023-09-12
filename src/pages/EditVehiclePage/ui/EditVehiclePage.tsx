@@ -8,7 +8,7 @@ import {
 } from 'enteties/vehicle'
 import { editVehicleActions } from 'features/vehicle/vehicleEditForm'
 import EditVehicleForm from 'features/vehicle/vehicleEditForm/ui/EditVehicleForm'
-import React, { useEffect, useId, useMemo } from 'react'
+import { useEffect, useId, useMemo } from 'react'
 import { Navigate, useNavigate, useParams } from 'react-router-dom'
 import { FetchStatus } from 'shared/api'
 import { RoutePaths } from 'shared/config/router/RoutePaths'

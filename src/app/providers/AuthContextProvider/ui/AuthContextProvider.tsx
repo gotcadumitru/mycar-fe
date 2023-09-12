@@ -12,7 +12,7 @@ import {
   User,
   UserCredential,
 } from 'firebase/auth'
-import React, {
+import {
   createContext,
   FC,
   PropsWithChildren,

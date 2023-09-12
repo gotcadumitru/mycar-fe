@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import { fetchAllVehicleDocumentsThunk, VEHICLE_DOCUMENT_TYPES } from 'enteties/vehicleDocument'
 import { selectVehicleDocumentsByVehicleId } from 'enteties/vehicleDocument/model/slice/vehicleDocumentSelectors'
-import React, { FC, memo, useEffect, useState } from 'react'
+import { FC, memo, useEffect, useState } from 'react'
 import { Carousel } from 'react-responsive-carousel'
 import { useNavigate } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
@@ -24,11 +24,11 @@ const VehicleDocumentsList: FC<VehicleDocumentsProps> = ({ vehicleId }) => {
     dispatch(fetchAllVehicleDocumentsThunk(vehicleId))
   }, [])
   return (
-    <div className='vehicle-documents'>
-      <div className='vehicle-documents__types'>
+    <div className='vehicle-documents-list'>
+      <div className='vehicle-documents-list__types'>
         {VEHICLE_DOCUMENT_TYPES.map((documentType, index) => {
-          const className = classNames('vehicle-documents__type', {
-            'vehicle-documents__type--active': index === selectedDocumentTypeIndex,
+          const className = classNames('vehicle-documents-list__type', {
+            'vehicle-documents-list__type--active': index === selectedDocumentTypeIndex,
           })
           return (
             <Button

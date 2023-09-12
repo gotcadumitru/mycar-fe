@@ -6,7 +6,6 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import * as process from 'process'
 import webpack from 'webpack'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
-import WorkboxWebpackPlugin from 'workbox-webpack-plugin'
 import { BuildOptions } from './types/config'
 
 const buildPlugins = (config: BuildOptions): webpack.WebpackPluginInstance[] => {

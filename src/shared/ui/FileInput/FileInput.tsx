@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import React, { useId } from 'react'
+import { useId } from 'react'
 import BiImageAdd from 'shared/assets/icons/BiImageAdd.svg'
 import { FormDataField } from 'shared/lib/utils/checkIfExistErrors'
 import { FileCarouselAsync } from 'shared/ui/FileCarousel'

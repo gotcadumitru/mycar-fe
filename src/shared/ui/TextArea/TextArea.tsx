@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import React, { FC, FocusEvent, useEffect, useId, useRef, useState } from 'react'
+import { FC, FocusEvent, useEffect, useId, useRef, useState } from 'react'
 import InfoIcon from 'shared/assets/icons/InfoIcon'
 import Popup from 'shared/ui/Popup'
 import './textarea.scss'

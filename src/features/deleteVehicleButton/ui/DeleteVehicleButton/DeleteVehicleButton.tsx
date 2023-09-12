@@ -1,6 +1,6 @@
 import { useAuth } from 'app/providers/AuthContextProvider'
 import { softDeleteVehicleById } from 'enteties/vehicle'
-import React, { FC, memo, useState } from 'react'
+import { FC, memo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import MdOutlineDelete from 'shared/assets/icons/MdOutlineDelete.svg'
 import { RoutePaths } from 'shared/config/router/RoutePaths'
