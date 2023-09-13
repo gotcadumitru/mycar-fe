@@ -18,3 +18,8 @@ export {
   VehicleDocumentType,
   VEHICLE_DOCUMENT_TYPES,
 } from './model/consts/vehicleDocumentConsts'
+
+export {
+  vehicleDocumentFormDataToCreateBody,
+  getVehicleDocumentFormValues,
+} from './utils/vehicleDocumentUtils'

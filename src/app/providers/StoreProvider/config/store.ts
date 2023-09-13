@@ -12,6 +12,7 @@ import { vehicleTypeReducer } from 'enteties/vehicleType'
 import { vignetteReducer } from 'enteties/vignette'
 import { authReducer } from 'features/auth'
 import { editVehicleReducer } from 'features/vehicle/vehicleEditForm'
+import { vehicleDocumentEditReducer } from 'features/vehicleDocumentEdit'
 import { uiReducer } from '../slices/ui'
 import type { StateSchema } from '../types/stateSchema'
 import type { ThunkExtraArg } from '../types/thunk'
@@ -31,6 +32,7 @@ export const rootReducers: ReducersMapObject<StateSchema> = {
   vehicleModel: vehicleModelReducer,
   auth: authReducer,
   vehicleDocument: vehicleDocumentReducer,
+  vehicleDocumentEdit: vehicleDocumentEditReducer,
 }
 
 export function createReduxStore(initialState?: StateSchema) {

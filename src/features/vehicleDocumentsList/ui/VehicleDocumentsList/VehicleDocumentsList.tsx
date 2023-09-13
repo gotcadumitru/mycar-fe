@@ -4,8 +4,9 @@ import { selectVehicleDocumentsByVehicleId } from 'enteties/vehicleDocument/mode
 import { FC, memo, useEffect, useState } from 'react'
 import { Carousel } from 'react-responsive-carousel'
 import { useNavigate } from 'react-router-dom'
+import { RoutePaths } from 'shared/config/router/RoutePaths'
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
-import Button, { ButtonTheme } from 'shared/ui/Button'
+import Button, { ButtonCategoryType, ButtonTheme } from 'shared/ui/Button'
 import '../../styles/vehicleDocumentsList.scss'
 import VehicleDocumentItem from './VehicleDocumentItem'
 
@@ -30,7 +31,7 @@ const VehicleDocumentsList: FC<VehicleDocumentsProps> = ({ vehicleId }) => {
       <div className='vehicle-documents-list__types'>
         {VEHICLE_DOCUMENT_TYPES.map((documentType, index) => (
           <Button
-            key={documentType.id}
+            key={documentType.value}
             theme={ButtonTheme.EMPTY}
             onClick={() => setSelectedDocumentTypeIndex(index)}
           >
@@ -39,12 +40,17 @@ const VehicleDocumentsList: FC<VehicleDocumentsProps> = ({ vehicleId }) => {
                 'vehicle-documents-list__type--active': index === selectedDocumentTypeIndex,
               })}
             >
-              {documentType.name}
+              {documentType.label}
             </div>
           </Button>
         ))}
       </div>
-      <Button className='vehicle-documents-list__add-btn' theme={ButtonTheme.EMPTY}>
+      <Button
+        category={ButtonCategoryType.LINK}
+        className='vehicle-documents-list__add-btn'
+        to={`${RoutePaths.new_vehicle_document}/${vehicleId}`}
+        theme={ButtonTheme.EMPTY}
+      >
         Adauga +
       </Button>
       <Carousel
@@ -62,10 +68,10 @@ const VehicleDocumentsList: FC<VehicleDocumentsProps> = ({ vehicleId }) => {
       >
         {VEHICLE_DOCUMENT_TYPES.map((vehicleDocumentType) => {
           const vehicleDocumentsForDocumentType = vehicleDocuments.filter(
-            (vehicleDocument) => vehicleDocument.type === vehicleDocumentType.id,
+            (vehicleDocument) => vehicleDocument.type === vehicleDocumentType.value,
           )
           return (
-            <div key={vehicleDocumentType.id}>
+            <div key={vehicleDocumentType.value}>
               {vehicleDocumentsForDocumentType.map((vehicleDocument) => (
                 <VehicleDocumentItem
                   key={vehicleDocument.uid}

@@ -89,7 +89,7 @@ const EditVehicleForm: FC<EditCarFormProps> = ({ formId, onSubmit }) => {
       <FileInput
         valueFullType={formFields.files}
         onChange={handleChangeInputFile}
-        label='Selecteaza o poza'
+        label='Selecteaza poze'
       />
       <VehicleTypesSelect
         valueFullType={formFields.type}
