@@ -9,9 +9,7 @@ export enum VehicleDocumentType {
   Insurance = 'Asigurari',
 }
 
-export const VEHICLE_DOCUMENT_TYPES = [
-  { id: VehicleDocumentType.General, name: VehicleDocumentType.General },
-  { id: VehicleDocumentType.Mechanic, name: VehicleDocumentType.Mechanic },
-  { id: VehicleDocumentType.Authorisations, name: VehicleDocumentType.Authorisations },
-  { id: VehicleDocumentType.Insurance, name: VehicleDocumentType.Insurance },
-]
+export const VEHICLE_DOCUMENT_TYPES = Object.keys(VehicleDocumentType).map((key) => ({
+  value: VehicleDocumentType[key as keyof typeof VehicleDocumentType],
+  label: VehicleDocumentType[key as keyof typeof VehicleDocumentType],
+}))

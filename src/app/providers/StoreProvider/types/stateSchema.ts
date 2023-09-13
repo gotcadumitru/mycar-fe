@@ -11,6 +11,7 @@ import type { VehicleTypeSliceState } from 'enteties/vehicleType'
 import type { VignetteSliceState } from 'enteties/vignette'
 import type { AuthSliceState } from 'features/auth/model/types/authTypes'
 import type { EditVehicleSliceState } from 'features/vehicle/vehicleEditForm'
+import type { VehicleDocumentEditSliceState } from 'features/vehicleDocumentEdit'
 import type { UiSliceState } from '../slices/ui'
 
 export interface StateSchema {
@@ -28,6 +29,7 @@ export interface StateSchema {
   vehicleModel: VehicleModelSliceState
   auth: AuthSliceState
   vehicleDocument: VehicleDocumentSliceState
+  vehicleDocumentEdit: VehicleDocumentEditSliceState
 }
 
 export type StateSchemaKey = keyof StateSchema

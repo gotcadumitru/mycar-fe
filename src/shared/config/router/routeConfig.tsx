@@ -1,5 +1,8 @@
 import Layout from 'app/layout/Layout/Layout'
 import { ForgotPassword, ResetPassword, SignIn, SignUp } from 'features/auth'
+import AddVehicleDocumentPageAsync, {
+  AddVehicleDocumentPageSkeleton,
+} from 'pages/AddVehicleDocumentPage'
 import NewVehiclePage, { NewVehiclePageSkeleton } from 'pages/AddVehiclePage'
 import AuthPage from 'pages/AuthPage'
 import { EditVehiclePageSkeleton } from 'pages/EditVehiclePage'
@@ -116,6 +119,20 @@ export const routeConfig: Partial<Record<AppRoutes, AppRoutesProps>> = {
         <Layout>
           <Suspense fallback={<EditVehiclePageSkeleton />}>
             <EditVehiclePage />
+          </Suspense>
+        </Layout>
+      </>
+    ),
+  },
+  [AppRoutes.NEW_VEHICLE_DOCUMENT]: {
+    isForAuthOnly: true,
+    path: `${RoutePaths.new_vehicle_document}/:vehicleId`,
+    element: (
+      <>
+        <Header isWithGoBackIcon title='Document nou' />
+        <Layout>
+          <Suspense fallback={<AddVehicleDocumentPageSkeleton />}>
+            <AddVehicleDocumentPageAsync />
           </Suspense>
         </Layout>
       </>

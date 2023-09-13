@@ -19,7 +19,7 @@ const Header: FC<HeaderPropsType> = ({ isWithGoBackIcon, title }) => {
         )}
         <div className='header__title'>{title}</div>
       </div>
-      <div>{currentUser?.displayName}</div>
+      <div>{currentUser?.displayName?.split(' ')?.[0]}</div>
     </div>
   )
 }

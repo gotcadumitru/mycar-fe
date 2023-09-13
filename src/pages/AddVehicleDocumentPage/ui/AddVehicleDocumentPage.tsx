@@ -1,0 +1,50 @@
+import { useAuth } from 'app/providers/AuthContextProvider'
+import { createNewVehiclesForUserId } from 'enteties/vehicle'
+import { editVehicleActions } from 'features/vehicle/vehicleEditForm'
+import VehicleDocumentEditForm from 'features/vehicleDocumentEdit'
+import { memo, useId } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
+import { FetchStatus } from 'shared/api'
+import { RoutePaths } from 'shared/config/router/RoutePaths'
+import { REQUEST_MESSAGES } from 'shared/defaults/text'
+import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
+import Button, { ButtonCategoryType, ButtonTheme } from 'shared/ui/Button'
+import './addVehicleDocumentPage.scss'
+
+const AddVehicleDocumentPage = () => {
+  const { vehicleId } = useParams()
+  const navigate = useNavigate()
+  const formFields = useAppSelector((state) => state.editVehicle.formFields)
+  const dispatch = useAppDispatch()
+  const { currentUser } = useAuth()
+  const formId = useId()
+  const onSubmit = async () => {
+    const dispatchAction = await dispatch(
+      createNewVehiclesForUserId({
+        vehicleFormData: formFields,
+        userId: currentUser!.uid,
+        notification: REQUEST_MESSAGES.SAVE_NEW_VEHICLE,
+      }),
+    )
+    if (dispatchAction.meta.requestStatus === FetchStatus.SUCCESS) {
+      dispatch(editVehicleActions.resetVehicleDataAC())
+      navigate(RoutePaths.garage)
+    }
+  }
+  return (
+    <div className='add-vehicle-document-page'>
+      <VehicleDocumentEditForm formId={formId} onSubmit={onSubmit} />
+      <div className='add-vehicle-document-page__footer'>
+        <Button
+          form={formId}
+          type='submit'
+          category={ButtonCategoryType.BUTTON}
+          theme={ButtonTheme.OUTLINE_RED}
+        >
+          Salveaza
+        </Button>
+      </div>
+    </div>
+  )
+}
+export default memo(AddVehicleDocumentPage)
