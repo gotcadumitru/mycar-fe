@@ -10,17 +10,12 @@ import {
 
 export const initialState: VehicleSliceState = {
   allVehiclesOfCurrentUser: [],
-  selectedVehicle: null,
 }
 
 export const vehicleSlice = createSlice({
   name: 'vehicle',
   initialState,
-  reducers: {
-    resetSelectedCarData: (state) => {
-      state.selectedVehicle = null
-    },
-  },
+  reducers: {},
   extraReducers: (builder) =>
     builder
       .addCase(fetchAllVehiclesByUserId.fulfilled, (state, action) => {
@@ -35,8 +30,9 @@ export const vehicleSlice = createSlice({
         )
       })
       .addCase(editVehiclesForUserId.fulfilled, (state, action) => {
+        const changedVehicle = action.payload
         state.allVehiclesOfCurrentUser = state.allVehiclesOfCurrentUser.map((vehicle) =>
-          vehicle.uid === action.payload.uid ? action.payload : vehicle,
+          vehicle.uid === changedVehicle.uid ? changedVehicle : vehicle,
         )
       })
       .addCase(fetchVehicleById.fulfilled, (state, action) => {
@@ -44,11 +40,10 @@ export const vehicleSlice = createSlice({
         const vehicleIndex = state.allVehiclesOfCurrentUser.findIndex(
           (vehicle) => vehicle.uid === vehicleById.uid,
         )
-        state.selectedVehicle = vehicleById
         if (vehicleIndex !== -1) {
           state.allVehiclesOfCurrentUser[vehicleIndex] = vehicleById
         } else {
-          state.allVehiclesOfCurrentUser.push(action.payload)
+          state.allVehiclesOfCurrentUser.push(vehicleById)
         }
       }),
 })

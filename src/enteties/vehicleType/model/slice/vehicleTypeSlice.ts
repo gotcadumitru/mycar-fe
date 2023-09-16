@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import type { VehicleTypeSliceState } from 'src/enteties/vehicleType/model/types/vehicleTypeTypes'
+import type { VehicleTypeSliceState } from '../../model/types/vehicleTypeTypes'
 import { fetchAllVehicleTypesThunk } from './vehicleTypeThunks'
 
 export const initialState: VehicleTypeSliceState = {

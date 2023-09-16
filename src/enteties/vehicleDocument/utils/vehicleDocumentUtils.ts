@@ -4,6 +4,7 @@ import {
   VehicleDocumentCreateBody,
   VehicleDocumentFormDataFullType,
   VehicleDocumentFormDataType,
+  VehicleDocumentWithFiles,
 } from '../model/types/vehicleDocumentTypes'
 
 export const getVehicleDocumentFormValues = ({
@@ -59,7 +60,23 @@ export const vehicleDocumentFormDataToCreateBody = (
   name: vehicleDocumentFormData.name.value,
   type: vehicleDocumentFormData.type.value,
   vehicleId: vehicleDocumentFormData.vehicleId.value,
+  creationDate: vehicleDocumentFormData.creationDate.value,
   expirationDate: vehicleDocumentFormData.expirationDate.value,
   notes: vehicleDocumentFormData.notes.value,
-  creationDate: vehicleDocumentFormData.creationDate.value,
 })
+
+export const vehicleDocumentToFormData = ({
+  files,
+  ...vehicleDocument
+}: VehicleDocumentWithFiles) =>
+  getVehicleDocumentFormValues({
+    files: files.map((file) => ({
+      file: file.fileUrl,
+      uid: file.uid,
+      fileUrl: file.fileUrl,
+      name: file.name,
+      mimetype: file.mimetype,
+      size: file.size,
+    })),
+    ...vehicleDocument,
+  })

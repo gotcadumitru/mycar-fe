@@ -5,6 +5,9 @@ import AddVehicleDocumentPageAsync, {
 } from 'pages/AddVehicleDocumentPage'
 import NewVehiclePage, { NewVehiclePageSkeleton } from 'pages/AddVehiclePage'
 import AuthPage from 'pages/AuthPage'
+import EditVehicleDocumentPageAsync, {
+  EditVehicleDocumentPageSkeleton,
+} from 'pages/EditVehicleDocumentPage'
 import { EditVehiclePageSkeleton } from 'pages/EditVehiclePage'
 import EditVehiclePage from 'pages/EditVehiclePage/ui/EditVehiclePage'
 import GaragePage, { GaragePageSkeleton } from 'pages/GaragePage'
@@ -133,6 +136,20 @@ export const routeConfig: Partial<Record<AppRoutes, AppRoutesProps>> = {
         <Layout>
           <Suspense fallback={<AddVehicleDocumentPageSkeleton />}>
             <AddVehicleDocumentPageAsync />
+          </Suspense>
+        </Layout>
+      </>
+    ),
+  },
+  [AppRoutes.EDIT_VEHICLE_DOCUMENT]: {
+    isForAuthOnly: true,
+    path: `${RoutePaths.edit_vehicle_document}/:documentId`,
+    element: (
+      <>
+        <Header isWithGoBackIcon />
+        <Layout>
+          <Suspense fallback={<EditVehicleDocumentPageSkeleton />}>
+            <EditVehicleDocumentPageAsync />
           </Suspense>
         </Layout>
       </>

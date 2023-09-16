@@ -1,5 +1,8 @@
+import UserVehicleSelect from 'features/userVehicleSelect'
 import VehicleDocumentTypeSelect from 'features/vehicleDocumentTypeSelect'
-import { ChangeEvent, FC, memo } from 'react'
+import { ChangeEvent, FC, memo, useEffect } from 'react'
+import { Navigate } from 'react-router-dom'
+import { RoutePaths } from 'shared/config/router/RoutePaths'
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
 import { checkIfExistErrors } from 'shared/lib/utils/checkIfExistErrors'
 import type { FileInputType } from 'shared/ui/File'
@@ -12,12 +15,29 @@ import '../styles/vehicle-document-edit.scss'
 
 interface EditCarFormProps {
   formId: string
+  vehicleId?: string
   onSubmit: () => void
 }
 
-const VehicleDocumentEditForm: FC<EditCarFormProps> = ({ formId, onSubmit }) => {
+const VehicleDocumentEditForm: FC<EditCarFormProps> = ({ formId, vehicleId, onSubmit }) => {
   const formFields = useAppSelector((state) => state.vehicleDocumentEdit.formFields)
   const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    if (vehicleId)
+      dispatch(
+        vehicleDocumentEditActions.changeVehicleDocumentDataAC({
+          ...formFields,
+          vehicleId: {
+            ...formFields.vehicleId,
+            value: vehicleId,
+          },
+        }),
+      )
+    return () => {
+      dispatch(vehicleDocumentEditActions.resetVehicleDocumentDataAC())
+    }
+  }, [vehicleId])
   const onInputChange = (
     event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement> | OnChangeMinType,
   ) => {
@@ -25,7 +45,7 @@ const VehicleDocumentEditForm: FC<EditCarFormProps> = ({ formId, onSubmit }) => 
     const name = event.target.name as keyof typeof formFields
 
     dispatch(
-      vehicleDocumentEditActions.changeVehicleDataAC({
+      vehicleDocumentEditActions.changeVehicleDocumentDataAC({
         ...formFields,
         [name]: {
           ...formFields[name],
@@ -35,25 +55,9 @@ const VehicleDocumentEditForm: FC<EditCarFormProps> = ({ formId, onSubmit }) => 
       }),
     )
   }
-
-  const onCheckboxChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { checked } = event.target
-    const name = event.target.name as keyof typeof formFields
-    dispatch(
-      vehicleDocumentEditActions.changeVehicleDataAC({
-        ...formFields,
-        [name]: {
-          ...formFields[name],
-          value: checked,
-          errorMessage: '',
-        },
-      }),
-    )
-  }
-
   const handleChangeInputFile = (files: FileInputType[]) => {
     dispatch(
-      vehicleDocumentEditActions.changeVehicleDataAC({
+      vehicleDocumentEditActions.changeVehicleDocumentDataAC({
         ...formFields,
         files: {
           ...formFields.files,
@@ -63,17 +67,25 @@ const VehicleDocumentEditForm: FC<EditCarFormProps> = ({ formId, onSubmit }) => 
       }),
     )
   }
+
   const onSubmitLocal = async () => {
     const { formFieldsWithErrors, isErrors } = checkIfExistErrors(formFields)
     if (isErrors)
-      return dispatch(vehicleDocumentEditActions.changeVehicleDataAC(formFieldsWithErrors))
+      return dispatch(vehicleDocumentEditActions.changeVehicleDocumentDataAC(formFieldsWithErrors))
     onSubmit()
   }
+  if (!vehicleId) return <Navigate to={RoutePaths.garage} />
   return (
     <Form id={formId} onSubmit={onSubmitLocal} className='vehicle-document-edit'>
+      <UserVehicleSelect
+        valueFullType={formFields.vehicleId}
+        name='vehicleId'
+        onChange={onInputChange}
+        label='Vehiculul'
+      />
       <Input
         valueFullType={formFields.name}
-        name='type'
+        name='name'
         onChange={onInputChange}
         label='Numele documentului'
       />
@@ -107,6 +119,7 @@ const VehicleDocumentEditForm: FC<EditCarFormProps> = ({ formId, onSubmit }) => 
         valueFullType={formFields.files}
         onChange={handleChangeInputFile}
         label='Selecteaza fisiere'
+        accept='image/*, application/pdf'
       />
     </Form>
   )

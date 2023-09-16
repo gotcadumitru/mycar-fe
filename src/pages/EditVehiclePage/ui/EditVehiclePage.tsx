@@ -1,11 +1,7 @@
 import { useAuth } from 'app/providers/AuthContextProvider'
 import { selectRequestStatus } from 'app/providers/StoreProvider/slices/ui'
-import {
-  editVehiclesForUserId,
-  fetchVehicleById,
-  getVehicleFormValues,
-  VehicleActions,
-} from 'enteties/vehicle'
+import { editVehiclesForUserId, fetchVehicleById, VehicleActions } from 'enteties/vehicle'
+import { vehicleToFormData } from 'enteties/vehicle/utils/vehicleUtils'
 import { editVehicleActions } from 'features/vehicle/vehicleEditForm'
 import EditVehicleForm from 'features/vehicle/vehicleEditForm/ui/EditVehicleForm'
 import { useEffect, useId, useMemo } from 'react'
@@ -36,44 +32,7 @@ const EditVehiclePage = () => {
   }, [])
   useEffect(() => {
     if (vehicle) {
-      dispatch(
-        editVehicleActions.changeVehicleDataAC(
-          getVehicleFormValues({
-            files: vehicle.files.map((file) => ({
-              file: file.fileUrl,
-              uid: file.uid,
-              fileUrl: file.fileUrl,
-              name: file.name,
-              mimetype: file.mimetype,
-              size: file.size,
-            })),
-            brand: vehicle.brand,
-            numberOfSeats: `${vehicle.numberOfSeats}`,
-            isLeasingVehicle: vehicle.isLeasingVehicle,
-            leasingCompany: vehicle.leasingCompany,
-            civSeries: vehicle.civSeries,
-            ownedBy: vehicle.ownedBy,
-            power: `${vehicle.power}`,
-            cylinderCapacity: `${vehicle.cylinderCapacity}`,
-            maximumAuthorisedMass: `${vehicle.maximumAuthorisedMass}`,
-            color: vehicle.color,
-            fuelType: vehicle.fuelType,
-            yearOfProduction: vehicle.yearOfProduction,
-            registrationNumber: vehicle.registrationNumber,
-            type: vehicle.type,
-            winterTyreSize: vehicle.winterTyreSize,
-            summerTyreSize: vehicle.summerTyreSize,
-            model: vehicle.model,
-            dotSummerTyre: vehicle.dotSummerTyre,
-            dotWinterTyre: vehicle.dotWinterTyre,
-            fuelConsumptionExtraUrb: `${vehicle.fuelConsumptionExtraUrb}`,
-            fuelConsumptionUrb: `${vehicle.fuelConsumptionUrb}`,
-            usagePercentExtraUrb: `${vehicle.usagePercentExtraUrb}`,
-            usagePercentUrb: `${vehicle.usagePercentUrb}`,
-            vin: vehicle.vin,
-          }),
-        ),
-      )
+      dispatch(editVehicleActions.changeVehicleDataAC(vehicleToFormData(vehicle)))
     }
   }, [vehicle])
 
@@ -86,7 +45,7 @@ const EditVehiclePage = () => {
         vehicleFormData: formFields,
         vehicleId: vehicle.uid,
         userId: currentUser!.uid,
-        notification: REQUEST_MESSAGES.SAVE_NEW_VEHICLE,
+        notification: REQUEST_MESSAGES.EDIT_VEHICLE,
       }),
     )
     if (dispatchAction.meta.requestStatus === FetchStatus.SUCCESS) {

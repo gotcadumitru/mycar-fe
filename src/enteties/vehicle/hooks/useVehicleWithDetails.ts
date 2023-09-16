@@ -10,6 +10,7 @@ import {
 } from 'enteties/vehicleModel'
 import { fetchAllVehicleTypesThunk, VehicleTypeActions } from 'enteties/vehicleType'
 import { useEffect, useMemo } from 'react'
+import { FetchStatus } from 'shared/api'
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
 import { VehicleActions } from '../model/consts/vehicleConsts'
 import { fetchVehicleById } from '../model/slice/vehicleThunks'
@@ -17,8 +18,8 @@ import { fetchVehicleById } from '../model/slice/vehicleThunks'
 export const useVehicleWithDetails = (vehicleId: string) => {
   const dispatch = useAppDispatch()
   const vehicles = useAppSelector((state) => state.vehicle.allVehiclesOfCurrentUser)
-  const vehicleFetchStatus = useAppSelector(selectRequestStatus(VehicleActions.FETCH_VEHICLE_BY_ID))
   const vehicle = vehicles.find((v) => v.uid === vehicleId)
+  const vehicleFetchStatus = useAppSelector(selectRequestStatus(VehicleActions.FETCH_VEHICLE_BY_ID))
   const vehicleTypes = useAppSelector((state) => state.vehicleType.vehicleTypes)
   const vehicleTypesOfFuel = useAppSelector((state) => state.fuel.typesOfFuel)
   const leasingCompanies = useAppSelector((state) => state.leasing.leasingCompanies)

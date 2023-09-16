@@ -1,6 +1,7 @@
 export const MIME_TYPES = {
   '.jpeg': 'image/jpeg',
   '.JPG': 'image/jpeg',
+  '.webp': 'image/webp',
   '.mp4': 'video/mp4',
   '.mpeg': 'video/mpeg',
   '.png': 'image/png',
@@ -17,6 +18,7 @@ export const FILE_TYPE = {
 
 export const MIME_TYPE_TO_FILE_TYPE = {
   [MIME_TYPES['.jpeg']]: FILE_TYPE.IMG,
+  [MIME_TYPES['.webp']]: FILE_TYPE.IMG,
   [MIME_TYPES['.JPG']]: FILE_TYPE.IMG,
   [MIME_TYPES['.mp4']]: FILE_TYPE.VIDEO,
   [MIME_TYPES['.mpeg']]: FILE_TYPE.VIDEO,
