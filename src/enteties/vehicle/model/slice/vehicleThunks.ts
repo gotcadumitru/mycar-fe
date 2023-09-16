@@ -11,13 +11,23 @@ export const fetchAllVehiclesByUserId = createAsyncThunk<
   VehicleWithFiles[],
   string,
   ThunkConfig<string>
->(VehicleActions.FETCH_ALL_VEHICLES_BY_USER_ID, async (userId) =>
-  vehicleDataService.getAllByUserId(userId),
-)
+>(VehicleActions.FETCH_ALL_VEHICLES_BY_USER_ID, async (userId, thunkAPI) => {
+  const state = thunkAPI.getState()
+  if (!state.vehicle.allVehiclesOfCurrentUser.length)
+    return vehicleDataService.getAllByUserId(userId)
+  return state.vehicle.allVehiclesOfCurrentUser
+})
 
 export const fetchVehicleById = createAsyncThunk<VehicleWithFiles, string, ThunkConfig<string>>(
   VehicleActions.FETCH_VEHICLE_BY_ID,
-  async (userId) => vehicleDataService.getVehicleById(userId),
+  async (vehicleId, { getState }) => {
+    const vehicle = getState().vehicle.allVehiclesOfCurrentUser.find(
+      (vehicle) => vehicle.uid === vehicleId,
+    )
+
+    if (vehicle) return vehicle
+    return vehicleDataService.getVehicleById(vehicleId)
+  },
 )
 
 export const createNewVehiclesForUserId = createAsyncThunk<
@@ -52,7 +62,7 @@ export const editVehiclesForUserId = createAsyncThunk<
     },
     userId,
   )
-  if (!changedVehicle) throw new Error(REQUEST_MESSAGES.SAVE_NEW_VEHICLE[FetchStatus.FAIL])
+  if (!changedVehicle) throw new Error(REQUEST_MESSAGES.EDIT_VEHICLE[FetchStatus.FAIL])
   return changedVehicle
 })
 

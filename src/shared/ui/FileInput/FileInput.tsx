@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { useId } from 'react'
+import { ChangeEvent, DetailedHTMLProps, FC, InputHTMLAttributes, useId } from 'react'
 import BiImageAdd from 'shared/assets/icons/BiImageAdd.svg'
 import { FormDataField } from 'shared/lib/utils/checkIfExistErrors'
 import { FileCarouselAsync } from 'shared/ui/FileCarousel'
@@ -9,7 +9,7 @@ import './file-input.scss'
 
 interface FileInputPropsType
   extends Omit<
-    React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
+    DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
     'onChange' | 'value'
   > {
   label: string
@@ -21,12 +21,12 @@ interface FileInputPropsType
   onChange: (files: FileInputType[]) => void
 }
 
-const FileInput: React.FC<FileInputPropsType> = ({
+const FileInput: FC<FileInputPropsType> = ({
   label,
   errorMessage,
   disabled,
   onChange,
-  accept = '.png, .jpg, .jpeg, application/pdf,',
+  accept = 'image/*',
   containerClassName,
   value = [],
   valueFullType,
@@ -36,7 +36,7 @@ const FileInput: React.FC<FileInputPropsType> = ({
   const fileInputId = useId()
   const errorMessageLocal = valueFullType?.errorMessage ?? errorMessage
   const valueLocal = valueFullType?.value ?? value
-  const handleFiles = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFiles = (event: ChangeEvent<HTMLInputElement>) => {
     const filesArray = Array.from(event.target.files || [])
 
     const filesFromPC: FileInputType[] = filesArray.map((file) => ({

@@ -1,9 +1,11 @@
 import classNames from 'classnames'
-import { fetchAllVehicleDocumentsThunk, VEHICLE_DOCUMENT_TYPES } from 'enteties/vehicleDocument'
+import {
+  fetchAllVehicleDocumentsByVehicleIdThunk,
+  VEHICLE_DOCUMENT_TYPES,
+} from 'enteties/vehicleDocument'
 import { selectVehicleDocumentsByVehicleId } from 'enteties/vehicleDocument/model/slice/vehicleDocumentSelectors'
 import { FC, memo, useEffect, useState } from 'react'
 import { Carousel } from 'react-responsive-carousel'
-import { useNavigate } from 'react-router-dom'
 import { RoutePaths } from 'shared/config/router/RoutePaths'
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
 import Button, { ButtonCategoryType, ButtonTheme } from 'shared/ui/Button'
@@ -20,10 +22,9 @@ const VehicleDocumentsList: FC<VehicleDocumentsProps> = ({ vehicleId }) => {
   )
   const [selectedDocumentTypeIndex, setSelectedDocumentTypeIndex] = useState(0)
   const dispatch = useAppDispatch()
-  const navigate = useNavigate()
 
   useEffect(() => {
-    dispatch(fetchAllVehicleDocumentsThunk(vehicleId))
+    dispatch(fetchAllVehicleDocumentsByVehicleIdThunk(vehicleId))
   }, [])
 
   return (
@@ -75,7 +76,6 @@ const VehicleDocumentsList: FC<VehicleDocumentsProps> = ({ vehicleId }) => {
               {vehicleDocumentsForDocumentType.map((vehicleDocument) => (
                 <VehicleDocumentItem
                   key={vehicleDocument.uid}
-                  vehicleId={vehicleId}
                   vehicleDocument={vehicleDocument as any}
                 />
               ))}

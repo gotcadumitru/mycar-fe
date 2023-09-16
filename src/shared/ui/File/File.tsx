@@ -45,7 +45,7 @@ const File: FC<FilePropsType> = ({
   }
 
   return (
-    <div className='too-large-file' {...props}>
+    <div className='file__too-large' {...props}>
       <div>Acest tip de fisier nu poate fi vazut in aplicatie</div>
       <div>Incercati sa il descarcati</div>
     </div>

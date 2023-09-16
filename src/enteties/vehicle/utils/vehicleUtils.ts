@@ -193,6 +193,42 @@ export const vehicleFormDataToCreateBody = (
   userId,
 })
 
+export const vehicleToFormData = (vehicle: VehicleWithFiles) =>
+  getVehicleFormValues({
+    files: vehicle.files.map((file) => ({
+      file: file.fileUrl,
+      uid: file.uid,
+      fileUrl: file.fileUrl,
+      name: file.name,
+      mimetype: file.mimetype,
+      size: file.size,
+    })),
+    brand: vehicle.brand,
+    numberOfSeats: `${vehicle.numberOfSeats}`,
+    isLeasingVehicle: vehicle.isLeasingVehicle,
+    leasingCompany: vehicle.leasingCompany,
+    civSeries: vehicle.civSeries,
+    ownedBy: vehicle.ownedBy,
+    power: `${vehicle.power}`,
+    cylinderCapacity: `${vehicle.cylinderCapacity}`,
+    maximumAuthorisedMass: `${vehicle.maximumAuthorisedMass}`,
+    color: vehicle.color,
+    fuelType: vehicle.fuelType,
+    yearOfProduction: vehicle.yearOfProduction,
+    registrationNumber: vehicle.registrationNumber,
+    type: vehicle.type,
+    winterTyreSize: vehicle.winterTyreSize,
+    summerTyreSize: vehicle.summerTyreSize,
+    model: vehicle.model,
+    dotSummerTyre: vehicle.dotSummerTyre,
+    dotWinterTyre: vehicle.dotWinterTyre,
+    fuelConsumptionExtraUrb: `${vehicle.fuelConsumptionExtraUrb}`,
+    fuelConsumptionUrb: `${vehicle.fuelConsumptionUrb}`,
+    usagePercentExtraUrb: `${vehicle.usagePercentExtraUrb}`,
+    usagePercentUrb: `${vehicle.usagePercentUrb}`,
+    vin: vehicle.vin,
+  })
+
 export const calculateAverageConsumption = (vehicles: (VehicleWithFiles | Vehicle)[]): number => {
   const totalConsumptionForAllCars = vehicles.reduce((consumption, vehicle) => {
     const vehicleAverageConsumption =

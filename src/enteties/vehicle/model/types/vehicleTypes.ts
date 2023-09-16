@@ -4,7 +4,6 @@ import type { FileCollectionType, FileInputType } from 'shared/ui/File'
 
 export type VehicleSliceState = {
   allVehiclesOfCurrentUser: VehicleWithFiles[]
-  selectedVehicle: VehicleWithFiles | null
 }
 
 export type VehicleFormDataType = {

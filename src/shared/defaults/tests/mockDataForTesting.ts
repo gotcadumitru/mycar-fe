@@ -11,7 +11,6 @@ const reduxMockStateForTesting: DeepPartial<StateSchema> = {
   },
   vehicle: {
     allVehiclesOfCurrentUser: [],
-    selectedVehicle: null,
   },
   user: {
     authUser: null,

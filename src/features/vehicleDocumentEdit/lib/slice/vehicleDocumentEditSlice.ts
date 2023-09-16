@@ -13,10 +13,10 @@ export const vehicleDocumentEditSlice = createSlice({
   name: 'vehicleDocumentEdit',
   initialState,
   reducers: {
-    changeVehicleDataAC(state, action: PayloadAction<VehicleDocumentFormDataFullType>) {
+    changeVehicleDocumentDataAC(state, action: PayloadAction<VehicleDocumentFormDataFullType>) {
       state.formFields = action.payload
     },
-    resetVehicleDataAC(state) {
+    resetVehicleDocumentDataAC(state) {
       state.formFields = getVehicleDocumentFormValues({})
     },
   },

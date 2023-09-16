@@ -11,7 +11,12 @@ export {
   vehicleDocumentSlice,
   vehicleDocumentReducer,
 } from './model/slice/vehicleDocumentSlice'
-export { fetchAllVehicleDocumentsThunk } from 'enteties/vehicleDocument/model/slice/vehicleDocumentThunks'
+export {
+  fetchAllVehicleDocumentsByVehicleIdThunk,
+  createNewVehicleDocumentForVehicleId,
+  editVehicleDocument,
+  fetchVehicleDocumentById,
+} from 'enteties/vehicleDocument/model/slice/vehicleDocumentThunks'
 
 export {
   VehicleDocumentActions,
@@ -22,4 +27,5 @@ export {
 export {
   vehicleDocumentFormDataToCreateBody,
   getVehicleDocumentFormValues,
+  vehicleDocumentToFormData,
 } from './utils/vehicleDocumentUtils'

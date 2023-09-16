@@ -101,7 +101,7 @@ class DataServiceWithFiles<
     documents: (BaseType & CollectionBaseType)[],
   ): Promise<(BaseType & CollectionBaseType & { files: FileCollectionType[] })[]> => {
     const fileIds = documents.reduce((ids, document) => [...ids, ...document.files], [] as string[])
-
+    if (!fileIds.length) return documents.map((document) => ({ ...document, files: [] }))
     const files = await fileDataService.getAllByFieldPath(documentId(), 'in', fileIds)
     return documents.map((document) => ({
       ...document,

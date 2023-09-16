@@ -21,9 +21,24 @@ export const REQUEST_MESSAGES = {
     [FetchStatus.SUCCESS]: 'Stergerea a fost efectuata cu succes',
     [FetchStatus.FAIL]: 'A aparut o eroare la stergere, te rog sa reancerci.',
   },
+  EDIT_VEHICLE: {
+    [FetchStatus.IN_PROGRESS]: 'Te rog asteapta, se modifica vehiculul.',
+    [FetchStatus.SUCCESS]: 'Salvarea a fost efectuata cu succes',
+    [FetchStatus.FAIL]: 'A aparut o eroare la salvarea, te rog sa reancerci.',
+  },
   SAVE_NEW_VEHICLE: {
     [FetchStatus.IN_PROGRESS]: 'Te rog asteapta, se salveaza noul vehicul.',
     [FetchStatus.SUCCESS]: 'Salvarea a fost efectuata cu succes',
+    [FetchStatus.FAIL]: 'A aparut o eroare la salvarea, te rog sa reancerci.',
+  },
+  SAVE_NEW_VEHICLE_DOCUMENT: {
+    [FetchStatus.IN_PROGRESS]: 'Te rog asteapta, se salveaza noul document.',
+    [FetchStatus.SUCCESS]: 'Salvarea a fost efectuata cu succes',
+    [FetchStatus.FAIL]: 'A aparut o eroare la salvarea, te rog sa reancerci.',
+  },
+  EDIT_VEHICLE_DOCUMENT: {
+    [FetchStatus.IN_PROGRESS]: 'Te rog asteapta, se modifica documentul.',
+    [FetchStatus.SUCCESS]: 'Modificarea a fost efectuata cu succes',
     [FetchStatus.FAIL]: 'A aparut o eroare la salvarea, te rog sa reancerci.',
   },
 }

@@ -9,17 +9,15 @@ export type VehicleDocumentSliceState = {
 
 export type VehicleDocumentFormDataType = {
   files: FileInputType[]
-  vehicleId: string
   name: string
   creationDate: string
   expirationDate: string
   notes: string
   type: VehicleDocumentType
-}
-
-export type VehicleDocumentCreateBody = VehicleDocumentFormDataType & {
   vehicleId: string
 }
+
+export type VehicleDocumentCreateBody = VehicleDocumentFormDataType
 
 export type VehicleDocument = CollectionBaseType &
   Omit<VehicleDocumentCreateBody, 'files'> & {
