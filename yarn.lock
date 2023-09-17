@@ -4898,6 +4898,13 @@
     "@storybook/types" "7.4.2"
     ts-dedent "^2.0.0"
 
+"@storybook/addon-styling-webpack@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-styling-webpack/-/addon-styling-webpack-0.0.4.tgz#fa1a7c93608006c062a9956f6358fbdaa6cfde91"
+  integrity sha512-6MP/7+F0QRuXMYCyufkAdWZlFSZZbwMko2i99Y9yjq1gilmjgfE45tXuGdvS6/yC9Dau8Q92bmnrgJQv5tY+Eg==
+  dependencies:
+    "@storybook/node-logger" "^7.0.12"
+
 "@storybook/addon-toolbars@7.4.2":
   version "7.4.2"
   resolved "https://registry.yarnpkg.com/@storybook/addon-toolbars/-/addon-toolbars-7.4.2.tgz#faceec604618f06b0c7c0a8fbb7a57b9dc4ccd57"
@@ -5348,7 +5355,7 @@
   resolved "https://registry.yarnpkg.com/@storybook/mdx2-csf/-/mdx2-csf-1.0.0.tgz#ce4b2e44c9082bf382db835eef611b0097b7d771"
   integrity sha512-dBAnEL4HfxxJmv7LdEYUoZlQbWj9APZNIbOaq0tgF8XkxiIbzqvgB0jhL/9UOrysSDbQWBiCRTu2wOVxedGfmw==
 
-"@storybook/node-logger@7.4.2":
+"@storybook/node-logger@7.4.2", "@storybook/node-logger@^7.0.12":
   version "7.4.2"
   resolved "https://registry.yarnpkg.com/@storybook/node-logger/-/node-logger-7.4.2.tgz#e8058aab8266a00d253f724fef78e793d7d790ff"
   integrity sha512-iSBjhnMpWY9Hs5KGnf/xfHjGtGl740LUg4Gce874DuL773Mdc4hdppSKr4X/Pp1/AD67mNuifSXYx3V7d6XzTQ==
@@ -15803,7 +15810,7 @@ strip-json-comments@^3.0.1, strip-json-comments@^3.1.0, strip-json-comments@^3.1
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-3.1.1.tgz#31f1281b3832630434831c310c01cccda8cbe006"
   integrity sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==
 
-style-loader@^3.3.1:
+style-loader@^3.3.1, style-loader@^3.3.3:
   version "3.3.3"
   resolved "https://registry.yarnpkg.com/style-loader/-/style-loader-3.3.3.tgz#bba8daac19930169c0c9c96706749a597ae3acff"
   integrity sha512-53BiGLXAcll9maCYtZi2RCQZKa8NQQai5C4horqKyRmHj9H7QmcUyucrH+4KW/gBQbXM2AsB0axoEcFZPlfPcw==
