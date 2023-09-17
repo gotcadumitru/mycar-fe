@@ -1,16 +1,16 @@
-import { calculateAverageAge, calculateAverageConsumption, useUserVehicles } from 'enteties/vehicle'
+import { calculateAverageAge, calculateAverageConsumption } from 'enteties/vehicle'
 import { useMemo } from 'react'
-import { FetchStatus } from 'shared/api'
 import BsPlusLg from 'shared/assets/icons/BsPlusLg.svg'
 import HiOutlineBellAlert from 'shared/assets/icons/HiOutlineBellAlert.svg'
 import { RoutePaths } from 'shared/config/router/RoutePaths'
+import { useAppSelector } from 'shared/lib/hooks/reduxHooks'
 import { Card, CardColor } from 'shared/ui/Card'
 import { CardType } from 'shared/ui/Card/card.types'
 import './panelPage.scss'
-import { PanelPageSkeleton } from './PanelPageSkeleton'
 
 const PanelPage = () => {
-  const { allVehiclesOfCurrentUserFetchStatus, allVehiclesOfCurrentUser } = useUserVehicles()
+  const allVehiclesOfCurrentUser = useAppSelector((state) => state.vehicle.allVehiclesOfCurrentUser)
+
   const averageVehicleAge = useMemo(
     () => calculateAverageAge(allVehiclesOfCurrentUser),
     [allVehiclesOfCurrentUser],
@@ -20,7 +20,6 @@ const PanelPage = () => {
     [allVehiclesOfCurrentUser],
   )
 
-  if (allVehiclesOfCurrentUserFetchStatus !== FetchStatus.SUCCESS) return <PanelPageSkeleton />
   return (
     <div className='panel-page'>
       <Card

@@ -1,1 +1,6 @@
-[{"id":3065,"name":"Chimaera"},{"id":3066,"name":"Griffith"},{"id":3068,"name":"Other"},{"id":3067,"name":"Tuscan"}]
+[
+  { "id": 3065, "name": "Chimaera" },
+  { "id": 3066, "name": "Griffith" },
+  { "id": 3068, "name": "Other" },
+  { "id": 3067, "name": "Tuscan" }
+]

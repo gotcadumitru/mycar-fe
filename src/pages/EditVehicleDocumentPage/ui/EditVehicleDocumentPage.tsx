@@ -1,13 +1,6 @@
 import { useAuth } from 'app/providers/AuthContextProvider'
-import { selectRequestStatus } from 'app/providers/StoreProvider/slices/ui'
-import {
-  editVehicleDocument,
-  fetchVehicleDocumentById,
-  VehicleDocumentActions,
-  vehicleDocumentToFormData,
-} from 'enteties/vehicleDocument'
+import { editVehicleDocument, vehicleDocumentToFormData } from 'enteties/vehicleDocument'
 import VehicleDocumentEditForm, { vehicleDocumentEditActions } from 'features/vehicleDocumentEdit'
-import { EditVehicleDocumentPageSkeleton } from 'pages/EditVehicleDocumentPage'
 import { memo, useEffect, useId, useMemo } from 'react'
 import { Navigate, useNavigate, useParams } from 'react-router-dom'
 import { FetchStatus } from 'shared/api'
@@ -23,9 +16,6 @@ const EditVehicleDocumentPage = () => {
   const formFields = useAppSelector((state) => state.vehicleDocumentEdit.formFields)
   const dispatch = useAppDispatch()
   const vehicleDocuments = useAppSelector((state) => state.vehicleDocument.vehiclesDocuments)
-  const vehicleDocumentsFetchStatus = useAppSelector(
-    selectRequestStatus(VehicleDocumentActions.FETCH_VEHICLE_DOCUMENT_BY_ID),
-  )
   const vehicleDocument = useMemo(
     () => vehicleDocuments.find((vehicleDocument) => vehicleDocument.uid === documentId),
     [vehicleDocuments],
@@ -33,12 +23,6 @@ const EditVehicleDocumentPage = () => {
   const { currentUser } = useAuth()
   const formId = useId()
 
-  useEffect(() => {
-    if (documentId) dispatch(fetchVehicleDocumentById(documentId))
-    return () => {
-      dispatch(vehicleDocumentEditActions.resetVehicleDocumentDataAC())
-    }
-  }, [])
   useEffect(() => {
     if (vehicleDocument) {
       dispatch(
@@ -48,10 +32,7 @@ const EditVehicleDocumentPage = () => {
       )
     }
   }, [vehicleDocument])
-  console.log(vehicleDocumentsFetchStatus)
-  if (vehicleDocumentsFetchStatus === FetchStatus.FAIL) return <Navigate to={RoutePaths.garage} />
-  if (vehicleDocumentsFetchStatus !== FetchStatus.SUCCESS || !vehicleDocument)
-    return <EditVehicleDocumentPageSkeleton />
+  if (!vehicleDocument) return <Navigate to={RoutePaths.garage} />
   const onSubmit = async () => {
     const dispatchAction = await dispatch(
       editVehicleDocument({

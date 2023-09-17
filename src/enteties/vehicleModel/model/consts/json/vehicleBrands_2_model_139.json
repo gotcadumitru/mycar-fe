@@ -1,1 +1,8 @@
-[{"id":551,"name":"Altul"},{"id":549,"name":"AWO 425"},{"id":550,"name":"BSW98"},{"id":546,"name":"S 51"},{"id":547,"name":"Schwalbe"},{"id":548,"name":"SR"}]
+[
+  { "id": 551, "name": "Altul" },
+  { "id": 549, "name": "AWO 425" },
+  { "id": 550, "name": "BSW98" },
+  { "id": 546, "name": "S 51" },
+  { "id": 547, "name": "Schwalbe" },
+  { "id": 548, "name": "SR" }
+]

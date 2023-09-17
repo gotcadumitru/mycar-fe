@@ -1,1 +1,15 @@
-[{"id":564,"name":"Altul"},{"id":561,"name":"Cross"},{"id":552,"name":"Gear-Up"},{"id":553,"name":"M70"},{"id":554,"name":"Patrol"},{"id":558,"name":"Ranger"},{"id":560,"name":"Retro"},{"id":557,"name":"Solo"},{"id":562,"name":"Sportsman"},{"id":555,"name":"T"},{"id":556,"name":"Tourist"},{"id":563,"name":"Troyka"},{"id":559,"name":"Wolf"}]
+[
+  { "id": 564, "name": "Altul" },
+  { "id": 561, "name": "Cross" },
+  { "id": 552, "name": "Gear-Up" },
+  { "id": 553, "name": "M70" },
+  { "id": 554, "name": "Patrol" },
+  { "id": 558, "name": "Ranger" },
+  { "id": 560, "name": "Retro" },
+  { "id": 557, "name": "Solo" },
+  { "id": 562, "name": "Sportsman" },
+  { "id": 555, "name": "T" },
+  { "id": 556, "name": "Tourist" },
+  { "id": 563, "name": "Troyka" },
+  { "id": 559, "name": "Wolf" }
+]

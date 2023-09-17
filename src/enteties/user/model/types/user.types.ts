@@ -8,5 +8,4 @@ export interface User {
   firstName: string
   lastName: string
   sipExtension: string
-
 }

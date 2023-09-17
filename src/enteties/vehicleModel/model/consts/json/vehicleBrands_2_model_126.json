@@ -1,1 +1,6 @@
-[{"id":367,"name":"Altul"},{"id":366,"name":"DE"},{"id":364,"name":"EC"},{"id":365,"name":"XC"}]
+[
+  { "id": 367, "name": "Altul" },
+  { "id": 366, "name": "DE" },
+  { "id": 364, "name": "EC" },
+  { "id": 365, "name": "XC" }
+]

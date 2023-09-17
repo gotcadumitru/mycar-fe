@@ -1,1 +1,13 @@
-[{"id":3304,"name":"300 NK"},{"id":3306,"name":"300 SS"},{"id":3307,"name":"450 SS"},{"id":3310,"name":"650 Adventura"},{"id":3305,"name":"650 NK"},{"id":3308,"name":"700 CLX"},{"id":3309,"name":"700 CLX Sport"},{"id":3311,"name":"IBEX 800 S"},{"id":3312,"name":"IBEX 800 T"},{"id":3302,"name":"Other"},{"id":3313,"name":"Papio"}]
+[
+  { "id": 3304, "name": "300 NK" },
+  { "id": 3306, "name": "300 SS" },
+  { "id": 3307, "name": "450 SS" },
+  { "id": 3310, "name": "650 Adventura" },
+  { "id": 3305, "name": "650 NK" },
+  { "id": 3308, "name": "700 CLX" },
+  { "id": 3309, "name": "700 CLX Sport" },
+  { "id": 3311, "name": "IBEX 800 S" },
+  { "id": 3312, "name": "IBEX 800 T" },
+  { "id": 3302, "name": "Other" },
+  { "id": 3313, "name": "Papio" }
+]

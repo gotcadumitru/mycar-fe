@@ -1,1 +1,7 @@
-[{"id":3224,"name":"Grizzly"},{"id":3222,"name":"Kodiak"},{"id":3221,"name":"Other"},{"id":3223,"name":"Raptor"},{"id":3225,"name":"YFZ"}]
+[
+  { "id": 3224, "name": "Grizzly" },
+  { "id": 3222, "name": "Kodiak" },
+  { "id": 3221, "name": "Other" },
+  { "id": 3223, "name": "Raptor" },
+  { "id": 3225, "name": "YFZ" }
+]

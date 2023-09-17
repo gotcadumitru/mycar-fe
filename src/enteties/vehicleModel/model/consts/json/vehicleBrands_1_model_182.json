@@ -1,1 +1,26 @@
-[{"id":2524,"name":"110"},{"id":2525,"name":"111"},{"id":2526,"name":"112"},{"id":1433,"name":"1200"},{"id":1434,"name":"1300"},{"id":1435,"name":"1500"},{"id":2527,"name":"2107"},{"id":1436,"name":"2110"},{"id":2528,"name":"2111"},{"id":1437,"name":"2112"},{"id":1438,"name":"Aleko"},{"id":1446,"name":"Altul"},{"id":1439,"name":"Forma"},{"id":2529,"name":"Granta"},{"id":1440,"name":"Kalina"},{"id":1441,"name":"Niva"},{"id":1442,"name":"Nova"},{"id":2533,"name":"Other"},{"id":1443,"name":"Priora"},{"id":1444,"name":"Samara"},{"id":2530,"name":"Taiga"},{"id":2531,"name":"Urban"},{"id":1445,"name":"Vesta"},{"id":2532,"name":"X-Ray"}]
+[
+  { "id": 2524, "name": "110" },
+  { "id": 2525, "name": "111" },
+  { "id": 2526, "name": "112" },
+  { "id": 1433, "name": "1200" },
+  { "id": 1434, "name": "1300" },
+  { "id": 1435, "name": "1500" },
+  { "id": 2527, "name": "2107" },
+  { "id": 1436, "name": "2110" },
+  { "id": 2528, "name": "2111" },
+  { "id": 1437, "name": "2112" },
+  { "id": 1438, "name": "Aleko" },
+  { "id": 1446, "name": "Altul" },
+  { "id": 1439, "name": "Forma" },
+  { "id": 2529, "name": "Granta" },
+  { "id": 1440, "name": "Kalina" },
+  { "id": 1441, "name": "Niva" },
+  { "id": 1442, "name": "Nova" },
+  { "id": 2533, "name": "Other" },
+  { "id": 1443, "name": "Priora" },
+  { "id": 1444, "name": "Samara" },
+  { "id": 2530, "name": "Taiga" },
+  { "id": 2531, "name": "Urban" },
+  { "id": 1445, "name": "Vesta" },
+  { "id": 2532, "name": "X-Ray" }
+]

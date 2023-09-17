@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import type { ThunkConfig, ThunkValue } from 'app/providers/StoreProvider'
+import { fetchAllVehiclesDocumentsByVehicleIdThunk } from 'enteties/vehicleDocument'
 import { FetchStatus } from 'shared/api'
 import { vehicleDataService } from 'shared/api/firebase'
 import { REQUEST_MESSAGES } from 'shared/defaults/text'
@@ -11,24 +12,12 @@ export const fetchAllVehiclesByUserId = createAsyncThunk<
   VehicleWithFiles[],
   string,
   ThunkConfig<string>
->(VehicleActions.FETCH_ALL_VEHICLES_BY_USER_ID, async (userId, thunkAPI) => {
-  const state = thunkAPI.getState()
-  if (!state.vehicle.allVehiclesOfCurrentUser.length)
-    return vehicleDataService.getAllByUserId(userId)
-  return state.vehicle.allVehiclesOfCurrentUser
+>(VehicleActions.FETCH_ALL_VEHICLES_BY_USER_ID, async (userId, { dispatch }) => {
+  const allVehiclesOfUserId = await vehicleDataService.getAllByUserId(userId)
+  const ids = allVehiclesOfUserId.map((vehicle) => vehicle.uid)
+  await dispatch(fetchAllVehiclesDocumentsByVehicleIdThunk(ids))
+  return allVehiclesOfUserId
 })
-
-export const fetchVehicleById = createAsyncThunk<VehicleWithFiles, string, ThunkConfig<string>>(
-  VehicleActions.FETCH_VEHICLE_BY_ID,
-  async (vehicleId, { getState }) => {
-    const vehicle = getState().vehicle.allVehiclesOfCurrentUser.find(
-      (vehicle) => vehicle.uid === vehicleId,
-    )
-
-    if (vehicle) return vehicle
-    return vehicleDataService.getVehicleById(vehicleId)
-  },
-)
 
 export const createNewVehiclesForUserId = createAsyncThunk<
   VehicleWithFiles,
@@ -53,7 +42,7 @@ export const editVehiclesForUserId = createAsyncThunk<
     vehicleId: string
     userId: string
   }>
->(VehicleActions.EDIT_VEHICLE_BY_ID, async ({ userId, vehicleId, vehicleFormData }) => {
+>(VehicleActions.EDIT_VEHICLE, async ({ userId, vehicleId, vehicleFormData }) => {
   const vehicleCreateBody = vehicleFormDataToCreateBody(vehicleFormData, userId)
   const changedVehicle: VehicleWithFiles = await vehicleDataService.editDocument(
     {
@@ -72,7 +61,7 @@ export const softDeleteVehicleById = createAsyncThunk<
     vehicleId: string
     userId: string
   }>
->(VehicleActions.DELETE_VEHICLE_BY_ID, async ({ vehicleId, userId }) => {
+>(VehicleActions.DELETE_VEHICLE, async ({ vehicleId, userId }) => {
   await vehicleDataService.softDeleteDocument(vehicleId, userId)
   return vehicleId
 })

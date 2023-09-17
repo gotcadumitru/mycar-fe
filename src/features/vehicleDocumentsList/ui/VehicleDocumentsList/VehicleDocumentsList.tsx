@@ -1,13 +1,10 @@
 import classNames from 'classnames'
-import {
-  fetchAllVehicleDocumentsByVehicleIdThunk,
-  VEHICLE_DOCUMENT_TYPES,
-} from 'enteties/vehicleDocument'
+import { VEHICLE_DOCUMENT_TYPES } from 'enteties/vehicleDocument'
 import { selectVehicleDocumentsByVehicleId } from 'enteties/vehicleDocument/model/slice/vehicleDocumentSelectors'
-import { FC, memo, useEffect, useState } from 'react'
+import { FC, memo, useState } from 'react'
 import { Carousel } from 'react-responsive-carousel'
 import { RoutePaths } from 'shared/config/router/RoutePaths'
-import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
+import { useAppSelector } from 'shared/lib/hooks/reduxHooks'
 import Button, { ButtonCategoryType, ButtonTheme } from 'shared/ui/Button'
 import '../../styles/vehicleDocumentsList.scss'
 import VehicleDocumentItem from './VehicleDocumentItem'
@@ -21,11 +18,6 @@ const VehicleDocumentsList: FC<VehicleDocumentsProps> = ({ vehicleId }) => {
     selectVehicleDocumentsByVehicleId(state, vehicleId),
   )
   const [selectedDocumentTypeIndex, setSelectedDocumentTypeIndex] = useState(0)
-  const dispatch = useAppDispatch()
-
-  useEffect(() => {
-    dispatch(fetchAllVehicleDocumentsByVehicleIdThunk(vehicleId))
-  }, [])
 
   return (
     <div className='vehicle-documents-list'>

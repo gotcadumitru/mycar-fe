@@ -6,12 +6,10 @@ export type {
   VehicleWithFiles,
   Vehicle,
 } from './model/types/vehicleTypes'
-export { useUserVehicles } from './hooks/useUserVehicles'
 export { useVehicleWithDetails } from './hooks/useVehicleWithDetails'
 export {
   fetchAllVehiclesByUserId,
   createNewVehiclesForUserId,
-  fetchVehicleById,
   editVehiclesForUserId,
   softDeleteVehicleById,
 } from './model/slice/vehicleThunks'

@@ -11,30 +11,12 @@ import type {
   VehicleDocumentWithFiles,
 } from '../types/vehicleDocumentTypes'
 
-export const fetchAllVehicleDocumentsByVehicleIdThunk = createAsyncThunk<
+export const fetchAllVehiclesDocumentsByVehicleIdThunk = createAsyncThunk<
   VehicleDocumentWithFiles[],
-  string,
+  string[],
   ThunkConfig<string>
->(
-  VehicleDocumentActions.FETCH_ALL_VEHICLE_DOCUMENTS_BY_VEHICLE_ID,
-  async (vehicleId, { getState }) => {
-    const { vehiclesDocuments } = getState().vehicleDocument
-    if (vehiclesDocuments.some((vehicleDocument) => vehicleDocument.vehicleId === vehicleId))
-      return vehiclesDocuments
-    return vehicleDocumentDataService.getAllVehicleDocumentsByVehicleId(vehicleId)
-  },
-)
-
-export const fetchVehicleDocumentById = createAsyncThunk<
-  VehicleDocumentWithFiles,
-  string,
-  ThunkConfig<string>
->(VehicleDocumentActions.FETCH_VEHICLE_DOCUMENT_BY_ID, async (vehicleDocumentId, { getState }) => {
-  const vehicleDocument = getState().vehicleDocument.vehiclesDocuments.find(
-    (vehicleDocument) => vehicleDocument.uid === vehicleDocumentId,
-  )
-  if (vehicleDocument) return vehicleDocument
-  return vehicleDocumentDataService.getVehicleDocumentByDocumentId(vehicleDocumentId)
+>(VehicleDocumentActions.FETCH_ALL_VEHICLE_DOCUMENTS_BY_VEHICLES_IDS, async (vehiclesIds) => {
+  return vehicleDocumentDataService.getAllVehicleDocumentsByVehiclesIds(vehiclesIds)
 })
 
 export const createNewVehicleDocumentForVehicleId = createAsyncThunk<

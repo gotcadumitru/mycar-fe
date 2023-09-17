@@ -1,1 +1,6 @@
-[{"id":3217,"name":"Other"},{"id":3218,"name":"Outlaw"},{"id":3220,"name":"Phoenix"},{"id":3219,"name":"Sportsman"}]
+[
+  { "id": 3217, "name": "Other" },
+  { "id": 3218, "name": "Outlaw" },
+  { "id": 3220, "name": "Phoenix" },
+  { "id": 3219, "name": "Sportsman" }
+]

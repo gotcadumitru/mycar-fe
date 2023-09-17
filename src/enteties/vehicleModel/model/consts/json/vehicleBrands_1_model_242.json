@@ -1,1 +1,9 @@
-[{"id":3000,"name":"3 Wheeler"},{"id":3001,"name":"4/4"},{"id":3002,"name":"Aero 8"},{"id":3006,"name":"Other"},{"id":3003,"name":"Plus 4"},{"id":3004,"name":"Plus 8"},{"id":3005,"name":"Roadster"}]
+[
+  { "id": 3000, "name": "3 Wheeler" },
+  { "id": 3001, "name": "4/4" },
+  { "id": 3002, "name": "Aero 8" },
+  { "id": 3006, "name": "Other" },
+  { "id": 3003, "name": "Plus 4" },
+  { "id": 3004, "name": "Plus 8" },
+  { "id": 3005, "name": "Roadster" }
+]

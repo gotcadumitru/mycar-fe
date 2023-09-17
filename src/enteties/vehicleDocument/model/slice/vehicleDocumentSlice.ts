@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { arrayUnion } from 'shared/lib/utils/arrayUnion'
 import type { VehicleDocumentSliceState } from '../types/vehicleDocumentTypes'
 import {
   createNewVehicleDocumentForVehicleId,
-  fetchAllVehicleDocumentsByVehicleIdThunk,
-  fetchVehicleDocumentById,
+  editVehicleDocument,
+  fetchAllVehiclesDocumentsByVehicleIdThunk,
 } from './vehicleDocumentThunks'
 
 export const initialState: VehicleDocumentSliceState = {
@@ -16,22 +17,23 @@ export const vehicleDocumentSlice = createSlice({
   reducers: {},
   extraReducers: (builder) =>
     builder
-      .addCase(fetchAllVehicleDocumentsByVehicleIdThunk.fulfilled, (state, action) => {
-        state.vehiclesDocuments = action.payload
+      .addCase(fetchAllVehiclesDocumentsByVehicleIdThunk.fulfilled, (state, action) => {
+        state.vehiclesDocuments = arrayUnion(
+          state.vehiclesDocuments,
+          action.payload,
+          (d1, d2) => d1.uid === d2.uid,
+        )
       })
       .addCase(createNewVehicleDocumentForVehicleId.fulfilled, (state, action) => {
         state.vehiclesDocuments.push(action.payload)
       })
-      .addCase(fetchVehicleDocumentById.fulfilled, (state, action) => {
-        const vehicleDocumentById = action.payload
-        const vehicleDocumentIndex = state.vehiclesDocuments.findIndex(
-          (vehicleDocument) => vehicleDocument.uid === vehicleDocumentById.uid,
+      .addCase(editVehicleDocument.fulfilled, (state, action) => {
+        const changedVehicleDocument = action.payload
+        state.vehiclesDocuments = state.vehiclesDocuments.map((vehicleDocument) =>
+          vehicleDocument.uid === changedVehicleDocument.uid
+            ? changedVehicleDocument
+            : vehicleDocument,
         )
-        if (vehicleDocumentIndex !== -1) {
-          state.vehiclesDocuments[vehicleDocumentIndex] = vehicleDocumentById
-        } else {
-          state.vehiclesDocuments.push(vehicleDocumentById)
-        }
       }),
 })
 export const { actions: vehicleDocumentActions } = vehicleDocumentSlice

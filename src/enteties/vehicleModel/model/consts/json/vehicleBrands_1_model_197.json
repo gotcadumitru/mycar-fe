@@ -1,1 +1,20 @@
-[{"id":2734,"name":"6000"},{"id":1682,"name":"Altul"},{"id":1669,"name":"Bonneville"},{"id":2735,"name":"Fiero"},{"id":1670,"name":"Firebird"},{"id":1671,"name":"G6"},{"id":1672,"name":"Grand-Am"},{"id":1673,"name":"Grand-Prix"},{"id":1674,"name":"GTO"},{"id":1675,"name":"Montana"},{"id":2737,"name":"Other"},{"id":1676,"name":"Solstice"},{"id":2736,"name":"Sunbird"},{"id":1677,"name":"Sunfire"},{"id":1678,"name":"Targa"},{"id":1679,"name":"Trans Am"},{"id":1680,"name":"Trans Sport"},{"id":1681,"name":"Vibe"}]
+[
+  { "id": 2734, "name": "6000" },
+  { "id": 1682, "name": "Altul" },
+  { "id": 1669, "name": "Bonneville" },
+  { "id": 2735, "name": "Fiero" },
+  { "id": 1670, "name": "Firebird" },
+  { "id": 1671, "name": "G6" },
+  { "id": 1672, "name": "Grand-Am" },
+  { "id": 1673, "name": "Grand-Prix" },
+  { "id": 1674, "name": "GTO" },
+  { "id": 1675, "name": "Montana" },
+  { "id": 2737, "name": "Other" },
+  { "id": 1676, "name": "Solstice" },
+  { "id": 2736, "name": "Sunbird" },
+  { "id": 1677, "name": "Sunfire" },
+  { "id": 1678, "name": "Targa" },
+  { "id": 1679, "name": "Trans Am" },
+  { "id": 1680, "name": "Trans Sport" },
+  { "id": 1681, "name": "Vibe" }
+]

@@ -1,1 +1,6 @@
-[{"id":2926,"name":"Arona"},{"id":2927,"name":"Ateca"},{"id":2928,"name":"Ibiza"},{"id":2929,"name":"Other"}]
+[
+  { "id": 2926, "name": "Arona" },
+  { "id": 2927, "name": "Ateca" },
+  { "id": 2928, "name": "Ibiza" },
+  { "id": 2929, "name": "Other" }
+]

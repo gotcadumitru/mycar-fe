@@ -1,1 +1,19 @@
-[{"id":619,"name":"Altul"},{"id":611,"name":"Boardwalk"},{"id":616,"name":"Core"},{"id":603,"name":"Cross Country"},{"id":612,"name":"Cross Roads"},{"id":604,"name":"Gunner"},{"id":605,"name":"Hammer"},{"id":615,"name":"Hard-Ball"},{"id":606,"name":"High-Ball"},{"id":613,"name":"Jackpot"},{"id":614,"name":"Judge"},{"id":610,"name":"Kingpin"},{"id":607,"name":"Magnum"},{"id":617,"name":"Touring"},{"id":618,"name":"V 92"},{"id":608,"name":"Vegas"},{"id":609,"name":"Vision"}]
+[
+  { "id": 619, "name": "Altul" },
+  { "id": 611, "name": "Boardwalk" },
+  { "id": 616, "name": "Core" },
+  { "id": 603, "name": "Cross Country" },
+  { "id": 612, "name": "Cross Roads" },
+  { "id": 604, "name": "Gunner" },
+  { "id": 605, "name": "Hammer" },
+  { "id": 615, "name": "Hard-Ball" },
+  { "id": 606, "name": "High-Ball" },
+  { "id": 613, "name": "Jackpot" },
+  { "id": 614, "name": "Judge" },
+  { "id": 610, "name": "Kingpin" },
+  { "id": 607, "name": "Magnum" },
+  { "id": 617, "name": "Touring" },
+  { "id": 618, "name": "V 92" },
+  { "id": 608, "name": "Vegas" },
+  { "id": 609, "name": "Vision" }
+]

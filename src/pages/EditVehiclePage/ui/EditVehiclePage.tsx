@@ -1,10 +1,9 @@
 import { useAuth } from 'app/providers/AuthContextProvider'
-import { selectRequestStatus } from 'app/providers/StoreProvider/slices/ui'
-import { editVehiclesForUserId, fetchVehicleById, VehicleActions } from 'enteties/vehicle'
+import { editVehiclesForUserId } from 'enteties/vehicle'
 import { vehicleToFormData } from 'enteties/vehicle/utils/vehicleUtils'
 import { editVehicleActions } from 'features/vehicle/vehicleEditForm'
 import EditVehicleForm from 'features/vehicle/vehicleEditForm/ui/EditVehicleForm'
-import { useEffect, useId, useMemo } from 'react'
+import { useEffect, useId } from 'react'
 import { Navigate, useNavigate, useParams } from 'react-router-dom'
 import { FetchStatus } from 'shared/api'
 import { RoutePaths } from 'shared/config/router/RoutePaths'
@@ -12,7 +11,6 @@ import { REQUEST_MESSAGES } from 'shared/defaults/text'
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
 import Button, { ButtonCategoryType, ButtonTheme } from 'shared/ui/Button'
 import './editVehiclePage.scss'
-import { EditVehiclePageSkeleton } from './EditVehiclePageSkeleton'
 
 const EditVehiclePage = () => {
   const { id } = useParams()
@@ -20,24 +18,25 @@ const EditVehiclePage = () => {
   const formFields = useAppSelector((state) => state.editVehicle.formFields)
   const dispatch = useAppDispatch()
   const { currentUser } = useAuth()
-  const vehicles = useAppSelector((state) => state.vehicle.allVehiclesOfCurrentUser)
-  const vehicleFetchStatus = useAppSelector(selectRequestStatus(VehicleActions.FETCH_VEHICLE_BY_ID))
-  const vehicle = useMemo(() => vehicles.find((v) => v.uid === id), [vehicles])
+  const vehicle = useAppSelector((state) =>
+    state.vehicle.allVehiclesOfCurrentUser.find((vehicle) => vehicle.uid === id),
+  )
+
   const formId = useId()
+
   useEffect(() => {
-    if (id) dispatch(fetchVehicleById(id))
     return () => {
       dispatch(editVehicleActions.resetVehicleDataAC())
     }
   }, [])
+
   useEffect(() => {
     if (vehicle) {
       dispatch(editVehicleActions.changeVehicleDataAC(vehicleToFormData(vehicle)))
     }
   }, [vehicle])
 
-  if (vehicleFetchStatus === FetchStatus.FAIL) return <Navigate to={RoutePaths.garage} />
-  if (vehicleFetchStatus !== FetchStatus.SUCCESS || !vehicle) return <EditVehiclePageSkeleton />
+  if (!vehicle) return <Navigate to={RoutePaths.garage} />
   const onSubmit = async () => {
     if (!vehicle) return
     const dispatchAction = await dispatch(

@@ -1,4 +1,4 @@
 export interface HeaderPropsType {
-  isWithGoBackIcon?:boolean,
-  title?:string
+  isWithGoBackIcon?: boolean
+  title?: string
 }

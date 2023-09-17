@@ -1,1 +1,11 @@
-[{"id":3043,"name":"Indica"},{"id":3044,"name":"Indigo"},{"id":3045,"name":"Nano"},{"id":3051,"name":"Other"},{"id":3046,"name":"Safari"},{"id":3047,"name":"Sumo"},{"id":3048,"name":"Telcoline"},{"id":3049,"name":"Telcosport"},{"id":3050,"name":"Xenon"}]
+[
+  { "id": 3043, "name": "Indica" },
+  { "id": 3044, "name": "Indigo" },
+  { "id": 3045, "name": "Nano" },
+  { "id": 3051, "name": "Other" },
+  { "id": 3046, "name": "Safari" },
+  { "id": 3047, "name": "Sumo" },
+  { "id": 3048, "name": "Telcoline" },
+  { "id": 3049, "name": "Telcosport" },
+  { "id": 3050, "name": "Xenon" }
+]
