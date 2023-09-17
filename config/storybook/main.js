@@ -9,6 +9,7 @@ module.exports = {
     'storybook-addon-pseudo-states',
     '@storybook/addon-styling-webpack',
     '@storybook/addon-styling-webpack',
+    '@storybook/addon-styling-webpack',
     '@storybook/addon-styling-webpack'
   ],
   framework: {
