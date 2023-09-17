@@ -10,6 +10,7 @@ export default ({ config }: { config: webpack.Configuration }) => {
     html: '',
     entry: '',
     favicon: '',
+    swSrc: '',
   }
   if (!config?.resolve?.modules || !config?.resolve?.extensions || !config?.module?.rules)
     return config

@@ -14,6 +14,13 @@ const AppRouter = () => {
   const allUserVehiclesFetchStatus = useAppSelector(
     selectRequestStatus(VehicleActions.FETCH_ALL_VEHICLES_BY_USER_ID),
   )
+  console.log(
+    JSON.stringify(
+      useAppSelector((state) => state),
+      null,
+      2,
+    ),
+  )
   useEffect(() => {
     if (currentUser) {
       // init app
