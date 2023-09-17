@@ -1,1 +1,4 @@
-[{"id":427,"name":"Mercedes-Benz"},{"id":269,"name":"Other"}]
+[
+  { "id": 427, "name": "Mercedes-Benz" },
+  { "id": 269, "name": "Other" }
+]

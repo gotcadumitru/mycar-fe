@@ -1,1 +1,8 @@
-[{"id":50,"name":"Altul"},{"id":44,"name":"CF"},{"id":3169,"name":"FTCF"},{"id":3146,"name":"L"},{"id":48,"name":"LF"},{"id":45,"name":"XF"}]
+[
+  { "id": 50, "name": "Altul" },
+  { "id": 44, "name": "CF" },
+  { "id": 3169, "name": "FTCF" },
+  { "id": 3146, "name": "L" },
+  { "id": 48, "name": "LF" },
+  { "id": 45, "name": "XF" }
+]

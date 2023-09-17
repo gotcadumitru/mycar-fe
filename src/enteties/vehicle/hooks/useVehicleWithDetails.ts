@@ -10,16 +10,13 @@ import {
 } from 'enteties/vehicleModel'
 import { fetchAllVehicleTypesThunk, VehicleTypeActions } from 'enteties/vehicleType'
 import { useEffect, useMemo } from 'react'
-import { FetchStatus } from 'shared/api'
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
-import { VehicleActions } from '../model/consts/vehicleConsts'
-import { fetchVehicleById } from '../model/slice/vehicleThunks'
 
 export const useVehicleWithDetails = (vehicleId: string) => {
   const dispatch = useAppDispatch()
-  const vehicles = useAppSelector((state) => state.vehicle.allVehiclesOfCurrentUser)
-  const vehicle = vehicles.find((v) => v.uid === vehicleId)
-  const vehicleFetchStatus = useAppSelector(selectRequestStatus(VehicleActions.FETCH_VEHICLE_BY_ID))
+  const vehicle = useAppSelector((state) =>
+    state.vehicle.allVehiclesOfCurrentUser.find((vehicle) => vehicle.uid === vehicleId),
+  )
   const vehicleTypes = useAppSelector((state) => state.vehicleType.vehicleTypes)
   const vehicleTypesOfFuel = useAppSelector((state) => state.fuel.typesOfFuel)
   const leasingCompanies = useAppSelector((state) => state.leasing.leasingCompanies)
@@ -30,11 +27,9 @@ export const useVehicleWithDetails = (vehicleId: string) => {
   const ownershipTypesFetchStatus = useAppSelector(
     selectRequestStatus(OwnershipActions.FETCH_ALL_OWNERSHIP_TYPES),
   )
-
   const vehicleTypesOfFuelFetchStatus = useAppSelector(
     selectRequestStatus(FuelActions.FETCH_ALL_FUEL_TYPES),
   )
-
   const vehicleTypesFetchStatus = useAppSelector(
     selectRequestStatus(VehicleTypeActions.FETCH_ALL_VEHICLE_TYPES),
   )
@@ -67,10 +62,12 @@ export const useVehicleWithDetails = (vehicleId: string) => {
     () => tyreSizes.find((tyreSize) => tyreSize.id === vehicle?.type),
     [tyreSizes, vehicle?.type],
   )
+
   const vehicleBrandForType = useMemo(
     () => vehicleBrands.find((brand) => brand.id === vehicle?.type),
     [vehicle?.type, vehicleBrands],
   )
+
   const vehicleModelsForTypeAndBrand = useMemo(
     () =>
       vehicleModels.find(
@@ -78,9 +75,6 @@ export const useVehicleWithDetails = (vehicleId: string) => {
       ),
     [vehicle?.type, vehicle?.brand, vehicleModels],
   )
-  useEffect(() => {
-    if (vehicleId) dispatch(fetchVehicleById(vehicleId))
-  }, [])
 
   useEffect(() => {
     if (!vehicle) return
@@ -122,11 +116,9 @@ export const useVehicleWithDetails = (vehicleId: string) => {
       ownershipTypesFetchStatus,
       vehicleModelsFetchStatus,
       vehicle,
-      vehicleFetchStatus,
     }),
     [
       vehicle,
-      vehicleFetchStatus,
       vehicleTypes,
       vehicleTypesFetchStatus,
       vehicleBrandForType,

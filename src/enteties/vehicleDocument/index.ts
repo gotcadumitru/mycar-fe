@@ -12,10 +12,9 @@ export {
   vehicleDocumentReducer,
 } from './model/slice/vehicleDocumentSlice'
 export {
-  fetchAllVehicleDocumentsByVehicleIdThunk,
+  fetchAllVehiclesDocumentsByVehicleIdThunk,
   createNewVehicleDocumentForVehicleId,
   editVehicleDocument,
-  fetchVehicleDocumentById,
 } from 'enteties/vehicleDocument/model/slice/vehicleDocumentThunks'
 
 export {

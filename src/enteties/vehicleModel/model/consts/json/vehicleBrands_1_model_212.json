@@ -1,1 +1,14 @@
-[{"id":2881,"name":"124 Spider"},{"id":2882,"name":"500"},{"id":2883,"name":"500C"},{"id":2884,"name":"595"},{"id":2886,"name":"595 Competizione"},{"id":2887,"name":"595 Turismo"},{"id":2885,"name":"595C"},{"id":2888,"name":"695"},{"id":2889,"name":"695C"},{"id":2890,"name":"Grande Punto"},{"id":2892,"name":"Other"},{"id":2891,"name":"Punto Evo"}]
+[
+  { "id": 2881, "name": "124 Spider" },
+  { "id": 2882, "name": "500" },
+  { "id": 2883, "name": "500C" },
+  { "id": 2884, "name": "595" },
+  { "id": 2886, "name": "595 Competizione" },
+  { "id": 2887, "name": "595 Turismo" },
+  { "id": 2885, "name": "595C" },
+  { "id": 2888, "name": "695" },
+  { "id": 2889, "name": "695C" },
+  { "id": 2890, "name": "Grande Punto" },
+  { "id": 2892, "name": "Other" },
+  { "id": 2891, "name": "Punto Evo" }
+]

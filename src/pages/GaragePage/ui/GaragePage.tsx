@@ -1,12 +1,9 @@
-import { useUserVehicles } from 'enteties/vehicle'
 import GarageVehicleCard from 'features/garageVehicleCard'
-import { FetchStatus } from 'shared/api'
+import { useAppSelector } from 'shared/lib/hooks/reduxHooks'
 import './garagePage.scss'
-import { GaragePageSkeleton } from './GaragePageSkeleton'
 
 const GaragePage = () => {
-  const { allVehiclesOfCurrentUserFetchStatus, allVehiclesOfCurrentUser } = useUserVehicles()
-  if (allVehiclesOfCurrentUserFetchStatus !== FetchStatus.SUCCESS) return <GaragePageSkeleton />
+  const allVehiclesOfCurrentUser = useAppSelector((state) => state.vehicle.allVehiclesOfCurrentUser)
 
   return (
     <div className='garage-page'>

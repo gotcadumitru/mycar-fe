@@ -4,7 +4,6 @@ import {
   createNewVehiclesForUserId,
   editVehiclesForUserId,
   fetchAllVehiclesByUserId,
-  fetchVehicleById,
   softDeleteVehicleById,
 } from './vehicleThunks'
 
@@ -34,17 +33,6 @@ export const vehicleSlice = createSlice({
         state.allVehiclesOfCurrentUser = state.allVehiclesOfCurrentUser.map((vehicle) =>
           vehicle.uid === changedVehicle.uid ? changedVehicle : vehicle,
         )
-      })
-      .addCase(fetchVehicleById.fulfilled, (state, action) => {
-        const vehicleById = action.payload
-        const vehicleIndex = state.allVehiclesOfCurrentUser.findIndex(
-          (vehicle) => vehicle.uid === vehicleById.uid,
-        )
-        if (vehicleIndex !== -1) {
-          state.allVehiclesOfCurrentUser[vehicleIndex] = vehicleById
-        } else {
-          state.allVehiclesOfCurrentUser.push(vehicleById)
-        }
       }),
 })
 export const { actions: vehicleActions } = vehicleSlice

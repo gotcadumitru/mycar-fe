@@ -1,1 +1,12 @@
-[{"id":187,"name":"Altul"},{"id":179,"name":"C 250"},{"id":177,"name":"C 380"},{"id":181,"name":"D 10"},{"id":185,"name":"D 3.5"},{"id":183,"name":"D Access"},{"id":175,"name":"K 380"},{"id":3167,"name":"Premium"},{"id":171,"name":"T 380"},{"id":173,"name":"T 440"}]
+[
+  { "id": 187, "name": "Altul" },
+  { "id": 179, "name": "C 250" },
+  { "id": 177, "name": "C 380" },
+  { "id": 181, "name": "D 10" },
+  { "id": 185, "name": "D 3.5" },
+  { "id": 183, "name": "D Access" },
+  { "id": 175, "name": "K 380" },
+  { "id": 3167, "name": "Premium" },
+  { "id": 171, "name": "T 380" },
+  { "id": 173, "name": "T 440" }
+]

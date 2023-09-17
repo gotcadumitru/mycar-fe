@@ -1,1 +1,9 @@
-[{"id":3132,"name":"1820"},{"id":132,"name":"Actros"},{"id":143,"name":"Altul"},{"id":136,"name":"Atego"},{"id":135,"name":"Axor"},{"id":138,"name":"Econic"},{"id":140,"name":"Zetros"}]
+[
+  { "id": 3132, "name": "1820" },
+  { "id": 132, "name": "Actros" },
+  { "id": 143, "name": "Altul" },
+  { "id": 136, "name": "Atego" },
+  { "id": 135, "name": "Axor" },
+  { "id": 138, "name": "Econic" },
+  { "id": 140, "name": "Zetros" }
+]

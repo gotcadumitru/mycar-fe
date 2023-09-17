@@ -1,1 +1,8 @@
-[{"id":1821,"name":"Altul"},{"id":1817,"name":"Model 3"},{"id":1818,"name":"Model S"},{"id":1819,"name":"Model X"},{"id":2826,"name":"Other"},{"id":1820,"name":"Roadster"}]
+[
+  { "id": 1821, "name": "Altul" },
+  { "id": 1817, "name": "Model 3" },
+  { "id": 1818, "name": "Model S" },
+  { "id": 1819, "name": "Model X" },
+  { "id": 2826, "name": "Other" },
+  { "id": 1820, "name": "Roadster" }
+]

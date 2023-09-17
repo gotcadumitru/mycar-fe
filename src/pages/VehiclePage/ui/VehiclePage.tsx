@@ -4,7 +4,6 @@ import DeleteVehicleButton from 'features/deleteVehicleButton'
 import VehicleDocuments from 'features/vehicleDocumentsList'
 import { memo, useMemo } from 'react'
 import { Navigate, useParams } from 'react-router-dom'
-import { FetchStatus } from 'shared/api'
 import MdOutlineEdit from 'shared/assets/icons/MdOutlineEdit.svg'
 import { RoutePaths } from 'shared/config/router/RoutePaths'
 import Button, { ButtonCategoryType, ButtonTheme } from 'shared/ui/Button'
@@ -13,7 +12,6 @@ import { VehicleBrandAndModel } from 'shared/ui/VehicleBrandAndModel'
 import { VehicleDetailsField } from 'shared/ui/VehicleDetailsField'
 import { VehicleFile } from 'shared/ui/VehicleFile'
 import './vehiclePage.scss'
-import { VehiclePageSkeleton } from './VehiclePageSkeleton'
 
 const VehiclePage = () => {
   const { id } = useParams()
@@ -22,10 +20,8 @@ const VehiclePage = () => {
     () => calculateAverageConsumption(vehicleDetails.vehicle ? [vehicleDetails.vehicle] : []),
     [vehicleDetails.vehicle],
   )
-  if (vehicleDetails.vehicleFetchStatus === FetchStatus.FAIL)
-    return <Navigate to={RoutePaths.garage} />
-  if (vehicleDetails.vehicleFetchStatus !== FetchStatus.SUCCESS || !vehicleDetails.vehicle)
-    return <VehiclePageSkeleton />
+
+  if (!vehicleDetails.vehicle) return <Navigate to={RoutePaths.garage} />
   return (
     <div className='vehicle-page'>
       <div className='vehicle-page__header'>

@@ -1,1 +1,7 @@
-[{"id":441,"name":"Cardi"},{"id":442,"name":"Mafa"},{"id":440,"name":"Menci"},{"id":439,"name":"Other"},{"id":443,"name":"Tecnokar"}]
+[
+  { "id": 441, "name": "Cardi" },
+  { "id": 442, "name": "Mafa" },
+  { "id": 440, "name": "Menci" },
+  { "id": 439, "name": "Other" },
+  { "id": 443, "name": "Tecnokar" }
+]

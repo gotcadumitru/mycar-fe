@@ -1,1 +1,15 @@
-[{"id":527,"name":"Altul"},{"id":515,"name":"Blaster"},{"id":522,"name":"Elystar"},{"id":523,"name":"Geopolis"},{"id":520,"name":"Looxor"},{"id":519,"name":"Ludix"},{"id":524,"name":"Satelis"},{"id":525,"name":"Speedfight"},{"id":517,"name":"V-Clic"},{"id":521,"name":"Vivacity"},{"id":518,"name":"Vogs 2"},{"id":516,"name":"XP 6"},{"id":526,"name":"XR6"}]
+[
+  { "id": 527, "name": "Altul" },
+  { "id": 515, "name": "Blaster" },
+  { "id": 522, "name": "Elystar" },
+  { "id": 523, "name": "Geopolis" },
+  { "id": 520, "name": "Looxor" },
+  { "id": 519, "name": "Ludix" },
+  { "id": 524, "name": "Satelis" },
+  { "id": 525, "name": "Speedfight" },
+  { "id": 517, "name": "V-Clic" },
+  { "id": 521, "name": "Vivacity" },
+  { "id": 518, "name": "Vogs 2" },
+  { "id": 516, "name": "XP 6" },
+  { "id": 526, "name": "XR6" }
+]

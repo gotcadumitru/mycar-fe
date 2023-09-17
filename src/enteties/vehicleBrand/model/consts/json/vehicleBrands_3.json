@@ -1,1 +1,15 @@
-[{"id":297,"name":"Astra"},{"id":107,"name":"Daf"},{"id":109,"name":"Ford"},{"id":110,"name":"Iveco"},{"id":112,"name":"MAN"},{"id":113,"name":"Mercedes-Benz"},{"id":114,"name":"Mitsubishi"},{"id":116,"name":"Nissan"},{"id":280,"name":"Other"},{"id":117,"name":"Renault"},{"id":118,"name":"ROMAN"},{"id":120,"name":"Scania"},{"id":121,"name":"Volvo"}]
+[
+  { "id": 297, "name": "Astra" },
+  { "id": 107, "name": "Daf" },
+  { "id": 109, "name": "Ford" },
+  { "id": 110, "name": "Iveco" },
+  { "id": 112, "name": "MAN" },
+  { "id": 113, "name": "Mercedes-Benz" },
+  { "id": 114, "name": "Mitsubishi" },
+  { "id": 116, "name": "Nissan" },
+  { "id": 280, "name": "Other" },
+  { "id": 117, "name": "Renault" },
+  { "id": 118, "name": "ROMAN" },
+  { "id": 120, "name": "Scania" },
+  { "id": 121, "name": "Volvo" }
+]

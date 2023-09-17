@@ -1,1 +1,7 @@
-[{"id":976,"name":"Altul"},{"id":973,"name":"Chiron"},{"id":974,"name":"EB 110"},{"id":2370,"name":"Other"},{"id":975,"name":"Veyron"}]
+[
+  { "id": 976, "name": "Altul" },
+  { "id": 973, "name": "Chiron" },
+  { "id": 974, "name": "EB 110" },
+  { "id": 2370, "name": "Other" },
+  { "id": 975, "name": "Veyron" }
+]

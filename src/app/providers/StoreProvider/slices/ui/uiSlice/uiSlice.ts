@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { toast } from 'react-toastify'
 import { FetchStatus } from 'shared/api'
 import { toastDefaultValues } from 'shared/config/toastify'
+import { actionNameHelper } from 'shared/consts/uiConsts'
 import type { RequestMessageType } from 'shared/types/ui'
 import type { UiSliceState } from '../types/uiSlice.types'
 import { isFullfilledAction, isPendingAction, isRejectedAction } from '../utils/checkRequestStatus'
@@ -27,7 +28,10 @@ export const uiSlice = createSlice({
       (action) => isPendingAction(action) || isRejectedAction(action) || isFullfilledAction(action),
       (state, action) => {
         // eslint-disable-next-line prefer-const
-        let [type, status] = action.type.split('/') as [string, FetchStatus]
+        let [actionName, status] = action.type.split('/') as [string, FetchStatus]
+        const type = actionName.endsWith(actionNameHelper.byIdPrefix)
+          ? actionNameHelper.getActionNameWhenFetchById(actionName, action?.meta?.arg?.id)
+          : actionName
         const notification = action?.meta?.arg?.notification as RequestMessageType
         if (action?.error?.name === 'AbortError') {
           if (notification) {

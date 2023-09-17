@@ -1,1 +1,9 @@
-[{"id":164,"name":"Altul"},{"id":154,"name":"MDX"},{"id":156,"name":"NSX"},{"id":158,"name":"RL"},{"id":160,"name":"RSX"},{"id":162,"name":"TL"},{"id":163,"name":"TSX"}]
+[
+  { "id": 164, "name": "Altul" },
+  { "id": 154, "name": "MDX" },
+  { "id": 156, "name": "NSX" },
+  { "id": 158, "name": "RL" },
+  { "id": 160, "name": "RSX" },
+  { "id": 162, "name": "TL" },
+  { "id": 163, "name": "TSX" }
+]

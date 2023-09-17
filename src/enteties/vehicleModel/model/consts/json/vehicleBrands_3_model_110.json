@@ -1,1 +1,13 @@
-[{"id":103,"name":"Acco"},{"id":106,"name":"Altul"},{"id":99,"name":"Cavallino"},{"id":97,"name":"Daily"},{"id":101,"name":"Daily 4x4"},{"id":104,"name":"Eurocargo"},{"id":100,"name":"Leoncino"},{"id":102,"name":"Powerstar"},{"id":3131,"name":"Stralis"},{"id":105,"name":"Trakker"},{"id":98,"name":"Vertis"}]
+[
+  { "id": 103, "name": "Acco" },
+  { "id": 106, "name": "Altul" },
+  { "id": 99, "name": "Cavallino" },
+  { "id": 97, "name": "Daily" },
+  { "id": 101, "name": "Daily 4x4" },
+  { "id": 104, "name": "Eurocargo" },
+  { "id": 100, "name": "Leoncino" },
+  { "id": 102, "name": "Powerstar" },
+  { "id": 3131, "name": "Stralis" },
+  { "id": 105, "name": "Trakker" },
+  { "id": 98, "name": "Vertis" }
+]
