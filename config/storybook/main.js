@@ -7,6 +7,7 @@ module.exports = {
     'storybook-addon-react-router-v6',
     '@storybook/addon-mdx-gfm',
     'storybook-addon-pseudo-states',
+    '@storybook/addon-styling-webpack'
   ],
   framework: {
     name: '@storybook/react-webpack5',
