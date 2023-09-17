@@ -1,12 +1,11 @@
 import classNames from 'classnames'
 import { FC, FocusEvent, Suspense, useId, useState } from 'react'
-import Select from 'react-select'
 import lazyWithPreload from 'shared/lib/utils/lazyWithPreload'
 import { InputSelectSkeleton } from 'shared/ui/InputSelect/InputSelectSkeleton'
 import type { InputSelectWithLabel } from './input-select.types'
 import './inputSelect.scss'
 
-// const Select = lazyWithPreload(() => import('react-select-virtualized'))
+const Select = lazyWithPreload(() => import('react-select-virtualized'))
 
 const InputSelect: FC<InputSelectWithLabel> = ({
   label,
