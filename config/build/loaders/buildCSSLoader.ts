@@ -1,7 +1,7 @@
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
 export const buildCSSLoader = (isDev: boolean) => ({
-  test: /\.(sa|sc|c)ss$/,
+  test: /\.(sass|scss|css)$/,
   use: [
     isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
     {
@@ -13,6 +13,11 @@ export const buildCSSLoader = (isDev: boolean) => ({
         },
       },
     },
-    'sass-loader',
+    {
+      loader: 'sass-loader',
+      options: {
+        implementation: require('sass'),
+      },
+    },
   ],
 })

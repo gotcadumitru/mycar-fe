@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Carousel } from 'react-responsive-carousel'
-import 'react-responsive-carousel/lib/styles/carousel.min.css'
+// import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import File, { FileBaseType } from 'shared/ui/File'
 import Modal from 'shared/ui/Modal'
 import './file-carousel.scss'
