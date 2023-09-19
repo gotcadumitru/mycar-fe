@@ -1,5 +1,6 @@
+import fs from 'fs'
 import path from 'path'
-import webpack, { RuleSetRule, DefinePlugin } from 'webpack'
+import webpack, { DefinePlugin, RuleSetRule } from 'webpack'
 import { buildCSSLoader } from '../build/loaders/buildCSSLoader'
 import { BuildPaths } from '../build/types/config'
 
@@ -16,12 +17,13 @@ export default ({ config }: { config: webpack.Configuration }) => {
     return config
   config.resolve.modules.push(paths.src)
   config.resolve.extensions.push('.ts,tsx')
+
   // @ts-ignore
   config.module.rules = config.module.rules.filter((f) => f.test?.toString() !== '/\\.css$/')
-  const styleLoader = buildCSSLoader(true)
 
+  const styleLoader = buildCSSLoader(true)
   config.module.rules.push(styleLoader)
-  console.log(JSON.stringify(config.module.rules, null, 2))
+
   config.module.rules = config.module.rules.map((rule) => {
     const ruleLocal = rule as RuleSetRule
     if (/svg/.test(ruleLocal.test as string)) {
@@ -42,6 +44,17 @@ export default ({ config }: { config: webpack.Configuration }) => {
   config!.plugins!.push(
     new DefinePlugin({
       __IS_DEV__: JSON.stringify(true),
+    }),
+    new webpack.NormalModuleReplacementPlugin(/src/, (resource) => {
+      if (!resource.createData.resource) return
+
+      let pathSplit = resource.createData.resource.split('/')
+      pathSplit.splice(pathSplit.length - 1, 0, '__mocks__')
+      pathSplit = pathSplit.join('/')
+      if (!fs.existsSync(pathSplit)) return
+
+      resource.request = pathSplit
+      resource.createData.resource = pathSplit
     }),
   )
 

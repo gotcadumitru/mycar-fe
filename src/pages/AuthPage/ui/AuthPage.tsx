@@ -10,7 +10,6 @@ const AuthPage: FC<PropsWithChildren> = ({ children }) => (
       <Suspense>
         <BlackCar />
       </Suspense>
-      {/*<CarMasterSVG className='auth-page__image' />*/}
     </div>
     <div className='auth-page__form'>{children}</div>
   </div>

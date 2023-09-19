@@ -7,6 +7,7 @@ import { FirebaseErrorCode } from 'shared/api/firebase'
 import { isFirebaseError } from 'shared/api/firebase/firebaseUtils'
 import BsArrowRightShort from 'shared/assets/icons/BsArrowRightShort.svg'
 import { RoutePaths } from 'shared/config/router/RoutePaths'
+import { BUTTON_TEXT } from 'shared/defaults/text'
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
 import { checkIfExistErrors } from 'shared/lib/utils/checkIfExistErrors'
 import Button, { ButtonCategoryType, ButtonMargin, ButtonTheme } from 'shared/ui/Button'
@@ -77,7 +78,7 @@ export const SignIn: FC<SignInProps> = ({ className }) => {
         label='Parola'
       />
       <Button margin={ButtonMargin.BOTTOM} type='submit'>
-        Autentificare
+        {BUTTON_TEXT.AUTH}
       </Button>
       <Button
         margin={ButtonMargin.BOTTOM}
