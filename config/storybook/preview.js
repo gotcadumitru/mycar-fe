@@ -1,7 +1,7 @@
+import { WindowMockSetDecorator } from 'shared/config/storybook/WindowMockSetDecorator/WindowMockSetDecorator'
 import { ReduxStoreDecorator } from 'shared/config/storybook/ReduxStoreDecorator/ReduxStoreDecorator'
 import { StyleDecorator } from 'shared/config/storybook/StyleDecorator/StyleDecorator'
-import { withRouter } from 'storybook-addon-react-router-v6'
-import './mocks'
+import { reactRouterParameters, withRouter } from 'storybook-addon-react-router-v6'
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -11,6 +11,14 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  reactRouter: reactRouterParameters({
+    routing: { path: '*' },
+  }),
   layout: 'fullscreen',
 }
-export const decorators = [StyleDecorator, ReduxStoreDecorator(), withRouter]
+export const decorators = [
+  WindowMockSetDecorator(),
+  StyleDecorator,
+  ReduxStoreDecorator(),
+  withRouter,
+]

@@ -9,4 +9,6 @@ export const BUTTON_TEXT = {
   SAVE: 'Save',
   COPY_TO_CLIPBOARD: 'Copy to clipboard',
   EXPORT: 'Export',
+  REGISTER: 'Inregistrare',
+  AUTH: 'Autentificare',
 }

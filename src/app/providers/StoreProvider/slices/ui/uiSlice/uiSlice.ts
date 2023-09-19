@@ -28,6 +28,8 @@ export const uiSlice = createSlice({
       (action) => isPendingAction(action) || isRejectedAction(action) || isFullfilledAction(action),
       (state, action) => {
         // eslint-disable-next-line prefer-const
+        if (isRejectedAction(action as any)) console.log(action)
+
         let [actionName, status] = action.type.split('/') as [string, FetchStatus]
         const type = actionName.endsWith(actionNameHelper.byIdPrefix)
           ? actionNameHelper.getActionNameWhenFetchById(actionName, action?.meta?.arg?.id)
