@@ -27,11 +27,11 @@ export const mockVehicleDocuments: VehicleDocumentWithFiles[] = createArrayFromT
         : n === 1
         ? VehicleDocumentType.Mechanic
         : VehicleDocumentType.Insurance,
-    files: [mockFiles[3], mockFiles[4]],
+    files: [mockFiles[1], mockFiles[4]],
     vehicleId: mockVehicles[0].uid,
-    expirationDate: `2023-09-0${10 + n}`,
+    expirationDate: `2023-09-${10 + n}`,
     deletedBy: null,
-    creationDate: n === 0 ? `2023-09-0${n}` : '',
+    creationDate: n === 0 ? `2023-09-0${n + 1}` : '',
     deletedAt: null,
     uid: `XjbSGO81uWawiz12OiP${n}`,
   }),
