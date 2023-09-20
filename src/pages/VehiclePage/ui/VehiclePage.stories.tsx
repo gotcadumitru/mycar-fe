@@ -5,7 +5,7 @@ import { mockVehicles } from 'shared/defaults/tests/mockVehicles'
 import { reactRouterParameters } from 'storybook-addon-react-router-v6'
 
 const meta = {
-  title: 'features/pages/VehiclePage',
+  title: 'pages/VehiclePage',
   parameters: {
     reactRouter: reactRouterParameters({
       location: { path: `${RoutePaths.vehicle}/${mockVehicles[0].uid}` },
