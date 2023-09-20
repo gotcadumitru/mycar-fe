@@ -2,6 +2,7 @@ import { WindowMockSetDecorator } from 'shared/config/storybook/WindowMockSetDec
 import { ReduxStoreDecorator } from 'shared/config/storybook/ReduxStoreDecorator/ReduxStoreDecorator'
 import { StyleDecorator } from 'shared/config/storybook/StyleDecorator/StyleDecorator'
 import { reactRouterParameters, withRouter } from 'storybook-addon-react-router-v6'
+import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -15,6 +16,10 @@ export const parameters = {
     routing: { path: '*' },
   }),
   layout: 'fullscreen',
+  viewport: {
+    viewports: INITIAL_VIEWPORTS,
+    defaultViewport: 'iphonex',
+  },
 }
 export const decorators = [
   WindowMockSetDecorator(),

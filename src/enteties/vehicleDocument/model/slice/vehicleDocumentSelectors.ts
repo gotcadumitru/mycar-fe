@@ -6,8 +6,10 @@ export const selectVehicleDocumentsByVehicleId = createDraftSafeSelector(
     (store: StateSchema) => store.vehicleDocument.vehiclesDocuments,
     (state: StateSchema, vehicleId: string) => vehicleId,
   ],
-  (vehicleDocuments, vehicleId) =>
-    vehicleDocuments.filter((vehicleDocument) => vehicleDocument.vehicleId === vehicleId),
+  (vehicleDocuments, vehicleId) => {
+    console.log(vehicleDocuments)
+    return vehicleDocuments.filter((vehicleDocument) => vehicleDocument.vehicleId === vehicleId)
+  },
 )
 
 export const selectVehicleDocumentsByDocumentId = createDraftSafeSelector(

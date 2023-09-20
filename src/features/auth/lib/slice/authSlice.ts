@@ -4,9 +4,9 @@ import { getForgotPasswordFormValues } from '../../ForgotPassword/utils/forgotPa
 import type { AuthSliceState } from '../../model/types/authTypes'
 import type { ResetPasswordFormFullType } from '../../ResetPassword/types/resetPasswordTypes'
 import { getResetPasswordFormValues } from '../../ResetPassword/utils/resetPasswordUtils'
-import type { SignInFormFullType } from '../../SignIn/types/singInTypes'
+import type { SignInFormFullType } from '../../SignIn/types/signInTypes'
 import { getSignInFormValues } from '../../SignIn/utils/signInUtils'
-import type { SignUpFormFullType } from '../../SignUp/types/singUpTypes'
+import type { SignUpFormFullType } from '../../SignUp/types/signUpTypes'
 import { getSignUpFormValues } from '../../SignUp/utils/signUpUtils'
 
 export const initialState: AuthSliceState = {

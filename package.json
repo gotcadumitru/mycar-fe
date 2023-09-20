@@ -75,9 +75,10 @@
   "loki": {
     "diffingEngine": "pixelmatch",
     "configurations": {
-      "chrome.iphone7": {
+      "chrome.iphonex": {
         "target": "chrome.docker",
-        "preset": "iPhone 7",
+        "width": 375,
+        "height": 812,
         "mobile": true
       }
     },

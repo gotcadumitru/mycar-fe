@@ -5,7 +5,7 @@ import { useId } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { FetchStatus } from 'shared/api'
 import { RoutePaths } from 'shared/config/router/RoutePaths'
-import { REQUEST_MESSAGES } from 'shared/defaults/text'
+import { BUTTON_TEXT, REQUEST_MESSAGES } from 'shared/defaults/text'
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
 import Button, { ButtonCategoryType, ButtonTheme } from 'shared/ui/Button'
 import './newVehiclePage.scss'
@@ -152,7 +152,7 @@ const NewVehiclePage = () => {
           category={ButtonCategoryType.BUTTON}
           theme={ButtonTheme.OUTLINE_RED}
         >
-          Salveaza
+          {BUTTON_TEXT.SAVE}
         </Button>
       </div>
     </div>

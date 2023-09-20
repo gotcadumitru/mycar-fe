@@ -42,7 +42,11 @@ const DeleteVehicleButton: FC<DeleteVehicleButtonProps> = ({ vehicleId }) => {
         onClose={() => setIsConfirmModalShow(false)}
         isOpen={isConfirmModalShow}
       />
-      <Button onClick={() => setIsConfirmModalShow(true)} theme={ButtonTheme.EMPTY}>
+      <Button
+        data-testid='delete-vehicle-button'
+        onClick={() => setIsConfirmModalShow(true)}
+        theme={ButtonTheme.EMPTY}
+      >
         <MdOutlineDelete className='delete-vehicle-button__icon' />
       </Button>
     </>

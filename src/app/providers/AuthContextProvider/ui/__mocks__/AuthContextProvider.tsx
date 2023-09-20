@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment,no-underscore-dangle */
 import { FC, PropsWithChildren, useEffect, useState } from 'react'
 import { FetchStatus } from 'shared/api'
 
@@ -18,6 +19,7 @@ export const useAuth = () => {
     setAuthData({
       ...authData,
       currentUserFetchStatus: FetchStatus.SUCCESS,
+      // @ts-ignore
       currentUser: window.__mocks__.currentUser as any,
     })
   }, [])

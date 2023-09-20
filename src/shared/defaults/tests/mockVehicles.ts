@@ -42,6 +42,6 @@ export const mockVehicles: VehicleWithFiles[] = createArrayFromTo(0, 4).map((n) 
   deletedBy: null,
   deletedAt: null,
   files: [mockFiles[0], mockFiles[1], mockFiles[2]],
-  brand: 195 + n,
+  brand: 195,
   uid: `evFqd5cAUCA2r35CLRRz${n}`,
 }))

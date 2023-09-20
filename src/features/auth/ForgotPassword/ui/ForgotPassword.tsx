@@ -2,6 +2,7 @@ import { useAuth } from 'app/providers/AuthContextProvider'
 import { ChangeEvent, FC, useId } from 'react'
 import { toast } from 'react-toastify'
 import { isFirebaseError } from 'shared/api/firebase/firebaseUtils'
+import { BUTTON_TEXT } from 'shared/defaults/text'
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
 import { checkIfExistErrors } from 'shared/lib/utils/checkIfExistErrors'
 import Button from 'shared/ui/Button'
@@ -63,7 +64,7 @@ export const ForgotPassword: FC<ForgotPasswordProps> = ({ className }) => {
         onChange={onInputChange}
         label='Adresa de email'
       />
-      <Button type='submit'>Reseteaza parola</Button>
+      <Button type='submit'>{BUTTON_TEXT.RESET_PASSWORD}</Button>
     </Form>
   )
 }
