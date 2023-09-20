@@ -5,7 +5,7 @@ import { WindowMockSetDecorator } from 'shared/config/storybook/WindowMockSetDec
 import { reactRouterParameters } from 'storybook-addon-react-router-v6'
 
 const meta = {
-  title: 'features/pages/PanelPage',
+  title: 'pages/PanelPage',
   parameters: {
     reactRouter: reactRouterParameters({
       location: { path: RoutePaths.panel },

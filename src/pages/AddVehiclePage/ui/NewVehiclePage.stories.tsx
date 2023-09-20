@@ -11,7 +11,7 @@ import { BUTTON_TEXT } from 'shared/defaults/text'
 import { reactRouterParameters } from 'storybook-addon-react-router-v6'
 
 const meta = {
-  title: 'features/pages/NewVehiclePage',
+  title: 'pages/NewVehiclePage',
   parameters: {
     reactRouter: reactRouterParameters({
       location: { path: RoutePaths.new_vehicle },
