@@ -1,5 +1,4 @@
-import { mockVehicleDocuments } from 'shared/defaults/tests/mockVehicleDocuments'
-import { mockVehicles } from 'shared/defaults/tests/mockVehicles'
+/* eslint-disable @typescript-eslint/ban-ts-comment,import/extensions,import/no-unresolved,no-underscore-dangle */
 
 export const firebaseAuth = null
 export const firebaseApp = null
@@ -8,9 +7,11 @@ export const firebaseAnalytics = null
 export const firebaseStorage = null
 export const firebaseAppCheck = null
 export const vehicleDataService = {
-  getAllByUserId: () => mockVehicles,
+  // @ts-ignore
+  getAllByUserId: () => window.__mocks__.mockVehicles,
 }
 export const vehicleDocumentDataService = {
+  // @ts-ignore
   getAllVehicleDocumentsByVehiclesIds: () => window.__mocks__.allVehicleDocumentsByVehiclesIds,
 }
 // @ts-ignore

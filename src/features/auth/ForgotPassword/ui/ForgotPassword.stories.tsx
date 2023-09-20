@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { fireEvent, waitFor, within } from '@storybook/testing-library'
 import App from 'app/App'
-import { SignInFormType } from 'features/auth/SignIn/types/signInTypes'
-import { getSignInFormValues } from 'features/auth/SignIn/utils/signInUtils'
+import { ForgotPasswordFormType } from 'features/auth/ForgotPassword/types/forgotPasswordTypes'
+import { getForgotPasswordFormValues } from 'features/auth/ForgotPassword/utils/forgotPasswordUtils'
 import { RoutePaths } from 'shared/config/router/RoutePaths'
 import { decoratePlayFunctionForLoki } from 'shared/config/storybook/PlayFunctionDecorator/decorateTargetForLoki'
 import { ReduxStoreDecorator } from 'shared/config/storybook/ReduxStoreDecorator/ReduxStoreDecorator'
@@ -13,10 +13,10 @@ import { BUTTON_TEXT } from 'shared/defaults/text'
 import { reactRouterParameters } from 'storybook-addon-react-router-v6'
 
 const meta = {
-  title: 'features/auth/SignIn',
+  title: 'features/auth/ForgotPassword',
   parameters: {
     reactRouter: reactRouterParameters({
-      location: { path: RoutePaths.sign_in },
+      location: { path: RoutePaths.forgot_password },
     }),
   },
   decorators: [WindowMockSetDecorator({ currentUser: null })],
@@ -26,34 +26,33 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-const getSignInReduxFormDataDecorator = (formData: Partial<SignInFormType>) =>
+const getForgotPasswordReduxFormDataDecorator = (formData: Partial<ForgotPasswordFormType>) =>
   ReduxStoreDecorator({
     ...reduxMockStateForTesting,
     auth: {
       ...reduxMockStateForTesting.auth,
-      signInForm: getSignInFormValues({
+      forgotPasswordForm: getForgotPasswordFormValues({
         email: mockUsers[0].email,
-        password: 'password',
         ...formData,
       }),
     },
   })
 
-const clickOnAuthButton = decoratePlayFunctionForLoki(async ({ canvasElement }) => {
+const clickOnForgotPasswordButton = decoratePlayFunctionForLoki(async ({ canvasElement }) => {
   const canvas = within(canvasElement)
 
   await waitFor(async () => {
-    const authButton = await canvas.findByText(BUTTON_TEXT.AUTH)
-    fireEvent.click(authButton)
+    const resetPasswordButton = await canvas.findByText(BUTTON_TEXT.RESET_PASSWORD)
+    fireEvent.click(resetPasswordButton)
   })
 })
 
-export const SigInDefault: Story = {}
+export const ForgotPasswordDefault: Story = {}
 
-export const SigInCompleted: Story = {
-  decorators: [getSignInReduxFormDataDecorator({})],
+export const ForgotPasswordCompleted: Story = {
+  decorators: [getForgotPasswordReduxFormDataDecorator({})],
 }
 
-export const SigInWithErrors: Story = {
-  play: clickOnAuthButton,
+export const ForgotPasswordWithErrors: Story = {
+  play: clickOnForgotPasswordButton,
 }

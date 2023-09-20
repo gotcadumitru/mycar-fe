@@ -14,7 +14,13 @@ export const mockFiles: FileCollectionType[] = createArrayFromTo(0, 4).map((n) =
   size: 407280,
   deletedAt: null,
   createdBy: mockUsers[0].uid,
-  fileUrl: `https://firebasestorage.googleapis.com/v0/b/car-master-a976d.appspot.com/o/userVehicleFiles%2Fffc8f72a-20ae-4c81-a8e7-e58eca06a032_Nissan_Qashqai_J11_China_2016-04-02.jpg?alt=media&token=5fdd91f6-5f51-438d-ad60-a3244a96899e${n}`,
+  fileUrl:
+    // eslint-disable-next-line no-nested-ternary
+    n === 1
+      ? 'https://i.imgur.com/QFnqULE.png'
+      : n === 2
+      ? 'https://i.imgur.com/32Fp7UQ.jpeg'
+      : 'https://i.imgur.com/Vh8ZoHU.jpeg',
   name: 'Nissan_Qashqai_J11_China_2016-04-02.jpg',
   createdAt: {
     seconds: 1694437329,

@@ -1,6 +1,6 @@
 import { ERROR_MESSAGES } from 'shared/defaults/text'
 import { ValidationRules } from 'shared/lib/utils/checkIfExistErrors'
-import type { SignUpFormFullType, SignUpFormType } from '../types/singUpTypes'
+import type { SignUpFormFullType, SignUpFormType } from '../types/signUpTypes'
 
 export const getSignUpFormValues = ({
   fullName = '',

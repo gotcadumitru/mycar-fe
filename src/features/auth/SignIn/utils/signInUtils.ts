@@ -1,5 +1,5 @@
 import { ValidationRules } from 'shared/lib/utils/checkIfExistErrors'
-import type { SignInFormFullType, SignInFormType } from '../types/singInTypes'
+import type { SignInFormFullType, SignInFormType } from '../types/signInTypes'
 
 export const getSignInFormValues = ({
   email = '',

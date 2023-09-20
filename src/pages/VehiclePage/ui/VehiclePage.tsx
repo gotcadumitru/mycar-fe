@@ -94,7 +94,12 @@ const VehiclePage = () => {
           <VehicleDetailsField title='Data inmatric.' infoList={['-']} />
         </div>
         <div className='vehicle-page__details-row'>
-          <VehicleDetailsField title='Leasing' infoList={[vehicleDetails.leasingCompany?.name]} />
+          <VehicleDetailsField
+            title='Leasing'
+            infoList={
+              vehicleDetails.vehicle.leasingCompany ? [vehicleDetails.leasingCompany?.name] : ['-']
+            }
+          />
           <VehicleDetailsField title='Detinut de' infoList={[vehicleDetails.ownershipType?.name]} />
           <VehicleDetailsField title='CIV' infoList={[vehicleDetails.vehicle.civSeries]} />
         </div>

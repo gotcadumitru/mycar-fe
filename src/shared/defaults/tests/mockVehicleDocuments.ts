@@ -3,6 +3,7 @@ import { VehicleDocumentType } from 'enteties/vehicleDocument/model/consts/vehic
 import { Timestamp } from 'firebase/firestore'
 import { mockFiles } from 'shared/defaults/tests/mockFiles'
 import { mockUsers } from 'shared/defaults/tests/mockUsers'
+import { mockVehicles } from 'shared/defaults/tests/mockVehicles'
 import createArrayFromTo from 'shared/lib/utils/createArrayFromTo'
 
 export const mockVehicleDocuments: VehicleDocumentWithFiles[] = createArrayFromTo(0, 4).map(
@@ -27,7 +28,7 @@ export const mockVehicleDocuments: VehicleDocumentWithFiles[] = createArrayFromT
         ? VehicleDocumentType.Mechanic
         : VehicleDocumentType.Insurance,
     files: [mockFiles[3], mockFiles[4]],
-    vehicleId: `evFqd5cAUCA2r35CLRR${n}`,
+    vehicleId: mockVehicles[0].uid,
     expirationDate: `2023-09-0${10 + n}`,
     deletedBy: null,
     creationDate: n === 0 ? `2023-09-0${n}` : '',

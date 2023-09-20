@@ -6,9 +6,10 @@ export const BUTTON_TEXT = {
   CANCEL: 'Cancel',
   SAVE_AND_NEW: 'Save & Add New',
   CLONE: 'Clone',
-  SAVE: 'Save',
+  SAVE: 'Salveaza',
   COPY_TO_CLIPBOARD: 'Copy to clipboard',
   EXPORT: 'Export',
   REGISTER: 'Inregistrare',
   AUTH: 'Autentificare',
+  RESET_PASSWORD: 'Reseteaza parola',
 }

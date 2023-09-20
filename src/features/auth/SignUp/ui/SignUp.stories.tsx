@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { fireEvent, waitFor, within } from '@storybook/testing-library'
 import App from 'app/App'
-import { SignUpFormType } from 'features/auth/SignUp/types/singUpTypes'
+import { SignUpFormType } from 'features/auth/SignUp/types/signUpTypes'
 import { getSignUpFormValues } from 'features/auth/SignUp/utils/signUpUtils'
 import { RoutePaths } from 'shared/config/router/RoutePaths'
 import { decoratePlayFunctionForLoki } from 'shared/config/storybook/PlayFunctionDecorator/decorateTargetForLoki'
@@ -26,8 +26,8 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-const getSignUpReduxFormDataDecorator = (formData: Partial<SignUpFormType>) => {
-  return ReduxStoreDecorator({
+const getSignUpReduxFormDataDecorator = (formData: Partial<SignUpFormType>) =>
+  ReduxStoreDecorator({
     ...reduxMockStateForTesting,
     auth: {
       ...reduxMockStateForTesting.auth,
@@ -40,7 +40,6 @@ const getSignUpReduxFormDataDecorator = (formData: Partial<SignUpFormType>) => {
       }),
     },
   })
-}
 
 const clickOnRegisterButton = decoratePlayFunctionForLoki(async ({ canvasElement }) => {
   const canvas = within(canvasElement)
