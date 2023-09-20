@@ -7,7 +7,7 @@ import { routeConfig } from 'shared/config/router/routeConfig'
 import { useAppDispatch } from 'shared/lib/hooks/reduxHooks'
 
 const AppRouter = () => {
-  const { currentUser, currentUserFetchStatus } = useAuth()
+  const { currentUser } = useAuth()
   const dispatch = useAppDispatch()
 
   useEffect(() => {
