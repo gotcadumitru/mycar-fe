@@ -1,7 +1,6 @@
 import classNames from 'classnames'
 import { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
-import AiOutlineLeft from 'shared/assets/icons/AiOutlineLeft.svg'
 import { TOAST_MESSAGE } from 'shared/defaults/text'
 import Button, { ButtonTheme } from 'shared/ui/Button'
 import './not-found-page.scss'

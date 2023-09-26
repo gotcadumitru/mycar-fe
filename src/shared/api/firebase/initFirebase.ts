@@ -1,9 +1,9 @@
-import { initializeApp } from 'firebase/app'
 import { getAnalytics } from 'firebase/analytics'
-import { getFirestore } from 'firebase/firestore'
-import { getStorage } from 'firebase/storage'
+import { initializeApp } from 'firebase/app'
 import { initializeAppCheck, ReCaptchaV3Provider } from 'firebase/app-check'
 import { getAuth } from 'firebase/auth'
+import { getFirestore } from 'firebase/firestore'
+import { getStorage } from 'firebase/storage'
 import { firebaseConfig } from './firebaseConsts'
 
 // Initialize Firebase
@@ -22,3 +22,6 @@ export const firebaseStorage = getStorage(firebaseApp)
 export const firebaseAppCheck = initializeAppCheck(firebaseApp, {
   provider: new ReCaptchaV3Provider('6LebAAMoAAAAAEPOkEM-9LbGpo0z6E5dtRebzWHB'),
 })
+
+// export const firebaseLogger = new Logger('firebase-car-logger')
+// firebaseLogger.error('Cum asta lucreaza1', 'Cum asta lucreaza2', 'Cum asta lucreaza3')

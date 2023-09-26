@@ -19,16 +19,17 @@ const EditVehiclePage = () => {
   const dispatch = useAppDispatch()
   const { currentUser } = useAuth()
   const vehicle = useAppSelector((state) =>
-    state.vehicle.allVehiclesOfCurrentUser.find((vehicle) => vehicle.uid === id),
+    state.vehicle.allVehiclesOfCurrentUser.find((v) => v.uid === id),
   )
 
   const formId = useId()
 
-  useEffect(() => {
-    return () => {
+  useEffect(
+    () => () => {
       dispatch(editVehicleActions.resetVehicleDataAC())
-    }
-  }, [])
+    },
+    [],
+  )
 
   useEffect(() => {
     if (vehicle) {
