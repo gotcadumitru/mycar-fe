@@ -3,7 +3,7 @@ import type { PlayFunction } from '@storybook/csf'
 import type { ReactRenderer } from '@storybook/react'
 
 const createAsyncCallback = (win: any = window) => {
-  const registerPendingPromise = win.loki && win.loki.registerPendingPromise
+  const registerPendingPromise = win.loki?.registerPendingPromise
   let resolveAsyncStory: any
   if (registerPendingPromise) {
     registerPendingPromise(
@@ -20,7 +20,7 @@ const createAsyncCallback = (win: any = window) => {
   }
 }
 
-const checkIsLokiRunning = (win: any = window) => Boolean(win.loki && win.loki.isRunning)
+export const checkIsLokiRunning = (win: any = window) => Boolean(win.loki?.isRunning)
 
 const waitForDocumentLoaded = (): Promise<void> => {
   if (document.readyState === 'loading') {
