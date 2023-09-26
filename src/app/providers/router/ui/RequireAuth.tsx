@@ -9,15 +9,18 @@ import { useAppSelector } from 'shared/lib/hooks/reduxHooks'
 
 type RequireAuthPropsType = {
   isForAuthOnly: boolean
+  isWithoutRedirect?: boolean
 }
 export const RequireAuth: FC<PropsWithChildren<RequireAuthPropsType>> = ({
   children,
   isForAuthOnly,
+  isWithoutRedirect,
 }) => {
   const { currentUser, currentUserFetchStatus } = useAuth()
   const allUserVehiclesFetchStatus = useAppSelector(
     selectRequestStatus(VehicleActions.FETCH_ALL_VEHICLES_BY_USER_ID),
   )
+
   const location = useLocation()
   console.log(location)
   if (
@@ -25,10 +28,11 @@ export const RequireAuth: FC<PropsWithChildren<RequireAuthPropsType>> = ({
     (currentUser && allUserVehiclesFetchStatus !== FetchStatus.SUCCESS)
   )
     return <div className='loading-page' />
-  if (!currentUser && isForAuthOnly)
+  if (!currentUser && isForAuthOnly && !isWithoutRedirect)
     return <Navigate to={RoutePaths.sign_in} state={{ from: location }} replace />
-  if (currentUser && !isForAuthOnly)
+  if (currentUser && !isForAuthOnly && !isWithoutRedirect)
     return <Navigate to={RoutePaths.panel} state={{ from: location }} replace />
 
+  // eslint-disable-next-line react/jsx-no-useless-fragment
   return <>{children}</>
 }

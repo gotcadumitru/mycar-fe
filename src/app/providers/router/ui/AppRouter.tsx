@@ -22,7 +22,14 @@ const AppRouter = () => {
         <Route
           key={route.path}
           path={route.path}
-          element={<RequireAuth isForAuthOnly={route.isForAuthOnly}>{route.element}</RequireAuth>}
+          element={
+            <RequireAuth
+              isWithoutRedirect={route.isWithoutRedirect}
+              isForAuthOnly={route.isForAuthOnly}
+            >
+              {route.element}
+            </RequireAuth>
+          }
         />
       ))}
     </Routes>
