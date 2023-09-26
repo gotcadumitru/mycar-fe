@@ -1,6 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import type { ThunkConfig } from 'app/providers/StoreProvider'
-import { ThunkValue } from 'app/providers/StoreProvider'
+import type { ThunkConfig, ThunkValue } from 'app/providers/StoreProvider'
 import { FetchStatus } from 'shared/api'
 import { vehicleDocumentDataService } from 'shared/api/firebase'
 import { REQUEST_MESSAGES } from 'shared/defaults/text'
@@ -15,9 +14,9 @@ export const fetchAllVehiclesDocumentsByVehicleIdThunk = createAsyncThunk<
   VehicleDocumentWithFiles[],
   string[],
   ThunkConfig<string>
->(VehicleDocumentActions.FETCH_ALL_VEHICLE_DOCUMENTS_BY_VEHICLES_IDS, async (vehiclesIds) => {
-  return vehicleDocumentDataService.getAllVehicleDocumentsByVehiclesIds(vehiclesIds)
-})
+>(VehicleDocumentActions.FETCH_ALL_VEHICLE_DOCUMENTS_BY_VEHICLES_IDS, async (vehiclesIds) =>
+  vehicleDocumentDataService.getAllVehicleDocumentsByVehiclesIds(vehiclesIds),
+)
 
 export const createNewVehicleDocumentForVehicleId = createAsyncThunk<
   VehicleDocumentWithFiles,

@@ -15,7 +15,7 @@ import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
 export const useVehicleWithDetails = (vehicleId: string) => {
   const dispatch = useAppDispatch()
   const vehicle = useAppSelector((state) =>
-    state.vehicle.allVehiclesOfCurrentUser.find((vehicle) => vehicle.uid === vehicleId),
+    state.vehicle.allVehiclesOfCurrentUser.find((v) => v.uid === vehicleId),
   )
   const vehicleTypes = useAppSelector((state) => state.vehicleType.vehicleTypes)
   const vehicleTypesOfFuel = useAppSelector((state) => state.fuel.typesOfFuel)

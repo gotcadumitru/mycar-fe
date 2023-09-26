@@ -4,12 +4,11 @@ import { FC } from 'react'
 import 'react-toastify/dist/ReactToastify.css'
 import { checkIsLokiRunning } from 'shared/config/storybook/PlayFunctionDecorator/decorateTargetForLoki'
 
-export const StyleDecorator = (StoryComponent: FC) => {
-  return (
-    <>
-      {checkIsLokiRunning() && (
-        <style>
-          {`
+export const StyleDecorator = (StoryComponent: FC) => (
+  <>
+    {checkIsLokiRunning() && (
+      <style>
+        {`
         .app,
         .auth-page,
         #carmaster-root,
@@ -18,9 +17,8 @@ export const StyleDecorator = (StoryComponent: FC) => {
             min-height: 812px;
         }
         `}
-        </style>
-      )}
-      <StoryComponent />
-    </>
-  )
-}
+      </style>
+    )}
+    <StoryComponent />
+  </>
+)

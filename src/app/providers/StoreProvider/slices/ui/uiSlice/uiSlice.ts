@@ -27,10 +27,13 @@ export const uiSlice = createSlice({
     builder.addMatcher(
       (action) => isPendingAction(action) || isRejectedAction(action) || isFullfilledAction(action),
       (state, action) => {
-        // eslint-disable-next-line prefer-const
-        if (isRejectedAction(action as any)) console.log(action)
+        if (isRejectedAction(action as any)) {
+          console.log(action)
+        }
 
-        let [actionName, status] = action.type.split('/') as [string, FetchStatus]
+        const actionName = action.type.split('/')[0] as string
+        let status = action.type.split('/')[1] as FetchStatus
+
         const type = actionName.endsWith(actionNameHelper.byIdPrefix)
           ? actionNameHelper.getActionNameWhenFetchById(actionName, action?.meta?.arg?.id)
           : actionName

@@ -11,7 +11,7 @@ type VehicleDocumentProps = {
 
 const VehicleDocumentItem: FC<VehicleDocumentProps> = ({ vehicleDocument }) => (
   <Link
-    to={RoutePaths.edit_vehicle_document + `/${vehicleDocument.uid}`}
+    to={`${RoutePaths.edit_vehicle_document}/${vehicleDocument.uid}`}
     className='vehicle-documents-list__document'
   >
     <AiOutlineInfoCircle className='vehicle-documents-list__info-icon' />

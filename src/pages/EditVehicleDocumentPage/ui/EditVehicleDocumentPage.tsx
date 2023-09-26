@@ -17,7 +17,7 @@ const EditVehicleDocumentPage = () => {
   const dispatch = useAppDispatch()
   const vehicleDocuments = useAppSelector((state) => state.vehicleDocument.vehiclesDocuments)
   const vehicleDocument = useMemo(
-    () => vehicleDocuments.find((vehicleDocument) => vehicleDocument.uid === documentId),
+    () => vehicleDocuments.find((vehicleDoc) => vehicleDoc.uid === documentId),
     [vehicleDocuments],
   )
   const { currentUser } = useAuth()

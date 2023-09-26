@@ -22,7 +22,6 @@ export const RequireAuth: FC<PropsWithChildren<RequireAuthPropsType>> = ({
   )
 
   const location = useLocation()
-  console.log(location)
   if (
     currentUserFetchStatus !== FetchStatus.SUCCESS ||
     (currentUser && allUserVehiclesFetchStatus !== FetchStatus.SUCCESS)
