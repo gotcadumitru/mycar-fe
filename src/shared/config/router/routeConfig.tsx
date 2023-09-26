@@ -193,6 +193,7 @@ export const routeConfig: Partial<Record<AppRoutes, AppRoutesProps>> = {
   },
   [AppRoutes.NOT_FOUND]: {
     isForAuthOnly: false,
+    isWithoutRedirect: true,
     path: RoutePaths.not_found,
     element: (
       <>

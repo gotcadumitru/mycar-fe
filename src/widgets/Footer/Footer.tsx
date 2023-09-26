@@ -1,10 +1,10 @@
 import classNames from 'classnames'
 import { FC } from 'react'
+import { useLocation } from 'react-router-dom'
 import BiMenuAltRight from 'shared/assets/icons/BiMenuAltRight.svg'
 import BsSpeedometer2 from 'shared/assets/icons/BsSpeedometer2.svg'
 import GiHomeGarage from 'shared/assets/icons/GiHomeGarage.svg'
 import HiOutlineBellAlert from 'shared/assets/icons/HiOutlineBellAlert.svg'
-import { useLocation } from 'react-router-dom'
 import { RoutePaths } from 'shared/config/router/RoutePaths'
 import Button, { ButtonCategoryType, ButtonTheme } from 'shared/ui/Button'
 import './footer.scss'
@@ -42,32 +42,36 @@ const Footer: FC<FooterPropsType> = () => {
       isStroke: false,
     },
   ]
+
   return (
     <footer className='footer'>
-      {icons.map(({ Icon, ...menuOption }) => (
-        <Button
-          theme={ButtonTheme.EMPTY}
-          key={menuOption.text}
-          category={ButtonCategoryType.LINK}
-          to={menuOption.route}
-        >
-          <div
-            className={classNames('footer__item', {
-              'footer__item--notification': menuOption.isNotification,
-              'footer__item--active': location.pathname.includes(menuOption.route),
-            })}
+      {icons.map(({ Icon, ...menuOption }) => {
+        const isActive = `/${location.pathname.split('/')[1] || ''}` === menuOption.route
+        return (
+          <Button
+            theme={ButtonTheme.EMPTY}
+            key={menuOption.text}
+            category={ButtonCategoryType.LINK}
+            to={menuOption.route}
           >
-            <Icon
-              className={classNames('footer__icon', {
-                'footer__icon--stroke': menuOption.isStroke,
-                'footer__icon--fill': !menuOption.isStroke,
-                'footer__icon--active': location.pathname.includes(menuOption.route),
+            <div
+              className={classNames('footer__item', {
+                'footer__item--notification': menuOption.isNotification,
+                'footer__item--active': isActive,
               })}
-            />
-            {menuOption.text}
-          </div>
-        </Button>
-      ))}
+            >
+              <Icon
+                className={classNames('footer__icon', {
+                  'footer__icon--stroke': menuOption.isStroke,
+                  'footer__icon--fill': !menuOption.isStroke,
+                  'footer__icon--active': isActive,
+                })}
+              />
+              {menuOption.text}
+            </div>
+          </Button>
+        )
+      })}
     </footer>
   )
 }

@@ -1,5 +1,6 @@
 import { useAuth } from 'app/providers/AuthContextProvider'
 import { FC, memo, useState } from 'react'
+import { BUTTON_TEXT } from 'shared/defaults/text'
 import Button, { ButtonTheme } from 'shared/ui/Button'
 import { ConfirmModal } from 'widgets/ConfirmModal'
 
@@ -22,7 +23,7 @@ const LogOutButton: FC = () => {
         isOpen={isConfirmModalShow}
       />
       <Button onClick={() => setIsConfirmModalShow(true)} theme={ButtonTheme.OUTLINE_RED}>
-        Log out
+        {BUTTON_TEXT.LOGOUT}
       </Button>
     </>
   )

@@ -12,4 +12,5 @@ export const BUTTON_TEXT = {
   REGISTER: 'Inregistrare',
   AUTH: 'Autentificare',
   RESET_PASSWORD: 'Reseteaza parola',
+  LOGOUT: 'Log out',
 }
