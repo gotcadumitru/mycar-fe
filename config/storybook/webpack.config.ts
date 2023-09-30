@@ -18,8 +18,8 @@ export default ({ config }: { config: webpack.Configuration }) => {
   config.resolve.modules.push(paths.src)
   config.resolve.extensions.push('.ts,tsx')
 
-  // @ts-ignore
-  config.module.rules = config.module.rules.filter((f) => f.test?.toString() !== '/\\.css$/')
+  // remove storybook css rules
+  config.module.rules = config.module.rules.filter((f: any) => f.test?.toString() !== '/\\.css$/')
 
   const styleLoader = buildCSSLoader(true)
   config.module.rules.push(styleLoader)
@@ -46,6 +46,7 @@ export default ({ config }: { config: webpack.Configuration }) => {
       __IS_DEV__: JSON.stringify(true),
     }),
     new webpack.NormalModuleReplacementPlugin(/src/, (resource) => {
+      // if __mocks__ folder exists, extract his content on build only
       if (!resource.createData.resource) return
 
       let pathSplit = resource.createData.resource.split('/')
