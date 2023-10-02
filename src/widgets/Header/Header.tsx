@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import AiOutlineLeft from 'shared/assets/icons/AiOutlineLeft.svg'
 import Button, { ButtonTheme } from 'shared/ui/Button'
 import './header.scss'
+import Footer from 'widgets/Footer'
 import type { HeaderPropsType } from './header.types'
 
 const Header: FC<HeaderPropsType> = ({ isWithGoBackIcon, title }) => {
@@ -14,12 +15,15 @@ const Header: FC<HeaderPropsType> = ({ isWithGoBackIcon, title }) => {
       <div className='header__left-side'>
         {isWithGoBackIcon && (
           <Button theme={ButtonTheme.EMPTY} onClick={() => navigate(-1)}>
-            <AiOutlineLeft />
+            <AiOutlineLeft className='header__back-icon' />
           </Button>
         )}
         <div className='header__title'>{title}</div>
       </div>
-      <div>{currentUser?.displayName?.split(' ')?.[0]}</div>
+      <div>
+        {currentUser?.displayName?.split(' ')?.[0]}
+        <Footer />
+      </div>
     </div>
   )
 }
