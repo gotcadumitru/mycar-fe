@@ -1,5 +1,5 @@
 import renderReactApp from './renderReactApp'
-// import * as serviceWorkerRegistration from './serviceWorkerRegistration'
+import { register } from './serviceWorkerRegistration'
 
-// serviceWorkerRegistration.register()
 renderReactApp()
+register()

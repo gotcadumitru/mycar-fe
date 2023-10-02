@@ -6,6 +6,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import * as process from 'process'
 import webpack from 'webpack'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
+import WorkboxWebpackPlugin from 'workbox-webpack-plugin'
 import { BuildOptions } from './types/config'
 
 const buildPlugins = (config: BuildOptions): webpack.WebpackPluginInstance[] => {
@@ -20,6 +21,18 @@ const buildPlugins = (config: BuildOptions): webpack.WebpackPluginInstance[] => 
     envs[key] = JSON.stringify(raw[key])
     return envs
   }, {})
+
+  const workboxPlugin = new WorkboxWebpackPlugin.InjectManifest({
+    swSrc: config.paths.swSrc,
+    swDest: 'sw.js',
+    // Bump up the default maximum size (2mb) that's precached,
+    // to make lazy-loading failure scenarios less likely.
+    // See https://github.com/cra-template/pwa/issues/13#issuecomment-722667270
+    maximumFileSizeToCacheInBytes: 20 * 1024 * 1024,
+    exclude: [() => true],
+    ...(config.isDev ? { exclude: [/./] } : undefined),
+  })
+
   const plugins: webpack.WebpackPluginInstance[] = [
     new HtmlWebpackPlugin({
       template: config.paths.html,
@@ -67,22 +80,20 @@ const buildPlugins = (config: BuildOptions): webpack.WebpackPluginInstance[] => 
 
   if (config.isDev) {
     plugins.push(new webpack.HotModuleReplacementPlugin(), new ReactRefreshPlugin())
-  } else {
-    // plugins.push(
-    //   new WorkboxWebpackPlugin.InjectManifest({
-    //     swSrc: config.paths.swSrc,
-    //     dontCacheBustURLsMatching: /\.[0-9a-f]{8}\./,
-    //     exclude: [/\.map$/, /asset-manifest\.json$/, /LICENSE/],
-    //     // Bump up the default maximum size (2mb) that's precached,
-    //     // to make lazy-loading failure scenarios less likely.
-    //     // See https://github.com/cra-template/pwa/issues/13#issuecomment-722667270
-    //     maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
-    //   }),
-    // )
+    Object.defineProperty(workboxPlugin, 'alreadyCalled', {
+      get() {
+        return false
+      },
+      set() {
+        // do nothing; the internals try to set it to true, which then results in a warning
+        // on the next run of webpack.
+      },
+    })
   }
   if (config.isAnalyzerEnabled) {
     plugins.push(new BundleAnalyzerPlugin() as any)
   }
+  plugins.push(workboxPlugin)
 
   return plugins
 }
