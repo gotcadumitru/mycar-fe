@@ -32,5 +32,19 @@
       "type": "image/png",
       "purpose": "maskable"
     }
+  ],
+  "id": "car-master-id",
+  "dir": "ltr",
+  "lang": "ro",
+  "orientation": "portrait",
+  "display_override": [
+    "standalone",
+    "window-controls-overlay"
+  ],
+  "prefer_related_applications": false,
+  "categories": [
+    "productivity",
+    "social",
+    "utilities"
   ]
 }

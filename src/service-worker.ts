@@ -16,8 +16,7 @@ declare const self: ServiceWorkerGlobalScope
 
 clientsClaim()
 
-const toPrecache = self.__WB_MANIFEST.filter((file: any) => false)
-precacheAndRoute(toPrecache, {})
+precacheAndRoute(self.__WB_MANIFEST)
 
 const CACHE = 'pwabuilder-page'
 
