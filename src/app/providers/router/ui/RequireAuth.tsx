@@ -1,6 +1,7 @@
 import { useAuth } from 'app/providers/AuthContextProvider'
 import { selectRequestStatus } from 'app/providers/StoreProvider/slices/ui'
 import { VehicleActions } from 'enteties/vehicle'
+import { PanelPageSkeleton } from 'pages/PanelPage'
 import { FC, PropsWithChildren } from 'react'
 import { Navigate, useLocation } from 'react-router-dom'
 import { FetchStatus } from 'shared/api'
@@ -26,7 +27,7 @@ export const RequireAuth: FC<PropsWithChildren<RequireAuthPropsType>> = ({
     currentUserFetchStatus !== FetchStatus.SUCCESS ||
     (currentUser && allUserVehiclesFetchStatus !== FetchStatus.SUCCESS)
   )
-    return <div className='loading-page' />
+    return <PanelPageSkeleton />
   if (!currentUser && isForAuthOnly && !isWithoutRedirect)
     return <Navigate to={RoutePaths.sign_in} state={{ from: location }} replace />
   if (currentUser && !isForAuthOnly && !isWithoutRedirect)

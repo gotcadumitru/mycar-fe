@@ -13,9 +13,7 @@
 
 const registerValidSW = async () => {
   try {
-    const registration = await navigator.serviceWorker.register(
-      'https://www.carmaster.guru/service-worker.js',
-    )
+    const registration = await navigator.serviceWorker.register('sw.js')
     registration.onupdatefound = () => {
       const installingWorker = registration.installing
       if (installingWorker == null) {
