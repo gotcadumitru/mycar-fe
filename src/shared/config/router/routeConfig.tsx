@@ -18,7 +18,6 @@ import VehiclePage, { VehiclePageSkeleton } from 'pages/VehiclePage'
 import { Suspense } from 'react'
 import { Navigate } from 'react-router-dom'
 import type { AppRoutesProps } from 'shared/types/router'
-import Footer from 'widgets/Footer'
 import Header from 'widgets/Header'
 import { AppRoutes, RoutePaths } from './RoutePaths'
 
@@ -39,7 +38,6 @@ export const routeConfig: Partial<Record<AppRoutes, AppRoutesProps>> = {
             <PanelPage />
           </Suspense>
         </Layout>
-        <Footer />
       </>
     ),
   },
@@ -48,12 +46,13 @@ export const routeConfig: Partial<Record<AppRoutes, AppRoutesProps>> = {
     path: RoutePaths.garage,
     element: (
       <>
+        <Header isWithGoBackIcon />
+
         <Layout>
           <Suspense fallback={<GaragePageSkeleton />}>
             <GaragePage />
           </Suspense>
         </Layout>
-        <Footer />
       </>
     ),
   },
@@ -68,7 +67,6 @@ export const routeConfig: Partial<Record<AppRoutes, AppRoutesProps>> = {
             <MenuPage />
           </Suspense>
         </Layout>
-        <Footer />
       </>
     ),
   },
@@ -81,7 +79,6 @@ export const routeConfig: Partial<Record<AppRoutes, AppRoutesProps>> = {
         <Layout>
           <NotFoundPage />
         </Layout>
-        <Footer />
       </>
     ),
   },
@@ -201,7 +198,6 @@ export const routeConfig: Partial<Record<AppRoutes, AppRoutesProps>> = {
         <Layout>
           <NotFoundPage />
         </Layout>
-        <Footer />
       </>
     ),
   },

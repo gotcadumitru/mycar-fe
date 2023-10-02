@@ -21,6 +21,7 @@
   --red-3: #b00402;
   --green: #2e844a;
   --black: #000000d9;
+  --header-height: calc(50px + env(safe-area-inset-top));
 
   // font
   --poppins: 'Poppins', 'sans-serif';
