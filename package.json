@@ -55,7 +55,7 @@
     "test:ui": "npx loki test",
     "test:ui:ok": "npx loki approve",
     "test:ui:ci": "npx loki --requireReference --reactUri file:\"./storybook-static\"",
-    "test:ui:report": "npm run test:ui:json && npm run test:ui:html && open \".loki/report.html\"",
+    "test:ui:report": "npm run test:ui:json && npm run test:ui:html",
     "test:ui:json": "node scripts/generate-visual-json-report.ts",
     "test:ui:html": "reg-cli --from .loki/report.json --report .loki/report.html",
     "lint:ts": "eslint \"src/**/*.{js,jsx,ts,tsx,json}\"",
