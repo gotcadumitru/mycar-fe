@@ -29,27 +29,38 @@ jobs:
 
       - name: install yarn
         run: npm install -g yarn
+        if: always()
 
       - name: yarn install
         run: yarn install
+        if: always()
 
       - name: build storybook
         run: yarn storybook:build
+        if: always()
+
+      - name: test ui
+        run: yarn test:ui:ci
+        if: always()
+
+      - name: Generate HTML report
+        run: npm run test:ui:report
 
       - name: Setup Pages
         uses: actions/configure-pages@v3
 
+      - name: Create pages Folder
+        run: mv storybook-static pages/storybook && mv .loki pages/loki
+        if: always()
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: "./storybook-static"
+          path: "./pages"
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
-
-      - name: test ui
-        run: yarn test:ui:ci
 
       - name: yarn build:prod
         run: yarn build:prod
