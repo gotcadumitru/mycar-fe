@@ -4,10 +4,9 @@ import { initializeAppCheck, ReCaptchaV3Provider } from 'firebase/app-check'
 import { getAuth } from 'firebase/auth'
 import { getFirestore } from 'firebase/firestore'
 import { getStorage } from 'firebase/storage'
-import { firebaseConfig } from './firebaseConsts'
 
 // Initialize Firebase
-export const firebaseApp = initializeApp(firebaseConfig)
+export const firebaseApp = initializeApp(JSON.parse(process.env.FIREBASE_CONFIG!))
 export const firebaseAnalytics = getAnalytics(firebaseApp)
 
 // Initialize Firebase Authentication and get a reference to the service
