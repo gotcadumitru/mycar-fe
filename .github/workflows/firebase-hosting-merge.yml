@@ -18,8 +18,7 @@ jobs:
     strategy:
       matrix:
         node-version: [ 16.x ]
-    with:
-      FIREBASE_CONFIG: '${{ secrets.FIREBASE_CONFIG }}'
+
     steps:
       - uses: actions/checkout@v3
 
@@ -38,6 +37,8 @@ jobs:
 
       - name: build storybook
         run: yarn storybook:build
+        with:
+          FIREBASE_CONFIG: '${{ secrets.FIREBASE_CONFIG }}'
         if: always()
 
       - name: test ui
@@ -69,6 +70,8 @@ jobs:
 
       - name: yarn build:prod
         run: yarn build:prod
+        with:
+          FIREBASE_CONFIG: '${{ secrets.FIREBASE_CONFIG }}'
         if: always()
 
       - uses: FirebaseExtended/action-hosting-deploy@v0
