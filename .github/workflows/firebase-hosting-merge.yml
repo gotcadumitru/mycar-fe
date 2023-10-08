@@ -37,7 +37,7 @@ jobs:
 
       - name: build storybook
         run: yarn storybook:build
-        with:
+        env:
           FIREBASE_CONFIG: '${{ secrets.FIREBASE_CONFIG }}'
         if: always()
 
@@ -70,7 +70,7 @@ jobs:
 
       - name: yarn build:prod
         run: yarn build:prod
-        with:
+        env:
           FIREBASE_CONFIG: '${{ secrets.FIREBASE_CONFIG }}'
         if: always()
 
