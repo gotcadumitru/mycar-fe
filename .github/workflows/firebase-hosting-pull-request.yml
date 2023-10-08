@@ -3,12 +3,16 @@
 
 name: Deploy to Firebase Hosting on PR
 'on': pull_request
+
 jobs:
-  permissions:
-    id-token: write
   build_and_preview:
     if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
     steps:
       - uses: actions/checkout@v3
 
