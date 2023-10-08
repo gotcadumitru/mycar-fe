@@ -3,25 +3,13 @@ import CopyPlugin from 'copy-webpack-plugin'
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-import * as process from 'process'
 import webpack from 'webpack'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import WorkboxWebpackPlugin from 'workbox-webpack-plugin'
+import { getEnv } from './getEnv'
 import { BuildOptions } from './types/config'
 
 const buildPlugins = (config: BuildOptions): webpack.WebpackPluginInstance[] => {
-  const raw = Object.keys(process.env).reduce((env, key) => {
-    // @ts-ignore
-    env[key] = process.env[key]
-    return env
-  }, {})
-
-  const env = Object.keys(raw).reduce((envs, key) => {
-    // @ts-ignore
-    envs[key] = JSON.stringify(raw[key])
-    return envs
-  }, {})
-
   const workboxPlugin = new WorkboxWebpackPlugin.InjectManifest({
     swSrc: config.paths.swSrc,
     swDest: 'sw.js',
@@ -45,7 +33,7 @@ const buildPlugins = (config: BuildOptions): webpack.WebpackPluginInstance[] => 
     }),
     new webpack.DefinePlugin({
       __IS_DEV__: JSON.stringify(config.isDev),
-      'process.env': env,
+      'process.env': getEnv(),
     }),
     new ForkTsCheckerWebpackPlugin({
       typescript: {

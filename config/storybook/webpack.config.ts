@@ -1,9 +1,14 @@
+import { config } from 'dotenv'
 import fs from 'fs'
-import path from 'path'
+import path, { resolve } from 'path'
 import webpack, { DefinePlugin, RuleSetRule } from 'webpack'
+import { getEnv } from '../build/getEnv'
 import { buildCSSLoader } from '../build/loaders/buildCSSLoader'
 import { BuildPaths } from '../build/types/config'
 
+config({
+  path: resolve(__dirname, '..', '..', '.env.dev'),
+})
 export default ({ config }: { config: webpack.Configuration }) => {
   const paths: BuildPaths = {
     src: path.resolve(__dirname, '..', '..', 'src'),
@@ -44,6 +49,7 @@ export default ({ config }: { config: webpack.Configuration }) => {
   config!.plugins!.push(
     new DefinePlugin({
       __IS_DEV__: JSON.stringify(true),
+      'process.env': getEnv(),
     }),
     new webpack.NormalModuleReplacementPlugin(/src/, (resource) => {
       // if __mocks__ folder exists, extract his content on build only
