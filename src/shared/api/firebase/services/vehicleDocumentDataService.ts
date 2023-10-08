@@ -22,6 +22,7 @@ class VehicleDocumentDataService extends DataServiceWithFiles<
   getAllVehicleDocumentsByVehiclesIds = async (
     vehicleIds: string[],
   ): Promise<VehicleDocumentWithFiles[]> => {
+    if (!vehicleIds.length) return []
     const allVehicleDocumentsByFieldPath = await this.getAllByFieldPath(
       'vehicleId',
       'in',

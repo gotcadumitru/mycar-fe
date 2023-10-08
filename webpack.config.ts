@@ -5,7 +5,7 @@ import buildWebpackConfig from './config/build/buildWebpackConfig'
 import { BuildEnv, BuildMode, BuildPaths } from './config/build/types/config'
 
 config({
-  path: resolve(__dirname, '.env.development.local'),
+  path: resolve(__dirname, `.env.${process.env.ENV}`),
 })
 const paths: BuildPaths = {
   entry: resolve(__dirname, 'src', 'index.tsx'),
