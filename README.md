@@ -1,5 +1,11 @@
 # CarMaster
 
+### [Storybook README](./config/storybook/STORYBOOK.md)
+[Storybook components](https://gotcadumitru.github.io/mycar-fe/storybook)
+
+### [Loki README](./.loki/LOKI.md)
+[Loki report](https://gotcadumitru.github.io/mycar-fe/loki/report.html)
+
 ## Tech Stack
 
 - [React](https://reactjs.org/) - A JavaScript library for building user interfaces
@@ -60,11 +66,6 @@
 
 ### [Jest README](./config/jest/JEST.md)
 
-### [Storybook README](./config/storybook/STORYBOOK.md)
-[Storybook components](https://gotcadumitru.github.io/mycar-fe/storybook)
-
-### [Loki README](./.loki/LOKI.md)
-[Loki report](https://gotcadumitru.github.io/mycar-fe/loki/report.html)
 
 ## Feature-Sliced Design Architecture
 
@@ -154,7 +155,7 @@ Inside this layer the following layers can be used: **shared**,
 
 ## Screenshots
 
-![App Screenshot](.loki/reference.png)
+![App Screenshot](.loki/reference/chrome_iphonex_pages_PanelPage_PRIMARY.PNG)
 
 ## Documentation
 
