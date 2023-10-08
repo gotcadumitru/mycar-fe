@@ -34,13 +34,9 @@ navigationPreload.enable()
 
 self.addEventListener('fetch', (event) =>
   event.respondWith(
-    caches.match(event.request).then((response) => {
-      return (
+    caches.match(event.request).then((response) => (
         response ||
-        fetch(event.request).catch(() => {
-          return caches.match(offlineFallbackPage)
-        })
-      )
-    }),
+        fetch(event.request).catch(() => caches.match(offlineFallbackPage))
+      )),
   ),
 )
