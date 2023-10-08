@@ -155,7 +155,7 @@ Inside this layer the following layers can be used: **shared**,
 
 ## Screenshots
 
-![App Screenshot](./.loki/reference/chrome_iphonex_pages_PanelPage_PRIMARY.PNG)
+![App Screenshot](./.loki/reference/chrome_iphonex_pages_PanelPage_PRIMARY.png)
 
 ## Documentation
 
