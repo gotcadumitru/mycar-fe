@@ -28,6 +28,7 @@ export const uiSlice = createSlice({
       (action) => isPendingAction(action) || isRejectedAction(action) || isFullfilledAction(action),
       (state, action) => {
         if (isRejectedAction(action as any)) {
+          // eslint-disable-next-line no-console
           console.log(action)
         }
 
