@@ -41,12 +41,15 @@ jobs:
 
       - name: test ui
         run: yarn test:ui:ci
+        if: always()
 
       - name: Generate HTML report
         run: npm run test:ui:report
+        if: always()
 
       - name: Setup Pages
         uses: actions/configure-pages@v3
+        if: always()
 
       - name: Create pages Folder
         run: mkdir pages && mv ./storybook-static pages/storybook && mv .loki pages/loki
@@ -56,13 +59,16 @@ jobs:
         uses: actions/upload-pages-artifact@v2
         with:
           path: "./pages"
+        if: always()
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
+        if: always()
 
       - name: yarn build:prod
         run: yarn build:prod
+        if: always()
 
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
@@ -70,5 +76,5 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_CAR_MASTER_A976D }}'
           channelId: live
           projectId: car-master-a976d
-
+        if: always()
 
