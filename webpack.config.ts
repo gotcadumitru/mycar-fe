@@ -7,6 +7,7 @@ import { BuildEnv, BuildMode, BuildPaths } from './config/build/types/config'
 config({
   path: resolve(__dirname, `.env.${process.env.ENV}`),
 })
+
 const paths: BuildPaths = {
   entry: resolve(__dirname, 'src', 'index.tsx'),
   html: resolve(__dirname, 'public', 'index.html'),
