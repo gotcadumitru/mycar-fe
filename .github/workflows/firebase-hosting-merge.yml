@@ -18,7 +18,7 @@ jobs:
     strategy:
       matrix:
         node-version: [ 16.x ]
-    env: # Or as an environment variable
+    with:
       FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
     steps:
       - uses: actions/checkout@v3
