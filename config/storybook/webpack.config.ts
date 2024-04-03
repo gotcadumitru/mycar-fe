@@ -47,22 +47,22 @@ export default ({ config }: { config: webpack.Configuration }) => {
   config.module.rules.push(svgLoader)
 
   config!.plugins!.push(
-    new DefinePlugin({
-      __IS_DEV__: JSON.stringify(true),
-      'process.env': getEnv(),
-    }),
-    new webpack.NormalModuleReplacementPlugin(/src/, (resource) => {
-      // if __mocks__ folder exists, extract his content on build only
-      if (!resource.createData.resource) return
+      new DefinePlugin({
+        __IS_DEV__: JSON.stringify(true),
+        'process.env': getEnv(),
+      }),
+      new webpack.NormalModuleReplacementPlugin(/src/, (resource) => {
+        // if __mocks__ folder exists, extract his content on build only
+        if (!resource.createData.resource) return
 
-      let pathSplit = resource.createData.resource.split('/')
-      pathSplit.splice(pathSplit.length - 1, 0, '__mocks__')
-      pathSplit = pathSplit.join('/')
-      if (!fs.existsSync(pathSplit)) return
+        let pathSplit = resource.createData.resource.split('/')
+        pathSplit.splice(pathSplit.length - 1, 0, '__mocks__')
+        pathSplit = pathSplit.join('/')
+        if (!fs.existsSync(pathSplit)) return
 
-      resource.request = pathSplit
-      resource.createData.resource = pathSplit
-    }),
+        resource.request = pathSplit
+        resource.createData.resource = pathSplit
+      }),
   )
 
   return config

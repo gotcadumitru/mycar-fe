@@ -1,6 +1,6 @@
 import type { VehicleWithFiles } from 'enteties/vehicle'
 import { useVehicleWithDetails } from 'enteties/vehicle'
-import { FC, memo } from 'react'
+import { FC, memo, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import AiOutlineRight from 'shared/assets/icons/AiOutlineRight.svg'
 import { RoutePaths } from 'shared/config/router/RoutePaths'
@@ -13,9 +13,11 @@ type GarageVehicleCardPropsType = {
 }
 const GarageVehicleCard: FC<GarageVehicleCardPropsType> = ({ vehicle }) => {
   const vehicleDetails = useVehicleWithDetails(vehicle.uid)
-  const vehicleFile = vehicle.files.find(
-    (file) => MIME_TYPE_TO_FILE_TYPE[file.mimetype] === FILE_TYPE.IMG,
+  const vehicleFile = useMemo(
+    () => vehicle.files.find((file) => MIME_TYPE_TO_FILE_TYPE[file.mimetype] === FILE_TYPE.IMG),
+    [vehicle.files],
   )
+
   return (
     <Link
       to={`${RoutePaths.vehicle}/${vehicle.uid}`}
