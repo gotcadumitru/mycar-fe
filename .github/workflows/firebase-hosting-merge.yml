@@ -55,13 +55,13 @@ jobs:
 
       - name: Create pages Folder
         run: mkdir pages && mv ./storybook-static pages/storybook && mv .loki pages/loki
-        if: always()
+#        if: always()
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
           path: "./pages"
-        if: always()
+#        if: always()
 
       - name: Deploy to GitHub Pages
         id: deployment
@@ -79,6 +79,7 @@ jobs:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_CAR_MASTER_A976D }}'
           channelId: live
+          firebaseToolsVersion: "12.9.1"
           projectId: car-master-a976d
         if: always()
 
