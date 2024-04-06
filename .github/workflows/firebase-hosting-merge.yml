@@ -54,7 +54,7 @@ jobs:
         if: always()
 
       - name: Create pages Folder
-        run: mkdir pages && mv ./storybook-static pages/storybook && mv .loki pages/loki
+        run: mv ./storybook-static pages/storybook && mv .loki pages/loki
 #        if: always()
 
       - name: Upload artifact
