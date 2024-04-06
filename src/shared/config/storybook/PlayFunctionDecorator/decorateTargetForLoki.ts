@@ -25,7 +25,25 @@ export const checkIsLokiRunning = (win: any = window) => Boolean(win.loki?.isRun
 const waitForDocumentLoaded = (): Promise<void> => {
   if (document.readyState === 'loading') {
     return new Promise((resolve) => {
-      document.addEventListener('DOMContentLoaded', () => resolve())
+      document.addEventListener('DOMContentLoaded', async () => {
+        const allImages = Array.from(document.images)
+        await Promise.all(
+          allImages
+            .filter((img) => !img.complete)
+            .map(
+              (img) =>
+                new Promise((r) => {
+                  img.onload = r
+                  img.onerror = r
+                }),
+            ),
+        )
+        if (allImages.length) {
+          setTimeout(resolve, 1000)
+        } else {
+          resolve()
+        }
+      })
     })
   }
 

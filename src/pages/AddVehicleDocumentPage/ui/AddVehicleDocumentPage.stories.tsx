@@ -43,6 +43,7 @@ export const COMPLETED: Story = {
       },
     }),
   ],
+  play: decoratePlayFunctionForLoki(async () => {}),
 }
 
 export const WITH_ERRORS: Story = {
