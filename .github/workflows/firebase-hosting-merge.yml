@@ -55,13 +55,11 @@ jobs:
 
       - name: Create pages Folder
         run: mv ./storybook-static pages/storybook && mv .loki pages/loki
-#        if: always()
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
           path: "./pages"
-#        if: always()
 
       - name: Deploy to GitHub Pages
         id: deployment
