@@ -74,7 +74,9 @@ const VehicleDocumentEditForm: FC<EditCarFormProps> = ({ formId, vehicleId, onSu
       return dispatch(vehicleDocumentEditActions.changeVehicleDocumentDataAC(formFieldsWithErrors))
     onSubmit()
   }
+
   if (!vehicleId) return <Navigate to={RoutePaths.garage} />
+
   return (
     <Form id={formId} onSubmit={onSubmitLocal} className='vehicle-document-edit'>
       <UserVehicleSelect
