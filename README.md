@@ -1,9 +1,11 @@
 # CarMaster
 
 ### [Storybook README](./config/storybook/STORYBOOK.md)
+
 [Storybook components](https://gotcadumitru.github.io/mycar-fe/storybook)
 
 ### [Loki README](./.loki/LOKI.md)
+
 [Loki report](https://gotcadumitru.github.io/mycar-fe/loki/report.html)
 
 ## Tech Stack
@@ -65,7 +67,6 @@
 ## Running Tests
 
 ### [Jest README](./config/jest/JEST.md)
-
 
 ## Feature-Sliced Design Architecture
 
@@ -150,8 +151,25 @@ Inside this layer the following layers can be used: **shared**,
 
 ## Color Reference
 
-| Color | Hex |
-|-------|-----|
+| Color                | Hex                                                                   |
+|----------------------|-----------------------------------------------------------------------|
+| --white              | ![##fff   ](https://via.placeholder.com/10/ffffff?text=+) `#fff   `   |
+| --grey-1             | ![##999   ](https://via.placeholder.com/10/999999?text=+) `#999   `   |
+| --grey-2             | ![##f4f2f2](https://via.placeholder.com/10/f4f2f2?text=+) `#f4f2f2`   |
+| --grey-3             | ![##a1a1a1](https://via.placeholder.com/10/a1a1a1?text=+) `#a1a1a1`   |
+| --grey-4             | ![##ccc   ](https://via.placeholder.com/10/cccccc?text=+) `#ccc   `   |
+| --grey-5             | ![##e6e6e6](https://via.placeholder.com/10/e6e6e6?text=+) `#e6e6e6`   |
+| --grey-6             | ![##aeafb4](https://via.placeholder.com/10/aeafb4?text=+) `#aeafb4`   |
+| --blue-1             | ![##1ea2b1](https://via.placeholder.com/10/1ea2b1?text=+) `#1ea2b1`   |
+| --blue-2             | ![##4267b2](https://via.placeholder.com/10/4267b2?text=+) `#4267b2`   |
+| --blue-3             | ![##dcdde3](https://via.placeholder.com/10/dcdde3?text=+) `#dcdde3`   |
+| --input-border       | ![##8f9192](https://via.placeholder.com/10/8f9192?text=+) `#8f9192`   |
+| --input-border-hover | ![##39393a](https://via.placeholder.com/10/39393a?text=+) `#39393a`   |
+| --red-1              | ![##ea1b0a](https://via.placeholder.com/10/ea1b0a?text=+) `#ea1b0a`   |
+| --red-2              | ![##d51607](https://via.placeholder.com/10/d51607?text=+) `#d51607`   |
+| --red-3              | ![##b00402](https://via.placeholder.com/10/b00402?text=+) `#b00402`   |
+| --green              | ![##2e844a](https://via.placeholder.com/10/2e844a?text=+) `#2e844a`   |
+| --black              | ![##000000](https://via.placeholder.com/10/000000d9?text=+) `#000000` |
 
 ## Screenshots
 
