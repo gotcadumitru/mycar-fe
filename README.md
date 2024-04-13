@@ -64,6 +64,12 @@
     yarn start
     ```
 
+## Production build
+
+```bash
+yarn build:prod
+```
+
 ## Running Tests
 
 ### [Jest README](./config/jest/JEST.md)
