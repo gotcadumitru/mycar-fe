@@ -47,7 +47,6 @@ export const routeConfig: Partial<Record<AppRoutes, AppRoutesProps>> = {
     element: (
       <>
         <Header isWithGoBackIcon />
-
         <Layout>
           <Suspense fallback={<GaragePageSkeleton />}>
             <GaragePage />

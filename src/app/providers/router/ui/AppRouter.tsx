@@ -11,10 +11,7 @@ const AppRouter = () => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    if (currentUser) {
-      // init app
-      dispatch(fetchAllVehiclesByUserId(currentUser.uid))
-    }
+    if (currentUser) dispatch(fetchAllVehiclesByUserId(currentUser.uid))
   }, [currentUser])
   return (
     <Routes>

@@ -34,7 +34,6 @@ const GarageVehicleCard: FC<GarageVehicleCardPropsType> = ({ vehicle }) => {
           />
         </div>
       </div>
-
       <AiOutlineRight />
     </Link>
   )
