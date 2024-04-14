@@ -95,6 +95,12 @@ yarn lint:ts:fix
 yarn lint:scss
 ```
 
+#### Fix
+```bash
+yarn lint:scss:fix
+```
+
+
 ## Running Tests
 
 ### [Jest README](./config/jest/JEST.md)
