@@ -70,6 +70,13 @@
 yarn build:prod
 ```
 
+## Format code
+
+```bash
+yarn format
+```
+
+
 ## Running Tests
 
 ### [Jest README](./config/jest/JEST.md)
