@@ -79,15 +79,21 @@ yarn format
 ## Linting
 
 ### Typescript
+#### Check
 ```bash
 yarn lint:ts
 ```
 
-### Typescript fix
+#### Fix
 ```bash
 yarn lint:ts:fix
 ```
 
+### Styles scss
+#### Check
+```bash
+yarn lint:scss
+```
 
 ## Running Tests
 
