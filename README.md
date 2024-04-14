@@ -76,6 +76,13 @@ yarn build:prod
 yarn format
 ```
 
+## Linting
+
+### Typescript
+```bash
+yarn lint:ts
+```
+
 
 ## Running Tests
 
