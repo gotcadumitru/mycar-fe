@@ -83,6 +83,11 @@ yarn format
 yarn lint:ts
 ```
 
+### Typescript fix
+```bash
+yarn lint:ts:fix
+```
+
 
 ## Running Tests
 
