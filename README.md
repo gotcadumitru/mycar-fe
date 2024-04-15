@@ -33,7 +33,7 @@
 
 **To run the project you need the following tools:**
 
-- **NodeJs** version 16+
+- **NodeJs** version 16
 - You must have **yarn** installed ( development is done using yarn, not npm )
 - **Docker** ( to run **Loki** )
 
