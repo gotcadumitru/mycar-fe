@@ -48,14 +48,13 @@ export const useAuth = () => useContext(AuthContext)
 const AuthContextProvider: FC<PropsWithChildren> = ({ children }) => {
   const [currentUser, setCurrentUser] = useState<User | null>(null)
   const [currentUserFetchStatus, setCurrentUserFetchStatus] = useState(FetchStatus.IN_PROGRESS)
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(firebaseAuth, (user) => {
       setCurrentUser(user)
       setCurrentUserFetchStatus(FetchStatus.SUCCESS)
     })
-    return () => {
-      unsubscribe()
-    }
+    return unsubscribe
   }, [])
 
   const updateUserDetails = async (user: User, updatedFields: UserFieldAvailableToUpdate) => {
