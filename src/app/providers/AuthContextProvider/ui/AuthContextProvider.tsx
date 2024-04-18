@@ -37,6 +37,7 @@ type AuthContextType = {
   forgotPassword: (email: string) => Promise<void>
   resetPassword: (oobCode: string, newPassword: string) => Promise<void>
 }
+
 const AuthContext = createContext<AuthContextType>({} as AuthContextType)
 
 type UserFieldAvailableToUpdate = {
