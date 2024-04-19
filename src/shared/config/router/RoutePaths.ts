@@ -33,3 +33,7 @@ export const RoutePaths: Record<AppRoutes, string> = {
   [AppRoutes.RESET_PASSWORD]: '/reset-password',
   [AppRoutes.NOT_FOUND]: '*',
 }
+
+export const RoutePathsFn: {
+  getRoot: () => '/'
+}
