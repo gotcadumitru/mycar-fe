@@ -34,6 +34,7 @@ export const RoutePaths: Record<AppRoutes, string> = {
   [AppRoutes.NOT_FOUND]: '*',
 }
 
-export const RoutePathsFn: {
-  getRoot: () => '/'
+export const RoutePathsFn = {
+  getRoot: () => '/',
+  getEditVehicle: (vehicleId: string) => `${RoutePaths.vehicle}/${vehicleId}`,
 }
