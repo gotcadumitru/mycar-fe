@@ -37,4 +37,5 @@ export const RoutePaths: Record<AppRoutes, string> = {
 export const RoutePathsFn = {
   getRoot: () => '/',
   getEditVehicle: (vehicleId: string) => `${RoutePaths.vehicle}/${vehicleId}`,
+  getSignIn: () => '/sign-in',
 }
