@@ -40,4 +40,5 @@ export const RoutePathsFn = {
   getSignIn: () => '/sign-in',
   getSignUp: () => '/sign-up',
   getResetPassword: () => '/reset-password',
+  getForgotPassword: () => '/forgot-password',
 }
