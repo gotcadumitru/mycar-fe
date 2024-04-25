@@ -38,8 +38,9 @@ export const RoutePathsFn = {
   getRoot: () => '/',
   getNewVehicle: () => '/new-vehicle',
   getEditVehicle: (vehicleId: string) => `${RoutePaths.vehicle}/${vehicleId}`,
-  getSignIn: () => '/sign-in',
-  getSignUp: () => '/sign-up',
+  getEditVehicleDocument: (vehicleId: string) => `${RoutePaths.edit_vehicle_document}/${vehicleId}`,
+  getSignIn: () => RoutePaths.sign_in,
+  getSignUp: () => RoutePaths.sign_up,
   getResetPassword: () => '/reset-password',
   getForgotPassword: () => '/forgot-password',
 }
