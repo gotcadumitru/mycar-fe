@@ -38,6 +38,7 @@ export const RoutePathsFn = {
   getRoot: () => RoutePaths.root,
   getPanel: () => RoutePaths.panel,
   getVehicle: (vehicleId: string) => `${RoutePaths.vehicle}/${vehicleId}`,
+  getMenu: () => RoutePaths.menu,
   getAlerts: () => RoutePaths.alerts,
   getNewVehicle: () => RoutePaths.new_vehicle,
   getEditVehicle: (vehicleId: string) => `${RoutePaths.edit_vehicle}/${vehicleId}`,
