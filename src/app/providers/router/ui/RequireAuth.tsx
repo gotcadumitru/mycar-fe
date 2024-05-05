@@ -5,7 +5,7 @@ import { PanelPageSkeleton } from 'pages/PanelPage'
 import { FC, PropsWithChildren } from 'react'
 import { Navigate, useLocation } from 'react-router-dom'
 import { FetchStatus } from 'shared/api'
-import { RoutePaths } from 'shared/config/router/RoutePaths'
+import {RoutePaths, RoutePathsFn} from 'shared/config/router/RoutePaths'
 import { useAppSelector } from 'shared/lib/hooks/reduxHooks'
 
 type RequireAuthPropsType = {
@@ -31,7 +31,7 @@ export const RequireAuth: FC<PropsWithChildren<RequireAuthPropsType>> = ({
   if (!currentUser && isForAuthOnly && !isWithoutRedirect)
     return <Navigate to={RoutePaths.sign_in} state={{ from: location }} replace />
   if (currentUser && !isForAuthOnly && !isWithoutRedirect)
-    return <Navigate to={RoutePaths.panel} state={{ from: location }} replace />
+    return <Navigate to={RoutePathsFn.getPanel()} state={{ from: location }} replace />
 
   // eslint-disable-next-line react/jsx-no-useless-fragment
   return <>{children}</>

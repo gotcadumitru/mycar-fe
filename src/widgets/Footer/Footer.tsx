@@ -5,7 +5,7 @@ import BiMenuAltRight from 'shared/assets/icons/BiMenuAltRight.svg'
 import BsSpeedometer2 from 'shared/assets/icons/BsSpeedometer2.svg'
 import GiHomeGarage from 'shared/assets/icons/GiHomeGarage.svg'
 import HiOutlineBellAlert from 'shared/assets/icons/HiOutlineBellAlert.svg'
-import { RoutePaths } from 'shared/config/router/RoutePaths'
+import {RoutePaths, RoutePathsFn} from 'shared/config/router/RoutePaths'
 import useOnClickOutside from 'shared/lib/hooks/useOnClickOutside'
 import Button, { ButtonCategoryType, ButtonTheme } from 'shared/ui/Button'
 import './footer.scss'
@@ -19,7 +19,7 @@ const Footer: FC<FooterPropsType> = () => {
   const icons = [
     {
       Icon: BsSpeedometer2,
-      route: RoutePaths.panel,
+      route: RoutePathsFn.getPanel(),
       isNotification: false,
       text: 'Panou',
       isStroke: false,

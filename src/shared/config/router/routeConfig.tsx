@@ -25,7 +25,7 @@ export const routeConfig: Partial<Record<AppRoutes, AppRoutesProps>> = {
   [AppRoutes.ROOT]: {
     isForAuthOnly: true,
     path: RoutePathsFn.getRoot(),
-    element: <Navigate to={RoutePaths.panel} />,
+    element: <Navigate to={RoutePathsFn.getPanel()} />,
   },
   [AppRoutes.PANEL]: {
     isForAuthOnly: true,
