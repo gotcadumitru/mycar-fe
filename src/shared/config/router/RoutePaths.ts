@@ -46,6 +46,6 @@ export const RoutePathsFn = {
   getEditVehicleDocument: (vehicleId: string) => `${RoutePaths.edit_vehicle_document}/${vehicleId}`,
   getSignIn: () => RoutePaths.sign_in,
   getSignUp: () => RoutePaths.sign_up,
-  getResetPassword: () => RoutePaths.reset_password,
   getForgotPassword: () => RoutePaths.forgot_password,
+  getResetPassword: () => RoutePaths.reset_password,
 }

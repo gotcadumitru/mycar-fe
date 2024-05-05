@@ -19,12 +19,12 @@ import { Suspense } from 'react'
 import { Navigate } from 'react-router-dom'
 import type { AppRoutesProps } from 'shared/types/router'
 import Header from 'widgets/Header'
-import { AppRoutes, RoutePaths } from './RoutePaths'
+import {AppRoutes, RoutePaths, RoutePathsFn} from './RoutePaths'
 
 export const routeConfig: Partial<Record<AppRoutes, AppRoutesProps>> = {
   [AppRoutes.ROOT]: {
     isForAuthOnly: true,
-    path: RoutePaths.root,
+    path: RoutePathsFn.getRoot(),
     element: <Navigate to={RoutePaths.panel} />,
   },
   [AppRoutes.PANEL]: {
