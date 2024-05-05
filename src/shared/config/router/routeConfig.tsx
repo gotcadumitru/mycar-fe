@@ -29,7 +29,7 @@ export const routeConfig: Partial<Record<AppRoutes, AppRoutesProps>> = {
   },
   [AppRoutes.PANEL]: {
     isForAuthOnly: true,
-    path: RoutePaths.panel,
+    path: RoutePathsFn.getPanel(),
     element: (
       <>
         <Header />
