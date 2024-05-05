@@ -42,6 +42,7 @@ export const RoutePathsFn = {
   getAlerts: () => RoutePaths.alerts,
   getNewVehicle: () => RoutePaths.new_vehicle,
   getEditVehicle: (vehicleId: string) => `${RoutePaths.edit_vehicle}/${vehicleId}`,
+  getNewVehicleDocument: (vehicleId: string) => `${RoutePaths.new_vehicle_document}/${vehicleId}`,
   getEditVehicleDocument: (vehicleId: string) => `${RoutePaths.edit_vehicle_document}/${vehicleId}`,
   getSignIn: () => RoutePaths.sign_in,
   getSignUp: () => RoutePaths.sign_up,
