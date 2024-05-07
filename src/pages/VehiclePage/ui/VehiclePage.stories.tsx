@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import App from 'app/App'
-import { RoutePaths } from 'shared/config/router/RoutePaths'
+import { RoutePaths, RoutePathsFn } from 'shared/config/router/RoutePaths'
 import { mockVehicles } from 'shared/defaults/tests/mockVehicles'
 import { reactRouterParameters } from 'storybook-addon-react-router-v6'
 
@@ -8,7 +8,7 @@ const meta = {
   title: 'pages/VehiclePage',
   parameters: {
     reactRouter: reactRouterParameters({
-      location: { path: `${RoutePaths.vehicle}/${mockVehicles[0].uid}` },
+      location: { path: RoutePathsFn.getVehicle(mockVehicles[0].uid) },
     }),
   },
   component: App,
@@ -20,7 +20,7 @@ export const PRIMARY: Story = {}
 export const NO_DOCUMENTS: Story = {
   parameters: {
     reactRouter: reactRouterParameters({
-      location: { path: `${RoutePaths.vehicle}/${mockVehicles[1].uid}` },
+      location: { path: RoutePathsFn.getVehicle(mockVehicles[1].uid) },
     }),
   },
 }

@@ -3,7 +3,7 @@ import { useVehicleWithDetails } from 'enteties/vehicle'
 import { FC, memo, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import AiOutlineRight from 'shared/assets/icons/AiOutlineRight.svg'
-import { RoutePaths } from 'shared/config/router/RoutePaths'
+import { RoutePaths, RoutePathsFn } from 'shared/config/router/RoutePaths'
 import { FILE_TYPE, MIME_TYPE_TO_FILE_TYPE } from 'shared/ui/File'
 import { VehicleBrandAndModel } from 'shared/ui/VehicleBrandAndModel'
 import { VehicleFile } from 'shared/ui/VehicleFile'
@@ -19,11 +19,7 @@ const GarageVehicleCard: FC<GarageVehicleCardPropsType> = ({ vehicle }) => {
   )
 
   return (
-    <Link
-      to={`${RoutePaths.vehicle}/${vehicle.uid}`}
-      className='garage-page__item'
-      key={vehicle.uid}
-    >
+    <Link to={RoutePathsFn.getVehicle(vehicle.uid)} className='garage-page__item' key={vehicle.uid}>
       <VehicleFile vehicleFile={vehicleFile} />
       <div className='garage-page__details'>
         <div className='garage-page__title'>{vehicle.registrationNumber}</div>

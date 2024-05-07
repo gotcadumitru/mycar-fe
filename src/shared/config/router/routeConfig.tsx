@@ -19,7 +19,7 @@ import { Suspense } from 'react'
 import { Navigate } from 'react-router-dom'
 import type { AppRoutesProps } from 'shared/types/router'
 import Header from 'widgets/Header'
-import {AppRoutes, RoutePaths, RoutePathsFn} from './RoutePaths'
+import { AppRoutes, RoutePaths, RoutePathsFn } from './RoutePaths'
 
 export const routeConfig: Partial<Record<AppRoutes, AppRoutesProps>> = {
   [AppRoutes.ROOT]: {
@@ -97,7 +97,7 @@ export const routeConfig: Partial<Record<AppRoutes, AppRoutesProps>> = {
   },
   [AppRoutes.VEHICLE]: {
     isForAuthOnly: true,
-    path: `${RoutePaths.vehicle}/:id`,
+    path: RoutePathsFn.getVehicle(':id'),
     element: (
       <>
         <Header isWithGoBackIcon />
