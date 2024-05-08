@@ -57,7 +57,7 @@ export const routeConfig: Partial<Record<AppRoutes, AppRoutesProps>> = {
   },
   [AppRoutes.MENU]: {
     isForAuthOnly: true,
-    path: RoutePaths.menu,
+    path: RoutePathsFn.getMenu(),
     element: (
       <>
         <Header />
