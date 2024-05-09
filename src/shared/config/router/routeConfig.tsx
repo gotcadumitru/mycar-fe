@@ -71,7 +71,7 @@ export const routeConfig: Partial<Record<AppRoutes, AppRoutesProps>> = {
   },
   [AppRoutes.ALERTS]: {
     isForAuthOnly: true,
-    path: RoutePaths.alerts,
+    path: RoutePathsFn.getAlerts(),
     element: (
       <>
         <Header isWithGoBackIcon />

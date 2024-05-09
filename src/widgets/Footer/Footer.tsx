@@ -33,7 +33,7 @@ const Footer: FC<FooterPropsType> = () => {
     },
     {
       Icon: HiOutlineBellAlert,
-      route: RoutePaths.alerts,
+      route: RoutePathsFn.getAlerts(),
       isNotification: false,
       text: 'Alerte',
       isStroke: true,
