@@ -2,7 +2,7 @@ import { calculateAverageAge, calculateAverageConsumption } from 'enteties/vehic
 import { useMemo } from 'react'
 import BsPlusLg from 'shared/assets/icons/BsPlusLg.svg'
 import HiOutlineBellAlert from 'shared/assets/icons/HiOutlineBellAlert.svg'
-import { RoutePaths } from 'shared/config/router/RoutePaths'
+import { RoutePaths, RoutePathsFn } from 'shared/config/router/RoutePaths'
 import { useAppSelector } from 'shared/lib/hooks/reduxHooks'
 import { Card, CardColor } from 'shared/ui/Card'
 import { CardType } from 'shared/ui/Card/card.types'
@@ -29,7 +29,7 @@ const PanelPage = () => {
         description='/46 locuri disponibile'
         type={CardType.WITH_ICON}
         Icon={BsPlusLg}
-        to={RoutePaths.new_vehicle}
+        to={RoutePathsFn.getNewVehicle()}
       />
       <Card
         count={0}
@@ -38,7 +38,7 @@ const PanelPage = () => {
         description='Alerte in urm. 30 zile'
         type={CardType.WITH_ICON}
         Icon={HiOutlineBellAlert}
-        to={RoutePaths.new_vehicle}
+        to={RoutePathsFn.getNewVehicle()}
       />
 
       <Card

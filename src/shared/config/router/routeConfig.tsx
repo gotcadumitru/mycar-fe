@@ -83,7 +83,7 @@ export const routeConfig: Partial<Record<AppRoutes, AppRoutesProps>> = {
   },
   [AppRoutes.NEW_VEHICLE]: {
     isForAuthOnly: true,
-    path: RoutePaths.new_vehicle,
+    path: RoutePathsFn.getNewVehicle(),
     element: (
       <>
         <Header isWithGoBackIcon title='Vehicul nou' />
