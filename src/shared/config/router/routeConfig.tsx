@@ -111,7 +111,7 @@ export const routeConfig: Partial<Record<AppRoutes, AppRoutesProps>> = {
   },
   [AppRoutes.EDIT_VEHICLE]: {
     isForAuthOnly: true,
-    path: `${RoutePaths.edit_vehicle}/:id`,
+    path: RoutePathsFn.getEditVehicle(':id'),
     element: (
       <>
         <Header isWithGoBackIcon />

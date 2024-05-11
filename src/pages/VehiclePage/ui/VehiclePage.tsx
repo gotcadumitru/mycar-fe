@@ -5,7 +5,7 @@ import VehicleDocuments from 'features/vehicleDocumentsList'
 import { memo, useMemo } from 'react'
 import { Navigate, useParams } from 'react-router-dom'
 import MdOutlineEdit from 'shared/assets/icons/MdOutlineEdit.svg'
-import { RoutePaths } from 'shared/config/router/RoutePaths'
+import { RoutePaths, RoutePathsFn } from 'shared/config/router/RoutePaths'
 import Button, { ButtonCategoryType, ButtonTheme } from 'shared/ui/Button'
 import { FileCarouselAsync } from 'shared/ui/FileCarousel'
 import { VehicleBrandAndModel } from 'shared/ui/VehicleBrandAndModel'
@@ -31,7 +31,7 @@ const VehiclePage = () => {
             <Button
               theme={ButtonTheme.EMPTY}
               category={ButtonCategoryType.LINK}
-              to={`${RoutePaths.edit_vehicle}/${vehicleDetails.vehicle.uid}`}
+              to={RoutePathsFn.getEditVehicle(vehicleDetails.vehicle.uid)}
             >
               <MdOutlineEdit className='vehicle-page__edit-icon' />
             </Button>
