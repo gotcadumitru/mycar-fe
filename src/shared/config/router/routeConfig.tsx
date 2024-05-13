@@ -125,7 +125,7 @@ export const routeConfig: Partial<Record<AppRoutes, AppRoutesProps>> = {
   },
   [AppRoutes.NEW_VEHICLE_DOCUMENT]: {
     isForAuthOnly: true,
-    path: `${RoutePaths.new_vehicle_document}/:vehicleId`,
+    path: RoutePathsFn.getNewVehicleDocument('vehicleId'),
     element: (
       <>
         <Header isWithGoBackIcon title='Document nou' />

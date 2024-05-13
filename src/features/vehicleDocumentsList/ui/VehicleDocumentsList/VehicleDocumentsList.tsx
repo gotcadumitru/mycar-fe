@@ -3,7 +3,7 @@ import { VEHICLE_DOCUMENT_TYPES } from 'enteties/vehicleDocument'
 import { selectVehicleDocumentsByVehicleId } from 'enteties/vehicleDocument/model/slice/vehicleDocumentSelectors'
 import { FC, memo, useState } from 'react'
 import { Carousel } from 'react-responsive-carousel'
-import { RoutePaths } from 'shared/config/router/RoutePaths'
+import { RoutePaths, RoutePathsFn } from 'shared/config/router/RoutePaths'
 import { useAppSelector } from 'shared/lib/hooks/reduxHooks'
 import Button, { ButtonCategoryType, ButtonTheme } from 'shared/ui/Button'
 import '../../styles/vehicleDocumentsList.scss'
@@ -41,7 +41,7 @@ const VehicleDocumentsList: FC<VehicleDocumentsProps> = ({ vehicleId }) => {
       <Button
         category={ButtonCategoryType.LINK}
         className='vehicle-documents-list__add-btn'
-        to={`${RoutePaths.new_vehicle_document}/${vehicleId}`}
+        to={RoutePathsFn.getNewVehicleDocument(vehicleId)}
         theme={ButtonTheme.EMPTY}
       >
         Adauga +
