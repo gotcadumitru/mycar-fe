@@ -3,7 +3,7 @@ import { FC, memo } from 'react'
 import { Link } from 'react-router-dom'
 import AiOutlineInfoCircle from 'shared/assets/icons/AiOutlineInfoCircle.svg'
 import AiOutlineRight from 'shared/assets/icons/AiOutlineRight.svg'
-import { RoutePaths } from 'shared/config/router/RoutePaths'
+import { RoutePaths, RoutePathsFn } from 'shared/config/router/RoutePaths'
 
 type VehicleDocumentProps = {
   vehicleDocument: VehicleDocument
@@ -11,7 +11,7 @@ type VehicleDocumentProps = {
 
 const VehicleDocumentItem: FC<VehicleDocumentProps> = ({ vehicleDocument }) => (
   <Link
-    to={`${RoutePaths.edit_vehicle_document}/${vehicleDocument.uid}`}
+    to={RoutePathsFn.getNewVehicleDocument(vehicleDocument.uid)}
     className='vehicle-documents-list__document'
   >
     <AiOutlineInfoCircle className='vehicle-documents-list__info-icon' />

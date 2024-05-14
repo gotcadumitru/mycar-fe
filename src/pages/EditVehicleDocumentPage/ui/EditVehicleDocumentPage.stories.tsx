@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import App from 'app/App'
-import { RoutePaths } from 'shared/config/router/RoutePaths'
+import { RoutePaths, RoutePathsFn } from 'shared/config/router/RoutePaths'
 import { decoratePlayFunctionForLoki } from 'shared/config/storybook/PlayFunctionDecorator/decorateTargetForLoki'
 import { mockVehicleDocuments } from 'shared/defaults/tests/mockVehicleDocuments'
 import { reactRouterParameters } from 'storybook-addon-react-router-v6'
@@ -9,7 +9,7 @@ const meta = {
   title: 'pages/EditVehicleDocumentPage',
   parameters: {
     reactRouter: reactRouterParameters({
-      location: { path: `${RoutePaths.edit_vehicle_document}/${mockVehicleDocuments[0].uid}` },
+      location: { path: RoutePathsFn.getEditVehicleDocument(mockVehicleDocuments[0].uid) },
     }),
   },
   component: App,
