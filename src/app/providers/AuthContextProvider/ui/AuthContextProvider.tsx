@@ -24,7 +24,7 @@ import {
 } from 'react'
 import { FetchStatus } from 'shared/api'
 import { firebaseAuth } from 'shared/api/firebase'
-import { RoutePaths } from 'shared/config/router/RoutePaths'
+import { RoutePaths, RoutePathsFn } from 'shared/config/router/RoutePaths'
 
 type AuthContextType = {
   currentUser: User | null
@@ -81,7 +81,7 @@ const AuthContextProvider: FC<PropsWithChildren> = ({ children }) => {
   const forgotPassword: AuthContextType['forgotPassword'] = useCallback(
     (email) =>
       sendPasswordResetEmail(firebaseAuth, email, {
-        url: `${process.env.CAR_MASTER_DOMAIN}${RoutePaths.sign_in}`,
+        url: `${process.env.CAR_MASTER_DOMAIN}${RoutePathsFn.getSignIn()}`,
       }),
     [],
   )

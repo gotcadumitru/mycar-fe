@@ -153,7 +153,7 @@ export const routeConfig: Partial<Record<AppRoutes, AppRoutesProps>> = {
   },
   [AppRoutes.SIGN_IN]: {
     isForAuthOnly: false,
-    path: `${RoutePaths.sign_in}`,
+    path: `${RoutePathsFn.getSignIn()}`,
     element: (
       <AuthPage>
         <SignIn />
