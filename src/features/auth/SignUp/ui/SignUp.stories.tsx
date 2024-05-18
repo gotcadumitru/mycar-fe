@@ -3,7 +3,7 @@ import { fireEvent, waitFor, within } from '@storybook/testing-library'
 import App from 'app/App'
 import { SignUpFormType } from 'features/auth/SignUp/types/signUpTypes'
 import { getSignUpFormValues } from 'features/auth/SignUp/utils/signUpUtils'
-import { RoutePaths } from 'shared/config/router/RoutePaths'
+import { RoutePaths, RoutePathsFn } from 'shared/config/router/RoutePaths'
 import { decoratePlayFunctionForLoki } from 'shared/config/storybook/PlayFunctionDecorator/decorateTargetForLoki'
 import { ReduxStoreDecorator } from 'shared/config/storybook/ReduxStoreDecorator/ReduxStoreDecorator'
 import { WindowMockSetDecorator } from 'shared/config/storybook/WindowMockSetDecorator/WindowMockSetDecorator'
@@ -16,7 +16,7 @@ const meta = {
   title: 'features/auth/SignUp',
   parameters: {
     reactRouter: reactRouterParameters({
-      location: { path: RoutePaths.sign_up },
+      location: { path: RoutePathsFn.getSignUp() },
     }),
   },
   decorators: [WindowMockSetDecorator({ currentUser: null })],

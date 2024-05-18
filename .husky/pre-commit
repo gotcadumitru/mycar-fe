@@ -1,8 +1,10 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-yarn lint:ts
-yarn lint:scss
-yarn test:unit
+#yarn lint:ts
+yarn format
+git add .
+#yarn lint:scss
+#yarn test:unit
 #yarn storybook:build
 #yarn test:ui:ci

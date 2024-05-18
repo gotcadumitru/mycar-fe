@@ -6,7 +6,7 @@ import { toast } from 'react-toastify'
 import { FirebaseErrorCode } from 'shared/api/firebase'
 import { isFirebaseError } from 'shared/api/firebase/firebaseUtils'
 import BsArrowRightShort from 'shared/assets/icons/BsArrowRightShort.svg'
-import { RoutePaths } from 'shared/config/router/RoutePaths'
+import { RoutePaths, RoutePathsFn } from 'shared/config/router/RoutePaths'
 import { BUTTON_TEXT } from 'shared/defaults/text'
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
 import { checkIfExistErrors } from 'shared/lib/utils/checkIfExistErrors'
@@ -84,7 +84,7 @@ export const SignIn: FC<SignInProps> = ({ className }) => {
         margin={ButtonMargin.BOTTOM}
         category={ButtonCategoryType.LINK}
         theme={ButtonTheme.OUTLINE_RED}
-        to={RoutePaths.sign_up}
+        to={RoutePathsFn.getSignUp()}
       >
         Creare Cont
       </Button>

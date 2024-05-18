@@ -162,7 +162,7 @@ export const routeConfig: Partial<Record<AppRoutes, AppRoutesProps>> = {
   },
   [AppRoutes.SIGN_UP]: {
     isForAuthOnly: false,
-    path: `${RoutePaths.sign_up}`,
+    path: `${RoutePathsFn.getSignUp()}`,
     element: (
       <AuthPage>
         <SignUp />
