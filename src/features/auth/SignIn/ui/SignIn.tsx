@@ -89,7 +89,7 @@ export const SignIn: FC<SignInProps> = ({ className }) => {
         Creare Cont
       </Button>
       <LoginWith />
-      <Link to={RoutePaths.forgot_password} className='auth-page__forgot'>
+      <Link to={RoutePathsFn.getForgotPassword()} className='auth-page__forgot'>
         <BsArrowRightShort /> Forgot password
       </Link>
     </Form>

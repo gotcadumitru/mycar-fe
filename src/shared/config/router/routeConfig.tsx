@@ -171,7 +171,7 @@ export const routeConfig: Partial<Record<AppRoutes, AppRoutesProps>> = {
   },
   [AppRoutes.FORGOT_PASSWORD]: {
     isForAuthOnly: false,
-    path: `${RoutePaths.forgot_password}`,
+    path: RoutePathsFn.getForgotPassword(),
     element: (
       <AuthPage>
         <ForgotPassword />

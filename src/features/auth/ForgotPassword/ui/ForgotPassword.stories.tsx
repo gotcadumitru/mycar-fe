@@ -3,7 +3,7 @@ import { fireEvent, waitFor, within } from '@storybook/testing-library'
 import App from 'app/App'
 import { ForgotPasswordFormType } from 'features/auth/ForgotPassword/types/forgotPasswordTypes'
 import { getForgotPasswordFormValues } from 'features/auth/ForgotPassword/utils/forgotPasswordUtils'
-import { RoutePaths } from 'shared/config/router/RoutePaths'
+import { RoutePaths, RoutePathsFn } from 'shared/config/router/RoutePaths'
 import { decoratePlayFunctionForLoki } from 'shared/config/storybook/PlayFunctionDecorator/decorateTargetForLoki'
 import { ReduxStoreDecorator } from 'shared/config/storybook/ReduxStoreDecorator/ReduxStoreDecorator'
 import { WindowMockSetDecorator } from 'shared/config/storybook/WindowMockSetDecorator/WindowMockSetDecorator'
@@ -16,7 +16,7 @@ const meta = {
   title: 'features/auth/ForgotPassword',
   parameters: {
     reactRouter: reactRouterParameters({
-      location: { path: RoutePaths.forgot_password },
+      location: { path: RoutePathsFn.getForgotPassword() },
     }),
   },
   decorators: [WindowMockSetDecorator({ currentUser: null })],
