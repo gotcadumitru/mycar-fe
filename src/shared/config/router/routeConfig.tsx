@@ -180,7 +180,7 @@ export const routeConfig: Partial<Record<AppRoutes, AppRoutesProps>> = {
   },
   [AppRoutes.RESET_PASSWORD]: {
     isForAuthOnly: false,
-    path: `${RoutePaths.reset_password}`,
+    path: RoutePathsFn.getResetPassword(),
     element: (
       <AuthPage>
         <ResetPassword />
