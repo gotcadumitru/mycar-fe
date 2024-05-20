@@ -43,7 +43,7 @@ export const routeConfig: Partial<Record<AppRoutes, AppRoutesProps>> = {
   },
   [AppRoutes.GARAGE]: {
     isForAuthOnly: true,
-    path: RoutePaths.garage,
+    path: RoutePathsFn.getGarage(),
     element: (
       <>
         <Header isWithGoBackIcon />

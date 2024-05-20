@@ -6,7 +6,7 @@ import EditVehicleForm from 'features/vehicle/vehicleEditForm/ui/EditVehicleForm
 import { useEffect, useId } from 'react'
 import { Navigate, useNavigate, useParams } from 'react-router-dom'
 import { FetchStatus } from 'shared/api'
-import { RoutePaths } from 'shared/config/router/RoutePaths'
+import { RoutePaths, RoutePathsFn } from 'shared/config/router/RoutePaths'
 import { REQUEST_MESSAGES } from 'shared/defaults/text'
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
 import Button, { ButtonCategoryType, ButtonTheme } from 'shared/ui/Button'
@@ -37,7 +37,7 @@ const EditVehiclePage = () => {
     }
   }, [vehicle])
 
-  if (!vehicle) return <Navigate to={RoutePaths.garage} />
+  if (!vehicle) return <Navigate to={RoutePathsFn.getGarage()} />
   const onSubmit = async () => {
     if (!vehicle) return
     const dispatchAction = await dispatch(
@@ -49,7 +49,7 @@ const EditVehiclePage = () => {
       }),
     )
     if (dispatchAction.meta.requestStatus === FetchStatus.SUCCESS) {
-      navigate(RoutePaths.garage)
+      navigate(RoutePathsFn.getGarage())
     }
   }
 

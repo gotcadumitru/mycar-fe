@@ -3,7 +3,7 @@ import { softDeleteVehicleById } from 'enteties/vehicle'
 import { FC, memo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import MdOutlineDelete from 'shared/assets/icons/MdOutlineDelete.svg'
-import { RoutePaths } from 'shared/config/router/RoutePaths'
+import { RoutePaths, RoutePathsFn } from 'shared/config/router/RoutePaths'
 import { REQUEST_MESSAGES } from 'shared/defaults/text'
 import { useAppDispatch } from 'shared/lib/hooks/reduxHooks'
 import Button, { ButtonTheme } from 'shared/ui/Button'
@@ -29,7 +29,7 @@ const DeleteVehicleButton: FC<DeleteVehicleButtonProps> = ({ vehicleId }) => {
       }),
     )
     if (deleteThunk.meta.requestStatus === 'fulfilled') {
-      navigate(RoutePaths.garage)
+      navigate(RoutePathsFn.getGarage())
     }
   }
 

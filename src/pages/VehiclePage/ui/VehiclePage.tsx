@@ -21,7 +21,7 @@ const VehiclePage = () => {
     [vehicleDetails.vehicle],
   )
 
-  if (!vehicleDetails.vehicle) return <Navigate to={RoutePaths.garage} />
+  if (!vehicleDetails.vehicle) return <Navigate to={RoutePathsFn.getGarage()} />
   return (
     <div className='vehicle-page'>
       <div className='vehicle-page__header'>

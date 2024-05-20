@@ -2,7 +2,7 @@ import UserVehicleSelect from 'features/userVehicleSelect'
 import VehicleDocumentTypeSelect from 'features/vehicleDocumentTypeSelect'
 import { ChangeEvent, FC, memo, useEffect } from 'react'
 import { Navigate } from 'react-router-dom'
-import { RoutePaths } from 'shared/config/router/RoutePaths'
+import { RoutePaths, RoutePathsFn } from 'shared/config/router/RoutePaths'
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
 import { checkIfExistErrors } from 'shared/lib/utils/checkIfExistErrors'
 import type { FileInputType } from 'shared/ui/File'
@@ -75,7 +75,7 @@ const VehicleDocumentEditForm: FC<EditCarFormProps> = ({ formId, vehicleId, onSu
     onSubmit()
   }
 
-  if (!vehicleId) return <Navigate to={RoutePaths.garage} />
+  if (!vehicleId) return <Navigate to={RoutePathsFn.getGarage()} />
 
   return (
     <Form id={formId} onSubmit={onSubmitLocal} className='vehicle-document-edit'>

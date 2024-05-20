@@ -26,7 +26,7 @@ const Footer: FC<FooterPropsType> = () => {
     },
     {
       Icon: GiHomeGarage,
-      route: RoutePaths.garage,
+      route: RoutePathsFn.getGarage(),
       isNotification: false,
       text: 'Garaj',
       isStroke: false,
