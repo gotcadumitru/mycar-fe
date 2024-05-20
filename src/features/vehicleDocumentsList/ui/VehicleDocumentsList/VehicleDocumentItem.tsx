@@ -3,7 +3,7 @@ import { FC, memo } from 'react'
 import { Link } from 'react-router-dom'
 import AiOutlineInfoCircle from 'shared/assets/icons/AiOutlineInfoCircle.svg'
 import AiOutlineRight from 'shared/assets/icons/AiOutlineRight.svg'
-import { RoutePaths, RoutePathsFn } from 'shared/config/router/RoutePaths'
+import { RoutePathsFn } from 'shared/config/router/RoutePaths'
 
 type VehicleDocumentProps = {
   vehicleDocument: VehicleDocument

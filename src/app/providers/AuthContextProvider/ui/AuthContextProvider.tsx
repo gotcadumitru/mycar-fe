@@ -24,7 +24,7 @@ import {
 } from 'react'
 import { FetchStatus } from 'shared/api'
 import { firebaseAuth } from 'shared/api/firebase'
-import { RoutePaths, RoutePathsFn } from 'shared/config/router/RoutePaths'
+import { RoutePathsFn } from 'shared/config/router/RoutePaths'
 
 type AuthContextType = {
   currentUser: User | null

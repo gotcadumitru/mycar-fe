@@ -4,7 +4,7 @@ import EditVehicleForm, { editVehicleActions } from 'features/vehicle/vehicleEdi
 import { useId } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { FetchStatus } from 'shared/api'
-import { RoutePaths, RoutePathsFn } from 'shared/config/router/RoutePaths'
+import { RoutePathsFn } from 'shared/config/router/RoutePaths'
 import { BUTTON_TEXT, REQUEST_MESSAGES } from 'shared/defaults/text'
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
 import Button, { ButtonCategoryType, ButtonTheme } from 'shared/ui/Button'

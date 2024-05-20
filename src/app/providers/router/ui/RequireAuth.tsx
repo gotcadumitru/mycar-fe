@@ -5,7 +5,7 @@ import { PanelPageSkeleton } from 'pages/PanelPage'
 import { FC, PropsWithChildren } from 'react'
 import { Navigate, useLocation } from 'react-router-dom'
 import { FetchStatus } from 'shared/api'
-import { RoutePaths, RoutePathsFn } from 'shared/config/router/RoutePaths'
+import { RoutePathsFn } from 'shared/config/router/RoutePaths'
 import { useAppSelector } from 'shared/lib/hooks/reduxHooks'
 
 type RequireAuthPropsType = {

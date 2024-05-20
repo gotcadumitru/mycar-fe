@@ -6,7 +6,7 @@ import EditVehicleForm from 'features/vehicle/vehicleEditForm/ui/EditVehicleForm
 import { useEffect, useId } from 'react'
 import { Navigate, useNavigate, useParams } from 'react-router-dom'
 import { FetchStatus } from 'shared/api'
-import { RoutePaths, RoutePathsFn } from 'shared/config/router/RoutePaths'
+import { RoutePathsFn } from 'shared/config/router/RoutePaths'
 import { REQUEST_MESSAGES } from 'shared/defaults/text'
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks/reduxHooks'
 import Button, { ButtonCategoryType, ButtonTheme } from 'shared/ui/Button'
