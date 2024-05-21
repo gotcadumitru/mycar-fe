@@ -49,4 +49,5 @@ export const RoutePathsFn = {
   getSignUp: () => RoutePaths.sign_up,
   getForgotPassword: () => RoutePaths.forgot_password,
   getResetPassword: () => RoutePaths.reset_password,
+  getNotFound: () => RoutePaths.not_found,
 }
