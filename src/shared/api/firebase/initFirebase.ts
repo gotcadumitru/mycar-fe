@@ -21,6 +21,3 @@ export const firebaseStorage = getStorage(firebaseApp)
 export const firebaseAppCheck = initializeAppCheck(firebaseApp, {
   provider: new ReCaptchaV3Provider('6LebAAMoAAAAAEPOkEM-9LbGpo0z6E5dtRebzWHB'),
 })
-
-// export const firebaseLogger = new Logger('firebase-car-logger')
-// firebaseLogger.error('Cum asta lucreaza1', 'Cum asta lucreaza2', 'Cum asta lucreaza3')
