@@ -31,6 +31,9 @@ npx pod-install
 ```
 
 ### 1.3 Create google cloud credentials for Android/Web/iOS
+```text
+keytool -list -v -keystore ./android/app/debug.keystore
+```
 ### 1.2 Download plist and rename to GoogleService-Info.plist
 
 ### 1.4 Open Project in xCode
