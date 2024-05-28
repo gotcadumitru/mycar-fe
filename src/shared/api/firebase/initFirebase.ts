@@ -17,7 +17,6 @@ export const firestoreDb = getFirestore(firebaseApp)
 
 // Create a root reference
 export const firebaseStorage = getStorage(firebaseApp)
-
 export const firebaseAppCheck = initializeAppCheck(firebaseApp, {
   provider: new ReCaptchaV3Provider('6LebAAMoAAAAAEPOkEM-9LbGpo0z6E5dtRebzWHB'),
 })
