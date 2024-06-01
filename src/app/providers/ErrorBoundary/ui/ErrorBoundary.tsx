@@ -42,7 +42,6 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
     const { children } = this.props
 
     if (hasError) {
-      // You can render any custom fallback UI
       return (
         <Suspense fallback=''>
           <ErrorPage />
